@@ -276,7 +276,7 @@ export function App() {
             {`•`}
           </div>
           <a className="hover:underline focus-visible:underline focus-visible:outline-none"
-            href={`https://github.com/brumeproject/wallet2/releases/tag/v${version}`}
+            href={`https://github.com/brume256/wallet2/releases/tag/v${version}`}
             target="_blank noreferrer">
             {version}
           </a>
@@ -465,7 +465,7 @@ export function InstallPage() {
       <div className="flex items-center">
         <WideContrastAnchor
           target="_blank noreferrer"
-          href="https://github.com/brumeproject/wallet2">
+          href="https://github.com/brume256/wallet2">
           <Outline.ArrowTopRightOnSquareIcon className="size-5" />
           {Lang.match({ en: "Advanced", zh: "高级", hi: "उन्नत", es: "Avanzado", ar: "متقدم", fr: "Avancé", de: "Erweitert", ru: "Продвинутый", pt: "Avançado", ja: "高度な", pa: "ਉੱਨਤ", bn: "উন্নত", id: "Lanjutan", ur: "اعلی درجے کا", ms: "Lanjutan", it: "Avanzato", tr: "Gelişmiş", ta: "மேம்பட்டது", te: "అధునాతన", ko: "고급", vi: "Nâng cao", pl: "Zaawansowane", ro: "Avansat", nl: "Geavanceerd", el: "Για προχωρημένους", th: "ขั้นสูง", cs: "Pokročilý", hu: "Fejlett", sv: "Avancerad", da: "Avanceret" })}
         </WideContrastAnchor>
