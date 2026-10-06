@@ -65,16 +65,6 @@ export const chainlist = [
     }
   },
   {
-    "chainId": 56,
-    "name": "BNB Smart Chain Mainnet",
-    "rpc": "https://bsc-rpc.publicnode.com",
-    "nativeCurrency": {
-      "name": "BNB Chain Native Token",
-      "symbol": "BNB",
-      "decimals": 18
-    }
-  },
-  {
     "chainId": 8453,
     "name": "Base",
     "rpc": "https://base-rpc.publicnode.com",
@@ -85,9 +75,29 @@ export const chainlist = [
     }
   },
   {
+    "chainId": 56,
+    "name": "BNB Smart Chain Mainnet",
+    "rpc": "https://bsc-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "BNB Chain Native Token",
+      "symbol": "BNB",
+      "decimals": 18
+    }
+  },
+  {
     "chainId": 42161,
     "name": "Arbitrum One",
     "rpc": "https://arbitrum-one-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "Ether",
+      "symbol": "ETH",
+      "decimals": 18
+    }
+  },
+  {
+    "chainId": 57073,
+    "name": "Ink",
+    "rpc": "https://ink-rpc.publicnode.com",
     "nativeCurrency": {
       "name": "Ether",
       "symbol": "ETH",
@@ -105,16 +115,6 @@ export const chainlist = [
     }
   },
   {
-    "chainId": 137,
-    "name": "Polygon Mainnet",
-    "rpc": "https://polygon-bor-rpc.publicnode.com",
-    "nativeCurrency": {
-      "name": "POL",
-      "symbol": "POL",
-      "decimals": 18
-    }
-  },
-  {
     "chainId": 10,
     "name": "OP Mainnet",
     "rpc": "https://optimism-rpc.publicnode.com",
@@ -125,12 +125,22 @@ export const chainlist = [
     }
   },
   {
-    "chainId": 5000,
-    "name": "Mantle",
-    "rpc": "https://mantle-rpc.publicnode.com",
+    "chainId": 137,
+    "name": "Polygon Mainnet",
+    "rpc": "https://polygon-bor-rpc.publicnode.com",
     "nativeCurrency": {
-      "name": "Mantle",
-      "symbol": "MNT",
+      "name": "POL",
+      "symbol": "POL",
+      "decimals": 18
+    }
+  },
+  {
+    "chainId": 5042,
+    "name": "Arc",
+    "rpc": "https://arc-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "USDC",
+      "symbol": "USDC",
       "decimals": 18
     }
   },
@@ -145,12 +155,12 @@ export const chainlist = [
     }
   },
   {
-    "chainId": 80094,
-    "name": "Berachain",
-    "rpc": "https://berachain-rpc.publicnode.com",
+    "chainId": 5000,
+    "name": "Mantle",
+    "rpc": "https://mantle-rpc.publicnode.com",
     "nativeCurrency": {
-      "name": "BERA Token",
-      "symbol": "BERA",
+      "name": "Mantle",
+      "symbol": "MNT",
       "decimals": 18
     }
   },
@@ -165,22 +175,22 @@ export const chainlist = [
     }
   },
   {
+    "chainId": 80094,
+    "name": "Berachain",
+    "rpc": "https://berachain-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "BERA Token",
+      "symbol": "BERA",
+      "decimals": 18
+    }
+  },
+  {
     "chainId": 369,
     "name": "PulseChain",
     "rpc": "https://pulsechain-rpc.publicnode.com",
     "nativeCurrency": {
       "name": "Pulse",
       "symbol": "PLS",
-      "decimals": 18
-    }
-  },
-  {
-    "chainId": 130,
-    "name": "Unichain",
-    "rpc": "https://unichain-rpc.publicnode.com",
-    "nativeCurrency": {
-      "name": "Ether",
-      "symbol": "ETH",
       "decimals": 18
     }
   },
@@ -195,12 +205,12 @@ export const chainlist = [
     }
   },
   {
-    "chainId": 252,
-    "name": "Fraxtal",
-    "rpc": "https://fraxtal-rpc.publicnode.com",
+    "chainId": 130,
+    "name": "Unichain",
+    "rpc": "https://unichain-rpc.publicnode.com",
     "nativeCurrency": {
-      "name": "Frax",
-      "symbol": "FRAX",
+      "name": "Ether",
+      "symbol": "ETH",
       "decimals": 18
     }
   },
@@ -215,6 +225,16 @@ export const chainlist = [
     }
   },
   {
+    "chainId": 81457,
+    "name": "Blast",
+    "rpc": "https://blast-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "Ether",
+      "symbol": "ETH",
+      "decimals": 18
+    }
+  },
+  {
     "chainId": 2222,
     "name": "Kava",
     "rpc": "https://kava-evm-rpc.publicnode.com",
@@ -225,12 +245,12 @@ export const chainlist = [
     }
   },
   {
-    "chainId": 81457,
-    "name": "Blast",
-    "rpc": "https://blast-rpc.publicnode.com",
+    "chainId": 252,
+    "name": "Fraxtal",
+    "rpc": "https://fraxtal-rpc.publicnode.com",
     "nativeCurrency": {
-      "name": "Ether",
-      "symbol": "ETH",
+      "name": "Frax",
+      "symbol": "FRAX",
       "decimals": 18
     }
   },
@@ -255,16 +275,6 @@ export const chainlist = [
     }
   },
   {
-    "chainId": 167000,
-    "name": "Taiko",
-    "rpc": "https://taiko-rpc.publicnode.com",
-    "nativeCurrency": {
-      "name": "Ether",
-      "symbol": "ETH",
-      "decimals": 18
-    }
-  },
-  {
     "chainId": 1088,
     "name": "Metis Andromeda Mainnet",
     "rpc": "https://metis-rpc.publicnode.com",
@@ -275,12 +285,62 @@ export const chainlist = [
     }
   },
   {
+    "chainId": 5031,
+    "name": "Somnia Mainnet",
+    "rpc": "https://somnia-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "SOMI",
+      "symbol": "SOMI",
+      "decimals": 18
+    }
+  },
+  {
     "chainId": 88888,
     "name": "Chiliz Chain",
     "rpc": "https://chiliz.publicnode.com",
     "nativeCurrency": {
       "name": "Chiliz",
       "symbol": "CHZ",
+      "decimals": 18
+    }
+  },
+  {
+    "chainId": 204,
+    "name": "opBNB Mainnet",
+    "rpc": "https://opbnb-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "BNB Chain Native Token",
+      "symbol": "BNB",
+      "decimals": 18
+    }
+  },
+  {
+    "chainId": 11235,
+    "name": "Haqq Network",
+    "rpc": "https://haqq-evm.publicnode.com",
+    "nativeCurrency": {
+      "name": "Islamic Coin",
+      "symbol": "ISLM",
+      "decimals": 18
+    }
+  },
+  {
+    "chainId": 42170,
+    "name": "Arbitrum Nova",
+    "rpc": "https://arbitrum-nova-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "Ether",
+      "symbol": "ETH",
+      "decimals": 18
+    }
+  },
+  {
+    "chainId": 167000,
+    "name": "Taiko",
+    "rpc": "https://taiko-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "Ether",
+      "symbol": "ETH",
       "decimals": 18
     }
   },
@@ -301,36 +361,6 @@ export const chainlist = [
     "nativeCurrency": {
       "name": "Glimmer",
       "symbol": "GLMR",
-      "decimals": 18
-    }
-  },
-  {
-    "chainId": 204,
-    "name": "opBNB Mainnet",
-    "rpc": "https://opbnb-rpc.publicnode.com",
-    "nativeCurrency": {
-      "name": "BNB Chain Native Token",
-      "symbol": "BNB",
-      "decimals": 18
-    }
-  },
-  {
-    "chainId": 5031,
-    "name": "Somnia Mainnet",
-    "rpc": "https://somnia-rpc.publicnode.com",
-    "nativeCurrency": {
-      "name": "SOMI",
-      "symbol": "SOMI",
-      "decimals": 18
-    }
-  },
-  {
-    "chainId": 42170,
-    "name": "Arbitrum Nova",
-    "rpc": "https://arbitrum-nova-rpc.publicnode.com",
-    "nativeCurrency": {
-      "name": "Ether",
-      "symbol": "ETH",
       "decimals": 18
     }
   },
@@ -395,12 +425,12 @@ export const chainlist = [
     }
   },
   {
-    "chainId": 11235,
-    "name": "Haqq Network",
-    "rpc": "https://haqq-evm.publicnode.com",
+    "chainId": 4663,
+    "name": "Robinhood Chain",
+    "rpc": "https://robinhood-rpc.publicnode.com",
     "nativeCurrency": {
-      "name": "Islamic Coin",
-      "symbol": "ISLM",
+      "name": "Ether",
+      "symbol": "ETH",
       "decimals": 18
     }
   },
@@ -411,16 +441,6 @@ export const chainlist = [
     "nativeCurrency": {
       "name": "Sepolia Ether",
       "symbol": "ETH",
-      "decimals": 18
-    }
-  },
-  {
-    "chainId": 97,
-    "name": "BNB Smart Chain Testnet",
-    "rpc": "https://bsc-testnet-rpc.publicnode.com",
-    "nativeCurrency": {
-      "name": "BNB Chain Native Token",
-      "symbol": "tBNB",
       "decimals": 18
     }
   },
@@ -445,6 +465,16 @@ export const chainlist = [
     }
   },
   {
+    "chainId": 97,
+    "name": "BNB Smart Chain Testnet",
+    "rpc": "https://bsc-testnet-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "BNB Chain Native Token",
+      "symbol": "tBNB",
+      "decimals": 18
+    }
+  },
+  {
     "chainId": 421613,
     "name": "Arbitrum Goerli",
     "rpc": "https://arbitrum-goerli-rpc.publicnode.com",
@@ -465,12 +495,32 @@ export const chainlist = [
     }
   },
   {
+    "chainId": 763373,
+    "name": "Ink Sepolia",
+    "rpc": "https://ink-sepolia-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "Sepolia Ether",
+      "symbol": "ETH",
+      "decimals": 18
+    }
+  },
+  {
     "chainId": 43113,
     "name": "Avalanche Fuji Testnet",
     "rpc": "https://avalanche-fuji-c-chain-rpc.publicnode.com",
     "nativeCurrency": {
       "name": "Avalanche",
       "symbol": "AVAX",
+      "decimals": 18
+    }
+  },
+  {
+    "chainId": 5042002,
+    "name": "Arc Testnet",
+    "rpc": "https://arc-testnet-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "USDC",
+      "symbol": "USDC",
       "decimals": 18
     }
   },
@@ -485,21 +535,21 @@ export const chainlist = [
     }
   },
   {
-    "chainId": 1301,
-    "name": "Unichain Sepolia Testnet",
-    "rpc": "https://unichain-sepolia-rpc.publicnode.com",
-    "nativeCurrency": {
-      "name": "Sepolia Ether",
-      "symbol": "ETH",
-      "decimals": 18
-    }
-  },
-  {
     "chainId": 59141,
     "name": "Linea Sepolia",
     "rpc": "https://linea-sepolia-rpc.publicnode.com",
     "nativeCurrency": {
       "name": "Linea Ether",
+      "symbol": "ETH",
+      "decimals": 18
+    }
+  },
+  {
+    "chainId": 1301,
+    "name": "Unichain Sepolia Testnet",
+    "rpc": "https://unichain-sepolia-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "Sepolia Ether",
       "symbol": "ETH",
       "decimals": 18
     }
@@ -631,6 +681,16 @@ export const chainlist = [
     "nativeCurrency": {
       "name": "POL",
       "symbol": "POL",
+      "decimals": 18
+    }
+  },
+  {
+    "chainId": 46630,
+    "name": "Robinhood Chain Testnet",
+    "rpc": "https://robinhood-sepolia-rpc.publicnode.com",
+    "nativeCurrency": {
+      "name": "Ether",
+      "symbol": "ETH",
       "decimals": 18
     }
   }
