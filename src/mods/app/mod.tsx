@@ -7,7 +7,7 @@ import { Nullable } from "@/libs/nullable/mod.ts";
 import { useStoreContext } from "@/libs/store/mod.tsx";
 import { version } from "@/libs/version/mod.ts";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
-import { PathBoard, PathPaper, Wall } from "@hazae41/modal";
+import { PathBubble, PathWindow, Screen } from "@hazae41/modal";
 import { CloseProvider } from "@hazae41/react-close-context";
 import React, { ChangeEvent, Fragment, useCallback, useEffect, useState } from "react";
 import { SessionData, SessionPage, SessionProvider } from "./session/mod.tsx";
@@ -97,25 +97,25 @@ export function App() {
     <Client>
       <CloseProvider value={logout}>
         {session != null &&
-          <Wall>
+          <Screen>
             <SessionProvider value={session}>
               <SessionPage />
             </SessionProvider>
-          </Wall>}
+          </Screen>}
       </CloseProvider>
       <SubpathProvider value={hash}>
         {hash.url.pathname === "/login" &&
-          <PathPaper>
+          <PathBubble>
             <UserLoginMenu login={login} />
-          </PathPaper>}
+          </PathBubble>}
         {hash.url.pathname === "/settings" &&
-          <PathBoard>
+          <PathWindow>
             <SettingsPage />
-          </PathBoard>}
+          </PathWindow>}
         {hash.url.pathname === "/install" &&
-          <PathBoard>
+          <PathWindow>
             <InstallPage />
-          </PathBoard>}
+          </PathWindow>}
       </SubpathProvider>
     </Client>
     <div className="h-full w-full p-safe flex flex-col items-center">
@@ -436,17 +436,17 @@ export function InstallPage() {
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/chrome" &&
-        <PathBoard>
+        <PathWindow>
           <ChromeInstallPage />
-        </PathBoard>}
+        </PathWindow>}
       {hash.url.pathname === "/safari" &&
-        <PathBoard>
+        <PathWindow>
           <SafariInstallPage />
-        </PathBoard>}
+        </PathWindow>}
       {hash.url.pathname === "/android" &&
-        <PathBoard>
+        <PathWindow>
           <AndroidInstallPage />
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <div className="flex flex-col grow p-6">
       <h1 className="text-xl font-medium">

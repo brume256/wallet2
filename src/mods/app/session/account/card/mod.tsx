@@ -13,7 +13,7 @@ import { useTask } from "@/libs/task/mod.ts";
 import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { PathPaper } from "@hazae41/modal";
+import { PathBubble } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import React, { Fragment, useCallback, useDeferredValue, useMemo, useState } from "react";
 import { useSessionContext } from "../../mod.tsx";
@@ -159,9 +159,9 @@ export function CardAccountAddPage() {
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/color" &&
-        <PathPaper>
+        <PathBubble>
           <ColorMenu ok={setColor} />
-        </PathPaper>}
+        </PathBubble>}
     </SubpathProvider>
     <div className="flex flex-col grow p-6">
       <h1 className="text-xl font-medium">
@@ -400,7 +400,7 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
   return <div className="flex flex-col grow p-6">
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/+" &&
-        <PathPaper>
+        <PathBubble>
           <div className="flex flex-col gap-2">
             {/* <WideNakedMenuButton>
               <Outline.PencilIcon className="size-5" />
@@ -410,7 +410,7 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
             {trashed === true && <AccountMenuUntrashButton $entry={$entry} close={close} />}
             {trashed === true && <AccountMenuDeleteButton $entry={$entry} close={close} />}
           </div>
-        </PathPaper>}
+        </PathBubble>}
     </SubpathProvider>
     <div className="flex items-center justify-between">
       <h1 className="text-xl font-medium">

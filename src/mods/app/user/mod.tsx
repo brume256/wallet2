@@ -15,7 +15,7 @@ import { useTask } from "@/libs/task/mod.ts";
 import { Readable, Unknown, Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { PathBoard, PathPaper } from "@hazae41/modal";
+import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import { Result } from "@hazae41/result-and-option";
 import { webAuthnStorage } from "@hazae41/webauthnstorage";
@@ -71,9 +71,9 @@ export function UserLoginMenu(props: { login(session: SessionData): void }) {
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/add" &&
-        <PathPaper>
+        <PathBubble>
           <UserAddMenu />
-        </PathPaper>}
+        </PathBubble>}
     </SubpathProvider>
     <div className="flex flex-col gap-2">
       {users?.map(user =>
@@ -109,16 +109,16 @@ function UserAddMenu() {
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/import" &&
-        <PathBoard>
+        <PathWindow>
           {"showOpenFilePicker" in window === true &&
             <UserImportFsfhPage />}
           {"showOpenFilePicker" in window === false &&
             <UserImportFilePage />}
-        </PathBoard>}
+        </PathWindow>}
       {hash.url.pathname === "/create" &&
-        <PathBoard>
+        <PathWindow>
           <UserCreatePage />
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <div className="flex flex-col gap-2">
       <UserCreateButton />
@@ -685,13 +685,13 @@ function UserItem(props: { user: UserData } & { login(session: SessionData): voi
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === `/${user.uuid}` &&
-        <PathBoard>
+        <PathWindow>
           <UserLoginPage user={user} login={login} />
-        </PathBoard>}
+        </PathWindow>}
       {hash.url.pathname === `/${user.uuid}/+` &&
-        <PathPaper>
+        <PathBubble>
           <UserMenu user={user} />
-        </PathPaper>}
+        </PathBubble>}
     </SubpathProvider>
     <div className="relative group flex-1 rounded-xl hover:bg-default-double-contrast has-focus-visible:bg-default-double-contrast">
       <a className="absolute inset-0 opacity-0 cursor-pointer"
@@ -934,12 +934,12 @@ function UserMenu(props: { user: UserData }) {
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/reimport" &&
-        <PathBoard>
+        <PathWindow>
           {"showOpenFilePicker" in window === true &&
             <UserReimportFsfhPage user={user} />}
           {"showOpenFilePicker" in window === false &&
             <UserReimportFilePage user={user} />}
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <div className="flex flex-col gap-2">
       <UserReimportButton />

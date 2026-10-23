@@ -12,7 +12,7 @@ import { KeypairAccountAddMenuAnchor, KeypairAccountAddPage, KeypairAccountPage 
 import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { PathBoard } from "@hazae41/modal";
+import { PathWindow } from "@hazae41/modal";
 import React, { Fragment, useCallback, useMemo } from "react";
 import { useSessionContext } from "../mod.tsx";
 import { CardAccountAddMenuAnchor, CardAccountAddPage, CardAccountPage } from "./card/mod.tsx";
@@ -62,7 +62,7 @@ export function AccountAnchor(props: { $entry: KDBX.Inner.KeePassFile.Entry }) {
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === `/account/${uuid}` &&
-        <PathBoard>
+        <PathWindow>
           {(() => {
             const type = getEntryType($entry)
 
@@ -80,7 +80,7 @@ export function AccountAnchor(props: { $entry: KDBX.Inner.KeePassFile.Entry }) {
 
             return null
           })()}
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <a className="@container w-[min(20rem,100%)] aspect-video overflow-hidden border-2 border-default-contrast rounded-xl bg-default text-default select-none hover:scale-105 focus-visible:outline-none focus-visible:scale-105 transition-transform
       data-[color=red]:bg-red-400 
@@ -236,21 +236,21 @@ export function AccountAddMenu() {
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/password" &&
-        <PathBoard>
+        <PathWindow>
           <PasswordAccountAddPage />
-        </PathBoard>}
+        </PathWindow>}
       {hash.url.pathname === "/keypair" &&
-        <PathBoard>
+        <PathWindow>
           <KeypairAccountAddPage />
-        </PathBoard>}
+        </PathWindow>}
       {hash.url.pathname === "/crypto" &&
-        <PathBoard>
+        <PathWindow>
           <CryptoAccountAddPage />
-        </PathBoard>}
+        </PathWindow>}
       {hash.url.pathname === "/card" &&
-        <PathBoard>
+        <PathWindow>
           <CardAccountAddPage />
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <div className="flex flex-col gap-2">
       <PasswordAccountAddMenuAnchor />

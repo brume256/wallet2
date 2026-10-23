@@ -14,7 +14,7 @@ import { Writable } from "@hazae41/binary";
 import { BitcoinSeedPhrase } from "@hazae41/broca";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { PathBoard, PathPaper } from "@hazae41/modal";
+import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import React, { Fragment, useCallback, useDeferredValue, useEffect, useMemo, useState } from "react";
 import { useSessionContext } from "../../mod.tsx";
@@ -157,9 +157,9 @@ export function CryptoAccountAddPage() {
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/color" &&
-        <PathPaper>
+        <PathBubble>
           <ColorMenu ok={setColor} />
-        </PathPaper>}
+        </PathBubble>}
     </SubpathProvider>
     <div className="flex flex-col grow p-6">
       <h1 className="text-xl font-medium">
@@ -294,9 +294,9 @@ export function CryptoAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/+" &&
-        <PathPaper>
+        <PathBubble>
           <CryptoAccountMenu $entry={$entry} close={close} />
-        </PathPaper>}
+        </PathBubble>}
     </SubpathProvider>
     <div className="flex flex-col grow p-6">
       <div className="flex items-center justify-between">
@@ -394,9 +394,9 @@ export function CryptoAccountMenu(props: { $entry: KDBX.Inner.KeePassFile.Entry 
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/export" &&
-        <PathBoard>
+        <PathWindow>
           <CryptoAccountExportPage $entry={$entry} />
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <div className="flex flex-col gap-2">
       <CryptoAccountExportMenuAnchor />

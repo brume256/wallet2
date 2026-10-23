@@ -22,7 +22,7 @@ import { RpcCounter, RpcRequestPreinit, RpcResponse } from "@hazae41/jsonrpc";
 import * as KDBX from "@hazae41/kdbx";
 import { keccak256 } from "@hazae41/keccak256";
 import { WcSessionRequestParams, WcUnsupportedAccountsError, WcUnsupportedChainsError, WcUnsupportedMethodsError, WcUserRejectedError } from "@hazae41/latrine";
-import { PathBoard } from "@hazae41/modal";
+import { PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import { Result } from "@hazae41/result-and-option";
 import { secp256k1 } from "@hazae41/secp256k1";
@@ -83,9 +83,9 @@ export function CryptoRequestAnchor(props: { index: number } & { $entry: KDBX.In
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === `/request/${index}` &&
-        <PathBoard>
+        <PathWindow>
           <CryptoRequestPage $entry={$entry} subaccount={subaccount} $subentry={$subentry} request={request} />
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <a className="@container relative group w-[min(20rem,100%)] aspect-video rounded-xl bg-default text-default border-2 border-default-contrast select-none hover:scale-105 focus-visible:outline-none focus-visible:scale-105 transition-transform
       data-[color=red]:bg-red-400 

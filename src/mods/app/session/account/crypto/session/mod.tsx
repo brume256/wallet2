@@ -18,7 +18,7 @@ import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
 import { IrnClient, WalletConnect, WcChannel, WcSession, WcSessionRequestParams, WcUnsupportedMethodsError } from "@hazae41/latrine";
-import { PathBoard, PathPaper } from "@hazae41/modal";
+import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import React, { Fragment, useCallback, useDeferredValue, useEffect, useMemo, useState } from "react";
 import { AccountMenuAnchor } from "../../mod.tsx";
@@ -175,9 +175,9 @@ export function CryptoSessionAddPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/url" &&
-        <PathBoard>
+        <PathWindow>
           <ScanPage value={$url} onChange={setUrl} />
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <div className="flex flex-col grow p-6">
       <h1 className="text-xl font-medium">
@@ -307,9 +307,9 @@ export function CryptoSessionAnchor(props: { $entry: KDBX.Inner.KeePassFile.Entr
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === `/session/${uuid}` &&
-        <PathBoard>
+        <PathWindow>
           <CryptoSessionPage $entry={$entry} subaccount={subaccount} $subentry={$subentry} />
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <a className="@container relative group w-[min(20rem,100%)] aspect-video rounded-xl bg-default text-default border-2 border-default-contrast select-none hover:scale-105 focus-visible:outline-none focus-visible:scale-105 transition-transform
       data-[color=red]:bg-red-400 
@@ -496,9 +496,9 @@ export function CryptoSessionPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/+" &&
-        <PathPaper>
+        <PathBubble>
           <CryptoSessionMenu $entry={$entry} subaccount={subaccount} $subentry={$subentry} session={session} close={close} />
-        </PathPaper>}
+        </PathBubble>}
     </SubpathProvider>
     <div className="flex flex-col grow p-6">
       <div className="flex items-center justify-between">

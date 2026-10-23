@@ -18,7 +18,7 @@ import { PasswordAccountAddPage } from "@/mods/app/session/account/password/mod.
 import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext, useSearchState } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { PathBoard, PathPaper } from "@hazae41/modal";
+import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import { Option } from "@hazae41/result-and-option";
 import React, { createContext, Fragment, useCallback, useContext, useDeferredValue, useMemo, useState } from "react";
@@ -113,29 +113,29 @@ export function SessionPage() {
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/+" &&
-        <PathPaper>
+        <PathBubble>
           <SessionMenu logout={logout} />
-        </PathPaper>}
+        </PathBubble>}
       {hash.url.pathname === "/add" &&
-        <PathPaper>
+        <PathBubble>
           <AccountAddMenu />
-        </PathPaper>}
+        </PathBubble>}
       {hash.url.pathname === "/add/password" &&
-        <PathBoard>
+        <PathWindow>
           <PasswordAccountAddPage />
-        </PathBoard>}
+        </PathWindow>}
       {hash.url.pathname === "/add/keypair" &&
-        <PathBoard>
+        <PathWindow>
           <KeypairAccountAddPage />
-        </PathBoard>}
+        </PathWindow>}
       {hash.url.pathname === "/add/crypto" &&
-        <PathBoard>
+        <PathWindow>
           <CryptoAccountAddPage />
-        </PathBoard>}
+        </PathWindow>}
       {hash.url.pathname === "/add/card" &&
-        <PathBoard>
+        <PathWindow>
           <CardAccountAddPage />
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <div className="grow flex flex-col *:shrink-0 p-6 overflow-y-auto">
       <h1 className="text-xl font-medium">
@@ -254,13 +254,13 @@ function SessionMenu(props: { logout(): void }) {
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/add" &&
-        <PathPaper>
+        <PathBubble>
           <AccountAddMenu />
-        </PathPaper>}
+        </PathBubble>}
       {hash.url.pathname === "/export" &&
-        <PathBoard>
+        <PathWindow>
           <SessionExportPage />
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <div className="flex flex-col gap-2">
       <SessionExportAnchor />

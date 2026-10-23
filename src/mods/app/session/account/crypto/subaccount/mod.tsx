@@ -19,7 +19,7 @@ import { EIP55Address } from "@hazae41/eip55";
 import * as KDBX from "@hazae41/kdbx";
 import { keccak256 } from "@hazae41/keccak256";
 import { IrnClient, WalletConnect, WcPairing, WcPairingParams, WcSession, WcSessionProposeParams, WcSessionProposeResult } from "@hazae41/latrine";
-import { PathBoard, PathPaper } from "@hazae41/modal";
+import { PathBubble, PathWindow } from "@hazae41/modal";
 import { secp256k1 } from "@hazae41/secp256k1";
 import React, { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import { AccountMenuAnchor } from "../../mod.tsx";
@@ -51,9 +51,9 @@ export function CryptoSubaccountAnchor(props: { $entry: KDBX.Inner.KeePassFile.E
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === `/subaccount/${index}` &&
-        <PathBoard>
+        <PathWindow>
           <CryptoSubaccountPage $entry={$entry} subaccount={index} />
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <a className="@container relative group w-[min(20rem,100%)] aspect-video rounded-xl bg-default text-default border-2 border-default-contrast select-none hover:scale-105 focus-visible:outline-none focus-visible:scale-105 transition-transform
       data-[color=red]:bg-red-400 
@@ -280,13 +280,13 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/+" &&
-        <PathPaper>
+        <PathBubble>
           <CryptoSubaccountMenu $entry={$entry} subaccount={subaccount} />
-        </PathPaper>}
+        </PathBubble>}
       {hash.url.pathname === "/session" &&
-        <PathBoard>
+        <PathWindow>
           <CryptoSessionAddPage $entry={$entry} subaccount={subaccount} respond={respond} />
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <div className="flex flex-col grow p-6">
       <div className="flex items-center justify-between">
@@ -346,13 +346,13 @@ export function CryptoSubaccountMenu(props: { $entry: KDBX.Inner.KeePassFile.Ent
   return <Fragment>
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/address" &&
-        <PathBoard>
+        <PathWindow>
           <CryptoSubaccountAddressPage $entry={$entry} subaccount={subaccount} />
-        </PathBoard>}
+        </PathWindow>}
       {hash.url.pathname === "/export" &&
-        <PathBoard>
+        <PathWindow>
           <CryptoSubaccountExportPage $entry={$entry} subaccount={subaccount} />
-        </PathBoard>}
+        </PathWindow>}
     </SubpathProvider>
     <div className="flex flex-col gap-2">
       <CryptoSubaccountAddressMenuAnchor />
