@@ -2,6 +2,8 @@
 
 /// <reference lib="dom" />
 
+import "@/libs/files/lib.d.ts";
+
 import "@hazae41/symbol-dispose-polyfill";
 
 import "@hazae41/disposable-stack-polyfill";
