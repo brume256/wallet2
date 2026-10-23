@@ -92,7 +92,7 @@ export function CryptoSessionAddPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
 
     const $subentry = $group.push()
 
-    $subentry.push("Parent", $entry.getUuidOrThrow().toString())
+    $subentry.push("Parent", $entry.getUuidOrThrow().getOrThrow())
     $subentry.push("Index", subaccount.toString())
 
     $subentry.push("Title", title)

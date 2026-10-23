@@ -566,7 +566,7 @@ export function AccountMenuDeleteButton(props: { $entry: KDBX.Inner.KeePassFile.
 
     await new Promise(ok => requestIdleCallback(ok))
 
-    const subentries = [...kdbx.inner.content.value.document.querySelectorAll("Entry")].filter(e => !e.closest("History")).map(e => new KDBX.Inner.KeePassFile.Entry(e)).filter(e => e.getStringByKeyOrNull("Parent")?.getValueOrNull()?.get() === $entry.getUuidOrThrow().toString())
+    const subentries = [...kdbx.inner.content.value.document.querySelectorAll("Entry")].filter(e => !e.closest("History")).map(e => new KDBX.Inner.KeePassFile.Entry(e)).filter(e => e.getStringByKeyOrNull("Parent")?.getValueOrNull()?.get() === $entry.getUuidOrThrow().getOrThrow())
 
     for (const $subentry of subentries)
       $subentry.element.parentNode?.removeChild($subentry.element)

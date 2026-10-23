@@ -139,7 +139,7 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
   }, [$entry])
 
   const subentries = useMemo(() => {
-    return [...session.value.kdbx.inner.content.value.document.querySelectorAll("Entry")].filter(e => !e.closest("History")).map(e => new KDBX.Inner.KeePassFile.Entry(e)).filter(e => e.getStringByKeyOrNull("Parent")?.getValueOrNull()?.get() === $entry.getUuidOrThrow().toString()).filter(e => e.getStringByKeyOrNull("Index")?.getValueOrNull()?.get() === subaccount.toString())
+    return [...session.value.kdbx.inner.content.value.document.querySelectorAll("Entry")].filter(e => !e.closest("History")).map(e => new KDBX.Inner.KeePassFile.Entry(e)).filter(e => e.getStringByKeyOrNull("Parent")?.getValueOrNull()?.get() === $entry.getUuidOrThrow().getOrThrow()).filter(e => e.getStringByKeyOrNull("Index")?.getValueOrNull()?.get() === subaccount.toString())
   }, [session, $entry, subaccount])
 
   const getEthereumAddressOrThrow = useCallback(async () => {
@@ -321,6 +321,7 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
               <div className="grow grid grid-cols-[repeat(auto-fit,min(20rem,100%))] justify-center content-center gap-4">
                 {subentries.map($subentry =>
                   <Fragment key={$subentry.getUuidOrThrow().getOrThrow()}>
+                    {$subentry.getStringByKeyOrNull("Parent")?.getValueOrNull()?.get()}
                     <CryptoSessionAnchor $entry={$entry} subaccount={subaccount} $subentry={$subentry} />
                   </Fragment>)}
                 <CryptoSessionAddAnchor />
