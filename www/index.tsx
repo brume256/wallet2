@@ -1,5 +1,6 @@
-/// <reference lib="dom" />
 // deno-lint-ignore-file no-process-global
+
+/// <reference lib="dom" />
 
 import "@hazae41/symbol-dispose-polyfill";
 
@@ -86,7 +87,7 @@ function Body() {
 }
 
 if (process.env.PLATFORM === "browser") {
-  await new Rewind(document).hydrateOrThrow().then(() => hydrateRoot(document.body, <Body />))
+  await new Rewind(document).hydrate().then(() => hydrateRoot(document.body, <Body />))
 } else {
   const params = new URLSearchParams(location.search)
 
@@ -117,5 +118,5 @@ if (process.env.PLATFORM === "browser") {
 
   document.body.innerHTML = await prerender(<Body />)
 
-  await new Rewind(document).prerenderOrThrow()
+  await new Rewind(document).prerender()
 }
