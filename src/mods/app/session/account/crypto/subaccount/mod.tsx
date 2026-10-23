@@ -162,6 +162,8 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
   const respond = useCallback(async (url: string, signal = new AbortController().signal): Promise<Nullable<WcSessionData>> => {
     await using stack = new AsyncDisposableStack()
 
+    let success = false
+
     const cleaner = new AbortController()
     stack.defer(() => cleaner.abort())
 
@@ -171,7 +173,7 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
     const sticky = crypto.getRandomValues(new Uint8Array(32))
     const client = await IrnClient.open(WalletConnect.RELAY, sticky, "c687bd046ecc774e67a31a3bef2ebcc8")
 
-    stack.defer(() => client.close())
+    stack.defer(() => success ? undefined : client.close())
 
     const pairing = await WcPairing.from(client, WcPairingParams.parse(url))
 
@@ -213,8 +215,6 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
     const session = await upgraded.promise
 
     await session.open()
-
-    let success = false
 
     stack.defer(async () => success ? undefined : await session.close())
     stack.defer(async () => success ? undefined : await session.delete())
@@ -262,13 +262,15 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
 
     await session.settle({ relay, namespaces, requiredNamespaces, optionalNamespaces, pairingTopic: pairing.channel.topic, controller, expiry })
 
-    success = true
-
     await session.close()
 
     const jwk = sticky.toBase64()
     const tpc = session.channel.topic
     const key = session.channel.key.toBase64()
+
+    client.close()
+
+    success = true
 
     return { jwk, tpc, key }
   }, [seedphrase, subaccount])
