@@ -291,7 +291,7 @@ export function PasswordAccountAddPage() {
             onChange={e => setNotes(e.target.value)}
             value={$notes} />
         </div>
-        <div className="h-8" />
+        <div className="h-8 grow" />
         <div className="flex items-center flex-wrap-reverse gap-2">
           {session.value.user.fsfh != null &&
             <WideOppositeButton
@@ -649,9 +649,8 @@ export function ScanPage(props: { value: string } & { onChange(value: string): v
       {Lang.match({ en: "Scan QR code", zh: "扫描二维码", hi: "क्यूआर कोड स्कैन करें", es: "Escanear código QR", ar: "مسح رمز الاستجابة السريعة", fr: "Scanner le code QR", de: "QR-Code scannen", ru: "Сканировать QR-код", pt: "Escanear código QR", ja: "QRコードをスキャンする", pa: "QR ਕੋਡ ਸਕੈਨ ਕਰੋ", bn: "QR কোড স্ক্যান করুন", id: "Pindai kode QR", ur: "کیو آر کوڈ اسکین کریں", ms: "Imbas kode QR", it: "Scansiona codice QR", tr: "QR kodunu tara", ta: "QR குறியீட்டை ஸ்கேன் செய்யவும்", te: "QR కోడ్ స్కాన్ చేయండి", ko: "QR 코드 스캔하기", vi: "Quét mã QR", pl: "Skanuj kod QR", ro: "Scanează codul QR", nl: "Scan QR-code", el: "Σάρωση κωδικού QR", th: "สแกนรหัส QR", cs: "Skenovat QR kód", hu: "QR-kód beolvasása", sv: "Skanna QR-kod", da: "Scan QR-kode" })}
     </h1>
     <div className="h-4" />
-    <div className="flex flex-col grow rounded-xl relative">
-      <video className="h-full w-full object-cover rounded-xl bg-black" muted autoPlay playsInline loop
-        src="/noise.mp4"
+    <div className="flex flex-col grow rounded-xl relative overflow-hidden">
+      <video className="w-full not-sm:h-full sm:aspect-square object-cover bg-black" muted autoPlay playsInline loop
         ref={setVideo} />
       <div className="absolute bottom-0 w-full flex items-center p-4">
         <div className="group relative text-white bg-neutral-500/80 rounded-full p-2  has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-neutral-500/80">

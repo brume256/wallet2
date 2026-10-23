@@ -243,7 +243,7 @@ export function CryptoAccountAddPage() {
             onChange={e => setNotes(e.target.value)}
             value={$notes} />
         </div>
-        <div className="h-8" />
+        <div className="h-8 grow" />
         <div className="flex items-center flex-wrap-reverse gap-2">
           {session.value.user.fsfh != null &&
             <WideOppositeButton

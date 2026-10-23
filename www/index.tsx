@@ -2,7 +2,7 @@
 
 /// <reference lib="dom" />
 
-import "@/libs/files/lib.d.ts";
+/// <reference path="@/libs/files/lib.d.ts" />
 
 import "@hazae41/symbol-dispose-polyfill";
 
