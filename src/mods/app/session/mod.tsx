@@ -215,7 +215,7 @@ export function SessionPage() {
       <div className="h-4" />
       <div className="flex items-center gap-2">
         <SessionMenuButton />
-        <div className="grow bg-default-contrast po-2 rounded-xl flex items-center gap-4 [&:has(:focus-visible)]:outline-2 [&:has(:focus-visible)]:outline-offset-2 [&:has(:focus-visible)]:outline-default-contrast">
+        <div className="grow bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
           <Outline.MagnifyingGlassIcon className="size-5" />
           <input className="w-full focus-visible:outline-none"
             autoComplete="off"
@@ -374,7 +374,7 @@ export function SessionExportPage() {
           {Lang.match({ en: "A password to encrypt the exported file.", zh: "用于加密导出文件的密码。", hi: "निर्यात की गई फ़ाइल को एन्क्रिप्ट करने के लिए एक पासवर्ड।", es: "Una contraseña para encriptar el archivo exportado.", ar: "كلمة مرور لتشفير الملف المصدر.", fr: "Un mot de passe pour chiffrer le fichier exporté.", de: "Ein Passwort zum Verschlüsseln der exportierten Datei.", ru: "Пароль для шифрования экспортируемого файла.", pt: "Uma senha para criptografar o arquivo exportado.", ja: "エクスポートされたファイルを暗号化するためのパスワード。", pa: "ਨਿਰਯਾਤ ਕੀਤੀ ਫਾਈਲ ਨੂੰ ਇੰਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਇੱਕ ਪਾਸਵਰਡ।", bn: "রপ্তানি করা ফাইলটি এনক্রিপ্ট করার জন্য একটি পাসওয়ার্ড।", id: "Kata sandi untuk mengenkripsi file yang diekspor.", ur: "برآمد شدہ فائل کو خفیہ کرنے کے لیے ایک پاس ورڈ۔", ms: "Kata sandi untuk menyulitkan fail yang dieksport.", it: "Una password per crittografare il file esportato.", tr: "Dışa aktarılan dosyayı şifrelemek için bir parola.", ta: "ஏற்றுமதி செய்யப்பட்ட கோப்பை குறியாக்கம் செய்ய ஒரு கடவுச்சொல்.", te: "ఎగుమతి చేసిన ఫైల్‌ను గుప్తీకరించడానికి ఒక పాస్వర్డ్.", ko: "내보낸 파일을 암호화하기 위한 비밀번호.", vi: "Mật khẩu để mã hóa tệp xuất.", pl: "Hasło do zaszyfrowania eksportowanego pliku.", ro: "O parolă pentru a cripta fișierul exportat.", nl: "Een wachtwoord om het geëxporteerde bestand te versleutelen.", el: "Ένας κωδικός πρόσβασης για την κρυπτογράφηση του εξαγόμενου αρχείου.", th: "รหัสผ่านเพื่อเข้ารหัสไฟล์ที่ส่งออก.", cs: "Heslo pro šifrování exportovaného souboru.", hu: "Egy jelszó az exportált fájl titkosításához.", sv: "Ett lösenord för att kryptera den exporterade filen.", da: "En adgangskode til at kryptere den eksporterede fil." })}
         </div>
         <div className="h-4" />
-        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 [&:has(:focus-visible)]:outline-2 [&:has(:focus-visible)]:outline-offset-2 [&:has(:focus-visible)]:outline-default-contrast">
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
           <input className="w-full focus-visible:outline-none"
             autoComplete="off"
             type={flipped ? "text" : "password"}

@@ -388,7 +388,7 @@ export function SettingsPage() {
       <div className="h-4" />
       <div className="flex flex-col items-center border border-default-contrast rounded-xl p-6">
         {icon == null &&
-          <div className="relative size-24 border-2 border-dashed border-default-contrast flex items-center justify-center rounded-xl [&:has(:focus-visible)]:outline-2 [&:has(:focus-visible)]:outline-offset-2 [&:has(:focus-visible)]:outline-default-contrast">
+          <div className="relative size-24 border-2 border-dashed border-default-contrast flex items-center justify-center rounded-xl has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
             <input className="absolute inset-0 opacity-0 cursor-pointer"
               type="file"
               accept="image/*"
@@ -402,7 +402,7 @@ export function SettingsPage() {
             <img className="size-24 rounded-xl bg-opposite" src={icon} />
           </button>}
         <div className="h-4" />
-        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 [&:has(:focus-visible)]:outline-2 [&:has(:focus-visible)]:outline-offset-2 [&:has(:focus-visible)]:outline-default-contrast">
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
           <input className="w-full focus-visible:outline-none text-center"
             autoComplete="off"
             placeholder="Wallet"
