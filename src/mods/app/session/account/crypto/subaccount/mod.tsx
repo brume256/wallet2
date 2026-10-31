@@ -230,30 +230,13 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
 
     const namespaces = {
       eip155: {
-        accounts: chains.map(chainId =>
-          `eip155:${chainId}:${ethereum}`
-        ),
-        chains: chains.map(chainId =>
-          `eip155:${chainId}`
-        ),
-        methods: [
-          "personal_sign",
-          "eth_signTypedData_v4",
-          "eth_sendTransaction"
-        ],
+        accounts: chains.map(chainId => `eip155:${chainId}:${ethereum}`),
+        methods: ["personal_sign", "eth_signTypedData_v4", "eth_sendTransaction"],
         events: [],
       },
       solana: {
-        accounts: [
-          `solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp:${solana}`,
-        ],
-        chains: [
-          "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
-        ],
-        methods: [
-          "solana_signMessage",
-          "solana_signTransaction",
-        ],
+        accounts: [`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp:${solana}`],
+        methods: ["solana_signMessage", "solana_signTransaction"],
         events: [],
       }
     }
