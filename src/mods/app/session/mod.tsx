@@ -5,7 +5,6 @@ import { Outline } from "@/libs/heroicons/mod.ts";
 import { getEntryType, getRecycleBinOrNull } from "@/libs/kdbx/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
 import { Nullable } from "@/libs/nullable/mod.ts";
-import { ChildrenProps } from "@/libs/props/mod.ts";
 import { Spinner } from "@/libs/spinner/mod.tsx";
 import { useTask } from "@/libs/task/mod.ts";
 import { CardAccountAddPage } from "@/mods/app/session/account/card/mod.tsx";
@@ -19,7 +18,7 @@ import { Clicker, Menu, MenuAnchor, MenuButton, WideOppositeButton } from "@haza
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import { Option } from "@hazae41/result-and-option";
-import React, { createContext, Fragment, useCallback, useContext, useDeferredValue, useMemo, useState } from "react";
+import React, { createContext, Fragment, ReactNode, useCallback, useContext, useDeferredValue, useMemo, useState } from "react";
 import { UserData } from "../user/mod.tsx";
 import { AccountAddButtonInGrid, AccountAddMenu, AccountAnchor } from "./account/mod.tsx";
 
@@ -51,7 +50,7 @@ export function useSessionContext() {
   return Option.wrap(useContext(SessionContext))
 }
 
-export function SessionProvider(props: ChildrenProps & { value: SessionData }) {
+export function SessionProvider(props: { children?: ReactNode } & { value: SessionData }) {
   const { children, value } = props
 
   const [counter, setCounter] = useState(0)

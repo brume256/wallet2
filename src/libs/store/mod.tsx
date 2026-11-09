@@ -1,7 +1,6 @@
-import { ChildrenProps } from "@/libs/props/mod.ts";
 import { Err, Option, Result } from "@hazae41/result-and-option";
 import { Database } from "@hazae41/serac";
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Nullable } from "../nullable/mod.ts";
 
 React;
@@ -20,7 +19,7 @@ export function useStoreContext() {
   return Option.wrap(useContext(StoreContext))
 }
 
-export function StoreProvider(props: ChildrenProps) {
+export function StoreProvider(props: { children?: ReactNode }) {
   const { children } = props
 
   const [value, setValue] = useState<Result<Database>>(() => new Err("Database not opened yet"))
