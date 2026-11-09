@@ -3,7 +3,6 @@ import { Errors } from "@/libs/errors/mod.ts";
 import { Events } from "@/libs/events/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
-import { WideNakedMenuButton } from "@/libs/menu/mod.tsx";
 import { Nullable } from "@/libs/nullable/mod.ts";
 import { useOnline } from "@/libs/online/mod.ts";
 import { Spinner } from "@/libs/spinner/mod.tsx";
@@ -15,7 +14,7 @@ import { useSessionContext } from "@/mods/app/session/mod.tsx";
 import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { Clicker, WideOppositeButton } from "@hazae41/labase";
+import { Clicker, Menu, MenuButton, WideOppositeButton } from "@hazae41/labase";
 import { IrnClient, WalletConnect, WcChannel, WcSession, WcSessionRequestParams, WcUnsupportedMethodsError } from "@hazae41/latrine";
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
@@ -648,24 +647,24 @@ export function CryptoSessionMenu(props: { $entry: KDBX.Inner.KeePassFile.Entry 
   }).catch(Errors.display), [encrypt, close])
 
   return <Fragment>
-    <div className="flex flex-col gap-2">
+    <Menu>
       {session.value.user.fsfh != null &&
-        <WideNakedMenuButton
+        <MenuButton
           type="button"
           inert={writeOrDisplay.running}
           onClick={writeOrDisplay.execute}>
           {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.LinkSlashIcon className="size-5" />}
           {Lang.match({ en: "Destroy", zh: "销毁", hi: "नष्ट करें", es: "Destruir", ar: "تدمير", fr: "Détruire", de: "Zerstören", ru: "Уничтожить", pt: "Destruir", ja: "破棄", pa: "ਨਸ਼ਟ ਕਰੋ", bn: "ধ্বংস করুন", id: "Hancurkan", ur: "تباہ کریں", ms: "Hancurkan", it: "Distruggi", tr: "Yık", ta: "நசுக்கவும்", te: "నాశనం చేయండి", ko: "파괴하다", vi: "Hủy bỏ", pl: "Zniszczyć", ro: "Distrugeți", nl: "Vernietigen", el: "Καταστρέψτε ", th: "ทำลาย ", cs: "Zničit ", hu: "Megsemmisít ", sv: "Förstöra ", da: "Ødelæg" })}
-        </WideNakedMenuButton>}
+        </MenuButton>}
       {session.value.user.fsfh == null &&
-        <WideNakedMenuButton
+        <MenuButton
           type="button"
           inert={saveOrDisplay.running}
           onClick={saveOrDisplay.execute}>
           {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.LinkSlashIcon className="size-5" />}
           {Lang.match({ en: "Destroy", zh: "销毁", hi: "नष्ट करें", es: "Destruir", ar: "تدمير", fr: "Détruire", de: "Zerstören", ru: "Уничтожить", pt: "Destruir", ja: "破棄", pa: "ਨਸ਼ਟ ਕਰੋ", bn: "ধ্বংস করুন", id: "Hancurkan", ur: "تباہ کریں", ms: "Hancurkan", it: "Distruggi", tr: "Yık", ta: "நசுக்கவும்", te: "నాశనం చేయండి", ko: "파괴하다", vi: "Hủy bỏ", pl: "Zniszczyć", ro: "Distrugeți", nl: "Vernietigen", el: "Καταστρέψτε ", th: "ทำลาย ", cs: "Zničit ", hu: "Megsemmisít ", sv: "Förstöra ", da: "Ødelæg" })}
-        </WideNakedMenuButton>}
-    </div>
+        </MenuButton>}
+    </Menu>
   </Fragment>
 }
 

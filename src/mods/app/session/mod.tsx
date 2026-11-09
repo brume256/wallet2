@@ -4,7 +4,6 @@ import { useAutoFocus } from "@/libs/focus/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getEntryType, getRecycleBinOrNull } from "@/libs/kdbx/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
-import { WideNakedMenuAnchor, WideNakedMenuButton } from "@/libs/menu/mod.tsx";
 import { Nullable } from "@/libs/nullable/mod.ts";
 import { ChildrenProps } from "@/libs/props/mod.ts";
 import { Spinner } from "@/libs/spinner/mod.tsx";
@@ -16,7 +15,7 @@ import { PasswordAccountAddPage } from "@/mods/app/session/account/password/mod.
 import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext, useSearchState } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { Clicker, WideOppositeButton } from "@hazae41/labase";
+import { Clicker, Menu, MenuAnchor, MenuButton, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import { Option } from "@hazae41/result-and-option";
@@ -261,15 +260,15 @@ function SessionMenu(props: { logout(): void }) {
           <SessionExportPage />
         </PathWindow>}
     </SubpathProvider>
-    <div className="flex flex-col gap-2">
+    <Menu>
       <SessionExportAnchor />
-      <WideNakedMenuButton
+      <MenuButton
         type="button"
         onClick={logout}>
         <Outline.LockClosedIcon className="size-5" />
         {Lang.match({ en: "Lock", zh: "锁定", hi: "लॉक करें", es: "Bloquear", ar: "قفل", fr: "Verrouiller", de: "Sperren", ru: "Заблокировать", pt: "Bloquear", ja: "ロック", pa: "ਲਾਕ ਕਰੋ", bn: "লক করুন", id: "Kunci", ur: "لاک کریں", ms: "Kunci", it: "Blocca", tr: "Kilitle", ta: "மூடு", te: "లాక్ చేయండి", ko: "잠그기", vi: "Khóa", pl: "Zablokuj", ro: "Blochează", nl: "Vergrendel", el: "Κλείδωμα", th: "ล็อค", cs: "Zamknout", hu: "Zárolás", sv: "Lås", da: "Lås" })}
-      </WideNakedMenuButton>
-    </div>
+      </MenuButton>
+    </Menu>
   </Fragment>
 }
 
@@ -279,13 +278,13 @@ export function SessionExportAnchor() {
 
   const coords = useAnchorWithCoords(hash, "/export")
 
-  return <WideNakedMenuAnchor
+  return <MenuAnchor
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.ArrowUpOnSquareIcon className="size-5" />
     {Lang.match({ en: "Export", zh: "导出", hi: "निर्यात", es: "Exportar", ar: "تصدير", fr: "Exporter", de: "Exportieren", ru: "Экспорт", pt: "Exportar", ja: "エクスポート", pa: "ਨਿਰਯਾਤ", bn: "রপ্তানি", id: "Ekspor", ur: "برآمد کریں", ms: "Eksport", it: "Esporta", tr: "Dışa Aktar", ta: "ஏற்றுமதி", te: "ఎగుమతి", ko: "내보내기", vi: "Xuất", pl: "Eksportuj", ro: "Export", nl: "Exporteren", el: "Εξαγωγή", th: "ส่งออก", cs: "Exportovat", hu: "Exportálás", sv: "Exportera", da: "Eksporter" })}
-  </WideNakedMenuAnchor>
+  </MenuAnchor>
 }
 
 export function SessionExportPage() {

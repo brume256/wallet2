@@ -5,7 +5,6 @@ import { Events } from "@/libs/events/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getRecycleBinOrNull } from "@/libs/kdbx/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
-import { WideNakedMenuAnchor, WideNakedMenuButton } from "@/libs/menu/mod.tsx";
 import { Nullable } from "@/libs/nullable/mod.ts";
 import { Spinner } from "@/libs/spinner/mod.tsx";
 import { Strings } from "@/libs/string/mod.ts";
@@ -15,7 +14,7 @@ import { Writable } from "@hazae41/binary";
 import { MoneroSeedPhrase } from "@hazae41/broca";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { Clicker, WideContrastButton, WideOppositeButton } from "@hazae41/labase";
+import { Clicker, Menu, MenuAnchor, MenuButton, WideContrastButton, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import jsqr from "jsqr";
@@ -31,13 +30,13 @@ export function PasswordAccountAddMenuAnchor() {
 
   const coords = useAnchorWithCoords(hash, "/password")
 
-  return <WideNakedMenuAnchor
+  return <MenuAnchor
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.LanguageIcon className="size-5" />
     {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata laluan", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
-  </WideNakedMenuAnchor>
+  </MenuAnchor>
 }
 
 export function PasswordAccountAddPage() {
@@ -372,7 +371,7 @@ export function PasswordAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entr
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/+" &&
         <PathBubble>
-          <div className="flex flex-col gap-2">
+          <Menu>
             {/* <WideNakedMenuButton>
               <Outline.PencilIcon className="size-5" />
               Edit
@@ -380,7 +379,7 @@ export function PasswordAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entr
             {trashed === false && <AccountMenuTrashButton $entry={$entry} close={close} />}
             {trashed === true && <AccountMenuUntrashButton $entry={$entry} close={close} />}
             {trashed === true && <AccountMenuDeleteButton $entry={$entry} close={close} />}
-          </div>
+          </Menu>
         </PathBubble>}
     </SubpathProvider>
     <div className="flex flex-col grow p-6">
@@ -736,24 +735,24 @@ export function PasswordMenu(props: { value: string } & { onChange(value: string
     return setPassword(result)
   }).catch(Errors.display), [])
 
-  return <div className="flex flex-col gap-2">
-    <WideNakedMenuButton
+  return <Menu>
+    <MenuButton
       type="button"
       onClick={onDigicodeClick}>
       <Outline.HashtagIcon className="size-5" />
       {Lang.match({ en: "Digicode", zh: "数字密码", hi: "डिजीकोड", es: "Código digital", ar: "الرمز الرقمي", fr: "Digicode", de: "Digicode", ru: "Цифровой код", pt: "Digicode", ja: "デジコード", pa: "ਡਿਗੀਕੋਡ", bn: "ডিজিকোড", id: "Digicode", ur: "ڈیجی کوڈ", ms: "Digicode", it: "Digicode", tr: "Dijikod", ta: "டிஜிகோடு", te: "డిజికోడ్", ko: "디지코드", vi: "Mã kỹ thuật số", pl: "Kod cyfrowy", ro: "Cod digital", nl: "Digicode", el: "Ψηφιακός κώδικας", th: "รหัสดิจิทัล", cs: "Digitální kód", hu: "Digitális kód", sv: "Digikod", da: "Digikode" })}
-    </WideNakedMenuButton>
-    <WideNakedMenuButton
+    </MenuButton>
+    <MenuButton
       type="button"
       onClick={onPasswordClick}>
       <Outline.LanguageIcon className="size-5" />
       {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata laluan", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
-    </WideNakedMenuButton>
-    <WideNakedMenuButton
+    </MenuButton>
+    <MenuButton
       type="button"
       onClick={onPassphraseClick}>
       <Outline.ChatBubbleOvalLeftEllipsisIcon className="size-5" />
       {Lang.match({ en: "Passphrase", zh: "密码短语", hi: "पासफ़्रेज़", es: "Frase de contraseña", ar: "عبارة المرور", fr: "Phrase de passe", de: "Passphrase", ru: "Парольная фраза", pt: "Frase de senha", ja: "パスフレーズ", pa: "ਪਾਸਫਰੇਜ਼", bn: "পাসফ্রেজ", id: "Frasa sandi", ur: "پاس فریز", ms: "Frasa kata laluan", it: "Frase di accesso", tr: "Parola öbeği", ta: "கடவுச்சொல் வாக்கியம்", te: "పాస్ఫ్రేజ్", ko: "암호 구문", vi: "Cụm từ mật khẩu", pl: "Fraza hasła", ro: "Fraza de parolă", nl: "Wachtwoordzin", el: "Φράση πρόσβασης", th: "วลีรหัสผ่าน", cs: "Heslová fráze", hu: "Jelszó kifejezés", sv: "Lösenordsfras", da: "Adgangskodefrase" })}
-    </WideNakedMenuButton>
-  </div>
+    </MenuButton>
+  </Menu>
 }

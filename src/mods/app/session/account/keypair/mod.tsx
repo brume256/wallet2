@@ -5,7 +5,6 @@ import { Events } from "@/libs/events/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getRecycleBinOrNull } from "@/libs/kdbx/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
-import { WideNakedMenuAnchor } from "@/libs/menu/mod.tsx";
 import { Nullable } from "@/libs/nullable/mod.ts";
 import { Spinner } from "@/libs/spinner/mod.tsx";
 import { useTask } from "@/libs/task/mod.ts";
@@ -14,7 +13,7 @@ import { PasswordInputAnchor, PasswordMenu, ScanPage, TotpPageAnchor } from "@/m
 import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { Clicker, WideContrastButton, WideOppositeButton } from "@hazae41/labase";
+import { Clicker, Menu, MenuAnchor, WideContrastButton, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import React, { Fragment, useCallback, useDeferredValue, useMemo, useState } from "react";
@@ -29,13 +28,13 @@ export function KeypairAccountAddMenuAnchor() {
 
   const coords = useAnchorWithCoords(hash, "/keypair")
 
-  return <WideNakedMenuAnchor
+  return <MenuAnchor
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.KeyIcon className="size-5" />
     {Lang.match({ en: "Keypair", zh: "密钥对", hi: "की जोड़ी", es: "Par de claves", ar: "زوج المفاتيح", fr: "Paire de clés", de: "Schlüsselpaar", ru: "Ключевая пара", pt: "Par de chaves", ja: "キーペア", pa: "ਕੀ ਜੋੜ", bn: "কী জোড়া", id: "Pasangan kunci", ur: "جوڑی کلید", ms: "Pasangan kunci", it: "Coppia di chiavi", tr: "Anahtar çifti", ta: "கீபேர்", te: "కీపేర్", ko: "키쌍", vi: "Cặp khóa", pl: "Para kluczy", ro: "Pereche de chei", nl: "Sleutelpaar", el: "Ζεύγος κλειδιών", th: "คู่กุญแจ", cs: "Klíčový pár", hu: "Kulcspár", sv: "Nyckelpar", da: "Nøglepar" })}
-  </WideNakedMenuAnchor>
+  </MenuAnchor>
 }
 
 export function KeypairAccountAddPage() {
@@ -479,7 +478,7 @@ export function KeypairAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/+" &&
         <PathBubble>
-          <div className="flex flex-col gap-2">
+          <Menu>
             {/* <WideNakedMenuButton>
               <Outline.PencilIcon className="size-5" />
               Edit
@@ -487,7 +486,7 @@ export function KeypairAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry
             {trashed === false && <AccountMenuTrashButton $entry={$entry} close={close} />}
             {trashed === true && <AccountMenuUntrashButton $entry={$entry} close={close} />}
             {trashed === true && <AccountMenuDeleteButton $entry={$entry} close={close} />}
-          </div>
+          </Menu>
         </PathBubble>}
     </SubpathProvider>
     <div className="flex flex-col grow p-6">

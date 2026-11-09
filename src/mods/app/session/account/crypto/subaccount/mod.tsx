@@ -5,7 +5,6 @@ import { ed25519 } from "@/libs/ed25519/mod.ts";
 import { Events } from "@/libs/events/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
-import { WideNakedMenuAnchor } from "@/libs/menu/mod.tsx";
 import { Nullable } from "@/libs/nullable/mod.ts";
 import { CryptoSessionAddAnchor, CryptoSessionAddPage, CryptoSessionAnchor } from "@/mods/app/session/account/crypto/session/mod.tsx";
 import { useSessionContext } from "@/mods/app/session/mod.tsx";
@@ -17,7 +16,7 @@ import { Cursor } from "@hazae41/cursor";
 import { EIP55Address } from "@hazae41/eip55";
 import * as KDBX from "@hazae41/kdbx";
 import { keccak256 } from "@hazae41/keccak256";
-import { WideContrastButton } from "@hazae41/labase";
+import { Menu, MenuAnchor, WideContrastButton } from "@hazae41/labase";
 import { IrnClient, WalletConnect, WcPairing, WcPairingParams, WcSession, WcSessionProposeParams, WcSessionProposeResult } from "@hazae41/latrine";
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { secp256k1 } from "@hazae41/secp256k1";
@@ -337,10 +336,10 @@ export function CryptoSubaccountMenu(props: { $entry: KDBX.Inner.KeePassFile.Ent
           <CryptoSubaccountExportPage $entry={$entry} subaccount={subaccount} />
         </PathWindow>}
     </SubpathProvider>
-    <div className="flex flex-col gap-2">
+    <Menu>
       <CryptoSubaccountAddressMenuAnchor />
       <CryptoSubaccountExportMenuAnchor />
-    </div>
+    </Menu>
   </Fragment>
 }
 
@@ -350,13 +349,13 @@ export function CryptoSubaccountAddressMenuAnchor() {
 
   const coords = useAnchorWithCoords(hash, "/address")
 
-  return <WideNakedMenuAnchor
+  return <MenuAnchor
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.AtSymbolIcon className="size-5" />
     {Lang.match({ en: "Address", zh: "地址", hi: "पता", es: "Dirección", ar: "عنوان", fr: "Adresse", de: "Adresse", ru: "Адрес", pt: "Endereço", ja: "アドレス", pa: "ਪਤਾ", bn: "ঠিকানা", id: "Alamat", ur: "پتہ", ms: "Alamat", it: "Indirizzo", tr: "Adres", ta: "முகவரி", te: "చిరునామా", ko: "주소", vi: "Địa chỉ", pl: "Adres", ro: "Adresa", nl: "Adres", el: "Διεύθυνση ", th: "ที่อยู่ ", cs: "Adresa ", hu: "Cím ", sv: "Adress ", da: "Adresse" })}
-  </WideNakedMenuAnchor>
+  </MenuAnchor>
 }
 
 export function CryptoSubaccountAddressPage(props: { $entry: KDBX.Inner.KeePassFile.Entry } & { subaccount: number }) {
@@ -489,13 +488,13 @@ export function CryptoSubaccountExportMenuAnchor() {
 
   const coords = useAnchorWithCoords(hash, "/export")
 
-  return <WideNakedMenuAnchor
+  return <MenuAnchor
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.ArrowUpOnSquareIcon className="size-5" />
     {Lang.match({ en: "Export", zh: "导出", hi: "निर्यात", es: "Exportar", ar: "تصدير", fr: "Exporter", de: "Exportieren", ru: "Экспорт", pt: "Exportar", ja: "エクスポート", pa: "ਨਿਰਯਾਤ", bn: "রপ্তানি", id: "Ekspor", ur: "برآمد کریں", ms: "Ekspor", it: "Esporta", tr: "Dışa aktar", ta: "ஏற்றுமதி", te: "ఎగుమతి", ko: "내보내기", vi: "Xuất khẩu", pl: "Eksportuj", ro: "Exportați", nl: "Exporteren", el: "Εξαγωγή ", th: "ส่งออก ", cs: "Exportovat ", hu: "Exportálás ", sv: "Exportera ", da: "Eksporter" })}
-  </WideNakedMenuAnchor>
+  </MenuAnchor>
 }
 
 export function CryptoSubaccountExportPage(props: { $entry: KDBX.Inner.KeePassFile.Entry } & { subaccount: number }) {

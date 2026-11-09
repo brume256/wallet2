@@ -5,14 +5,13 @@ import { Events } from "@/libs/events/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getRecycleBinOrNull } from "@/libs/kdbx/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
-import { WideNakedMenuAnchor } from "@/libs/menu/mod.tsx";
 import { Nullable } from "@/libs/nullable/mod.ts";
 import { Spinner } from "@/libs/spinner/mod.tsx";
 import { useTask } from "@/libs/task/mod.ts";
 import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { Clicker, WideOppositeButton } from "@hazae41/labase";
+import { Clicker, Menu, MenuAnchor, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import React, { Fragment, useCallback, useDeferredValue, useMemo, useState } from "react";
@@ -27,13 +26,13 @@ export function CardAccountAddMenuAnchor() {
 
   const coords = useAnchorWithCoords(hash, "/card")
 
-  return <WideNakedMenuAnchor
+  return <MenuAnchor
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.CreditCardIcon className="size-5" />
     {Lang.match({ en: "Card", zh: "卡片", hi: "कार्ड", es: "Tarjeta", ar: "بطاقة", fr: "Carte", de: "Karte", ru: "Карта", pt: "Cartão", ja: "カード", pa: "ਕਾਰਡ", bn: "কার্ড", id: "Kartu", ur: "کارڈ", ms: "Kad", it: "Carta", tr: "Kart", ta: "கார்டு", te: "కార్డు", ko: "카드", vi: "Thẻ", pl: "Karta", ro: "Card", nl: "Kaart", el: "Κάρτα", th: "บัตรเครดิต", cs: "Karta", hu: "Kártya", sv: "Kort", da: "Kort" })}
-  </WideNakedMenuAnchor>
+  </MenuAnchor>
 }
 
 export function CardAccountAddPage() {
@@ -401,7 +400,7 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
     <SubpathProvider value={hash}>
       {hash.url.pathname === "/+" &&
         <PathBubble>
-          <div className="flex flex-col gap-2">
+          <Menu>
             {/* <WideNakedMenuButton>
               <Outline.PencilIcon className="size-5" />
               Edit
@@ -409,7 +408,7 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
             {trashed === false && <AccountMenuTrashButton $entry={$entry} close={close} />}
             {trashed === true && <AccountMenuUntrashButton $entry={$entry} close={close} />}
             {trashed === true && <AccountMenuDeleteButton $entry={$entry} close={close} />}
-          </div>
+          </Menu>
         </PathBubble>}
     </SubpathProvider>
     <div className="flex items-center justify-between">

@@ -2,7 +2,6 @@ import { Errors } from "@/libs/errors/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getEntryType } from "@/libs/kdbx/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
-import { WideNakedMenuButton } from "@/libs/menu/mod.tsx";
 import { Nullable } from "@/libs/nullable/mod.ts";
 import { Spinner } from "@/libs/spinner/mod.tsx";
 import { useTask } from "@/libs/task/mod.ts";
@@ -10,7 +9,7 @@ import { KeypairAccountAddMenuAnchor, KeypairAccountAddPage, KeypairAccountPage 
 import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { Clicker, OppositeAnchor } from "@hazae41/labase";
+import { Clicker, Menu, MenuButton, OppositeAnchor } from "@hazae41/labase";
 import { PathWindow } from "@hazae41/modal";
 import React, { Fragment, useCallback, useMemo } from "react";
 import { useSessionContext } from "../mod.tsx";
@@ -251,12 +250,12 @@ export function AccountAddMenu() {
           <CardAccountAddPage />
         </PathWindow>}
     </SubpathProvider>
-    <div className="flex flex-col gap-2">
+    <Menu>
       <PasswordAccountAddMenuAnchor />
       <KeypairAccountAddMenuAnchor />
       <CryptoAccountAddMenuAnchor />
       <CardAccountAddMenuAnchor />
-    </div>
+    </Menu>
   </Fragment>
 }
 
@@ -452,21 +451,21 @@ export function AccountMenuTrashButton(props: { $entry: KDBX.Inner.KeePassFile.E
 
   return <Fragment>
     {session.value.user.fsfh != null &&
-      <WideNakedMenuButton
+      <MenuButton
         type="button"
         inert={writeOrDisplay.running}
         onClick={writeOrDisplay.execute}>
         {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.TrashIcon className="size-5" />}
         {Lang.match({ en: "Trash", zh: "丢弃", hi: "कूड़ेदान", es: "Papelera", ar: "سلة المهملات", fr: "Corbeille", de: "Papierkorb", ru: "Корзина", pt: "Lixeira", ja: "ゴミ箱", pa: "ਕੂੜੇਦਾਨ", bn: "ট্র্যাশ", id: "Sampah", ur: "کوڑے دان", ms: "Tong sampah", it: "Cestino", tr: "Çöp Kutusu", ta: "குப்பை பெட்டி", te: "ట్రాష్ బిన్", ko: "휴지통", vi: "Thùng rác", pl: "Kosz na śmieci", ro: "Coș de gunoi", nl: "Prullenbak", el: "Κάδος απορριμμάτων", th: "ถังขยะ", cs: "Koš na odpadky", hu: "Szemetesláda", sv: "Papperskorg", da: "Skraldespand" })}
-      </WideNakedMenuButton>}
+      </MenuButton>}
     {session.value.user.fsfh == null &&
-      <WideNakedMenuButton
+      <MenuButton
         type="button"
         inert={saveOrDisplay.running}
         onClick={saveOrDisplay.execute}>
         {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.TrashIcon className="size-5" />}
         {Lang.match({ en: "Trash", zh: "丢弃", hi: "कूड़ेदान", es: "Papelera", ar: "سلة المهملات", fr: "Corbeille", de: "Papierkorb", ru: "Корзина", pt: "Lixeira", ja: "ゴミ箱", pa: "ਕੂੜੇਦਾਨ", bn: "ট্র্যাশ", id: "Sampah", ur: "کوڑے دان", ms: "Tong sampah", it: "Cestino", tr: "Çöp Kutusu", ta: "குப்பை பெட்டி", te: "ట్రాష్ బిన్", ko: "휴지통", vi: "Thùng rác", pl: "Kosz na śmieci", ro: "Coș de gunoi", nl: "Prullenbak", el: "Κάδος απορριμμάτων", th: "ถังขยะ", cs: "Koš na odpadky", hu: "Szemetesláda", sv: "Papperskorg", da: "Skraldespand" })}
-      </WideNakedMenuButton>}
+      </MenuButton>}
   </Fragment>
 }
 
@@ -537,21 +536,21 @@ export function AccountMenuUntrashButton(props: { $entry: KDBX.Inner.KeePassFile
 
   return <Fragment>
     {session.value.user.fsfh != null &&
-      <WideNakedMenuButton
+      <MenuButton
         type="button"
         inert={writeOrDisplay.running}
         onClick={writeOrDisplay.execute}>
         {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.TrashIcon className="size-5" />}
         {Lang.match({ en: "Untrash", zh: "恢复", hi: "पुनः प्राप्त करें", es: "Restaurar", ar: "استعادة", fr: "Restaurer", de: "Wiederherstellen", ru: "Восстановить", pt: "Restaurar", ja: "復元", pa: "ਪੁਨਰ ਪ੍ਰਾਪਤ ਕਰੋ", bn: "পুনরুদ্ধার", id: "Pulihkan", ur: "بحال کریں", ms: "Pulihkan", it: "Ripristina", tr: "Geri Yükle", ta: "மீட்டெடுக்கவும்", te: "పునరుద్ధరించు", ko: "복원", vi: "Khôi phục", pl: "Przywróć", ro: "Restabilește", nl: "Herstellen", el: "Επαναφορά", th: "กู้คืน", cs: "Obnovit", hu: "Visszaállítás", sv: "Återställ", da: "Gendan" })}
-      </WideNakedMenuButton>}
+      </MenuButton>}
     {session.value.user.fsfh == null &&
-      <WideNakedMenuButton
+      <MenuButton
         type="button"
         inert={saveOrDisplay.running}
         onClick={saveOrDisplay.execute}>
         {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.TrashIcon className="size-5" />}
         {Lang.match({ en: "Untrash", zh: "恢复", hi: "पुनः प्राप्त करें", es: "Restaurar", ar: "استعادة", fr: "Restaurer", de: "Wiederherstellen", ru: "Восстановить", pt: "Restaurar", ja: "復元", pa: "ਪੁਨਰ ਪ੍ਰਾਪਤ ਕਰੋ", bn: "পুনরুদ্ধার", id: "Pulihkan", ur: "بحال کریں", ms: "Pulihkan", it: "Ripristina", tr: "Geri Yükle", ta: "மீட்டெடுக்கவும்", te: "పునరుద్ధరించు", ko: "복원", vi: "Khôi phục", pl: "Przywróć", ro: "Restabilește", nl: "Herstellen", el: "Επαναφορά", th: "กู้คืน", cs: "Obnovit", hu: "Visszaállítás", sv: "Återställ", da: "Gendan" })}
-      </WideNakedMenuButton>}
+      </MenuButton>}
   </Fragment>
 }
 
@@ -630,20 +629,20 @@ export function AccountMenuDeleteButton(props: { $entry: KDBX.Inner.KeePassFile.
 
   return <Fragment>
     {session.value.user.fsfh != null &&
-      <WideNakedMenuButton
+      <MenuButton
         type="button"
         inert={writeOrDisplay.running}
         onClick={writeOrDisplay.execute}>
         {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ScissorsIcon className="size-5" />}
         {Lang.match({ en: "Delete", zh: "删除", hi: "हटाएं", es: "Eliminar", ar: "حذف", fr: "Supprimer", de: "Löschen", ru: "Удалить", pt: "Excluir", ja: "削除", pa: "ਹਟਾਓ", bn: "মুছে ফেলুন", id: "Hapus", ur: "حذف کریں", ms: "Padam", it: "Elimina", tr: "Sil", ta: "அழிக்கவும்", te: "తొలగించు", ko: "삭제", vi: "Xóa", pl: "Usuń", ro: "Șterge", nl: "Verwijderen", el: "Διαγραφή", th: "ลบ", cs: "Smazat", hu: "Törlés", sv: "Radera", da: "Slet" })}
-      </WideNakedMenuButton>}
+      </MenuButton>}
     {session.value.user.fsfh == null &&
-      <WideNakedMenuButton
+      <MenuButton
         type="button"
         inert={saveOrDisplay.running}
         onClick={saveOrDisplay.execute}>
         {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ScissorsIcon className="size-5" />}
         {Lang.match({ en: "Delete", zh: "删除", hi: "हटाएं", es: "Eliminar", ar: "حذف", fr: "Supprimer", de: "Löschen", ru: "Удалить", pt: "Excluir", ja: "削除", pa: "ਹਟਾਓ", bn: "মুছে ফেলুন", id: "Hapus", ur: "حذف کریں", ms: "Padam", it: "Elimina", tr: "Sil", ta: "அழிக்கவும்", te: "తొలగించు", ko: "삭제", vi: "Xóa", pl: "Usuń", ro: "Șterge", nl: "Verwijderen", el: "Διαγραφή", th: "ลบ", cs: "Smazat", hu: "Törlés", sv: "Radera", da: "Slet" })}
-      </WideNakedMenuButton>}
+      </MenuButton>}
   </Fragment>
 }

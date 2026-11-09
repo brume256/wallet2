@@ -5,7 +5,6 @@ import { Events } from "@/libs/events/mod.ts";
 import { useAutoFocus } from "@/libs/focus/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
-import { WideNakedMenuAnchor, WideNakedMenuButton } from "@/libs/menu/mod.tsx";
 import { Nullable } from "@/libs/nullable/mod.ts";
 import { Spinner } from "@/libs/spinner/mod.tsx";
 import { useStoreContext } from "@/libs/store/mod.tsx";
@@ -13,7 +12,7 @@ import { useTask } from "@/libs/task/mod.ts";
 import { Readable, Unknown, Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { Clicker, OppositeAnchor, WideOppositeButton } from "@hazae41/labase";
+import { Clicker, Menu, MenuAnchor, MenuButton, OppositeAnchor, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import { Result } from "@hazae41/result-and-option";
@@ -74,7 +73,7 @@ export function UserLoginMenu(props: { login(session: SessionData): void }) {
           <UserAddMenu />
         </PathBubble>}
     </SubpathProvider>
-    <div className="flex flex-col gap-2">
+    <Menu>
       {users?.map(user =>
         <Fragment key={user.uuid}>
           <UserItem
@@ -82,7 +81,7 @@ export function UserLoginMenu(props: { login(session: SessionData): void }) {
             user={user} />
         </Fragment>)}
       <UserAddButton />
-    </div>
+    </Menu>
   </Fragment>
 }
 
@@ -92,13 +91,13 @@ function UserAddButton() {
 
   const coords = useAnchorWithCoords(hash, "/add")
 
-  return <WideNakedMenuAnchor
+  return <MenuAnchor
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.UserPlusIcon className="size-5" />
     {Lang.match({ en: "Add", zh: "添加", hi: "जोड़ें", es: "Agregar", ar: "إضافة", fr: "Ajouter", de: "Hinzufügen", ru: "Добавить", pt: "Adicionar", ja: "追加", pa: "ਸ਼ਾਮਲ ਕਰੋ", bn: "যোগ করুন", id: "Tambah", ur: "شامل کریں", ms: "Tambah", it: "Aggiungi", tr: "Ekle", ta: "சேர்க்கவும்", te: "చేరండి", ko: "추가", vi: "Thêm vào", pl: "Dodaj", ro: "Adăugați", nl: "Toevoegen", el: "Προσθήκη", th: "เพิ่ม", cs: "Přidat", hu: "Hozzáadás", sv: "Lägg till", da: "Tilføj" })}
-  </WideNakedMenuAnchor>
+  </MenuAnchor>
 }
 
 function UserAddMenu() {
@@ -119,10 +118,10 @@ function UserAddMenu() {
           <UserCreatePage />
         </PathWindow>}
     </SubpathProvider>
-    <div className="flex flex-col gap-2">
+    <Menu>
       <UserCreateButton />
       <UserImportButton />
-    </div>
+    </Menu>
   </Fragment>
 }
 
@@ -132,13 +131,13 @@ function UserCreateButton() {
 
   const coords = useAnchorWithCoords(hash, "/create")
 
-  return <WideNakedMenuAnchor
+  return <MenuAnchor
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.SparklesIcon className="size-5" />
     {Lang.match({ en: "Create", zh: "创建", hi: "बनाएं", es: "Crear", ar: "إنشاء", fr: "Créer", de: "Erstellen", ru: "Создать", pt: "Criar", ja: "作成", pa: "ਬਣਾਓ", bn: "তৈরি করুন", id: "Buat", ur: "بنائیں", ms: "Buat", it: "Crea", tr: "Oluştur", ta: "உருவாக்கவும்", te: "సృష్టించండి", ko: "생성", vi: "Tạo mới", pl: "Utwórz", ro: "Creați", nl: "Maken", el: "Δημιουργία", th: "สร้างใหม่", cs: "Vytvořit", hu: "Létrehozás", sv: "Skapa", da: "Opret" })}
-  </WideNakedMenuAnchor>
+  </MenuAnchor>
 }
 
 function UserImportButton() {
@@ -147,13 +146,13 @@ function UserImportButton() {
 
   const coords = useAnchorWithCoords(hash, "/import")
 
-  return <WideNakedMenuAnchor
+  return <MenuAnchor
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.ArrowDownOnSquareIcon className="size-5" />
     {Lang.match({ en: "Import", zh: "导入", hi: "आयात करें", es: "Importar", ar: "استيراد", fr: "Importer", de: "Importieren", ru: "Импортировать", pt: "Importar", ja: "インポート", pa: "ਆਯਾਤ ਕਰੋ", bn: "আমদানি করুন", id: "Impor", ur: "درآمد کریں", ms: "Impor", it: "Importa", tr: "İçe aktar", ta: "இறக்குமதி செய்யவும்", te: "దిగుమతి చేయండి", ko: "가져오기", vi: "Nhập khẩu", pl: "Importuj", ro: "Importați", nl: "Importeren", el: "Εισαγωγή", th: "นำเข้า", cs: "Importovat", hu: "Importálás", sv: "Importera", da: "Importer" })}
-  </WideNakedMenuAnchor>
+  </MenuAnchor>
 }
 
 function UserImportFilePage() {
@@ -940,10 +939,10 @@ function UserMenu(props: { user: UserData }) {
             <UserReimportFilePage user={user} />}
         </PathWindow>}
     </SubpathProvider>
-    <div className="flex flex-col gap-2">
+    <Menu>
       <UserReimportButton />
       <UserRemoveButton user={user} />
-    </div>
+    </Menu>
   </Fragment>
 }
 
@@ -953,13 +952,13 @@ function UserReimportButton() {
 
   const coords = useAnchorWithCoords(hash, "/reimport")
 
-  return <WideNakedMenuAnchor
+  return <MenuAnchor
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.ArrowDownOnSquareIcon className="size-5" />
     {Lang.match({ en: "Reimport", zh: "重新导入", hi: "पुनः आयात करें", es: "Reimportar", ar: "إعادة الاستيراد", fr: "Réimporter", de: "Neu importieren", ru: "Повторный импорт", pt: "Reimportar", ja: "再インポート", pa: "ਮੁੜ ਆਯਾਤ ਕਰੋ", bn: "পুনরায় আমদানি করুন", id: "Impor ulang", ur: "دوبارہ درآمد کریں", ms: "Impor ulang", it: "Reimporta", tr: "Yeniden içe aktar", ta: "மீண்டும் இறக்குமதி செய்யவும்", te: "మళ్లీ దిగుమతి చేయండి", ko: "다시 가져오기", vi: "Nhập lại", pl: "Ponowny import", ro: "Reimportați", nl: "Opnieuw importeren", el: "Επαναεισαγωγή", th: "นำเข้าใหม่", cs: "Znovu importovat", hu: "Újraimportálás", sv: "Importera om", da: "Genimporter" })}
-  </WideNakedMenuAnchor>
+  </MenuAnchor>
 }
 
 function UserReimportFilePage(props: { user: UserData }) {
@@ -1282,11 +1281,11 @@ function UserRemoveButton(props: { user: UserData }) {
     close()
   }).catch(Errors.display), [store, user, close])
 
-  return <WideNakedMenuButton
+  return <MenuButton
     type="button"
     inert={removeOrDisplay.running}
     onClick={removeOrDisplay.execute}>
     {removeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.TrashIcon className="size-5" />}
     {Lang.match({ en: "Remove", zh: "删除", hi: "हटाएं", es: "Eliminar", ar: "إزالة", fr: "Supprimer", de: "Entfernen", ru: "Удалить", pt: "Remover", ja: "削除", pa: "ਹਟਾਓ", bn: "অপসারণ করুন", id: "Hapus", ur: "ہٹائیں", ms: "Hapus", it: "Rimuovi", tr: "Kaldır", ta: "அகற்று", te: "తొలగించు", ko: "제거하다", vi: "Xóa bỏ", pl: "Usuń", ro: "Eliminați", nl: "Verwijderen", el: "Αφαίρεση", th: "ลบออก", cs: "Odstranit", hu: "Eltávolítás", sv: "Ta bort", da: "Fjern" })}
-  </WideNakedMenuButton>
+  </MenuButton>
 }

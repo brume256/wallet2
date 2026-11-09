@@ -5,7 +5,6 @@ import { Events } from "@/libs/events/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getRecycleBinOrNull } from "@/libs/kdbx/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
-import { WideNakedMenuAnchor } from "@/libs/menu/mod.tsx";
 import { Nullable } from "@/libs/nullable/mod.ts";
 import { Spinner } from "@/libs/spinner/mod.tsx";
 import { useTask } from "@/libs/task/mod.ts";
@@ -13,7 +12,7 @@ import { Writable } from "@hazae41/binary";
 import { BitcoinSeedPhrase } from "@hazae41/broca";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { Clicker, WideContrastButton, WideOppositeButton } from "@hazae41/labase";
+import { Clicker, Menu, MenuAnchor, WideContrastButton, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import React, { Fragment, useCallback, useDeferredValue, useEffect, useMemo, useState } from "react";
@@ -29,13 +28,13 @@ export function CryptoAccountAddMenuAnchor() {
 
   const coords = useAnchorWithCoords(hash, "/crypto")
 
-  return <WideNakedMenuAnchor
+  return <MenuAnchor
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.BanknotesIcon className="size-5" />
     {Lang.match({ en: "Crypto", zh: "加密货币", hi: "क्रिप्टो", es: "Cripto", ar: "تشفير", fr: "Crypto", de: "Krypto", ru: "Крипто", pt: "Cripto", ja: "暗号通貨", pa: "ਕ੍ਰਿਪਟੋ", bn: "ক্রিপ্টো", id: "Kripto", ur: "کرپٹو", ms: "Kripto", it: "Cripto", tr: "Kripto", ta: "கிரிப்டோ", te: "క్రిప్టో", ko: "암호화폐", vi: "Tiền điện tử", pl: "Krypto", ro: "Cripto", nl: "Crypto", el: "Κρυπτο", th: "คริปโต", cs: "Krypto", hu: "Kripto", sv: "Krypto", da: "Krypto" })}
-  </WideNakedMenuAnchor>
+  </MenuAnchor>
 }
 
 export function CryptoAccountAddPage() {
@@ -398,12 +397,12 @@ export function CryptoAccountMenu(props: { $entry: KDBX.Inner.KeePassFile.Entry 
           <CryptoAccountExportPage $entry={$entry} />
         </PathWindow>}
     </SubpathProvider>
-    <div className="flex flex-col gap-2">
+    <Menu>
       <CryptoAccountExportMenuAnchor />
       {trashed === false && <AccountMenuTrashButton $entry={$entry} close={close} />}
       {trashed === true && <AccountMenuUntrashButton $entry={$entry} close={close} />}
       {trashed === true && <AccountMenuDeleteButton $entry={$entry} close={close} />}
-    </div>
+    </Menu>
   </Fragment>
 }
 
@@ -413,13 +412,13 @@ export function CryptoAccountExportMenuAnchor() {
 
   const coords = useAnchorWithCoords(hash, "/export")
 
-  return <WideNakedMenuAnchor
+  return <MenuAnchor
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.ArrowUpOnSquareIcon className="size-5" />
     {Lang.match({ en: "Export", zh: "导出", hi: "निर्यात", es: "Exportar", ar: "تصدير", fr: "Exporter", de: "Exportieren", ru: "Экспорт", pt: "Exportar", ja: "エクスポート", pa: "ਨਿਰਯਾਤ", bn: "রপ্তানি", id: "Ekspor", ur: "برآمد کریں", ms: "Ekspor", it: "Esporta", tr: "Dışa aktar", ta: "ஏற்றுமதி", te: "ఎగుమతి", ko: "내보내기", vi: "Xuất khẩu", pl: "Eksportuj", ro: "Exportați", nl: "Exporteren", el: "Εξαγωγή ", th: "ส่งออก ", cs: "Exportovat ", hu: "Exportálás ", sv: "Exportera ", da: "Eksporter" })}
-  </WideNakedMenuAnchor>
+  </MenuAnchor>
 }
 
 export function CryptoAccountExportPage(props: { $entry: KDBX.Inner.KeePassFile.Entry }) {
