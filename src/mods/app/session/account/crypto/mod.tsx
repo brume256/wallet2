@@ -1,4 +1,4 @@
-import { InButton, WideContrastButton, WideOppositeButton } from "@/libs/button/mod.tsx";
+import { Clicker, WideContrastButton, WideOppositeButton } from "@/libs/button/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { useCopy } from "@/libs/copy/mod.ts";
 import { Errors } from "@/libs/errors/mod.ts";
@@ -248,7 +248,7 @@ export function CryptoAccountAddPage() {
           {session.value.user.fsfh != null &&
             <WideOppositeButton
               type="button"
-              disabled={writeOrDisplay.running || error != null}
+              inert={writeOrDisplay.running || error != null}
               onClick={writeOrDisplay.execute}>
               {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση ", th: "บันทึก ", cs: "Uložit ", hu: "Mentés ", sv: "Spara ", da: "Gem" })}
@@ -256,7 +256,7 @@ export function CryptoAccountAddPage() {
           {session.value.user.fsfh == null &&
             <WideOppositeButton
               type="button"
-              disabled={saveOrDisplay.running || error != null}
+              inert={saveOrDisplay.running || error != null}
               onClick={saveOrDisplay.execute}>
               {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση ", th: "บันทึก ", cs: "Uložit ", hu: "Mentés ", sv: "Spara ", da: "Gem" })}
@@ -330,23 +330,23 @@ export function CryptoAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
           </div>
           <div className="h-4" />
           <div className="flex not-sm:flex-col sm:flex-row items-center justify-between gap-4 border border-default-contrast rounded-xl p-6">
-            <button className="group rounded-full p-2 flex items-center justify-center rtl:-scale-x-100 enabled:hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none disabled:opacity-50"
+            <button className="group rounded-full p-2 flex items-center justify-center rtl:-scale-x-100 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none inert:opacity-50"
               onClick={() => setIndex(i => i - 1)}
-              disabled={index === 0}
+              inert={index === 0}
               type="button">
-              <InButton>
+              <Clicker>
                 <Outline.ChevronLeftIcon className="not-sm:hidden sm:size-5" />
                 <Outline.ChevronUpIcon className="sm:hidden not-sm:size-5" />
-              </InButton>
+              </Clicker>
             </button>
             <CryptoSubaccountAnchor $entry={$entry} index={index} />
-            <button className="group rounded-full p-2 flex items-center justify-center rtl:-scale-x-100 enabled:hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none disabled:opacity-50"
+            <button className="group rounded-full p-2 flex items-center justify-center rtl:-scale-x-100 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none inert:opacity-50"
               onClick={() => setIndex(i => i + 1)}
               type="button">
-              <InButton>
+              <Clicker>
                 <Outline.ChevronRightIcon className="not-sm:hidden sm:size-5" />
                 <Outline.ChevronDownIcon className="sm:hidden not-sm:size-5" />
-              </InButton>
+              </Clicker>
             </button>
           </div>
         </Fragment>

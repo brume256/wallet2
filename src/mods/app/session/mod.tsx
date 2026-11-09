@@ -1,5 +1,5 @@
-import { InOther } from "@/libs/anchor/mod.tsx";
-import { InButton, WideOppositeButton } from "@/libs/button/mod.tsx";
+import { Clicker } from "@/libs/anchor/mod.tsx";
+import { WideOppositeButton } from "@/libs/button/mod.tsx";
 import { Errors } from "@/libs/errors/mod.ts";
 import { Events } from "@/libs/events/mod.ts";
 import { useAutoFocus } from "@/libs/focus/mod.ts";
@@ -239,9 +239,9 @@ function SessionMenuButton() {
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
-    <InOther>
+    <Clicker>
       <Outline.EllipsisVerticalIcon className="size-5" />
-    </InOther>
+    </Clicker>
   </a>
 }
 
@@ -384,9 +384,9 @@ export function SessionExportPage() {
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={() => setFlipped(x => !x)}>
-              <InButton>
+              <Clicker>
                 {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-              </InButton>
+              </Clicker>
             </button>
           </div>
         </div>
@@ -395,7 +395,7 @@ export function SessionExportPage() {
           {"showSaveFilePicker" in window === true &&
             <WideOppositeButton
               type="button"
-              disabled={pickOrDisplay.running || error != null}
+              inert={pickOrDisplay.running || error != null}
               onClick={pickOrDisplay.execute}>
               {pickOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
@@ -403,7 +403,7 @@ export function SessionExportPage() {
           {"showSaveFilePicker" in window === false &&
             <WideOppositeButton
               type="button"
-              disabled={saveOrDisplay.running || error != null}
+              inert={saveOrDisplay.running || error != null}
               onClick={saveOrDisplay.execute}>
               {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}

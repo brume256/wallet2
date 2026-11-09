@@ -6,7 +6,7 @@ React;
 export function InMenuAnchor(props: ChildrenProps) {
   const { children } = props
 
-  return <div className="h-full w-full flex items-center justify-start gap-4 select-none group-not-aria-disabled:group-active:scale-90 transition-transform">
+  return <div className="h-full w-full flex items-center justify-start gap-4 select-none group-active:scale-90 transition-transform">
     {children}
   </div>
 }
@@ -14,16 +14,15 @@ export function InMenuAnchor(props: ChildrenProps) {
 export function InMenuButton(props: ChildrenProps) {
   const { children } = props
 
-  return <div className="h-full w-full flex items-center justify-start gap-4 select-none cursor-pointer group-enabled:group-active:scale-90 transition-transform">
+  return <div className="h-full w-full flex items-center justify-start gap-4 select-none cursor-pointer group-active:scale-90 transition-transform">
     {children}
   </div>
 }
 
-export function WideNakedMenuAnchor(props: ChildrenProps & JSX.IntrinsicElements["a"] & { "aria-disabled"?: boolean }) {
-  const { children, "aria-disabled": disabled = false, ...rest } = props
+export function WideNakedMenuAnchor(props: ChildrenProps & JSX.IntrinsicElements["a"]) {
+  const { children, ...rest } = props
 
-  return <a className="group flex-1 po-2 rounded-xl focus-visible:outline-none whitespace-nowrap not-aria-disabled:hover:bg-default-double-contrast focus-visible:bg-default-double-contrast aria-disabled:opacity-50"
-    aria-disabled={disabled}
+  return <a className="group flex-1 po-2 rounded-xl focus-visible:outline-none whitespace-nowrap hover:bg-default-double-contrast focus-visible:bg-default-double-contrast inert:opacity-50"
     {...rest}>
     <InMenuAnchor>
       {children}
@@ -34,7 +33,7 @@ export function WideNakedMenuAnchor(props: ChildrenProps & JSX.IntrinsicElements
 export function WideNakedMenuButton(props: ChildrenProps & JSX.IntrinsicElements["button"] & { type: "button" }) {
   const { children, ...rest } = props
 
-  return <button className="group flex-1 po-2 rounded-xl focus-visible:outline-none whitespace-nowrap enabled:hover:bg-default-double-contrast focus-visible:bg-default-double-contrast disabled:opacity-50"
+  return <button className="group flex-1 po-2 rounded-xl focus-visible:outline-none whitespace-nowrap hover:bg-default-double-contrast focus-visible:bg-default-double-contrast inert:opacity-50"
     {...rest}>
     <InMenuButton>
       {children}

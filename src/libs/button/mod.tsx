@@ -3,10 +3,10 @@ import { ChildrenProps } from "../props/mod.ts";
 
 React;
 
-export function InButton(props: ChildrenProps) {
+export function Clicker(props: ChildrenProps) {
   const { children } = props
 
-  return <div className="h-full w-full flex justify-center items-center gap-2 select-none cursor-pointer group-enabled:group-active:scale-90 transition-transform">
+  return <div className="h-full w-full flex justify-center items-center gap-2 select-none group-active:scale-90 transition-transform">
     {children}
   </div>
 }
@@ -14,32 +14,32 @@ export function InButton(props: ChildrenProps) {
 export function WideOppositeButton(props: ChildrenProps & JSX.IntrinsicElements["button"]) {
   const { children, ...rest } = props
 
-  return <button className="flex-1 group po-2 bg-opposite text-opposite rounded-xl enabled:hover:bg-opposite-double-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-opposite disabled:opacity-50"
+  return <button className="flex-1 group po-2 bg-opposite text-opposite rounded-xl hover:bg-opposite-double-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-opposite inert:opacity-50"
     {...rest}>
-    <InButton>
+    <Clicker>
       {children}
-    </InButton>
+    </Clicker>
   </button>
 }
 
 export function WideContrastButton(props: ChildrenProps & JSX.IntrinsicElements["button"]) {
   const { children, ...rest } = props
 
-  return <button className="flex-1 group po-2 bg-default-contrast rounded-xl enabled:hover:bg-default-double-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-default-contrast disabled:opacity-50"
+  return <button className="flex-1 group po-2 bg-default-contrast rounded-xl hover:bg-default-double-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-default-contrast inert:opacity-50"
     {...rest}>
-    <InButton>
+    <Clicker>
       {children}
-    </InButton>
+    </Clicker>
   </button>
 }
 
 export function OppositeButton(props: ChildrenProps & JSX.IntrinsicElements["button"]) {
   const { children, ...rest } = props
 
-  return <button className="group po-2 bg-opposite text-opposite rounded-xl enabled:hover:bg-opposite-double-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-opposite disabled:opacity-50"
+  return <button className="group po-2 bg-opposite text-opposite rounded-xl hover:bg-opposite-double-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-opposite inert:opacity-50"
     {...rest}>
-    <InButton>
+    <Clicker>
       {children}
-    </InButton>
+    </Clicker>
   </button>
 }

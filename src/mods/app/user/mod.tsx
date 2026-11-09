@@ -1,7 +1,7 @@
 // deno-lint-ignore-file no-window
 
-import { InOther, OppositeAnchor } from "@/libs/anchor/mod.tsx";
-import { InButton, WideOppositeButton } from "@/libs/button/mod.tsx";
+import { Clicker, OppositeAnchor } from "@/libs/anchor/mod.tsx";
+import { WideOppositeButton } from "@/libs/button/mod.tsx";
 import { Errors } from "@/libs/errors/mod.ts";
 import { Events } from "@/libs/events/mod.ts";
 import { useAutoFocus } from "@/libs/focus/mod.ts";
@@ -271,9 +271,9 @@ function UserImportFilePage() {
           <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
             type="button"
             onClick={() => setFlipped(x => !x)}>
-            <InButton>
+            <Clicker>
               {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            </InButton>
+            </Clicker>
           </button>
         </div>
       </div>
@@ -281,7 +281,7 @@ function UserImportFilePage() {
       <div className="flex items-center flex-wrap-reverse gap-2">
         <WideOppositeButton
           type="button"
-          disabled={loadOrDisplay.running || error != null}
+          inert={loadOrDisplay.running || error != null}
           onClick={loadOrDisplay.execute}>
           {loadOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
           {error != null ? error : Lang.match({ en: "Open", zh: "打开", hi: "खोलें", es: "Abrir", ar: "فتح", fr: "Ouvrir", de: "Öffnen", ru: "Открыть", pt: "Abrir", ja: "開く", pa: "ਖੋਲ੍ਹੋ", bn: "খুলুন", id: "Buka", ur: "کھولیں", ms: "Buka", it: "Apri", tr: "Aç", ta: "திறக்கவும்", te: "తెరవండి", ko: "열기", vi: "Mở", pl: "Otwórz", ro: "Deschideți", nl: "Openen", el: "Άνοιγμα", th: "เปิด", cs: "Otevřít", hu: "Megnyitás", sv: "Öppna", da: "Åbn" })}
@@ -432,9 +432,9 @@ function UserImportFsfhPage() {
           <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
             type="button"
             onClick={() => setFlipped(x => !x)}>
-            <InButton>
+            <Clicker>
               {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            </InButton>
+            </Clicker>
           </button>
         </div>
       </div>
@@ -442,7 +442,7 @@ function UserImportFsfhPage() {
       <div className="flex items-center flex-wrap-reverse gap-2">
         <WideOppositeButton
           type="button"
-          disabled={openOrDisplay.running || error != null}
+          inert={openOrDisplay.running || error != null}
           onClick={openOrDisplay.execute}>
           {openOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
           {error != null ? error : Lang.match({ en: "Open", zh: "打开", hi: "खोलें", es: "Abrir", ar: "فتح", fr: "Ouvrir", de: "Öffnen", ru: "Открыть", pt: "Abrir", ja: "開く", pa: "ਖੋਲ੍ਹੋ", bn: "খুলুন", id: "Buka", ur: "کھولیں", ms: "Buka", it: "Apri", tr: "Aç", ta: "திறக்கவும்", te: "తెరవండి", ko: "열기", vi: "Mở", pl: "Otwórz", ro: "Deschideți", nl: "Openen", el: "Άνοιγμα", th: "เปิด", cs: "Otevřít", hu: "Megnyitás", sv: "Öppna", da: "Åbn" })}
@@ -645,9 +645,9 @@ function UserCreatePage() {
           <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
             type="button"
             onClick={() => setFlipped(x => !x)}>
-            <InButton>
+            <Clicker>
               {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            </InButton>
+            </Clicker>
           </button>
         </div>
       </div>
@@ -656,7 +656,7 @@ function UserCreatePage() {
         {"showSaveFilePicker" in window === true &&
           <WideOppositeButton
             type="button"
-            disabled={pickOrDisplay.running || error != null}
+            inert={pickOrDisplay.running || error != null}
             onClick={pickOrDisplay.execute}>
             {pickOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
             {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
@@ -664,7 +664,7 @@ function UserCreatePage() {
         {"showSaveFilePicker" in window === false &&
           <WideOppositeButton
             type="button"
-            disabled={saveOrDisplay.running || error != null}
+            inert={saveOrDisplay.running || error != null}
             onClick={saveOrDisplay.execute}>
             {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
             {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
@@ -877,17 +877,17 @@ function UserLoginPage(props: { user: UserData } & { login(session: SessionData)
           <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
             type="button"
             onClick={() => setFlipped(x => !x)}>
-            <InButton>
+            <Clicker>
               {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            </InButton>
+            </Clicker>
           </button>
           {user.auth != null &&
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={onPassClick}>
-              <InButton>
+              <Clicker>
                 <Outline.FingerPrintIcon className="size-5" />
-              </InButton>
+              </Clicker>
             </button>}
         </div>
       </div>
@@ -919,9 +919,9 @@ function UserMenuButton(props: { user: UserData }) {
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
-    <InOther>
+    <Clicker>
       <Outline.EllipsisVerticalIcon className="size-5" />
-    </InOther>
+    </Clicker>
   </a>
 }
 
@@ -1079,9 +1079,9 @@ function UserReimportFilePage(props: { user: UserData }) {
           <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
             type="button"
             onClick={() => setFlipped(x => !x)}>
-            <InButton>
+            <Clicker>
               {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            </InButton>
+            </Clicker>
           </button>
         </div>
       </div>
@@ -1089,7 +1089,7 @@ function UserReimportFilePage(props: { user: UserData }) {
       <div className="flex items-center flex-wrap-reverse gap-2">
         <WideOppositeButton
           type="button"
-          disabled={loadOrDisplay.running || error != null}
+          inert={loadOrDisplay.running || error != null}
           onClick={loadOrDisplay.execute}>
           {loadOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
           {error != null ? error : Lang.match({ en: "Open", zh: "打开", hi: "खोलें", es: "Abrir", ar: "فتح", fr: "Ouvrir", de: "Öffnen", ru: "Открыть", pt: "Abrir", ja: "開く", pa: "ਖੋਲ੍ਹੋ", bn: "খুলুন", id: "Buka", ur: "کھولیں", ms: "Buka", it: "Apri", tr: "Aç", ta: "திறக்கவும்", te: "తెరవండి", ko: "열기", vi: "Mở", pl: "Otwórz", ro: "Deschideți", nl: "Openen", el: "Άνοιγμα", th: "เปิดไฟล์", cs: "Otevřít", hu: "Megnyitás", sv: "Öppna", da: "Åbn" })}
@@ -1242,9 +1242,9 @@ function UserReimportFsfhPage(props: { user: UserData }) {
           <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
             type="button"
             onClick={() => setFlipped(x => !x)}>
-            <InButton>
+            <Clicker>
               {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            </InButton>
+            </Clicker>
           </button>
         </div>
       </div>
@@ -1252,7 +1252,7 @@ function UserReimportFsfhPage(props: { user: UserData }) {
       <div className="flex items-center flex-wrap-reverse gap-2">
         <WideOppositeButton
           type="button"
-          disabled={openOrDisplay.running || error != null}
+          inert={openOrDisplay.running || error != null}
           onClick={openOrDisplay.execute}>
           {openOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
           {error != null ? error : Lang.match({ en: "Open", zh: "打开", hi: "खोलें", es: "Abrir", ar: "فتح", fr: "Ouvrir", de: "Öffnen", ru: "Открыть", pt: "Abrir", ja: "開く", pa: "ਖੋਲ੍ਹੋ", bn: "খুলুন", id: "Buka", ur: "کھولیں", ms: "Buka", it: "Apri", tr: "Aç", ta: "திறக்கவும்", te: "తెరవండి", ko: "열기", vi: "Mở", pl: "Otwórz", ro: "Deschideți", nl: "Openen", el: "Άνοιγμα", th: "เปิดไฟล์", cs: "Otevřít", hu: "Megnyitás", sv: "Öppna", da: "Åbn" })}
@@ -1285,7 +1285,7 @@ function UserRemoveButton(props: { user: UserData }) {
 
   return <WideNakedMenuButton
     type="button"
-    disabled={removeOrDisplay.running}
+    inert={removeOrDisplay.running}
     onClick={removeOrDisplay.execute}>
     {removeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.TrashIcon className="size-5" />}
     {Lang.match({ en: "Remove", zh: "删除", hi: "हटाएं", es: "Eliminar", ar: "إزالة", fr: "Supprimer", de: "Entfernen", ru: "Удалить", pt: "Remover", ja: "削除", pa: "ਹਟਾਓ", bn: "অপসারণ করুন", id: "Hapus", ur: "ہٹائیں", ms: "Hapus", it: "Rimuovi", tr: "Kaldır", ta: "அகற்று", te: "తొలగించు", ko: "제거하다", vi: "Xóa bỏ", pl: "Usuń", ro: "Eliminați", nl: "Verwijderen", el: "Αφαίρεση", th: "ลบออก", cs: "Odstranit", hu: "Eltávolítás", sv: "Ta bort", da: "Fjern" })}

@@ -1,5 +1,4 @@
-import { InOther, OppositeAnchor } from "@/libs/anchor/mod.tsx";
-import { InButton } from "@/libs/button/mod.tsx";
+import { Clicker, OppositeAnchor } from "@/libs/anchor/mod.tsx";
 import { Errors } from "@/libs/errors/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getEntryType } from "@/libs/kdbx/mod.ts";
@@ -33,9 +32,9 @@ export function AccountAddButtonInGrid(props: { href: string }) {
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
-    <InOther>
+    <Clicker>
       <Outline.PlusIcon className="size-8" />
-    </InOther>
+    </Clicker>
   </a>
 }
 
@@ -273,7 +272,7 @@ export function ColorAnchor(props: { color?: Nullable<string> }) {
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
-    <InOther>
+    <Clicker>
       <div className="size-5 rounded-full bg-opposite
         data-[color=red]:bg-red-400 
         data-[color=orange]:bg-orange-400 
@@ -310,7 +309,7 @@ export function ColorAnchor(props: { color?: Nullable<string> }) {
         in-dark:data-[color=pink]:bg-pink-500
         in-dark:data-[color=rose]:bg-rose-500"
         data-color={color} />
-    </InOther>
+    </Clicker>
   </a>
 }
 
@@ -321,16 +320,16 @@ export function ColorMenu(props: { ok(color: Nullable<string>): void }) {
     <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
       onClick={() => ok(null)}
       type="button">
-      <InButton>
+      <Clicker>
         <div className="size-5 rounded-full bg-opposite" />
-      </InButton>
+      </Clicker>
     </button>
     {["red", "orange", "amber", "yellow", "lime", "green", "emerald", "teal", "cyan", "sky", "blue", "indigo", "violet", "purple", "fuchsia", "pink", "rose"].map(color =>
       <Fragment key={color}>
         <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
           onClick={() => ok(color)}
           type="button">
-          <InButton>
+          <Clicker>
             <div className="size-5 rounded-full
               data-[color=red]:bg-red-400 
               data-[color=orange]:bg-orange-400 
@@ -367,7 +366,7 @@ export function ColorMenu(props: { ok(color: Nullable<string>): void }) {
               in-dark:data-[color=pink]:bg-pink-500
               in-dark:data-[color=rose]:bg-rose-500"
               data-color={color} />
-          </InButton>
+          </Clicker>
         </button>
       </Fragment>)}
   </div>
@@ -383,9 +382,9 @@ export function AccountMenuAnchor() {
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
-    <InOther>
+    <Clicker>
       <Outline.EllipsisVerticalIcon className="size-5" />
-    </InOther>
+    </Clicker>
   </a>
 }
 
@@ -455,7 +454,7 @@ export function AccountMenuTrashButton(props: { $entry: KDBX.Inner.KeePassFile.E
     {session.value.user.fsfh != null &&
       <WideNakedMenuButton
         type="button"
-        disabled={writeOrDisplay.running}
+        inert={writeOrDisplay.running}
         onClick={writeOrDisplay.execute}>
         {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.TrashIcon className="size-5" />}
         {Lang.match({ en: "Trash", zh: "丢弃", hi: "कूड़ेदान", es: "Papelera", ar: "سلة المهملات", fr: "Corbeille", de: "Papierkorb", ru: "Корзина", pt: "Lixeira", ja: "ゴミ箱", pa: "ਕੂੜੇਦਾਨ", bn: "ট্র্যাশ", id: "Sampah", ur: "کوڑے دان", ms: "Tong sampah", it: "Cestino", tr: "Çöp Kutusu", ta: "குப்பை பெட்டி", te: "ట్రాష్ బిన్", ko: "휴지통", vi: "Thùng rác", pl: "Kosz na śmieci", ro: "Coș de gunoi", nl: "Prullenbak", el: "Κάδος απορριμμάτων", th: "ถังขยะ", cs: "Koš na odpadky", hu: "Szemetesláda", sv: "Papperskorg", da: "Skraldespand" })}
@@ -463,7 +462,7 @@ export function AccountMenuTrashButton(props: { $entry: KDBX.Inner.KeePassFile.E
     {session.value.user.fsfh == null &&
       <WideNakedMenuButton
         type="button"
-        disabled={saveOrDisplay.running}
+        inert={saveOrDisplay.running}
         onClick={saveOrDisplay.execute}>
         {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.TrashIcon className="size-5" />}
         {Lang.match({ en: "Trash", zh: "丢弃", hi: "कूड़ेदान", es: "Papelera", ar: "سلة المهملات", fr: "Corbeille", de: "Papierkorb", ru: "Корзина", pt: "Lixeira", ja: "ゴミ箱", pa: "ਕੂੜੇਦਾਨ", bn: "ট্র্যাশ", id: "Sampah", ur: "کوڑے دان", ms: "Tong sampah", it: "Cestino", tr: "Çöp Kutusu", ta: "குப்பை பெட்டி", te: "ట్రాష్ బిన్", ko: "휴지통", vi: "Thùng rác", pl: "Kosz na śmieci", ro: "Coș de gunoi", nl: "Prullenbak", el: "Κάδος απορριμμάτων", th: "ถังขยะ", cs: "Koš na odpadky", hu: "Szemetesláda", sv: "Papperskorg", da: "Skraldespand" })}
@@ -540,7 +539,7 @@ export function AccountMenuUntrashButton(props: { $entry: KDBX.Inner.KeePassFile
     {session.value.user.fsfh != null &&
       <WideNakedMenuButton
         type="button"
-        disabled={writeOrDisplay.running}
+        inert={writeOrDisplay.running}
         onClick={writeOrDisplay.execute}>
         {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.TrashIcon className="size-5" />}
         {Lang.match({ en: "Untrash", zh: "恢复", hi: "पुनः प्राप्त करें", es: "Restaurar", ar: "استعادة", fr: "Restaurer", de: "Wiederherstellen", ru: "Восстановить", pt: "Restaurar", ja: "復元", pa: "ਪੁਨਰ ਪ੍ਰਾਪਤ ਕਰੋ", bn: "পুনরুদ্ধার", id: "Pulihkan", ur: "بحال کریں", ms: "Pulihkan", it: "Ripristina", tr: "Geri Yükle", ta: "மீட்டெடுக்கவும்", te: "పునరుద్ధరించు", ko: "복원", vi: "Khôi phục", pl: "Przywróć", ro: "Restabilește", nl: "Herstellen", el: "Επαναφορά", th: "กู้คืน", cs: "Obnovit", hu: "Visszaállítás", sv: "Återställ", da: "Gendan" })}
@@ -548,7 +547,7 @@ export function AccountMenuUntrashButton(props: { $entry: KDBX.Inner.KeePassFile
     {session.value.user.fsfh == null &&
       <WideNakedMenuButton
         type="button"
-        disabled={saveOrDisplay.running}
+        inert={saveOrDisplay.running}
         onClick={saveOrDisplay.execute}>
         {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.TrashIcon className="size-5" />}
         {Lang.match({ en: "Untrash", zh: "恢复", hi: "पुनः प्राप्त करें", es: "Restaurar", ar: "استعادة", fr: "Restaurer", de: "Wiederherstellen", ru: "Восстановить", pt: "Restaurar", ja: "復元", pa: "ਪੁਨਰ ਪ੍ਰਾਪਤ ਕਰੋ", bn: "পুনরুদ্ধার", id: "Pulihkan", ur: "بحال کریں", ms: "Pulihkan", it: "Ripristina", tr: "Geri Yükle", ta: "மீட்டெடுக்கவும்", te: "పునరుద్ధరించు", ko: "복원", vi: "Khôi phục", pl: "Przywróć", ro: "Restabilește", nl: "Herstellen", el: "Επαναφορά", th: "กู้คืน", cs: "Obnovit", hu: "Visszaállítás", sv: "Återställ", da: "Gendan" })}
@@ -633,7 +632,7 @@ export function AccountMenuDeleteButton(props: { $entry: KDBX.Inner.KeePassFile.
     {session.value.user.fsfh != null &&
       <WideNakedMenuButton
         type="button"
-        disabled={writeOrDisplay.running}
+        inert={writeOrDisplay.running}
         onClick={writeOrDisplay.execute}>
         {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ScissorsIcon className="size-5" />}
         {Lang.match({ en: "Delete", zh: "删除", hi: "हटाएं", es: "Eliminar", ar: "حذف", fr: "Supprimer", de: "Löschen", ru: "Удалить", pt: "Excluir", ja: "削除", pa: "ਹਟਾਓ", bn: "মুছে ফেলুন", id: "Hapus", ur: "حذف کریں", ms: "Padam", it: "Elimina", tr: "Sil", ta: "அழிக்கவும்", te: "తొలగించు", ko: "삭제", vi: "Xóa", pl: "Usuń", ro: "Șterge", nl: "Verwijderen", el: "Διαγραφή", th: "ลบ", cs: "Smazat", hu: "Törlés", sv: "Radera", da: "Slet" })}
@@ -641,7 +640,7 @@ export function AccountMenuDeleteButton(props: { $entry: KDBX.Inner.KeePassFile.
     {session.value.user.fsfh == null &&
       <WideNakedMenuButton
         type="button"
-        disabled={saveOrDisplay.running}
+        inert={saveOrDisplay.running}
         onClick={saveOrDisplay.execute}>
         {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ScissorsIcon className="size-5" />}
         {Lang.match({ en: "Delete", zh: "删除", hi: "हटाएं", es: "Eliminar", ar: "حذف", fr: "Supprimer", de: "Löschen", ru: "Удалить", pt: "Excluir", ja: "削除", pa: "ਹਟਾਓ", bn: "মুছে ফেলুন", id: "Hapus", ur: "حذف کریں", ms: "Padam", it: "Elimina", tr: "Sil", ta: "அழிக்கவும்", te: "తొలగించు", ko: "삭제", vi: "Xóa", pl: "Usuń", ro: "Șterge", nl: "Verwijderen", el: "Διαγραφή", th: "ลบ", cs: "Smazat", hu: "Törlés", sv: "Radera", da: "Slet" })}

@@ -1,5 +1,5 @@
-import { InOther } from "@/libs/anchor/mod.tsx";
-import { InButton, WideContrastButton, WideOppositeButton } from "@/libs/button/mod.tsx";
+import { Clicker } from "@/libs/anchor/mod.tsx";
+import { WideContrastButton, WideOppositeButton } from "@/libs/button/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { useCopy } from "@/libs/copy/mod.ts";
 import { Errors } from "@/libs/errors/mod.ts";
@@ -238,9 +238,9 @@ export function PasswordAccountAddPage() {
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={() => setFlipped(x => !x)}>
-              <InButton>
+              <Clicker>
                 {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-              </InButton>
+              </Clicker>
             </button>
             <PasswordInputAnchor />
           </div>
@@ -264,9 +264,9 @@ export function PasswordAccountAddPage() {
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={() => setFlipped(x => !x)}>
-              <InButton>
+              <Clicker>
                 {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-              </InButton>
+              </Clicker>
             </button>
             <TotpPageAnchor />
           </div>
@@ -296,7 +296,7 @@ export function PasswordAccountAddPage() {
           {session.value.user.fsfh != null &&
             <WideOppositeButton
               type="button"
-              disabled={writeOrDisplay.running || error != null}
+              inert={writeOrDisplay.running || error != null}
               onClick={writeOrDisplay.execute}>
               {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
@@ -304,7 +304,7 @@ export function PasswordAccountAddPage() {
           {session.value.user.fsfh == null &&
             <WideOppositeButton
               type="button"
-              disabled={saveOrDisplay.running || error != null}
+              inert={saveOrDisplay.running || error != null}
               onClick={saveOrDisplay.execute}>
               {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
@@ -426,9 +426,9 @@ export function PasswordAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entr
               <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
                 type="button"
                 onClick={copyTheUsername.copyOrDisplay}>
-                <InButton>
+                <Clicker>
                   {copyTheUsername.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
-                </InButton>
+                </Clicker>
               </button>
             </div>
           </div>
@@ -453,16 +453,16 @@ export function PasswordAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entr
               <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
                 type="button"
                 onClick={() => setFlipped(x => !x)}>
-                <InButton>
+                <Clicker>
                   {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-                </InButton>
+                </Clicker>
               </button>
               <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
                 type="button"
                 onClick={copyThePassword.copyOrDisplay}>
-                <InButton>
+                <Clicker>
                   {copyThePassword.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
-                </InButton>
+                </Clicker>
               </button>
             </div>
           </div>
@@ -513,9 +513,9 @@ export function TotpPageAnchor() {
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
-    <InOther>
+    <Clicker>
       <Outline.QrCodeIcon className="size-5" />
-    </InOther>
+    </Clicker>
   </a>
 }
 
@@ -658,25 +658,25 @@ export function ScanPage(props: { value: string } & { onChange(value: string): v
             type="file"
             accept="image/*"
             onChange={onFileChange} />
-          <InOther>
+          <Clicker>
             <Outline.ArrowUpTrayIcon className="size-5" />
-          </InOther>
+          </Clicker>
         </div>
         <div className="grow" />
         <button className="group text-white bg-neutral-500/80 rounded-full p-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-500/80"
           onClick={() => setTorch(x => !x)}
           type="button">
-          <InButton>
+          <Clicker>
             {torch ? <Outline.BoltSlashIcon className="size-5" /> : <Outline.BoltIcon className="size-5" />}
-          </InButton>
+          </Clicker>
         </button>
         <div className="w-2" />
         <button className="group text-white bg-neutral-500/80 rounded-full p-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-500/80"
           onClick={() => setFacingMode(x => x === "environment" ? "user" : "environment")}
           type="button">
-          <InButton>
+          <Clicker>
             <Outline.ArrowPathIcon className="size-5" />
-          </InButton>
+          </Clicker>
         </button>
       </div>
     </div>
@@ -701,9 +701,9 @@ export function PasswordInputAnchor() {
     href={coords.url.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
-    <InOther>
+    <Clicker>
       <Outline.SparklesIcon className="size-5" />
-    </InOther>
+    </Clicker>
   </a>
 }
 

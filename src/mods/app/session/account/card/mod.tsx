@@ -1,4 +1,4 @@
-import { InButton, WideOppositeButton } from "@/libs/button/mod.tsx";
+import { Clicker, WideOppositeButton } from "@/libs/button/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { useCopy } from "@/libs/copy/mod.ts";
 import { Errors } from "@/libs/errors/mod.ts";
@@ -265,9 +265,9 @@ export function CardAccountAddPage() {
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={() => setFlipped(x => !x)}>
-              <InButton>
+              <Clicker>
                 {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-              </InButton>
+              </Clicker>
             </button>
           </div>
         </div>
@@ -290,9 +290,9 @@ export function CardAccountAddPage() {
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={() => setFlipped(x => !x)}>
-              <InButton>
+              <Clicker>
                 {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-              </InButton>
+              </Clicker>
             </button>
           </div>
         </div>
@@ -316,7 +316,7 @@ export function CardAccountAddPage() {
           {session.value.user.fsfh != null &&
             <WideOppositeButton
               type="button"
-              disabled={writeOrDisplay.running || error != null}
+              inert={writeOrDisplay.running || error != null}
               onClick={writeOrDisplay.execute}>
               {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
@@ -324,7 +324,7 @@ export function CardAccountAddPage() {
           {session.value.user.fsfh == null &&
             <WideOppositeButton
               type="button"
-              disabled={saveOrDisplay.running || error != null}
+              inert={saveOrDisplay.running || error != null}
               onClick={saveOrDisplay.execute}>
               {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
@@ -453,9 +453,9 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={copyTheNum.copyOrDisplay}>
-              <InButton>
+              <Clicker>
                 {copyTheNum.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
-              </InButton>
+              </Clicker>
             </button>
           </div>
         </div>
@@ -479,9 +479,9 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={copyTheHol.copyOrDisplay}>
-              <InButton>
+              <Clicker>
                 {copyTheHol.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
-              </InButton>
+              </Clicker>
             </button>
           </div>
         </div>
@@ -505,9 +505,9 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={copyTheExp.copyOrDisplay}>
-              <InButton>
+              <Clicker>
                 {copyTheExp.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
-              </InButton>
+              </Clicker>
             </button>
           </div>
         </div>
@@ -532,16 +532,16 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={() => setFlipped(x => !x)}>
-              <InButton>
+              <Clicker>
                 {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-              </InButton>
+              </Clicker>
             </button>
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={copyTheCvv.copyOrDisplay}>
-              <InButton>
+              <Clicker>
                 {copyTheCvv.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
-              </InButton>
+              </Clicker>
             </button>
           </div>
         </div>
@@ -566,16 +566,16 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={() => setFlipped(x => !x)}>
-              <InButton>
+              <Clicker>
                 {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-              </InButton>
+              </Clicker>
             </button>
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
               onClick={copyThePin.copyOrDisplay}>
-              <InButton>
+              <Clicker>
                 {copyThePin.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
-              </InButton>
+              </Clicker>
             </button>
           </div>
         </div>
