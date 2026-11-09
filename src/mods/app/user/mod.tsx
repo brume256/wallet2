@@ -1,7 +1,5 @@
 // deno-lint-ignore-file no-window
 
-import { Clicker, OppositeAnchor } from "@/libs/anchor/mod.tsx";
-import { WideOppositeButton } from "@/libs/button/mod.tsx";
 import { Errors } from "@/libs/errors/mod.ts";
 import { Events } from "@/libs/events/mod.ts";
 import { useAutoFocus } from "@/libs/focus/mod.ts";
@@ -15,6 +13,7 @@ import { useTask } from "@/libs/task/mod.ts";
 import { Readable, Unknown, Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
+import { Clicker, OppositeAnchor, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import { Result } from "@hazae41/result-and-option";

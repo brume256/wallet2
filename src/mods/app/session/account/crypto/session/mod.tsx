@@ -1,5 +1,3 @@
-import { Clicker } from "@/libs/anchor/mod.tsx";
-import { WideOppositeButton } from "@/libs/button/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { Errors } from "@/libs/errors/mod.ts";
 import { Events } from "@/libs/events/mod.ts";
@@ -17,6 +15,7 @@ import { useSessionContext } from "@/mods/app/session/mod.tsx";
 import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
+import { Clicker, WideOppositeButton } from "@hazae41/labase";
 import { IrnClient, WalletConnect, WcChannel, WcSession, WcSessionRequestParams, WcUnsupportedMethodsError } from "@hazae41/latrine";
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";

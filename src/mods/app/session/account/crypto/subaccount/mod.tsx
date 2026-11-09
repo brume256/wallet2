@@ -1,4 +1,3 @@
-import { WideContrastButton } from "@/libs/button/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { chainlist } from "@/libs/chainlist/mod.ts";
 import { useCopy } from "@/libs/copy/mod.ts";
@@ -18,6 +17,7 @@ import { Cursor } from "@hazae41/cursor";
 import { EIP55Address } from "@hazae41/eip55";
 import * as KDBX from "@hazae41/kdbx";
 import { keccak256 } from "@hazae41/keccak256";
+import { WideContrastButton } from "@hazae41/labase";
 import { IrnClient, WalletConnect, WcPairing, WcPairingParams, WcSession, WcSessionProposeParams, WcSessionProposeResult } from "@hazae41/latrine";
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { secp256k1 } from "@hazae41/secp256k1";

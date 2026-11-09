@@ -1,4 +1,3 @@
-import { Clicker, OppositeAnchor } from "@/libs/anchor/mod.tsx";
 import { Errors } from "@/libs/errors/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getEntryType } from "@/libs/kdbx/mod.ts";
@@ -11,6 +10,7 @@ import { KeypairAccountAddMenuAnchor, KeypairAccountAddPage, KeypairAccountPage 
 import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
+import { Clicker, OppositeAnchor } from "@hazae41/labase";
 import { PathWindow } from "@hazae41/modal";
 import React, { Fragment, useCallback, useMemo } from "react";
 import { useSessionContext } from "../mod.tsx";

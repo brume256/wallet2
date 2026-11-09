@@ -1,4 +1,3 @@
-import { Clicker, WideContrastButton, WideOppositeButton } from "@/libs/button/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { useCopy } from "@/libs/copy/mod.ts";
 import { Errors } from "@/libs/errors/mod.ts";
@@ -15,6 +14,7 @@ import { PasswordInputAnchor, PasswordMenu, ScanPage, TotpPageAnchor } from "@/m
 import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
+import { Clicker, WideContrastButton, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import React, { Fragment, useCallback, useDeferredValue, useMemo, useState } from "react";

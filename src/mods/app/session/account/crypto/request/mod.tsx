@@ -1,4 +1,3 @@
-import { WideContrastButton, WideOppositeButton } from "@/libs/button/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { chainlist, SmallChainData } from "@/libs/chainlist/mod.ts";
 import { useCopy } from "@/libs/copy/mod.ts";
@@ -21,6 +20,7 @@ import { eip712 } from "@hazae41/eip712";
 import { RpcCounter, RpcRequestPreinit, RpcResponse } from "@hazae41/jsonrpc";
 import * as KDBX from "@hazae41/kdbx";
 import { keccak256 } from "@hazae41/keccak256";
+import { WideContrastButton, WideOppositeButton } from "@hazae41/labase";
 import { WcSessionRequestParams, WcUnsupportedAccountsError, WcUnsupportedChainsError, WcUnsupportedMethodsError, WcUserRejectedError } from "@hazae41/latrine";
 import { PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";

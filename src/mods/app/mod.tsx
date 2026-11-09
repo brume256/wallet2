@@ -1,4 +1,3 @@
-import { ContrastAnchor, WideContrastAnchor } from "@/libs/anchor/mod.tsx";
 import { Client } from "@/libs/client/mod.tsx";
 import { Events } from "@/libs/events/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
@@ -7,6 +6,7 @@ import { Nullable } from "@/libs/nullable/mod.ts";
 import { useStoreContext } from "@/libs/store/mod.tsx";
 import { version } from "@/libs/version/mod.ts";
 import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
+import { ContrastAnchor, WideContrastAnchor } from "@hazae41/labase";
 import { PathBubble, PathWindow, Screen } from "@hazae41/modal";
 import { CloseProvider } from "@hazae41/react-close-context";
 import React, { ChangeEvent, Fragment, useCallback, useEffect, useState } from "react";
