@@ -343,7 +343,7 @@ export function KeypairAccountAddPage() {
             <WideOppositeButton
               type="button"
               inert={writeOrDisplay.running || error != null}
-              onClick={writeOrDisplay.execute}>
+              onClick={writeOrDisplay}>
               {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
             </WideOppositeButton>}
@@ -351,7 +351,7 @@ export function KeypairAccountAddPage() {
             <WideOppositeButton
               type="button"
               inert={saveOrDisplay.running || error != null}
-              onClick={saveOrDisplay.execute}>
+              onClick={saveOrDisplay}>
               {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
             </WideOppositeButton>}
@@ -562,7 +562,7 @@ export function KeypairAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry
             </WideContrastButton>
             <WideContrastButton
               inert={savePubKeyOrDisplay.running}
-              onClick={savePubKeyOrDisplay.execute}>
+              onClick={savePubKeyOrDisplay}>
               {savePubKeyOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
             </WideContrastButton>
@@ -599,7 +599,7 @@ export function KeypairAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry
             </WideContrastButton>
             <WideContrastButton
               inert={saveSigKeyOrDisplay.running}
-              onClick={saveSigKeyOrDisplay.execute}>
+              onClick={saveSigKeyOrDisplay}>
               {saveSigKeyOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
             </WideContrastButton>

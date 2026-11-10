@@ -279,7 +279,7 @@ function UserImportFilePage() {
         <WideOppositeButton
           type="button"
           inert={loadOrDisplay.running || error != null}
-          onClick={loadOrDisplay.execute}>
+          onClick={loadOrDisplay}>
           {loadOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
           {error != null ? error : Lang.match({ en: "Open", zh: "打开", hi: "खोलें", es: "Abrir", ar: "فتح", fr: "Ouvrir", de: "Öffnen", ru: "Открыть", pt: "Abrir", ja: "開く", pa: "ਖੋਲ੍ਹੋ", bn: "খুলুন", id: "Buka", ur: "کھولیں", ms: "Buka", it: "Apri", tr: "Aç", ta: "திறக்கவும்", te: "తెరవండి", ko: "열기", vi: "Mở", pl: "Otwórz", ro: "Deschideți", nl: "Openen", el: "Άνοιγμα", th: "เปิด", cs: "Otevřít", hu: "Megnyitás", sv: "Öppna", da: "Åbn" })}
         </WideOppositeButton>
@@ -440,7 +440,7 @@ function UserImportFsfhPage() {
         <WideOppositeButton
           type="button"
           inert={openOrDisplay.running || error != null}
-          onClick={openOrDisplay.execute}>
+          onClick={openOrDisplay}>
           {openOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
           {error != null ? error : Lang.match({ en: "Open", zh: "打开", hi: "खोलें", es: "Abrir", ar: "فتح", fr: "Ouvrir", de: "Öffnen", ru: "Открыть", pt: "Abrir", ja: "開く", pa: "ਖੋਲ੍ਹੋ", bn: "খুলুন", id: "Buka", ur: "کھولیں", ms: "Buka", it: "Apri", tr: "Aç", ta: "திறக்கவும்", te: "తెరవండి", ko: "열기", vi: "Mở", pl: "Otwórz", ro: "Deschideți", nl: "Openen", el: "Άνοιγμα", th: "เปิด", cs: "Otevřít", hu: "Megnyitás", sv: "Öppna", da: "Åbn" })}
         </WideOppositeButton>
@@ -654,7 +654,7 @@ function UserCreatePage() {
           <WideOppositeButton
             type="button"
             inert={pickOrDisplay.running || error != null}
-            onClick={pickOrDisplay.execute}>
+            onClick={pickOrDisplay}>
             {pickOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
             {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
           </WideOppositeButton>}
@@ -662,7 +662,7 @@ function UserCreatePage() {
           <WideOppositeButton
             type="button"
             inert={saveOrDisplay.running || error != null}
-            onClick={saveOrDisplay.execute}>
+            onClick={saveOrDisplay}>
             {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
             {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
           </WideOppositeButton>}
@@ -1087,7 +1087,7 @@ function UserReimportFilePage(props: { user: UserData }) {
         <WideOppositeButton
           type="button"
           inert={loadOrDisplay.running || error != null}
-          onClick={loadOrDisplay.execute}>
+          onClick={loadOrDisplay}>
           {loadOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
           {error != null ? error : Lang.match({ en: "Open", zh: "打开", hi: "खोलें", es: "Abrir", ar: "فتح", fr: "Ouvrir", de: "Öffnen", ru: "Открыть", pt: "Abrir", ja: "開く", pa: "ਖੋਲ੍ਹੋ", bn: "খুলুন", id: "Buka", ur: "کھولیں", ms: "Buka", it: "Apri", tr: "Aç", ta: "திறக்கவும்", te: "తెరవండి", ko: "열기", vi: "Mở", pl: "Otwórz", ro: "Deschideți", nl: "Openen", el: "Άνοιγμα", th: "เปิดไฟล์", cs: "Otevřít", hu: "Megnyitás", sv: "Öppna", da: "Åbn" })}
         </WideOppositeButton>
@@ -1250,7 +1250,7 @@ function UserReimportFsfhPage(props: { user: UserData }) {
         <WideOppositeButton
           type="button"
           inert={openOrDisplay.running || error != null}
-          onClick={openOrDisplay.execute}>
+          onClick={openOrDisplay}>
           {openOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
           {error != null ? error : Lang.match({ en: "Open", zh: "打开", hi: "खोलें", es: "Abrir", ar: "فتح", fr: "Ouvrir", de: "Öffnen", ru: "Открыть", pt: "Abrir", ja: "開く", pa: "ਖੋਲ੍ਹੋ", bn: "খুলুন", id: "Buka", ur: "کھولیں", ms: "Buka", it: "Apri", tr: "Aç", ta: "திறக்கவும்", te: "తెరవండి", ko: "열기", vi: "Mở", pl: "Otwórz", ro: "Deschideți", nl: "Openen", el: "Άνοιγμα", th: "เปิดไฟล์", cs: "Otevřít", hu: "Megnyitás", sv: "Öppna", da: "Åbn" })}
         </WideOppositeButton>
@@ -1283,7 +1283,7 @@ function UserRemoveButton(props: { user: UserData }) {
   return <MenuButton
     type="button"
     inert={removeOrDisplay.running}
-    onClick={removeOrDisplay.execute}>
+    onClick={removeOrDisplay}>
     {removeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.TrashIcon className="size-5" />}
     {Lang.match({ en: "Remove", zh: "删除", hi: "हटाएं", es: "Eliminar", ar: "إزالة", fr: "Supprimer", de: "Entfernen", ru: "Удалить", pt: "Remover", ja: "削除", pa: "ਹਟਾਓ", bn: "অপসারণ করুন", id: "Hapus", ur: "ہٹائیں", ms: "Hapus", it: "Rimuovi", tr: "Kaldır", ta: "அகற்று", te: "తొలగించు", ko: "제거하다", vi: "Xóa bỏ", pl: "Usuń", ro: "Eliminați", nl: "Verwijderen", el: "Αφαίρεση", th: "ลบออก", cs: "Odstranit", hu: "Eltávolítás", sv: "Ta bort", da: "Fjern" })}
   </MenuButton>

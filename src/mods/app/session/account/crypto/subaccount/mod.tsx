@@ -3,6 +3,7 @@ import { chainlist } from "@/libs/chainlist/mod.ts";
 import { useCopy } from "@/libs/copy/mod.ts";
 import { ed25519 } from "@/libs/ed25519/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
+import { icon } from "@/libs/icon/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
 import { Nullable } from "@/libs/nullable/mod.ts";
 import { CryptoSessionAddAnchor, CryptoSessionAddPage, CryptoSessionAnchor } from "@/mods/app/session/account/crypto/session/mod.tsx";
@@ -239,7 +240,7 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
       }
     }
 
-    const metadata = { name: "Brume Wallet", description: "The secure and private wallet", url: "http://wallet.brume.tech", icons: ["http://wallet.brume.tech/appicon.png"] }
+    const metadata = { name: "Brume Wallet", description: "The secure and private wallet", url: "http://wallet.brume.tech", icons: [icon] }
     const controller = { publicKey: new Uint8Array(await crypto.subtle.exportKey("raw", pairing.keypair.publicKey)).toHex(), metadata }
 
     const expiry = Math.floor(Date.now() / 1000) + (365 * 24 * 60 * 60)

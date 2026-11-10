@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import { useTask } from "@/libs/task/mod.ts";
+import { useState } from "react";
 import { flushSync } from "react-dom";
 import { Errors } from "../errors/mod.ts";
 import { Nullable } from "../nullable/mod.ts";
@@ -6,7 +7,7 @@ import { Nullable } from "../nullable/mod.ts";
 export function useCopy(value: Nullable<string>) {
   const [copied, setCopied] = useState(false)
 
-  const copyOrDisplay = useCallback(() => Promise.try(async () => {
+  const copyOrDisplay = useTask(() => Promise.try(async () => {
     if (value == null)
       return
 
