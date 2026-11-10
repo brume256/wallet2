@@ -1,7 +1,6 @@
 // deno-lint-ignore-file no-window
 
 import { Errors } from "@/libs/errors/mod.ts";
-import { Events } from "@/libs/events/mod.ts";
 import { useAutoFocus } from "@/libs/focus/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
@@ -210,7 +209,7 @@ function UserImportFilePage() {
       {Lang.match({ en: "Import user", zh: "导入用户", hi: "उपयोगकर्ता आयात करें", es: "Importar usuario", ar: "استيراد مستخدم", fr: "Importer un utilisateur", de: "Benutzer importieren", ru: "Импортировать пользователя", pt: "Importar usuário", ja: "ユーザーをインポート", pa: "ਉਪਭੋਗਤਾ ਆਯਾਤ ਕਰੋ", bn: "ব্যবহারকারী আমদানি করুন", id: "Impor pengguna", ur: "صارف درآمد کریں", ms: "Impor pengguna", it: "Importa utente", tr: "Kullanıcı içe aktar", ta: "பயனரை இறக்குமதி செய்யவும்", te: "వినియోగదారుని దిగుమతి చేయండి", ko: "사용자 가져오기", vi: "Nhập người dùng", pl: "Importuj użytkownika", ro: "Importă utilizator", nl: "Importeer gebruiker", el: "Εισαγωγή χρήστη", th: "นำเข้าผู้ใช้", cs: "Importovat uživatele", hu: "Felhasználó importálása", sv: "Importera användare", da: "Importer bruger" })}
     </h1>
     <form className="grow flex flex-col"
-      onSubmit={Events.preventDefault}>
+      onSubmit={e => e.preventDefault()}>
       <input className="hidden"
         autoComplete="off"
         name="username" />
@@ -369,7 +368,7 @@ function UserImportFsfhPage() {
       {Lang.match({ en: "Import user", zh: "导入用户", hi: "उपयोगकर्ता आयात करें", es: "Importar usuario", ar: "استيراد مستخدم", fr: "Importer un utilisateur", de: "Benutzer importieren", ru: "Импортировать пользователя", pt: "Importar usuário", ja: "ユーザーをインポート", pa: "ਉਪਭੋਗਤਾ ਆਯਾਤ ਕਰੋ", bn: "ব্যবহারকারী আমদানি করুন", id: "Impor pengguna", ur: "صارف درآمد کریں", ms: "Impor pengguna", it: "Importa utente", tr: "Kullanıcı içe aktar", ta: "பயனரை இறக்குமதி செய்யவும்", te: "వినియోగదారుని దిగుమతి చేయండి", ko: "사용자 가져오기", vi: "Nhập người dùng", pl: "Importuj użytkownika", ro: "Importă utilizator", nl: "Importeer gebruiker", el: "Εισαγωγή χρήστη", th: "นำเข้าผู้ใช้", cs: "Importovat uživatele", hu: "Felhasználó importálása", sv: "Importera användare", da: "Importer bruger" })}
     </h1>
     <form className="grow flex flex-col"
-      onSubmit={Events.preventDefault}>
+      onSubmit={e => e.preventDefault()}>
       <input className="hidden"
         autoComplete="off"
         name="username" />
@@ -401,7 +400,7 @@ function UserImportFsfhPage() {
           <button className="absolute inset-0 opacity-0 cursor-pointer"
             type="button"
             onClick={pickOrDisplay}
-            onDragOver={Events.preventDefault}
+            onDragOver={e => e.preventDefault()}
             onDrop={dropOrDisplay} />}
         {fsfh != null &&
           <div className="po-2">
@@ -606,7 +605,7 @@ function UserCreatePage() {
       {Lang.match({ en: "Create user", zh: "创建用户", hi: "उपयोगकर्ता बनाएं", es: "Crear usuario", ar: "إنشاء مستخدم", fr: "Créer un utilisateur", de: "Benutzer erstellen", ru: "Создать пользователя", pt: "Criar usuário", ja: "ユーザーを作成", pa: "ਉਪਭੋਗਤਾ ਬਣਾਓ", bn: "ব্যবহারকারী তৈরি করুন", id: "Buat pengguna", ur: "صارف بنائیں", ms: "Buat pengguna", it: "Crea utente", tr: "Kullanıcı oluştur", ta: "பயனரை உருவாக்கவும்", te: "వినియోగదారుని సృష్టించండి", ko: "사용자 만들기", vi: "Tạo người dùng", pl: "Utwórz użytkownika", ro: "Creează utilizator", nl: "Maak gebruiker", el: "Δημιουργία χρήστη", th: "สร้างผู้ใช้", cs: "Vytvořit uživatele", hu: "Felhasználó létrehozása", sv: "Skapa användare", da: "Opret bruger" })}
     </h1>
     <form className="grow flex flex-col"
-      onSubmit={Events.preventDefault}>
+      onSubmit={e => e.preventDefault()}>
       <input className="hidden"
         autoComplete="off"
         name="username" />
@@ -858,7 +857,7 @@ function UserLoginPage(props: { user: UserData } & { login(session: SessionData)
     </h1>
     <div className="h-8" />
     <form className="grow flex flex-col"
-      onSubmit={Events.preventDefault}>
+      onSubmit={e => e.preventDefault()}>
       <input className="hidden"
         autoComplete="off"
         name="username" />
@@ -1018,7 +1017,7 @@ function UserReimportFilePage(props: { user: UserData }) {
       {Lang.match({ en: "Reimport user", zh: "重新导入用户", hi: "उपयोगकर्ता को पुनः आयात करें", es: "Reimportar usuario", ar: "إعادة استيراد المستخدم", fr: "Réimporter l'utilisateur", de: "Benutzer erneut importieren", ru: "Повторный импорт пользователя", pt: "Reimportar usuário", ja: "ユーザーを再インポート", pa: "ਉਪਭੋਗਤਾ ਨੂੰ ਦੁਬਾਰਾ ਆਯਾਤ ਕਰੋ", bn: "ব্যবহারকারী পুনরায় আমদানি করুন", id: "Impor ulang pengguna", ur: "صارف کو دوبارہ درآمد کریں", ms: "Impor ulang pengguna", it: "Reimporta utente", tr: "Kullanıcıyı yeniden içe aktar", ta: "பயனரை மீண்டும் இறக்குமதி செய்க", te: "వినియోగదారుని మళ్లీ దిగుమతి చేయండి", ko: "사용자 재수입", vi: "Nhập lại người dùng", pl: "Ponowny import użytkownika", ro: "Reimportă utilizatorul", nl: "Gebruiker opnieuw importeren", el: "Επαναφορά χρήστη", th: "นำเข้าผู้ใช้ใหม่", cs: "Znovu importovat uživatele", hu: "Felhasználó újraimportálása", sv: "Importera om användare", da: "Genimporter bruger" })}
     </h1>
     <form className="grow flex flex-col"
-      onSubmit={Events.preventDefault}>
+      onSubmit={e => e.preventDefault()}>
       <input className="hidden"
         autoComplete="off"
         name="username" />
@@ -1179,7 +1178,7 @@ function UserReimportFsfhPage(props: { user: UserData }) {
       {Lang.match({ en: "Reimport user", zh: "重新导入用户", hi: "उपयोगकर्ता को पुनः आयात करें", es: "Reimportar usuario", ar: "إعادة استيراد المستخدم", fr: "Réimporter l'utilisateur", de: "Benutzer erneut importieren", ru: "Повторный импорт пользователя", pt: "Reimportar usuário", ja: "ユーザーを再インポート", pa: "ਉਪਭੋਗਤਾ ਨੂੰ ਦੁਬਾਰਾ ਆਯਾਤ ਕਰੋ", bn: "ব্যবহারকারী পুনরায় আমদানি করুন", id: "Impor ulang pengguna", ur: "صارف کو دوبارہ درآمد کریں", ms: "Impor ulang pengguna", it: "Reimporta utente", tr: "Kullanıcıyı yeniden içe aktar", ta: "பயனரை மீண்டும் இறக்குமதி செய்க", te: "వినియోగదారుని మళ్లీ దిగుమతి చేయండి", ko: "사용자 재가져오기", vi: "Nhập lại người dùng", pl: "Ponownie zaimportuj użytkownika", ro: "Reimportați utilizatorul", nl: "Gebruiker opnieuw importeren", el: "Επαναφορά χρήστη", th: "นำเข้าผู้ใช้ใหม่อีกครั้ง", cs: "Znovu importovat uživatele", hu: "Felhasználó újraimportálása", sv: "Importera om användare", da: "Genimporter bruger" })}
     </h1>
     <form className="grow flex flex-col"
-      onSubmit={Events.preventDefault}>
+      onSubmit={e => e.preventDefault()}>
       <input className="hidden"
         autoComplete="off"
         name="username" />
@@ -1211,7 +1210,7 @@ function UserReimportFsfhPage(props: { user: UserData }) {
           <button className="absolute inset-0 opacity-0 cursor-pointer"
             type="button"
             onClick={pickOrDisplay}
-            onDragOver={Events.preventDefault}
+            onDragOver={e => e.preventDefault()}
             onDrop={dropOrDisplay} />}
         {fsfh != null &&
           <div className="po-2">

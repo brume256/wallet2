@@ -1,5 +1,4 @@
 import { Errors } from "@/libs/errors/mod.ts";
-import { Events } from "@/libs/events/mod.ts";
 import { useAutoFocus } from "@/libs/focus/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getEntryType, getRecycleBinOrNull } from "@/libs/kdbx/mod.ts";
@@ -359,7 +358,7 @@ export function SessionExportPage() {
         {Lang.match({ en: "Export user", zh: "导出用户", hi: "उपयोगकर्ता निर्यात करें", es: "Exportar usuario", ar: "تصدير المستخدم", fr: "Exporter l'utilisateur", de: "Benutzer exportieren", ru: "Экспорт пользователя", pt: "Exportar usuário", ja: "ユーザーをエクスポート", pa: "ਉਪਭੋਗਤਾ ਨਿਰਯਾਤ ਕਰੋ", bn: "ব্যবহারকারী রপ্তানি করুন", id: "Ekspor pengguna", ur: "صارف برآمد کریں", ms: "Ekspor pengguna", it: "Esporta utente", tr: "Kullanıcıyı dışa aktar", ta: "பயனரை ஏற்றுமதி செய்யவும்", te: "వినియోగదారుని ఎగుమతి చేయండి", ko: "사용자 내보내기", vi: "Xuất người dùng", pl: "Eksportuj użytkownika", ro: "Exportă utilizatorul", nl: "Gebruiker exporteren", el: "Εξαγωγή χρήστη", th: "ส่งออกผู้ใช้", cs: "Exportovat uživatele", hu: "Felhasználó exportálása", sv: "Exportera användare", da: "Eksporter bruger" })}
       </h1>
       <form className="grow flex flex-col"
-        onSubmit={Events.preventDefault}>
+        onSubmit={e => e.preventDefault()}>
         <input className="hidden"
           autoComplete="off"
           name="username" />

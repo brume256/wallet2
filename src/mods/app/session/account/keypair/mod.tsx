@@ -1,7 +1,6 @@
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { useCopy } from "@/libs/copy/mod.ts";
 import { Errors } from "@/libs/errors/mod.ts";
-import { Events } from "@/libs/events/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getRecycleBinOrNull } from "@/libs/kdbx/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
@@ -191,7 +190,7 @@ export function KeypairAccountAddPage() {
           onFlipChange={setFlipped} />
       </div>
       <form className="grow flex flex-col"
-        onSubmit={Events.preventDefault}>
+        onSubmit={e => e.preventDefault()}>
         <input className="hidden"
           autoComplete="off"
           name="username" />
@@ -508,7 +507,7 @@ export function KeypairAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry
           onFlipChange={setFlipped} />
       </div>
       <form className="grow flex flex-col"
-        onSubmit={Events.preventDefault}>
+        onSubmit={e => e.preventDefault()}>
         <input className="hidden"
           autoComplete="off"
           name="username" />

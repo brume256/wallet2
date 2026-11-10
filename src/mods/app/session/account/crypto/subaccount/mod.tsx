@@ -2,7 +2,6 @@ import { FlipCard } from "@/libs/card/mod.tsx";
 import { chainlist } from "@/libs/chainlist/mod.ts";
 import { useCopy } from "@/libs/copy/mod.ts";
 import { ed25519 } from "@/libs/ed25519/mod.ts";
-import { Events } from "@/libs/events/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
 import { Nullable } from "@/libs/nullable/mod.ts";
@@ -289,7 +288,7 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
           onFlipChange={setFlipped} />
       </div>
       <form className="grow flex flex-col"
-        onSubmit={Events.preventDefault}>
+        onSubmit={e => e.preventDefault()}>
         <input className="hidden"
           autoComplete="off"
           name="username" />
@@ -424,7 +423,7 @@ export function CryptoSubaccountAddressPage(props: { $entry: KDBX.Inner.KeePassF
         onFlipChange={setFlipped} />
     </div>
     <form className="grow flex flex-col"
-      onSubmit={Events.preventDefault}>
+      onSubmit={e => e.preventDefault()}>
       <input className="hidden"
         autoComplete="off"
         name="username" />
@@ -567,7 +566,7 @@ export function CryptoSubaccountExportPage(props: { $entry: KDBX.Inner.KeePassFi
         onFlipChange={setFlipped} />
     </div>
     <form className="grow flex flex-col"
-      onSubmit={Events.preventDefault}>
+      onSubmit={e => e.preventDefault()}>
       <input className="hidden"
         autoComplete="off"
         name="username" />
