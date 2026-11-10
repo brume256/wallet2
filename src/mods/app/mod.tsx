@@ -95,7 +95,7 @@ export function App() {
   return <Fragment>
     <Client>
       <SubpathProvider value={hash}>
-        {hash.url.pathname === "/login" && session != null &&
+        {session != null &&
           <CloseProvider value={logout}>
             <Screen>
               <SessionProvider value={session}>
