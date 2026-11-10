@@ -95,15 +95,15 @@ export function App() {
 
   return <Fragment>
     <Client>
-      <CloseProvider value={logout}>
-        {session != null &&
-          <Screen>
-            <SessionProvider value={session}>
-              <SessionPage />
-            </SessionProvider>
-          </Screen>}
-      </CloseProvider>
       <SubpathProvider value={hash}>
+        {hash.url.pathname === "/login" && session != null &&
+          <CloseProvider value={logout}>
+            <Screen>
+              <SessionProvider value={session}>
+                <SessionPage />
+              </SessionProvider>
+            </Screen>
+          </CloseProvider>}
         {hash.url.pathname === "/login" &&
           <PathBubble>
             <UserLoginMenu login={login} />
