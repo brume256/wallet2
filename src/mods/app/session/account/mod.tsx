@@ -7,7 +7,7 @@ import { Spinner } from "@/libs/spinner/mod.tsx";
 import { useTask } from "@/libs/task/mod.ts";
 import { KeypairAccountAddMenuAnchor, KeypairAccountAddPage, KeypairAccountPage } from "@/mods/app/session/account/keypair/mod.tsx";
 import { Writable } from "@hazae41/binary";
-import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
+import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
 import { Clicker, Menu, MenuButton, OppositeAnchor } from "@hazae41/labase";
 import { PathWindow } from "@hazae41/modal";
@@ -25,10 +25,10 @@ export function AccountAddButtonInGrid(props: { href: string }) {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, href)
+  const coords = useLinkWithCoords(hash, href)
 
   return <a className="group w-[min(20rem,100%)] aspect-video rounded-xl border-2 border-default-contrast select-none hover:scale-105 focus-visible:outline-none focus-visible:scale-105 transition-transform"
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Clicker>
@@ -55,7 +55,7 @@ export function AccountAnchor(props: { $entry: KDBX.Inner.KeePassFile.Entry }) {
     return $entry.getStringByKeyOrNull("Color")?.getValueOrNull()?.get()
   }, [$entry])
 
-  const coords = useAnchorWithCoords(hash, `/account/${uuid}`)
+  const coords = useLinkWithCoords(hash, `/account/${uuid}`)
 
   return <Fragment>
     <SubpathProvider value={hash}>
@@ -151,7 +151,7 @@ export function AccountAnchor(props: { $entry: KDBX.Inner.KeePassFile.Entry }) {
       focus-visible:in-dark:data-[color=rose]:outline-rose-500"
       data-theme={color == null ? "opposite" : "dark"}
       data-color={color}
-      href={coords.url.hash}
+      href={coords.abs.hash}
       onClick={coords.onClick}
       onKeyDown={coords.onKeyDown}>
       <div className="h-full w-full flex flex-col p-4">
@@ -216,10 +216,10 @@ export function AccountAddButton() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/add")
+  const coords = useLinkWithCoords(hash, "/add")
 
   return <OppositeAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.PlusIcon className="size-5" />
@@ -265,10 +265,10 @@ export function ColorAnchor(props: { color?: Nullable<string> }) {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/color")
+  const coords = useLinkWithCoords(hash, "/color")
 
   return <a className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Clicker>
@@ -375,10 +375,10 @@ export function AccountMenuAnchor() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/+")
+  const coords = useLinkWithCoords(hash, "/+")
 
   return <a className="group rounded-full p-2 flex items-center justify-center hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Clicker>

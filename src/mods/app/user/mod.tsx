@@ -10,7 +10,7 @@ import { Spinner } from "@/libs/spinner/mod.tsx";
 import { useStoreContext } from "@/libs/store/mod.tsx";
 import { useTask } from "@/libs/task/mod.ts";
 import { Readable, Unknown, Writable } from "@hazae41/binary";
-import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
+import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
 import { Clicker, Menu, MenuAnchor, MenuButton, OppositeAnchor, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble, PathWindow } from "@hazae41/modal";
@@ -33,10 +33,10 @@ export function UserLoginButton() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/login")
+  const coords = useLinkWithCoords(hash, "/login")
 
   return <OppositeAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.UsersIcon className="size-5" />
@@ -89,10 +89,10 @@ function UserAddButton() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/add")
+  const coords = useLinkWithCoords(hash, "/add")
 
   return <MenuAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.UserPlusIcon className="size-5" />
@@ -129,10 +129,10 @@ function UserCreateButton() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/create")
+  const coords = useLinkWithCoords(hash, "/create")
 
   return <MenuAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.SparklesIcon className="size-5" />
@@ -144,10 +144,10 @@ function UserImportButton() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/import")
+  const coords = useLinkWithCoords(hash, "/import")
 
   return <MenuAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.ArrowDownOnSquareIcon className="size-5" />
@@ -678,7 +678,7 @@ function UserItem(props: { user: UserData } & { login(session: SessionData): voi
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, `/${user.uuid}`)
+  const coords = useLinkWithCoords(hash, `/${user.uuid}`)
 
   return <Fragment>
     <SubpathProvider value={hash}>
@@ -693,7 +693,7 @@ function UserItem(props: { user: UserData } & { login(session: SessionData): voi
     </SubpathProvider>
     <div className="relative group flex-1 rounded-xl hover:bg-default-double-contrast has-focus-visible:bg-default-double-contrast">
       <a className="absolute inset-0 opacity-0 cursor-pointer"
-        href={coords.url.hash}
+        href={coords.abs.hash}
         onClick={coords.onClick}
         onKeyDown={coords.onKeyDown} />
       <div className="po-2 flex items-center justify-start">
@@ -911,10 +911,10 @@ function UserMenuButton(props: { user: UserData }) {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, `/${user.uuid}/+`)
+  const coords = useLinkWithCoords(hash, `/${user.uuid}/+`)
 
   return <a className="group z-10 rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Clicker>
@@ -950,10 +950,10 @@ function UserReimportButton() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/reimport")
+  const coords = useLinkWithCoords(hash, "/reimport")
 
   return <MenuAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.ArrowDownOnSquareIcon className="size-5" />

@@ -10,7 +10,7 @@ import { Spinner } from "@/libs/spinner/mod.tsx";
 import { useTask } from "@/libs/task/mod.ts";
 import { base58 } from "@hazae41/base58";
 import { BitcoinSeedPhrase } from "@hazae41/broca";
-import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
+import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext } from "@hazae41/chemin";
 import { BitcoinSeedKey, Ed25519SeedKey } from "@hazae41/clade";
 import { Cursor } from "@hazae41/cursor";
 import { EIP155UnsignedTransaction } from "@hazae41/eip155";
@@ -44,7 +44,7 @@ export function CryptoRequestAnchor(props: { index: number } & { $entry: KDBX.In
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, `/request/${index}`)
+  const coords = useLinkWithCoords(hash, `/request/${index}`)
 
   const title = useMemo(() => {
     return $subentry.getStringByKeyOrNull("Title")?.getValueOrNull()?.get()
@@ -124,7 +124,7 @@ export function CryptoRequestAnchor(props: { index: number } & { $entry: KDBX.In
       in-dark:data-[color=rose]:bg-rose-500"
       data-theme={color == null ? "opposite" : "dark"}
       data-color={color}
-      href={coords.url.hash}
+      href={coords.abs.hash}
       onClick={coords.onClick}
       onKeyDown={coords.onKeyDown}>
       <div className="h-full w-full flex flex-col p-4">

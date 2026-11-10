@@ -12,7 +12,7 @@ import { CryptoAccountAddPage } from "@/mods/app/session/account/crypto/mod.tsx"
 import { KeypairAccountAddPage } from "@/mods/app/session/account/keypair/mod.tsx";
 import { PasswordAccountAddPage } from "@/mods/app/session/account/password/mod.tsx";
 import { Writable } from "@hazae41/binary";
-import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext, useSearchState } from "@hazae41/chemin";
+import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext, useSearchState } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
 import { Clicker, Menu, MenuAnchor, MenuButton, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble, PathWindow } from "@hazae41/modal";
@@ -230,10 +230,10 @@ function SessionMenuButton() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/+")
+  const coords = useLinkWithCoords(hash, "/+")
 
   return <a className="group p-2 bg-opposite text-opposite rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-opposite"
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Clicker>
@@ -275,10 +275,10 @@ export function SessionExportAnchor() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/export")
+  const coords = useLinkWithCoords(hash, "/export")
 
   return <MenuAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.ArrowUpOnSquareIcon className="size-5" />

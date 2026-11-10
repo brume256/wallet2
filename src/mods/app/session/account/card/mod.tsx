@@ -9,7 +9,7 @@ import { Nullable } from "@/libs/nullable/mod.ts";
 import { Spinner } from "@/libs/spinner/mod.tsx";
 import { useTask } from "@/libs/task/mod.ts";
 import { Writable } from "@hazae41/binary";
-import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
+import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
 import { Clicker, Menu, MenuAnchor, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble } from "@hazae41/modal";
@@ -24,10 +24,10 @@ export function CardAccountAddMenuAnchor() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/card")
+  const coords = useLinkWithCoords(hash, "/card")
 
   return <MenuAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.CreditCardIcon className="size-5" />

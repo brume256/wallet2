@@ -12,7 +12,7 @@ import { useTask } from "@/libs/task/mod.ts";
 import { useTotp } from "@/libs/totp/mod.ts";
 import { Writable } from "@hazae41/binary";
 import { MoneroSeedPhrase } from "@hazae41/broca";
-import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
+import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
 import { Clicker, Menu, MenuAnchor, MenuButton, WideContrastButton, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble, PathWindow } from "@hazae41/modal";
@@ -28,10 +28,10 @@ export function PasswordAccountAddMenuAnchor() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/password")
+  const coords = useLinkWithCoords(hash, "/password")
 
   return <MenuAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.LanguageIcon className="size-5" />
@@ -505,10 +505,10 @@ export function TotpPageAnchor() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/totp")
+  const coords = useLinkWithCoords(hash, "/totp")
 
   return <a className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Clicker>
@@ -693,10 +693,10 @@ export function PasswordInputAnchor() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/password")
+  const coords = useLinkWithCoords(hash, "/password")
 
   return <a className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Clicker>

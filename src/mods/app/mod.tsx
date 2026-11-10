@@ -5,7 +5,7 @@ import { Lang } from "@/libs/lang/mod.ts";
 import { Nullable } from "@/libs/nullable/mod.ts";
 import { useStoreContext } from "@/libs/store/mod.tsx";
 import { version } from "@/libs/version/mod.ts";
-import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
+import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext } from "@hazae41/chemin";
 import { ContrastAnchor, WideContrastAnchor } from "@hazae41/labase";
 import { PathBubble, PathWindow, Screen } from "@hazae41/modal";
 import { CloseProvider } from "@hazae41/react-close-context";
@@ -291,10 +291,10 @@ export function SettingsButton() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/settings")
+  const coords = useLinkWithCoords(hash, "/settings")
 
   return <ContrastAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.CogIcon className="size-5" />
@@ -418,10 +418,10 @@ export function InstallButton() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/install")
+  const coords = useLinkWithCoords(hash, "/install")
 
   return <ContrastAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.ArrowDownOnSquareIcon className="size-5" />
@@ -478,13 +478,13 @@ export function ChromeButton() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/chrome")
+  const coords = useLinkWithCoords(hash, "/chrome")
 
   return <a className="p-6 bg-default-contrast rounded-xl flex items-center gap-4 data-[highlighted=false]:opacity-50 hover:bg-default-double-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-default-contrast transition-transform"
     data-highlighted={navigator.userAgent.includes("Chrome") && !navigator.userAgent.includes("Android")}
     onKeyDown={coords.onKeyDown}
     onClick={coords.onClick}
-    href={coords.url.hash}>
+    href={coords.abs.hash}>
     <img className="size-16 object-contain p-2 bg-white rounded-xl"
       src="/assets/platforms/chrome.png" />
     <div className="flex flex-col">
@@ -504,13 +504,13 @@ export function SafariButton() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/safari")
+  const coords = useLinkWithCoords(hash, "/safari")
 
   return <a className="p-6 bg-default-contrast rounded-xl flex items-center gap-4 data-[highlighted=false]:opacity-50 hover:bg-default-double-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-default-contrast transition-transform"
     data-highlighted={navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") && !navigator.userAgent.includes("Android")}
     onKeyDown={coords.onKeyDown}
     onClick={coords.onClick}
-    href={coords.url.hash}>
+    href={coords.abs.hash}>
     <img className="size-16 object-contain p-2 bg-white rounded-xl"
       src="/assets/platforms/safari.svg" />
     <div className="flex flex-col">
@@ -529,13 +529,13 @@ export function AndroidButton() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/android")
+  const coords = useLinkWithCoords(hash, "/android")
 
   return <a className="p-6 bg-default-contrast rounded-xl flex items-center gap-4 data-[highlighted=false]:opacity-50 hover:bg-default-double-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-default-contrast transition-transform"
     data-highlighted={navigator.userAgent.includes("Android")}
     onKeyDown={coords.onKeyDown}
     onClick={coords.onClick}
-    href={coords.url.hash}>
+    href={coords.abs.hash}>
     <img className="size-16 object-contain p-2 bg-white rounded-xl"
       src="/assets/platforms/android.svg" />
     <div className="flex flex-col">

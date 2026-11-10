@@ -12,7 +12,7 @@ import { WcSessionData } from "@/mods/app/session/account/crypto/subaccount/mod.
 import { ScanPage } from "@/mods/app/session/account/password/mod.tsx";
 import { useSessionContext } from "@/mods/app/session/mod.tsx";
 import { Writable } from "@hazae41/binary";
-import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
+import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
 import { Clicker, Menu, MenuButton, WideOppositeButton } from "@hazae41/labase";
 import { IrnClient, WalletConnect, WcChannel, WcSession, WcSessionRequestParams, WcUnsupportedMethodsError } from "@hazae41/latrine";
@@ -27,10 +27,10 @@ export function CryptoSessionAddAnchor() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/session")
+  const coords = useLinkWithCoords(hash, "/session")
 
   return <a className="group w-[min(20rem,100%)] aspect-video rounded-xl border-2 border-default-contrast select-none hover:scale-105 focus-visible:outline-none focus-visible:scale-105 transition-transform"
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Clicker>
@@ -300,7 +300,7 @@ export function CryptoSessionAnchor(props: { $entry: KDBX.Inner.KeePassFile.Entr
     return $entry.getStringByKeyOrNull("Color")?.getValueOrNull()?.get()
   }, [$entry])
 
-  const coords = useAnchorWithCoords(hash, `/session/${uuid}`)
+  const coords = useLinkWithCoords(hash, `/session/${uuid}`)
 
   return <Fragment>
     <SubpathProvider value={hash}>
@@ -346,7 +346,7 @@ export function CryptoSessionAnchor(props: { $entry: KDBX.Inner.KeePassFile.Entr
       in-dark:data-[color=rose]:bg-rose-500"
       data-theme={color == null ? "opposite" : "dark"}
       data-color={color}
-      href={coords.url.hash}
+      href={coords.abs.hash}
       onClick={coords.onClick}
       onKeyDown={coords.onKeyDown}>
       <div className="h-full w-full flex flex-col p-4">
@@ -672,10 +672,10 @@ export function UrlInputAnchor() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/url")
+  const coords = useLinkWithCoords(hash, "/url")
 
   return <a className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Clicker>

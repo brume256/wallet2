@@ -10,7 +10,7 @@ import { CryptoSessionAddAnchor, CryptoSessionAddPage, CryptoSessionAnchor } fro
 import { useSessionContext } from "@/mods/app/session/mod.tsx";
 import { base58 } from "@hazae41/base58";
 import { BitcoinSeedPhrase } from "@hazae41/broca";
-import { SubpathProvider, useAnchorWithCoords, useHashSubpath, usePathContext } from "@hazae41/chemin";
+import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext } from "@hazae41/chemin";
 import { BitcoinSeedKey, Ed25519SeedKey } from "@hazae41/clade";
 import { Cursor } from "@hazae41/cursor";
 import { EIP55Address } from "@hazae41/eip55";
@@ -37,7 +37,7 @@ export function CryptoSubaccountAnchor(props: { $entry: KDBX.Inner.KeePassFile.E
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, `/subaccount/${index}`)
+  const coords = useLinkWithCoords(hash, `/subaccount/${index}`)
 
   const title = useMemo(() => {
     return $entry.getStringByKeyOrNull("Title")?.getValueOrNull()?.get()
@@ -91,7 +91,7 @@ export function CryptoSubaccountAnchor(props: { $entry: KDBX.Inner.KeePassFile.E
       in-dark:data-[color=rose]:bg-rose-500"
       data-theme={color == null ? "opposite" : "dark"}
       data-color={color}
-      href={coords.url.hash}
+      href={coords.abs.hash}
       onClick={coords.onClick}
       onKeyDown={coords.onKeyDown}>
       <div className="h-full w-full flex flex-col p-4">
@@ -347,10 +347,10 @@ export function CryptoSubaccountAddressMenuAnchor() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/address")
+  const coords = useLinkWithCoords(hash, "/address")
 
   return <MenuAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.AtSymbolIcon className="size-5" />
@@ -486,10 +486,10 @@ export function CryptoSubaccountExportMenuAnchor() {
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
-  const coords = useAnchorWithCoords(hash, "/export")
+  const coords = useLinkWithCoords(hash, "/export")
 
   return <MenuAnchor
-    href={coords.url.hash}
+    href={coords.abs.hash}
     onClick={coords.onClick}
     onKeyDown={coords.onKeyDown}>
     <Outline.ArrowUpOnSquareIcon className="size-5" />
