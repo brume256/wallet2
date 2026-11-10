@@ -18,7 +18,7 @@
     "@hazae41/base58": "^2.0.0",
     "@hazae41/binary": "2.1.1",
     "@hazae41/broca": "0.1.4",
-    "@hazae41/chemin": "^2.1.13",
+    "@hazae41/chemin": "^2.1.15",
     "@hazae41/clade": "0.1.6",
     "@hazae41/cursor": "2.2.0",
     "@hazae41/disposable-stack-polyfill": "2.0.5",
