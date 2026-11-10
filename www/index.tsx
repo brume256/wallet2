@@ -10,14 +10,14 @@ import "@hazae41/disposable-stack-polyfill";
 
 import "@hazae41/request-idle-callback-polyfill";
 
-import { ClientProvider } from "@/libs/client/mod.tsx";
 import { dirs, Lang } from "@/libs/lang/mod.ts";
 import { StoreProvider } from "@/libs/store/mod.tsx";
 import { App } from "@/mods/app/mod.tsx";
 import { PathProvider, useHashPath } from "@hazae41/chemin";
 import { immutable } from "@hazae41/immutable";
+import { ClientProvider, useClient } from "@hazae41/react-client-context";
 import { Rewind } from "@hazae41/rewind";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { hydrateRoot } from "react-dom/client";
 
 React;
@@ -59,9 +59,9 @@ async function register() {
 }
 
 function Body() {
-  const path = useHashPath()
+  const client = useClient()
 
-  const [client, setClient] = useState(false)
+  const path = useHashPath()
 
   useEffect(() => {
     const lang = Lang.get()
@@ -69,7 +69,7 @@ function Body() {
     document.documentElement.lang = lang
     document.documentElement.dir = dirs[lang]
 
-    setClient(true)
+    return
   }, [])
 
   useEffect(() => {

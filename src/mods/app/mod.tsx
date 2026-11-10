@@ -1,4 +1,3 @@
-import { Client } from "@/libs/client/mod.tsx";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
 import { Nullable } from "@/libs/nullable/mod.ts";
@@ -7,6 +6,7 @@ import { version } from "@/libs/version/mod.ts";
 import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext } from "@hazae41/chemin";
 import { ContrastAnchor, WideContrastAnchor } from "@hazae41/labase";
 import { PathBubble, PathWindow, Screen } from "@hazae41/modal";
+import { Client } from "@hazae41/react-client-context";
 import { CloseProvider } from "@hazae41/react-close-context";
 import React, { ChangeEvent, Fragment, useCallback, useEffect, useState } from "react";
 import { SessionData, SessionPage, SessionProvider } from "./session/mod.tsx";
