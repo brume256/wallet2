@@ -4,7 +4,6 @@ import { Outline } from "@/libs/heroicons/mod.ts";
 import { getEntryType, getRecycleBinOrNull } from "@/libs/kdbx/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
 import { Nullable } from "@/libs/nullable/mod.ts";
-import { Spinner } from "@/libs/spinner/mod.tsx";
 import { useTask } from "@/libs/task/mod.ts";
 import { CardAccountAddPage } from "@/mods/app/session/account/card/mod.tsx";
 import { CryptoAccountAddPage } from "@/mods/app/session/account/crypto/mod.tsx";
@@ -13,7 +12,7 @@ import { PasswordAccountAddPage } from "@/mods/app/session/account/password/mod.
 import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext, useSearchState } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
-import { Clicker, Menu, MenuAnchor, MenuButton, WideOppositeButton } from "@hazae41/labase";
+import { Clicker, Menu, MenuAnchor, MenuButton, Spinner, WideOppositeButton } from "@hazae41/labase";
 import { PathBubble, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import { Option } from "@hazae41/result-and-option";
