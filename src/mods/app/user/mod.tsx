@@ -219,6 +219,7 @@ function UserImportFilePage() {
       <div className="h-4" />
       <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
         <input className="w-full focus-visible:outline-none"
+          autoFocus
           autoComplete="off"
           placeholder="Satoshi"
           value={$name}
@@ -375,6 +376,7 @@ function UserImportFsfhPage() {
       <div className="h-4" />
       <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
         <input className="w-full focus-visible:outline-none"
+          autoFocus
           autoComplete="off"
           placeholder="Satoshi"
           value={$name}
@@ -609,6 +611,7 @@ function UserCreatePage() {
       <div className="h-4" />
       <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
         <input className="w-full focus-visible:outline-none"
+          autoFocus
           autoComplete="off"
           placeholder="Satoshi"
           value={$name}
@@ -1044,6 +1047,7 @@ function UserReimportFilePage(props: { user: UserData }) {
       <div className="h-4" />
       <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
         <input className="w-full focus-visible:outline-none"
+          autoFocus
           autoComplete="off"
           placeholder="Satoshi"
           value={$name}
@@ -1202,6 +1206,7 @@ function UserReimportFsfhPage(props: { user: UserData }) {
       <div className="h-4" />
       <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
         <input className="w-full focus-visible:outline-none"
+          autoFocus
           autoComplete="off"
           placeholder="Satoshi"
           value={$name}
