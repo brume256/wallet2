@@ -32,7 +32,7 @@
     "@hazae41/keccak256": "^2.0.4",
     "@hazae41/labase": "^1.1.4",
     "@hazae41/latrine": "^2.1.8",
-    "@hazae41/modal": "^1.0.2",
+    "@hazae41/modal": "^1.0.3",
     "@hazae41/pendule": "^1.0.4",
     "@hazae41/react-client-context": "^1.0.2",
     "@hazae41/react-close-context": "^1.0.5",

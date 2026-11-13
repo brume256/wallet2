@@ -1,7 +1,6 @@
 // deno-lint-ignore-file no-window
 
 import { Errors } from "@/libs/errors/mod.ts";
-import { useAutoFocus } from "@/libs/focus/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
 import { Nullable } from "@/libs/nullable/mod.ts";
@@ -865,10 +864,10 @@ function UserLoginPage(props: { user: UserData } & { login(session: SessionData)
           autoComplete="off"
           type={flipped ? "text" : "password"}
           placeholder={Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
-          value={$pass}
           onChange={e => setPass(e.currentTarget.value)}
+          value={$pass}
           onKeyDown={onKeyDown}
-          ref={useAutoFocus()} />
+          autoFocus />
         <div className="flex items-center gap-2">
           <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
             type="button"

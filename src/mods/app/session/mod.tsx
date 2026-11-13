@@ -1,5 +1,4 @@
 import { Errors } from "@/libs/errors/mod.ts";
-import { useAutoFocus } from "@/libs/focus/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getEntryType, getRecycleBinOrNull } from "@/libs/kdbx/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
@@ -216,8 +215,8 @@ export function SessionPage() {
             autoComplete="off"
             placeholder={Lang.match({ en: "Search", zh: "搜索", hi: "खोज", es: "Buscar", ar: "بحث", fr: "Rechercher", de: "Suche", ru: "Поиск", pt: "Pesquisar", ja: "検索", pa: "ਖੋਜ", bn: "অনুসন্ধান", id: "Cari", ur: "تلاش کریں", ms: "Cari", it: "Cerca", tr: "Ara", ta: "தேடு", te: "శోధించండి", ko: "검색", vi: "Tìm kiếm", pl: "Szukaj", ro: "Caută", nl: "Zoeken", el: "Αναζήτηση", th: "ค้นหา", cs: "Hledat", hu: "Keresés", sv: "Sökning", da: "Søg" })}
             onChange={e => setSearch(e.target.value)}
-            ref={useAutoFocus()}
-            value={search || ""} />
+            value={search || ""}
+            autoFocus />
         </div>
       </div>
     </div>
