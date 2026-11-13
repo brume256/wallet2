@@ -164,8 +164,6 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
   const respond = useCallback(async (url: string, signal = new AbortController().signal): Promise<Nullable<WcSessionData>> => {
     await using stack = new AsyncDisposableStack()
 
-    let success = false
-
     const cleaner = new AbortController()
     stack.defer(() => cleaner.abort())
 
@@ -175,7 +173,7 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
     const sticky = crypto.getRandomValues(new Uint8Array(32))
     const client = await IrnClient.open(WalletConnect.RELAY, sticky, "c687bd046ecc774e67a31a3bef2ebcc8")
 
-    stack.defer(() => success ? undefined : client.close())
+    stack.defer(() => client.close())
 
     const pairing = await WcPairing.from(client, WcPairingParams.parse(url))
 
@@ -205,9 +203,6 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
 
     await pairing.open()
 
-    stack.defer(async () => success ? undefined : await pairing.close())
-    stack.defer(async () => success ? undefined : await pairing.delete())
-
     const proposal = await proposed.promise
 
     responded.resolve(await pairing.respond(proposal))
@@ -216,13 +211,7 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
 
     const session = await upgraded.promise
 
-    await pairing.delete()
-    await pairing.close()
-
     await session.open()
-
-    stack.defer(async () => success ? undefined : await session.close())
-    stack.defer(async () => success ? undefined : await session.delete())
 
     const relay = session.channel.client.relay
 
@@ -232,11 +221,13 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
 
     const namespaces = {
       eip155: {
+        chains: chains.map(chainId => `eip155:${chainId}`),
         accounts: chains.map(chainId => `eip155:${chainId}:${ethereum}`),
         methods: ["personal_sign", "eth_signTypedData_v4", "eth_sendTransaction"],
-        events: [],
+        events: ["chainChanged", "accountsChanged"],
       },
       solana: {
+        chains: [`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`],
         accounts: [`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp:${solana}`],
         methods: ["solana_signMessage", "solana_signTransaction"],
         events: [],
@@ -249,15 +240,12 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
     const expiry = Math.floor(Date.now() / 1000) + (365 * 24 * 60 * 60)
 
     await session.settle({ relay, namespaces, requiredNamespaces, optionalNamespaces, pairingTopic: pairing.channel.topic, controller, expiry })
-    await session.close()
 
     const jwk = sticky.toBase64()
     const tpc = session.channel.topic
     const key = session.channel.key.toBase64()
 
     client.close()
-
-    success = true
 
     return { jwk, tpc, key }
   }, [seedphrase, subaccount])
