@@ -10,12 +10,12 @@ import { Readable, Unknown, Writable } from "@hazae41/binary";
 import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
 import { Clicker, Menu, MenuAnchor, MenuButton, OppositeAnchor, Spinner, WideOppositeButton } from "@hazae41/labase";
-import { PathBubble, PathWindow } from "@hazae41/modal";
-import { useCloseContext } from "@hazae41/react-close-context";
+import { PathBubble, PathWindow, Screen } from "@hazae41/modal";
+import { CloseProvider, useCloseContext } from "@hazae41/react-close-context";
 import { Result } from "@hazae41/result-and-option";
 import { webAuthnStorage } from "@hazae41/webauthnstorage";
 import React, { DragEvent, Fragment, KeyboardEvent, useCallback, useDeferredValue, useEffect, useMemo, useState } from "react";
-import { SessionData } from "../session/mod.tsx";
+import { SessionData, SessionPage, SessionProvider } from "../session/mod.tsx";
 
 React;
 
@@ -41,9 +41,7 @@ export function UserLoginButton() {
   </OppositeAnchor>
 }
 
-export function UserLoginMenu(props: { login(session: SessionData): void }) {
-  const { login } = props
-
+export function UserLoginMenu() {
   const store = useStoreContext().getOrThrow()
 
   const path = usePathContext().getOrThrow()
@@ -73,9 +71,7 @@ export function UserLoginMenu(props: { login(session: SessionData): void }) {
     <Menu>
       {users?.map(user =>
         <Fragment key={user.uuid}>
-          <UserItem
-            login={login}
-            user={user} />
+          <UserItem user={user} />
         </Fragment>)}
       <UserAddButton />
     </Menu>
@@ -669,8 +665,8 @@ function UserCreatePage() {
   </div>
 }
 
-function UserItem(props: { user: UserData } & { login(session: SessionData): void }) {
-  const { user, login } = props
+function UserItem(props: { user: UserData }) {
+  const { user } = props
 
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
@@ -681,7 +677,7 @@ function UserItem(props: { user: UserData } & { login(session: SessionData): voi
     <SubpathProvider value={hash}>
       {hash.url.pathname === `/${user.uuid}` &&
         <PathWindow>
-          <UserLoginPage user={user} login={login} />
+          <UserLoginPage user={user} />
         </PathWindow>}
       {hash.url.pathname === `/${user.uuid}/+` &&
         <PathBubble>
@@ -707,10 +703,21 @@ function UserItem(props: { user: UserData } & { login(session: SessionData): voi
   </Fragment>
 }
 
-function UserLoginPage(props: { user: UserData } & { login(session: SessionData): void }) {
-  const { user, login } = props
+function UserLoginPage(props: { user: UserData }) {
+  const { user } = props
 
-  const close = useCloseContext().getOrThrow()
+  const path = usePathContext().getOrThrow()
+  const hash = useHashSubpath(path)
+
+  const [session, setSession] = useState<Nullable<SessionData>>()
+
+  const login = useCallback((session: SessionData) => {
+    setSession(session)
+  }, [])
+
+  const logout = useCallback(() => {
+    setSession(undefined)
+  }, [])
 
   const [flipped, setFlipped] = useState(false)
 
@@ -740,8 +747,8 @@ function UserLoginPage(props: { user: UserData } & { login(session: SessionData)
 
     login({ user, comp: composite, kdbx: decrypted })
 
-    close()
-  }).catch(Errors.display), [user, login, file1, pass, close])
+    setPass("")
+  }).catch(Errors.display), [user, login, file1, pass])
 
   const loadOrDisplay2 = useCallback(() => Promise.try(async () => {
     if (file2 == null)
@@ -757,8 +764,8 @@ function UserLoginPage(props: { user: UserData } & { login(session: SessionData)
 
     login({ user, comp: composite, kdbx: decrypted })
 
-    close()
-  }).catch(Errors.display), [user, login, file2, auth, close])
+    setPass("")
+  }).catch(Errors.display), [user, login, file2, auth])
 
   useEffect(() => {
     if (file1 == null)
@@ -793,8 +800,8 @@ function UserLoginPage(props: { user: UserData } & { login(session: SessionData)
 
     login({ user, comp: composite, kdbx: decrypted })
 
-    close()
-  }).catch(Errors.display), [user, login, pass, close])
+    setPass("")
+  }).catch(Errors.display), [user, login, pass])
 
   const openOrDisplay2 = useCallback((stored: Uint8Array<ArrayBuffer>) => Promise.try(async () => {
     if (user.auth == null)
@@ -815,8 +822,8 @@ function UserLoginPage(props: { user: UserData } & { login(session: SessionData)
 
     login({ user, comp: composite, kdbx: decrypted })
 
-    close()
-  }).catch(Errors.display), [user, login, auth, close])
+    setPass("")
+  }).catch(Errors.display), [user, login, auth])
 
   const onKeyDown = useCallback(async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== "Enter")
@@ -845,61 +852,73 @@ function UserLoginPage(props: { user: UserData } & { login(session: SessionData)
     await openOrDisplay2(await webAuthnStorage.get(user.auth) as Uint8Array<ArrayBuffer>)
   }, [user, openOrDisplay2, picker2])
 
-  return <div className="flex flex-col items-center justify-center grow p-6 py-24">
-    <div className="bg-default-contrast rounded-full p-4">
-      <Outline.UserIcon className="size-10" />
-    </div>
-    <div className="h-2" />
-    <h1 className="text-2xl font-medium">
-      {user.name}
-    </h1>
-    <div className="h-8" />
-    <form className="grow flex flex-col"
-      onSubmit={e => e.preventDefault()}>
-      <input className="hidden"
-        autoComplete="off"
-        name="username" />
-      <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="w-full focus-visible:outline-none"
+  return <Fragment>
+    <SubpathProvider value={hash}>
+      {session != null &&
+        <CloseProvider value={logout}>
+          <Screen>
+            <SessionProvider value={session}>
+              <SessionPage />
+            </SessionProvider>
+          </Screen>
+        </CloseProvider>}
+    </SubpathProvider>
+    <div className="flex flex-col items-center justify-center grow p-6 py-24">
+      <div className="bg-default-contrast rounded-full p-4">
+        <Outline.UserIcon className="size-10" />
+      </div>
+      <div className="h-2" />
+      <h1 className="text-2xl font-medium">
+        {user.name}
+      </h1>
+      <div className="h-8" />
+      <form className="grow flex flex-col"
+        onSubmit={e => e.preventDefault()}>
+        <input className="hidden"
           autoComplete="off"
-          type={flipped ? "text" : "password"}
-          placeholder={Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
-          onChange={e => setPass(e.currentTarget.value)}
-          value={$pass}
-          onKeyDown={onKeyDown}
-          autoFocus />
-        <div className="flex items-center gap-2">
-          <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-            type="button"
-            onClick={() => setFlipped(x => !x)}>
-            <Clicker>
-              {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            </Clicker>
-          </button>
-          {user.auth != null &&
+          name="username" />
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="w-full focus-visible:outline-none"
+            autoComplete="off"
+            type={flipped ? "text" : "password"}
+            placeholder={Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
+            onChange={e => setPass(e.currentTarget.value)}
+            value={$pass}
+            onKeyDown={onKeyDown}
+            autoFocus />
+          <div className="flex items-center gap-2">
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
-              onClick={onPassClick}>
+              onClick={() => setFlipped(x => !x)}>
               <Clicker>
-                <Outline.FingerPrintIcon className="size-5" />
+                {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
               </Clicker>
-            </button>}
+            </button>
+            {user.auth != null &&
+              <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
+                type="button"
+                onClick={onPassClick}>
+                <Clicker>
+                  <Outline.FingerPrintIcon className="size-5" />
+                </Clicker>
+              </button>}
+          </div>
         </div>
-      </div>
-      {user.fsfh == null &&
-        <input className="hidden"
-          type="file"
-          accept="application/octet-stream,.kdbx"
-          onChange={e => setFile1(e.currentTarget.files?.[0])}
-          ref={setPicker1} />}
-      {user.fsfh == null &&
-        <input className="hidden"
-          type="file"
-          accept="application/octet-stream,.kdbx"
-          onChange={e => setFile2(e.currentTarget.files?.[0])}
-          ref={setPicker2} />}
-    </form>
-  </div>
+        {user.fsfh == null &&
+          <input className="hidden"
+            type="file"
+            accept="application/octet-stream,.kdbx"
+            onChange={e => setFile1(e.currentTarget.files?.[0])}
+            ref={setPicker1} />}
+        {user.fsfh == null &&
+          <input className="hidden"
+            type="file"
+            accept="application/octet-stream,.kdbx"
+            onChange={e => setFile2(e.currentTarget.files?.[0])}
+            ref={setPicker2} />}
+      </form>
+    </div>
+  </Fragment>
 }
 
 function UserMenuButton(props: { user: UserData }) {

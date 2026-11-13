@@ -5,11 +5,9 @@ import { useStoreContext } from "@/libs/store/mod.tsx";
 import { version } from "@/libs/version/mod.ts";
 import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext } from "@hazae41/chemin";
 import { ContrastAnchor, WideContrastAnchor } from "@hazae41/labase";
-import { PathBubble, PathWindow, Screen } from "@hazae41/modal";
+import { PathBubble, PathWindow } from "@hazae41/modal";
 import { Client } from "@hazae41/react-client-context";
-import { CloseProvider } from "@hazae41/react-close-context";
 import React, { ChangeEvent, Fragment, useCallback, useEffect, useState } from "react";
-import { SessionData, SessionPage, SessionProvider } from "./session/mod.tsx";
 import { UserLoginButton, UserLoginMenu } from "./user/mod.tsx";
 
 React;
@@ -82,30 +80,12 @@ export function App() {
     maskOrThrow().catch(console.error)
   }, [maskOrThrow])
 
-  const [session, setSession] = useState<SessionData>()
-
-  const login = useCallback((session: SessionData) => {
-    setSession(session)
-  }, [])
-
-  const logout = useCallback(() => {
-    setSession(undefined)
-  }, [])
-
   return <Fragment>
     <Client>
       <SubpathProvider value={hash}>
-        {session != null &&
-          <CloseProvider value={logout}>
-            <Screen>
-              <SessionProvider value={session}>
-                <SessionPage />
-              </SessionProvider>
-            </Screen>
-          </CloseProvider>}
         {hash.url.pathname === "/login" &&
           <PathBubble>
-            <UserLoginMenu login={login} />
+            <UserLoginMenu />
           </PathBubble>}
         {hash.url.pathname === "/settings" &&
           <PathWindow>
