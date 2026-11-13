@@ -1,3 +1,4 @@
+import { After } from "@/libs/after/mod.tsx";
 import { Errors } from "@/libs/errors/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getEntryType, getRecycleBinOrNull } from "@/libs/kdbx/mod.ts";
@@ -105,32 +106,34 @@ export function SessionPage() {
   }, [close])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/+" &&
-        <PathBubble>
-          <SessionMenu logout={logout} />
-        </PathBubble>}
-      {hash.url.pathname === "/add" &&
-        <PathBubble>
-          <AccountAddMenu />
-        </PathBubble>}
-      {hash.url.pathname === "/add/password" &&
-        <PathWindow>
-          <PasswordAccountAddPage />
-        </PathWindow>}
-      {hash.url.pathname === "/add/keypair" &&
-        <PathWindow>
-          <KeypairAccountAddPage />
-        </PathWindow>}
-      {hash.url.pathname === "/add/crypto" &&
-        <PathWindow>
-          <CryptoAccountAddPage />
-        </PathWindow>}
-      {hash.url.pathname === "/add/card" &&
-        <PathWindow>
-          <CardAccountAddPage />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/+" &&
+          <PathBubble>
+            <SessionMenu logout={logout} />
+          </PathBubble>}
+        {hash.url.pathname === "/add" &&
+          <PathBubble>
+            <AccountAddMenu />
+          </PathBubble>}
+        {hash.url.pathname === "/add/password" &&
+          <PathWindow>
+            <PasswordAccountAddPage />
+          </PathWindow>}
+        {hash.url.pathname === "/add/keypair" &&
+          <PathWindow>
+            <KeypairAccountAddPage />
+          </PathWindow>}
+        {hash.url.pathname === "/add/crypto" &&
+          <PathWindow>
+            <CryptoAccountAddPage />
+          </PathWindow>}
+        {hash.url.pathname === "/add/card" &&
+          <PathWindow>
+            <CardAccountAddPage />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <div className="grow flex flex-col *:shrink-0 p-6 overflow-y-auto">
       <h1 className="text-xl font-medium">
         {Lang.match({ en: "Your accounts", zh: "你的账户", hi: "आपके खाते", es: "Tus cuentas", ar: "حساباتك", fr: "Vos comptes", de: "Deine Konten", ru: "Ваши аккаунты", pt: "Suas contas", ja: "あなたのアカウント", pa: "ਤੁਹਾਡੇ ਖਾਤੇ", bn: "আপনার অ্যাকাউন্টগুলি", id: "Akun Anda", ur: "آپ کے اکاؤنٹس", ms: "Akun Anda", it: "I tuoi account", tr: "Hesaplarınız", ta: "உங்கள் கணக்குகள்", te: "మీ ఖాతాలు", ko: "당신의 계정들", vi: "Tài khoản của bạn", pl: "Twoje konta", ro: "Conturile tale", nl: "Jouw accounts", el: "Οι λογαριασμοί σας", th: "บัญชีของคุณ", cs: "Vaše účty", hu: "Fiókjaid", sv: "Dina konton", da: "Dine konti" })}
@@ -246,16 +249,18 @@ function SessionMenu(props: { logout(): void }) {
   const hash = useHashSubpath(path)
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/add" &&
-        <PathBubble>
-          <AccountAddMenu />
-        </PathBubble>}
-      {hash.url.pathname === "/export" &&
-        <PathWindow>
-          <SessionExportPage />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/add" &&
+          <PathBubble>
+            <AccountAddMenu />
+          </PathBubble>}
+        {hash.url.pathname === "/export" &&
+          <PathWindow>
+            <SessionExportPage />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <Menu>
       <SessionExportAnchor />
       <MenuButton

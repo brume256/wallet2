@@ -1,3 +1,4 @@
+import { After } from "@/libs/after/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { useCopy } from "@/libs/copy/mod.ts";
 import { Errors } from "@/libs/errors/mod.ts";
@@ -152,12 +153,14 @@ export function CryptoAccountAddPage() {
   }, [seedphrase, valid])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/color" &&
-        <PathBubble>
-          <ColorMenu ok={setColor} />
-        </PathBubble>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/color" &&
+          <PathBubble>
+            <ColorMenu ok={setColor} />
+          </PathBubble>}
+      </SubpathProvider>
+    </After>
     <div className="flex flex-col grow p-6">
       <h1 className="text-xl font-medium">
         {Lang.match({ en: "Add crypto account", zh: "添加加密账户", hi: "क्रिप्टो खाता जोड़ें", es: "Agregar cuenta de cripto", ar: "إضافة حساب تشفير", fr: "Ajouter un compte crypto", de: "Krypto-Konto hinzufügen", ru: "Добавить крипто-аккаунт", pt: "Adicionar conta cripto", ja: "暗号通貨アカウントを追加", pa: "ਕ੍ਰਿਪਟੋ ਖਾਤਾ ਸ਼ਾਮਲ ਕਰੋ", bn: "ক্রিপ্টো অ্যাকাউন্ট যোগ করুন", id: "Tambahkan akun kripto", ur: "کرپٹو اکاؤنٹ شامل کریں", ms: "Tambahkan akun kripto", it: "Aggiungi account cripto", tr: "Kripto hesabı ekle", ta: "கிரிப்டோ கணக்கு சேர்க்கவும்", te: "క్రిప్టో ఖాతా జోడించండి", ko: "암호화폐 계정 추가", vi: "Thêm tài khoản crypto", pl: "Dodaj konto krypto", ro: "Adaugă cont crypto", nl: "Crypto-account toevoegen", el: "Προσθήκη λογαριασμού κρυπτογράφησης", th: "เพิ่มบัญชีคริปโต", cs: "Přidat krypto účet", hu: "Kripto fiók hozzáadása", sv: "Lägg till krypto-konto", da: "Tilføj krypto-konto" })}
@@ -289,12 +292,14 @@ export function CryptoAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
   const [index, setIndex] = useState(0)
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/+" &&
-        <PathBubble>
-          <CryptoAccountMenu $entry={$entry} close={close} />
-        </PathBubble>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/+" &&
+          <PathBubble>
+            <CryptoAccountMenu $entry={$entry} close={close} />
+          </PathBubble>}
+      </SubpathProvider>
+    </After>
     <div className="flex flex-col grow p-6">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-medium">
@@ -389,12 +394,14 @@ export function CryptoAccountMenu(props: { $entry: KDBX.Inner.KeePassFile.Entry 
   }, [session, $entry])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/export" &&
-        <PathWindow>
-          <CryptoAccountExportPage $entry={$entry} />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/export" &&
+          <PathWindow>
+            <CryptoAccountExportPage $entry={$entry} />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <Menu>
       <CryptoAccountExportMenuAnchor />
       {trashed === false && <AccountMenuTrashButton $entry={$entry} close={close} />}

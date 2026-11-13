@@ -1,3 +1,4 @@
+import { After } from "@/libs/after/mod.tsx";
 import { Errors } from "@/libs/errors/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { getEntryType } from "@/libs/kdbx/mod.ts";
@@ -57,28 +58,30 @@ export function AccountAnchor(props: { $entry: KDBX.Inner.KeePassFile.Entry }) {
   const coords = useLinkWithCoords(hash, `/account/${uuid}`)
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === `/account/${uuid}` &&
-        <PathWindow>
-          {(() => {
-            const type = getEntryType($entry)
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === `/account/${uuid}` &&
+          <PathWindow>
+            {(() => {
+              const type = getEntryType($entry)
 
-            if (type === "password")
-              return <PasswordAccountPage $entry={$entry} />
+              if (type === "password")
+                return <PasswordAccountPage $entry={$entry} />
 
-            if (type === "card")
-              return <CardAccountPage $entry={$entry} />
+              if (type === "card")
+                return <CardAccountPage $entry={$entry} />
 
-            if (type === "crypto")
-              return <CryptoAccountPage $entry={$entry} />
+              if (type === "crypto")
+                return <CryptoAccountPage $entry={$entry} />
 
-            if (type === "keypair")
-              return <KeypairAccountPage $entry={$entry} />
+              if (type === "keypair")
+                return <KeypairAccountPage $entry={$entry} />
 
-            return null
-          })()}
-        </PathWindow>}
-    </SubpathProvider>
+              return null
+            })()}
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <a className="@container w-[min(20rem,100%)] aspect-video overflow-hidden border-2 border-default-contrast rounded-xl bg-default text-default select-none hover:scale-105 focus-visible:outline-none focus-visible:scale-105 transition-transform
       data-[color=red]:bg-red-400 
       data-[color=orange]:bg-orange-400 
@@ -231,24 +234,26 @@ export function AccountAddMenu() {
   const hash = useHashSubpath(path)
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/password" &&
-        <PathWindow>
-          <PasswordAccountAddPage />
-        </PathWindow>}
-      {hash.url.pathname === "/keypair" &&
-        <PathWindow>
-          <KeypairAccountAddPage />
-        </PathWindow>}
-      {hash.url.pathname === "/crypto" &&
-        <PathWindow>
-          <CryptoAccountAddPage />
-        </PathWindow>}
-      {hash.url.pathname === "/card" &&
-        <PathWindow>
-          <CardAccountAddPage />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/password" &&
+          <PathWindow>
+            <PasswordAccountAddPage />
+          </PathWindow>}
+        {hash.url.pathname === "/keypair" &&
+          <PathWindow>
+            <KeypairAccountAddPage />
+          </PathWindow>}
+        {hash.url.pathname === "/crypto" &&
+          <PathWindow>
+            <CryptoAccountAddPage />
+          </PathWindow>}
+        {hash.url.pathname === "/card" &&
+          <PathWindow>
+            <CardAccountAddPage />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <Menu>
       <PasswordAccountAddMenuAnchor />
       <KeypairAccountAddMenuAnchor />

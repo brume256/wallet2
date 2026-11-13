@@ -1,5 +1,6 @@
 // deno-lint-ignore-file no-window
 
+import { After } from "@/libs/after/mod.tsx";
 import { Errors } from "@/libs/errors/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
@@ -62,12 +63,14 @@ export function UserLoginMenu() {
   }, [store])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/add" &&
-        <PathBubble>
-          <UserAddMenu />
-        </PathBubble>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/add" &&
+          <PathBubble>
+            <UserAddMenu />
+          </PathBubble>}
+      </SubpathProvider>
+    </After>
     <Menu>
       {users?.map(user =>
         <Fragment key={user.uuid}>
@@ -98,19 +101,21 @@ function UserAddMenu() {
   const hash = useHashSubpath(path)
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/import" &&
-        <PathWindow>
-          {"showOpenFilePicker" in window === true &&
-            <UserImportFsfhPage />}
-          {"showOpenFilePicker" in window === false &&
-            <UserImportFilePage />}
-        </PathWindow>}
-      {hash.url.pathname === "/create" &&
-        <PathWindow>
-          <UserCreatePage />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/import" &&
+          <PathWindow>
+            {"showOpenFilePicker" in window === true &&
+              <UserImportFsfhPage />}
+            {"showOpenFilePicker" in window === false &&
+              <UserImportFilePage />}
+          </PathWindow>}
+        {hash.url.pathname === "/create" &&
+          <PathWindow>
+            <UserCreatePage />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <Menu>
       <UserCreateButton />
       <UserImportButton />
@@ -674,16 +679,18 @@ function UserItem(props: { user: UserData }) {
   const coords = useLinkWithCoords(hash, `/${user.uuid}`)
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === `/${user.uuid}` &&
-        <PathWindow>
-          <UserLoginPage user={user} />
-        </PathWindow>}
-      {hash.url.pathname === `/${user.uuid}/+` &&
-        <PathBubble>
-          <UserMenu user={user} />
-        </PathBubble>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === `/${user.uuid}` &&
+          <PathWindow>
+            <UserLoginPage user={user} />
+          </PathWindow>}
+        {hash.url.pathname === `/${user.uuid}/+` &&
+          <PathBubble>
+            <UserMenu user={user} />
+          </PathBubble>}
+      </SubpathProvider>
+    </After>
     <div className="relative group flex-1 rounded-xl hover:bg-default-double-contrast has-focus-visible:bg-default-double-contrast">
       <a className="absolute inset-0 opacity-0 cursor-pointer"
         href={coords.abs.hash}
@@ -853,16 +860,18 @@ function UserLoginPage(props: { user: UserData }) {
   }, [user, openOrDisplay2, picker2])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {session != null &&
-        <CloseProvider value={logout}>
-          <Screen>
-            <SessionProvider value={session}>
-              <SessionPage />
-            </SessionProvider>
-          </Screen>
-        </CloseProvider>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {session != null &&
+          <CloseProvider value={logout}>
+            <Screen>
+              <SessionProvider value={session}>
+                <SessionPage />
+              </SessionProvider>
+            </Screen>
+          </CloseProvider>}
+      </SubpathProvider>
+    </After>
     <div className="flex flex-col items-center justify-center grow p-6 py-24">
       <div className="bg-default-contrast rounded-full p-4">
         <Outline.UserIcon className="size-10" />
@@ -946,15 +955,17 @@ function UserMenu(props: { user: UserData }) {
   const hash = useHashSubpath(path)
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/reimport" &&
-        <PathWindow>
-          {"showOpenFilePicker" in window === true &&
-            <UserReimportFsfhPage user={user} />}
-          {"showOpenFilePicker" in window === false &&
-            <UserReimportFilePage user={user} />}
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/reimport" &&
+          <PathWindow>
+            {"showOpenFilePicker" in window === true &&
+              <UserReimportFsfhPage user={user} />}
+            {"showOpenFilePicker" in window === false &&
+              <UserReimportFilePage user={user} />}
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <Menu>
       <UserReimportButton />
       <UserRemoveButton user={user} />

@@ -1,3 +1,4 @@
+import { After } from "@/libs/after/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { useCopy } from "@/libs/copy/mod.ts";
 import { Errors } from "@/libs/errors/mod.ts";
@@ -149,20 +150,22 @@ export function PasswordAccountAddPage() {
   }, [])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/color" &&
-        <PathBubble>
-          <ColorMenu ok={setColor} />
-        </PathBubble>}
-      {hash.url.pathname === "/password" &&
-        <PathBubble>
-          <PasswordMenu value={password} onChange={setPassword} />
-        </PathBubble>}
-      {hash.url.pathname === "/totp" &&
-        <PathWindow>
-          <ScanPage value={$totpseed} onChange={setTotpSeed} />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/color" &&
+          <PathBubble>
+            <ColorMenu ok={setColor} />
+          </PathBubble>}
+        {hash.url.pathname === "/password" &&
+          <PathBubble>
+            <PasswordMenu value={password} onChange={setPassword} />
+          </PathBubble>}
+        {hash.url.pathname === "/totp" &&
+          <PathWindow>
+            <ScanPage value={$totpseed} onChange={setTotpSeed} />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <div className="flex flex-col grow p-6">
       <h1 className="text-xl font-medium">
         {Lang.match({ en: "Add password account", zh: "添加密码账户", hi: "पासवर्ड खाता जोड़ें", es: "Agregar cuenta de contraseña", ar: "إضافة حساب كلمة المرور", fr: "Ajouter un compte de mot de passe", de: "Passwortkonto hinzufügen", ru: "Добавить пароль аккаунта", pt: "Adicionar conta de senha", ja: "パスワードアカウントを追加", pa: "ਪਾਸਵਰਡ ਖਾਤਾ ਸ਼ਾਮਲ ਕਰੋ", bn: "পাসওয়ার্ড অ্যাকাউন্ট যোগ করুন", id: "Tambahkan akun kata sandi", ur: "پاس ورڈ اکاؤنٹ شامل کریں", ms: "Tambah akun kata laluan", it: "Aggiungi account password", tr: "Parola hesabı ekle", ta: "கடவுச்சொல் கணக்கைச் சேர்க்கவும்", te: "పాస్వర్డ్ ఖాతాను జోడించండి", ko: "비밀번호 계정 추가하기", vi: "Thêm tài khoản mật khẩu", pl: "Dodaj konto hasła", ro: "Adăugați contul de parolă", nl: "Wachtwoordaccount toevoegen", el: "Προσθήκη λογαριασμού κωδικού πρόσβασης", th: "เพิ่มบัญชีรหัสผ่าน", cs: "Přidat heslo účtu", hu: "Jelszó fiók hozzáadása", sv: "Lägg till lösenordskonto", da: "Tilføj adgangskodekonto" })}
@@ -366,20 +369,22 @@ export function PasswordAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entr
   const copyTheTotpcode = useCopy(totpcode)
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/+" &&
-        <PathBubble>
-          <Menu>
-            {/* <WideNakedMenuButton>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/+" &&
+          <PathBubble>
+            <Menu>
+              {/* <WideNakedMenuButton>
               <Outline.PencilIcon className="size-5" />
               Edit
             </WideNakedMenuButton> */}
-            {trashed === false && <AccountMenuTrashButton $entry={$entry} close={close} />}
-            {trashed === true && <AccountMenuUntrashButton $entry={$entry} close={close} />}
-            {trashed === true && <AccountMenuDeleteButton $entry={$entry} close={close} />}
-          </Menu>
-        </PathBubble>}
-    </SubpathProvider>
+              {trashed === false && <AccountMenuTrashButton $entry={$entry} close={close} />}
+              {trashed === true && <AccountMenuUntrashButton $entry={$entry} close={close} />}
+              {trashed === true && <AccountMenuDeleteButton $entry={$entry} close={close} />}
+            </Menu>
+          </PathBubble>}
+      </SubpathProvider>
+    </After>
     <div className="flex flex-col grow p-6">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-medium">

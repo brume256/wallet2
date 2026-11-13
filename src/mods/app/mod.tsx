@@ -1,3 +1,4 @@
+import { After } from "@/libs/after/mod.tsx";
 import { Outline } from "@/libs/heroicons/mod.ts";
 import { Lang } from "@/libs/lang/mod.ts";
 import { Nullable } from "@/libs/nullable/mod.ts";
@@ -6,7 +7,6 @@ import { version } from "@/libs/version/mod.ts";
 import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext } from "@hazae41/chemin";
 import { ContrastAnchor, WideContrastAnchor } from "@hazae41/labase";
 import { PathBubble, PathWindow } from "@hazae41/modal";
-import { Client } from "@hazae41/react-client-context";
 import React, { ChangeEvent, Fragment, useCallback, useEffect, useState } from "react";
 import { UserLoginButton, UserLoginMenu } from "./user/mod.tsx";
 
@@ -81,7 +81,7 @@ export function App() {
   }, [maskOrThrow])
 
   return <Fragment>
-    <Client>
+    <After delay={300}>
       <SubpathProvider value={hash}>
         {hash.url.pathname === "/login" &&
           <PathBubble>
@@ -96,7 +96,7 @@ export function App() {
             <InstallPage />
           </PathWindow>}
       </SubpathProvider>
-    </Client>
+    </After>
     <div className="h-full w-full p-safe flex flex-col items-center">
       <div className="p-6 flex flex-col items-center w-full max-w-[1000px] m-auto">
         <div className="h-[25dvh]" />
@@ -413,20 +413,22 @@ export function InstallPage() {
   const hash = useHashSubpath(path)
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/chrome" &&
-        <PathWindow>
-          <ChromeInstallPage />
-        </PathWindow>}
-      {hash.url.pathname === "/safari" &&
-        <PathWindow>
-          <SafariInstallPage />
-        </PathWindow>}
-      {hash.url.pathname === "/android" &&
-        <PathWindow>
-          <AndroidInstallPage />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/chrome" &&
+          <PathWindow>
+            <ChromeInstallPage />
+          </PathWindow>}
+        {hash.url.pathname === "/safari" &&
+          <PathWindow>
+            <SafariInstallPage />
+          </PathWindow>}
+        {hash.url.pathname === "/android" &&
+          <PathWindow>
+            <AndroidInstallPage />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <div className="flex flex-col grow p-6">
       <h1 className="text-xl font-medium">
         {Lang.match({ en: "Install", zh: "安装", hi: "इंस्टॉल करें", es: "Instalar", ar: "تثبيت", fr: "Installer", de: "Installieren", ru: "Установить", pt: "Instalar", ja: "インストール", pa: "ਇੰਸਟਾਲ ਕਰੋ", bn: "ইনস্টল করুন", id: "Pasang", ur: "انسٹال کریں", ms: "Pasang", it: "Installa", tr: "Yükle", ta: "நிறுவு", te: "ఇన్‌స్టాల్ చేయండి", ko: "설치하기", vi: "Cài đặt", pl: "Zainstaluj", ro: "Instalează", nl: "Installeren", el: "Εγκαταστήστε", th: "ติดตั้ง", cs: "Nainstalovat", hu: "Telepítés", sv: "Installera", da: "Installer" })}

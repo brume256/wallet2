@@ -1,3 +1,4 @@
+import { After } from "@/libs/after/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { useCopy } from "@/libs/copy/mod.ts";
 import { Errors } from "@/libs/errors/mod.ts";
@@ -159,20 +160,22 @@ export function KeypairAccountAddPage() {
   }, [pubkey])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/color" &&
-        <PathBubble>
-          <ColorMenu ok={setColor} />
-        </PathBubble>}
-      {hash.url.pathname === "/password" &&
-        <PathBubble>
-          <PasswordMenu value={password} onChange={setPassword} />
-        </PathBubble>}
-      {hash.url.pathname === "/totp" &&
-        <PathWindow>
-          <ScanPage value={$totpseed} onChange={setTotpSeed} />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/color" &&
+          <PathBubble>
+            <ColorMenu ok={setColor} />
+          </PathBubble>}
+        {hash.url.pathname === "/password" &&
+          <PathBubble>
+            <PasswordMenu value={password} onChange={setPassword} />
+          </PathBubble>}
+        {hash.url.pathname === "/totp" &&
+          <PathWindow>
+            <ScanPage value={$totpseed} onChange={setTotpSeed} />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <div className="flex flex-col grow p-6">
       <h1 className="text-xl font-medium">
         {Lang.match({ en: "Add keypair account", zh: "添加密钥对账户", hi: "की जोड़ी खाता जोड़ें", es: "Agregar cuenta de par de claves", ar: "إضافة حساب زوج المفاتيح", fr: "Ajouter un compte de paire de clés", de: "Schlüsselpaar-Konto hinzufügen", ru: "Добавить учетную запись ключевой пары", pt: "Adicionar conta de par de chaves", ja: "キーペアアカウントを追加", pa: "ਕੀ ਜੋੜ ਖਾਤਾ ਸ਼ਾਮਲ ਕਰੋ", bn: "কী জোড়া অ্যাকাউন্ট যোগ করুন", id: "Tambahkan akun pasangan kunci", ur: "جوڑی کلید اکاؤنٹ شامل کریں", ms: "Tambah akun pasangan kunci", it: "Aggiungi account coppia di chiavi", tr: "Anahtar çifti hesabı ekle", ta: "கீபேர் கணக்கு சேர்க்கவும்", te: "కీపేర్ ఖాతాను జోడించండి", ko: "키쌍 계정 추가", vi: "Thêm tài khoản cặp khóa", pl: "Dodaj konto pary kluczy", ro: "Adăugați contul pereche de chei", nl: "Sleutelpaar-account toevoegen", el: "Προσθήκη λογαριασμού ζεύγους κλειδιών", th: "เพิ่มบัญชีคู่กุญแจ", cs: "Přidat účet klíčového páru", hu: "Kulcspár fiók hozzáadása", sv: "Lägg till nyckelparskonto", da: "Tilføj nøglepar-konto" })}
@@ -473,20 +476,22 @@ export function KeypairAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry
   }).catch(Errors.display), [pubkey])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/+" &&
-        <PathBubble>
-          <Menu>
-            {/* <WideNakedMenuButton>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/+" &&
+          <PathBubble>
+            <Menu>
+              {/* <WideNakedMenuButton>
               <Outline.PencilIcon className="size-5" />
               Edit
             </WideNakedMenuButton> */}
-            {trashed === false && <AccountMenuTrashButton $entry={$entry} close={close} />}
-            {trashed === true && <AccountMenuUntrashButton $entry={$entry} close={close} />}
-            {trashed === true && <AccountMenuDeleteButton $entry={$entry} close={close} />}
-          </Menu>
-        </PathBubble>}
-    </SubpathProvider>
+              {trashed === false && <AccountMenuTrashButton $entry={$entry} close={close} />}
+              {trashed === true && <AccountMenuUntrashButton $entry={$entry} close={close} />}
+              {trashed === true && <AccountMenuDeleteButton $entry={$entry} close={close} />}
+            </Menu>
+          </PathBubble>}
+      </SubpathProvider>
+    </After>
     <div className="flex flex-col grow p-6">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-medium">

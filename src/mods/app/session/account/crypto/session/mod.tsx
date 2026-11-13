@@ -1,3 +1,4 @@
+import { After } from "@/libs/after/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { Errors } from "@/libs/errors/mod.ts";
 import { Outline } from "@/libs/heroicons/mod.ts";
@@ -169,12 +170,14 @@ export function CryptoSessionAddPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
   }, [url])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/url" &&
-        <PathWindow>
-          <ScanPage value={$url} onChange={setUrl} />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/url" &&
+          <PathWindow>
+            <ScanPage value={$url} onChange={setUrl} />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <div className="flex flex-col grow p-6">
       <h1 className="text-xl font-medium">
         {Lang.match({ en: "Add crypto session", zh: "添加加密会话", hi: "क्रिप्टो सत्र जोड़ें", es: "Agregar sesión de cripto", ar: "إضافة جلسة تشفير", fr: "Ajouter une session crypto", de: "Krypto-Sitzung hinzufügen", ru: "Добавить крипто-сессию", pt: "Adicionar sessão cripto", ja: "暗号通貨セッションを追加", pa: "ਕ੍ਰਿਪਟੋ ਸੈਸ਼ਨ ਸ਼ਾਮਲ ਕਰੋ", bn: "ক্রিপ্টো সেশন যোগ করুন", id: "Tambahkan sesi kripto", ur: "کرپٹو سیشن شامل کریں", ms: "Tambahkan sesi kripto", it: "Aggiungi sessione cripto", tr: "Kripto oturumu ekle", ta: "கிரிப்டோ அமர்வை சேர்க்கவும்", te: "క్రిప్టో సెషన్‌ను జోడించండి", ko: "암호화폐 세션 추가", vi: "Thêm phiên crypto", pl: "Dodaj sesję krypto", ro: "Adaugă sesiune crypto", nl: "Crypto-sessie toevoegen", el: "Προσθήκη συνεδρίας κρυπτογράφησης", th: "เพิ่มเซสชันคริปโต", cs: "Přidat krypto relaci", hu: "Kripto munkamenet hozzáadása", sv: "Lägg till krypto-session", da: "Tilføj krypto-session" })}
@@ -301,12 +304,14 @@ export function CryptoSessionAnchor(props: { $entry: KDBX.Inner.KeePassFile.Entr
   const coords = useLinkWithCoords(hash, `/session/${uuid}`)
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === `/session/${uuid}` &&
-        <PathWindow>
-          <CryptoSessionPage $entry={$entry} subaccount={subaccount} $subentry={$subentry} />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === `/session/${uuid}` &&
+          <PathWindow>
+            <CryptoSessionPage $entry={$entry} subaccount={subaccount} $subentry={$subentry} />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <a className="@container relative group w-[min(20rem,100%)] aspect-video rounded-xl bg-default text-default border-2 border-default-contrast select-none hover:scale-105 focus-visible:outline-none focus-visible:scale-105 transition-transform
       data-[color=red]:bg-red-400 
       data-[color=orange]:bg-orange-400 
@@ -490,12 +495,14 @@ export function CryptoSessionPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
   }, [session])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/+" &&
-        <PathBubble>
-          <CryptoSessionMenu $entry={$entry} subaccount={subaccount} $subentry={$subentry} session={session} close={close} />
-        </PathBubble>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/+" &&
+          <PathBubble>
+            <CryptoSessionMenu $entry={$entry} subaccount={subaccount} $subentry={$subentry} session={session} close={close} />
+          </PathBubble>}
+      </SubpathProvider>
+    </After>
     <div className="flex flex-col grow p-6">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-medium">

@@ -1,3 +1,4 @@
+import { After } from "@/libs/after/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { chainlist, SmallChainData } from "@/libs/chainlist/mod.ts";
 import { useCopy } from "@/libs/copy/mod.ts";
@@ -79,12 +80,14 @@ export function CryptoRequestAnchor(props: { index: number } & { $entry: KDBX.In
   }, [request])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === `/request/${index}` &&
-        <PathWindow>
-          <CryptoRequestPage $entry={$entry} subaccount={subaccount} $subentry={$subentry} request={request} />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === `/request/${index}` &&
+          <PathWindow>
+            <CryptoRequestPage $entry={$entry} subaccount={subaccount} $subentry={$subentry} request={request} />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <a className="@container relative group w-[min(20rem,100%)] aspect-video rounded-xl bg-default text-default border-2 border-default-contrast select-none hover:scale-105 focus-visible:outline-none focus-visible:scale-105 transition-transform
       data-[color=red]:bg-red-400 
       data-[color=orange]:bg-orange-400 

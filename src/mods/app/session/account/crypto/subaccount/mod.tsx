@@ -1,3 +1,4 @@
+import { After } from "@/libs/after/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { chainlist } from "@/libs/chainlist/mod.ts";
 import { useCopy } from "@/libs/copy/mod.ts";
@@ -48,12 +49,14 @@ export function CryptoSubaccountAnchor(props: { $entry: KDBX.Inner.KeePassFile.E
   }, [$entry])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === `/subaccount/${index}` &&
-        <PathWindow>
-          <CryptoSubaccountPage $entry={$entry} subaccount={index} />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === `/subaccount/${index}` &&
+          <PathWindow>
+            <CryptoSubaccountPage $entry={$entry} subaccount={index} />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <a className="@container relative group w-[min(20rem,100%)] aspect-video rounded-xl bg-default text-default border-2 border-default-contrast select-none hover:scale-105 focus-visible:outline-none focus-visible:scale-105 transition-transform
       data-[color=red]:bg-red-400 
       data-[color=orange]:bg-orange-400 
@@ -260,16 +263,18 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
   }, [seedphrase, subaccount])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/+" &&
-        <PathBubble>
-          <CryptoSubaccountMenu $entry={$entry} subaccount={subaccount} />
-        </PathBubble>}
-      {hash.url.pathname === "/session" &&
-        <PathWindow>
-          <CryptoSessionAddPage $entry={$entry} subaccount={subaccount} respond={respond} />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/+" &&
+          <PathBubble>
+            <CryptoSubaccountMenu $entry={$entry} subaccount={subaccount} />
+          </PathBubble>}
+        {hash.url.pathname === "/session" &&
+          <PathWindow>
+            <CryptoSessionAddPage $entry={$entry} subaccount={subaccount} respond={respond} />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <div className="flex flex-col grow p-6">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-medium">
@@ -326,16 +331,18 @@ export function CryptoSubaccountMenu(props: { $entry: KDBX.Inner.KeePassFile.Ent
   const hash = useHashSubpath(path)
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/address" &&
-        <PathWindow>
-          <CryptoSubaccountAddressPage $entry={$entry} subaccount={subaccount} />
-        </PathWindow>}
-      {hash.url.pathname === "/export" &&
-        <PathWindow>
-          <CryptoSubaccountExportPage $entry={$entry} subaccount={subaccount} />
-        </PathWindow>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/address" &&
+          <PathWindow>
+            <CryptoSubaccountAddressPage $entry={$entry} subaccount={subaccount} />
+          </PathWindow>}
+        {hash.url.pathname === "/export" &&
+          <PathWindow>
+            <CryptoSubaccountExportPage $entry={$entry} subaccount={subaccount} />
+          </PathWindow>}
+      </SubpathProvider>
+    </After>
     <Menu>
       <CryptoSubaccountAddressMenuAnchor />
       <CryptoSubaccountExportMenuAnchor />

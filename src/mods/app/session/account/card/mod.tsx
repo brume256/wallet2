@@ -1,3 +1,4 @@
+import { After } from "@/libs/after/mod.tsx";
 import { FlipCard } from "@/libs/card/mod.tsx";
 import { useCopy } from "@/libs/copy/mod.ts";
 import { Errors } from "@/libs/errors/mod.ts";
@@ -154,12 +155,14 @@ export function CardAccountAddPage() {
   }, [num])
 
   return <Fragment>
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/color" &&
-        <PathBubble>
-          <ColorMenu ok={setColor} />
-        </PathBubble>}
-    </SubpathProvider>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/color" &&
+          <PathBubble>
+            <ColorMenu ok={setColor} />
+          </PathBubble>}
+      </SubpathProvider>
+    </After>
     <div className="flex flex-col grow p-6">
       <h1 className="text-xl font-medium">
         {Lang.match({ en: "Add card account", zh: "添加卡片账户", hi: "कार्ड खाता जोड़ें", es: "Agregar cuenta de tarjeta", ar: "إضافة حساب بطاقة", fr: "Ajouter un compte de carte", de: "Kartenkonto hinzufügen", ru: "Добавить карточный счет", pt: "Adicionar conta de cartão", ja: "カードアカウントを追加", pa: "ਕਾਰਡ ਖਾਤਾ ਸ਼ਾਮਲ ਕਰੋ", bn: "কার্ড অ্যাকাউন্ট যোগ করুন", id: "Tambahkan akun kartu", ur: "کارڈ اکاؤنٹ شامل کریں", ms: "Tambah akun kartu", it: "Aggiungi account carta", tr: "Kart hesabı ekle", ta: "கார்டு கணக்கைச் சேர்க்கவும்", te: "కార్డు ఖాతాను జోడించండి", ko: "카드 계정 추가", vi: "Thêm tài khoản thẻ", pl: "Dodaj konto karty", ro: "Adăugați contul cardului", nl: "Kaartaccount toevoegen", el: "Προσθήκη λογαριασμού κάρτας", th: "เพิ่มบัญชีบัตรเครดิตของคุณ", cs: "Přidat účet karty.", hu: "Kártya fiók hozzáadása.", sv: "Lägg till kortkonto.", da: "Tilføj kortkonto." })}
@@ -395,20 +398,22 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
   const copyThePin = useCopy(pin)
 
   return <div className="flex flex-col grow p-6">
-    <SubpathProvider value={hash}>
-      {hash.url.pathname === "/+" &&
-        <PathBubble>
-          <Menu>
-            {/* <WideNakedMenuButton>
+    <After delay={300}>
+      <SubpathProvider value={hash}>
+        {hash.url.pathname === "/+" &&
+          <PathBubble>
+            <Menu>
+              {/* <WideNakedMenuButton>
               <Outline.PencilIcon className="size-5" />
               Edit
             </WideNakedMenuButton> */}
-            {trashed === false && <AccountMenuTrashButton $entry={$entry} close={close} />}
-            {trashed === true && <AccountMenuUntrashButton $entry={$entry} close={close} />}
-            {trashed === true && <AccountMenuDeleteButton $entry={$entry} close={close} />}
-          </Menu>
-        </PathBubble>}
-    </SubpathProvider>
+              {trashed === false && <AccountMenuTrashButton $entry={$entry} close={close} />}
+              {trashed === true && <AccountMenuUntrashButton $entry={$entry} close={close} />}
+              {trashed === true && <AccountMenuDeleteButton $entry={$entry} close={close} />}
+            </Menu>
+          </PathBubble>}
+      </SubpathProvider>
+    </After>
     <div className="flex items-center justify-between">
       <h1 className="text-xl font-medium">
         {Lang.match({ en: "Card account", zh: "卡片账户", hi: "कार्ड खाता", es: "Cuenta de tarjeta", ar: "حساب البطاقة", fr: "Compte de carte", de: "Kartenkonto", ru: "Карта аккаунта", pt: "Conta do cartão", ja: "カードアカウント", pa: "ਕਾਰਡ ਖਾਤਾ", bn: "কার্ড অ্যাকাউন্ট", id: "Akun kartu", ur: "کارڈ اکاؤنٹ", ms: "Akun kartu", it: "Account carta", tr: "Kart hesabı", ta: "கார்டு கணக்கு", te: "కార్డు ఖాతా", ko: "카드 계정", vi: "Tài khoản thẻ", pl: "Konto karty", ro: "Cont de card", nl: "Kaartaccount", el: "Λογαριασμός κάρτας", th: "บัญชีบัตรเครดิต", cs: "Kreditní karta účet", hu: "Kártya fiók", sv: "Kortkonto", da: "Kortkonto" })}
