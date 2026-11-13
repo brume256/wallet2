@@ -207,75 +207,80 @@ function UserImportFilePage() {
     <h1 className="text-xl font-medium">
       {Lang.match({ en: "Import user", zh: "导入用户", hi: "उपयोगकर्ता आयात करें", es: "Importar usuario", ar: "استيراد مستخدم", fr: "Importer un utilisateur", de: "Benutzer importieren", ru: "Импортировать пользователя", pt: "Importar usuário", ja: "ユーザーをインポート", pa: "ਉਪਭੋਗਤਾ ਆਯਾਤ ਕਰੋ", bn: "ব্যবহারকারী আমদানি করুন", id: "Impor pengguna", ur: "صارف درآمد کریں", ms: "Impor pengguna", it: "Importa utente", tr: "Kullanıcı içe aktar", ta: "பயனரை இறக்குமதி செய்யவும்", te: "వినియోగదారుని దిగుమతి చేయండి", ko: "사용자 가져오기", vi: "Nhập người dùng", pl: "Importuj użytkownika", ro: "Importă utilizator", nl: "Importeer gebruiker", el: "Εισαγωγή χρήστη", th: "นำเข้าผู้ใช้", cs: "Importovat uživatele", hu: "Felhasználó importálása", sv: "Importera användare", da: "Importer bruger" })}
     </h1>
-    <form className="grow flex flex-col"
-      onSubmit={e => e.preventDefault()}>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Will be used locally for display purposes.", zh: "将被本地使用，仅用于显示。", hi: "स्थानीय रूप से प्रदर्शन उद्देश्यों के लिए उपयोग किया जाएगा।", es: "Se usará localmente para fines de visualización.", ar: "سيتم استخدامه محليًا لأغراض العرض.", fr: "Sera utilisé localement à des fins d'affichage.", de: "Wird lokal für Anzeigezwecke verwendet.", ru: "Будет использоваться локально для отображения.", pt: "Será usado localmente para fins de exibição.", ja: "表示目的でローカルに使用されます。", pa: "ਡਿਸਪਲੇਅ ਦੇ ਉਦੇਸ਼ਾਂ ਲਈ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਵਰਤਿਆ ਜਾਵੇਗਾ।", bn: "প্রদর্শন উদ্দেশ্যে স্থানীয়ভাবে ব্যবহৃত হবে।", id: "Akan digunakan secara lokal untuk tujuan tampilan.", ur: "ڈسپلے کے مقاصد کے لیے مقامی طور پر استعمال کیا جائے گا۔", ms: "Akan digunakan secara lokal untuk tujuan tampilan.", it: "Sarà usato localmente per scopi di visualizzazione.", tr: "Görüntüleme amaçları için yerel olarak kullanılacaktır.", ta: "காட்சிப்படுத்தும் நோக்கங்களுக்காக உள்ளூரில் பயன்படுத்தப்படும்.", te: "ప్రదర్శన లక్ష్యాల కోసం స్థానికంగా ఉపయోగించబడుతుంది.", ko: "디스플레이 목적으로 로컬에서 사용됩니다.", vi: "Sẽ được sử dụng cục bộ cho mục đích hiển thị.", pl: "Będzie używany lokalnie do celów wyświetlania.", ro: "Va fi folosit local pentru scopuri de afișare.", nl: "Zal lokaal worden gebruikt voor weergavedoeleinden.", el: "Θα χρησιμοποιείται τοπικά για σκοπούς εμφάνισης.", th: "จะใช้ในพื้นที่สำหรับวัตถุประสงค์ในการแสดงผล", cs: "Bude používán lokálně pro zobrazení.", hu: "Helyileg lesz használva megjelenítési célokra.", sv: "Kommer att användas lokalt för visningsändamål.", da: "Vil blive brugt lokalt til visningsformål." })}
-      </div>
-      <div className="h-4" />
-      <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="w-full focus-visible:outline-none"
-          autoFocus
-          autoComplete="off"
-          placeholder="Satoshi"
-          value={$name}
-          onChange={e => setName(e.target.value)} />
-      </div>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "File", zh: "文件", hi: "फ़ाइल", es: "Archivo", ar: "ملف", fr: "Fichier", de: "Datei", ru: "Файл", pt: "Arquivo", ja: "ファイル", pa: "ਫਾਇਲ", bn: "ফাইল", id: "Berkas", ur: "فائل", ms: "Berkas", it: "File", tr: "Dosya", ta: "கோப்பு", te: "ఫైల్", ko: "파일", vi: "Tệp", pl: "Plik", ro: "Fișier", nl: "Bestand", el: "Αρχείο", th: "ไฟล์", cs: "Soubor", hu: "Fájl", sv: "Fil", da: "Fil" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Your existing KDBX file.", zh: "您现有的 KDBX 文件。", hi: "आपकी मौजूदा KDBX फ़ाइल।", es: "Su archivo KDBX existente.", ar: "ملف KDBX الحالي الخاص بك.", fr: "Votre fichier KDBX existant.", de: "Ihre vorhandene KDBX-Datei.", ru: "Ваш существующий файл KDBX.", pt: "Seu arquivo KDBX existente.", ja: "既存の KDBX ファイル。", pa: "ਤੁਹਾਡੀ ਮੌਜੂਦਾ KDBX ਫਾਇਲ।", bn: "আপনার বিদ্যমান KDBX ফাইল।", id: "File KDBX Anda yang ada.", ur: "آپ کی موجودہ KDBX فائل۔", ms: "File KDBX Anda yang ada.", it: "Il tuo file KDBX esistente.", tr: "Mevcut KDBX dosyanız.", ta: "உங்கள் தற்போதைய KDBX கோப்பு.", te: "మీ ప్రస్తుత KDBX ఫైల్.", ko: "기존 KDBX 파일입니다.", vi: "Tệp KDBX hiện có của bạn.", pl: "Twój istniejący plik KDBX.", ro: "Fișierul KDBX existent.", nl: "Uw bestaande KDBX-bestand.", el: "Το υπάρχον αρχείο KDBX σας.", th: "ไฟล์ KDBX ที่มีอยู่ของคุณ", cs: "Váš stávající soubor KDBX.", hu: "A meglévő KDBX fájlod.", sv: "Din befintliga KDBX-fil.", da: "Din eksisterende KDBX-fil." })}
-      </div>
-      <div className="h-4" />
-      <div className="relative bg-default-contrast rounded-xl has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="absolute inset-0 opacity-0 cursor-pointer"
-          type="file"
-          accept="application/octet-stream,.kdbx"
-          onChange={e => setFile(e.target.files?.item(0))} />
-        {file != null &&
-          <div className="po-2">
-            {file.name}
-          </div>}
-        {file == null &&
-          <div className="po-2">
-            {Lang.match({ en: "Pick or drop file here", zh: "在此处选择或拖放文件", hi: "यहां फ़ाइल चुनें या ड्रॉप करें", es: "Seleccione o suelte el archivo aquí", ar: "اختر أو اسقط الملف هنا", fr: "Choisissez ou déposez le fichier ici", de: "Datei hier auswählen oder ablegen", ru: "Выберите или перетащите файл сюда", pt: "Escolha ou solte o arquivo aqui", ja: "ここでファイルを選択またはドロップ", pa: "ਇੱਥੇ ਫਾਇਲ ਚੁਣੋ ਜਾਂ ਡਰੌਪ ਕਰੋ", bn: "এখানে ফাইল নির্বাচন করুন বা ড্রপ করুন", id: "Pilih atau jatuhkan file di sini", ur: "فائل یہاں منتخب کریں یا ڈراپ کریں", ms: "Pilih atau jatuhkan file di sini", it: "Scegli o trascina il file qui", tr: "Dosyayı buraya seçin veya bırakın", ta: "கோப்பை இங்கே தேர்ந்தெடுக்கவும் அல்லது விடவும்", te: "ఫైల్‌ను ఇక్కడ ఎంచుకోండి లేదా డ్రాప్ చేయండి", ko: "여기에 파일을 선택하거나 드롭하세요", vi: "Chọn hoặc thả tệp ở đây", pl: "Wybierz lub upuść plik tutaj", ro: "Alegeți sau aruncați fișierul aici", nl: "Kies of drop het bestand hier", el: "Επιλέξτε ή ρίξτε το αρχείο εδώ", th: "เลือกหรือวางไฟล์ที่นี่", cs: "Vyberte nebo přetáhněte soubor sem", hu: "Válassza ki vagy dobja ide a fájlt", sv: "Välj eller släpp filen här", da: "Vælg eller slip filen her" })}
-          </div>}
-      </div>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Your existing password to decrypt the file.", zh: "您现有的密码用于解密文件。", hi: "फ़ाइल को डिक्रिप्ट करने के लिए आपका मौजूदा पासवर्ड।", es: "Su contraseña existente para descifrar el archivo.", ar: "كلمة المرور الحالية الخاصة بك لفك تشفير الملف.", fr: "Votre mot de passe existant pour déchiffrer le fichier.", de: "Ihr vorhandenes Passwort zum Entschlüsseln der Datei.", ru: "Ваш существующий пароль для расшифровки файла.", pt: "Sua senha existente para descriptografar o arquivo.", ja: "ファイルを復号化するための既存のパスワード。", pa: "ਫਾਇਲ ਨੂੰ ਡੀਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਪਾਸਵਰਡ।", bn: "ফাইল ডিক্রিপ্ট করার জন্য আপনার বিদ্যমান পাসওয়ার্ড।", id: "Kata sandi Anda yang ada untuk mendekripsi file.", ur: "فائل کو ڈی کرپٹ کرنے کے لیے آپ کا موجودہ پاس ورڈ۔", ms: "Kata sandi Anda yang ada untuk mendekripsi file.", it: "La tua password esistente per decriptare il file.", tr: "Dosyayı şifre çözmek için mevcut parolanız.", ta: "கோப்பை குறியாக்கம்解除 செய்ய உங்கள் தற்போதைய கடவுச்சொல்.", te: "ఫైల్‌ను డీక్రిప్ట్ చేయడానికి మీ ప్రస్తుత పాస్వర్డ్.", ko: "파일을 복호화하기 위한 기존 비밀번호입니다.", vi: "Mật khẩu hiện có của bạn để giải mã tệp.", pl: "Twoje istniejące hasło do odszyfrowania pliku.", ro: "Parola existentă pentru decriptarea fișierului.", nl: "Uw bestaande wachtwoord om het bestand te ontsleutelen.", el: "Ο υπάρχων κωδικός πρόσβασής σας για την αποκρυπτογράφηση του αρχείου.", th: "รหัสผ่านที่มีอยู่ของคุณเพื่อถอดรหัสไฟล์", cs: "Váš stávající heslo pro dešifrování souboru.", hu: "A meglévő jelszavad a fájl de kódolásához.", sv: "Ditt befintliga lösenord för att dekryptera filen.", da: "Din eksisterende adgangskode til at dekryptere filen." })}
-      </div>
-      <div className="h-4" />
-      <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="w-full focus-visible:outline-none"
-          autoComplete="off"
-          type={flipped ? "text" : "password"}
-          value={$pass}
-          onChange={e => setPass(e.target.value)} />
-        <div className="flex items-center gap-2">
-          <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-            type="button"
-            onClick={() => setFlipped(x => !x)}>
-            <Clicker>
-              {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            </Clicker>
-          </button>
+    <form className="grow flex flex-col" onSubmit={e => e.preventDefault()}>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
         </div>
-      </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Will be used locally for display purposes.", zh: "将被本地使用，仅用于显示。", hi: "स्थानीय रूप से प्रदर्शन उद्देश्यों के लिए उपयोग किया जाएगा।", es: "Se usará localmente para fines de visualización.", ar: "سيتم استخدامه محليًا لأغراض العرض.", fr: "Sera utilisé localement à des fins d'affichage.", de: "Wird lokal für Anzeigezwecke verwendet.", ru: "Будет использоваться локально для отображения.", pt: "Será usado localmente para fins de exibição.", ja: "表示目的でローカルに使用されます。", pa: "ਡਿਸਪਲੇਅ ਦੇ ਉਦੇਸ਼ਾਂ ਲਈ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਵਰਤਿਆ ਜਾਵੇਗਾ।", bn: "প্রদর্শন উদ্দেশ্যে স্থানীয়ভাবে ব্যবহৃত হবে।", id: "Akan digunakan secara lokal untuk tujuan tampilan.", ur: "ڈسپلے کے مقاصد کے لیے مقامی طور پر استعمال کیا جائے گا۔", ms: "Akan digunakan secara lokal untuk tujuan tampilan.", it: "Sarà usato localmente per scopi di visualizzazione.", tr: "Görüntüleme amaçları için yerel olarak kullanılacaktır.", ta: "காட்சிப்படுத்தும் நோக்கங்களுக்காக உள்ளூரில் பயன்படுத்தப்படும்.", te: "ప్రదర్శన లక్ష్యాల కోసం స్థానికంగా ఉపయోగించబడుతుంది.", ko: "디스플레이 목적으로 로컬에서 사용됩니다.", vi: "Sẽ được sử dụng cục bộ cho mục đích hiển thị.", pl: "Będzie używany lokalnie do celów wyświetlania.", ro: "Va fi folosit local pentru scopuri de afișare.", nl: "Zal lokaal worden gebruikt voor weergavedoeleinden.", el: "Θα χρησιμοποιείται τοπικά για σκοπούς εμφάνισης.", th: "จะใช้ในพื้นที่สำหรับวัตถุประสงค์ในการแสดงผล", cs: "Bude používán lokálně pro zobrazení.", hu: "Helyileg lesz használva megjelenítési célokra.", sv: "Kommer att användas lokalt för visningsändamål.", da: "Vil blive brugt lokalt til visningsformål." })}
+        </div>
+        <div className="h-4" />
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="w-full focus-visible:outline-none"
+            autoFocus
+            autoComplete="off"
+            placeholder="Satoshi"
+            value={$name}
+            onChange={e => setName(e.target.value)} />
+        </div>
+      </label>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "File", zh: "文件", hi: "फ़ाइल", es: "Archivo", ar: "ملف", fr: "Fichier", de: "Datei", ru: "Файл", pt: "Arquivo", ja: "ファイル", pa: "ਫਾਇਲ", bn: "ফাইল", id: "Berkas", ur: "فائل", ms: "Berkas", it: "File", tr: "Dosya", ta: "கோப்பு", te: "ఫైల్", ko: "파일", vi: "Tệp", pl: "Plik", ro: "Fișier", nl: "Bestand", el: "Αρχείο", th: "ไฟล์", cs: "Soubor", hu: "Fájl", sv: "Fil", da: "Fil" })}
+        </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Your existing KDBX file.", zh: "您现有的 KDBX 文件。", hi: "आपकी मौजूदा KDBX फ़ाइल।", es: "Su archivo KDBX existente.", ar: "ملف KDBX الحالي الخاص بك.", fr: "Votre fichier KDBX existant.", de: "Ihre vorhandene KDBX-Datei.", ru: "Ваш существующий файл KDBX.", pt: "Seu arquivo KDBX existente.", ja: "既存の KDBX ファイル。", pa: "ਤੁਹਾਡੀ ਮੌਜੂਦਾ KDBX ਫਾਇਲ।", bn: "আপনার বিদ্যমান KDBX ফাইল।", id: "File KDBX Anda yang ada.", ur: "آپ کی موجودہ KDBX فائل۔", ms: "File KDBX Anda yang ada.", it: "Il tuo file KDBX esistente.", tr: "Mevcut KDBX dosyanız.", ta: "உங்கள் தற்போதைய KDBX கோப்பு.", te: "మీ ప్రస్తుత KDBX ఫైల్.", ko: "기존 KDBX 파일입니다.", vi: "Tệp KDBX hiện có của bạn.", pl: "Twój istniejący plik KDBX.", ro: "Fișierul KDBX existent.", nl: "Uw bestaande KDBX-bestand.", el: "Το υπάρχον αρχείο KDBX σας.", th: "ไฟล์ KDBX ที่มีอยู่ของคุณ", cs: "Váš stávající soubor KDBX.", hu: "A meglévő KDBX fájlod.", sv: "Din befintliga KDBX-fil.", da: "Din eksisterende KDBX-fil." })}
+        </div>
+        <div className="h-4" />
+        <div className="relative bg-default-contrast rounded-xl has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="absolute inset-0 opacity-0 cursor-pointer"
+            type="file"
+            accept="application/octet-stream,.kdbx"
+            onChange={e => setFile(e.target.files?.item(0))} />
+          {file != null &&
+            <div className="po-2">
+              {file.name}
+            </div>}
+          {file == null &&
+            <div className="po-2">
+              {Lang.match({ en: "Pick or drop file here", zh: "在此处选择或拖放文件", hi: "यहां फ़ाइल चुनें या ड्रॉप करें", es: "Seleccione o suelte el archivo aquí", ar: "اختر أو اسقط الملف هنا", fr: "Choisissez ou déposez le fichier ici", de: "Datei hier auswählen oder ablegen", ru: "Выберите или перетащите файл сюда", pt: "Escolha ou solte o arquivo aqui", ja: "ここでファイルを選択またはドロップ", pa: "ਇੱਥੇ ਫਾਇਲ ਚੁਣੋ ਜਾਂ ਡਰੌਪ ਕਰੋ", bn: "এখানে ফাইল নির্বাচন করুন বা ড্রপ করুন", id: "Pilih atau jatuhkan file di sini", ur: "فائل یہاں منتخب کریں یا ڈراپ کریں", ms: "Pilih atau jatuhkan file di sini", it: "Scegli o trascina il file qui", tr: "Dosyayı buraya seçin veya bırakın", ta: "கோப்பை இங்கே தேர்ந்தெடுக்கவும் அல்லது விடவும்", te: "ఫైల్‌ను ఇక్కడ ఎంచుకోండి లేదా డ్రాప్ చేయండి", ko: "여기에 파일을 선택하거나 드롭하세요", vi: "Chọn hoặc thả tệp ở đây", pl: "Wybierz lub upuść plik tutaj", ro: "Alegeți sau aruncați fișierul aici", nl: "Kies of drop het bestand hier", el: "Επιλέξτε ή ρίξτε το αρχείο εδώ", th: "เลือกหรือวางไฟล์ที่นี่", cs: "Vyberte nebo přetáhněte soubor sem", hu: "Válassza ki vagy dobja ide a fájlt", sv: "Välj eller släpp filen här", da: "Vælg eller slip filen her" })}
+            </div>}
+        </div>
+      </label>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
+        </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Your existing password to decrypt the file.", zh: "您现有的密码用于解密文件。", hi: "फ़ाइल को डिक्रिप्ट करने के लिए आपका मौजूदा पासवर्ड।", es: "Su contraseña existente para descifrar el archivo.", ar: "كلمة المرور الحالية الخاصة بك لفك تشفير الملف.", fr: "Votre mot de passe existant pour déchiffrer le fichier.", de: "Ihr vorhandenes Passwort zum Entschlüsseln der Datei.", ru: "Ваш существующий пароль для расшифровки файла.", pt: "Sua senha existente para descriptografar o arquivo.", ja: "ファイルを復号化するための既存のパスワード。", pa: "ਫਾਇਲ ਨੂੰ ਡੀਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਪਾਸਵਰਡ।", bn: "ফাইল ডিক্রিপ্ট করার জন্য আপনার বিদ্যমান পাসওয়ার্ড।", id: "Kata sandi Anda yang ada untuk mendekripsi file.", ur: "فائل کو ڈی کرپٹ کرنے کے لیے آپ کا موجودہ پاس ورڈ۔", ms: "Kata sandi Anda yang ada untuk mendekripsi file.", it: "La tua password esistente per decriptare il file.", tr: "Dosyayı şifre çözmek için mevcut parolanız.", ta: "கோப்பை குறியாக்கம்解除 செய்ய உங்கள் தற்போதைய கடவுச்சொல்.", te: "ఫైల్‌ను డీక్రిప్ట్ చేయడానికి మీ ప్రస్తుత పాస్వర్డ్.", ko: "파일을 복호화하기 위한 기존 비밀번호입니다.", vi: "Mật khẩu hiện có của bạn để giải mã tệp.", pl: "Twoje istniejące hasło do odszyfrowania pliku.", ro: "Parola existentă pentru decriptarea fișierului.", nl: "Uw bestaande wachtwoord om het bestand te ontsleutelen.", el: "Ο υπάρχων κωδικός πρόσβασής σας για την αποκρυπτογράφηση του αρχείου.", th: "รหัสผ่านที่มีอยู่ของคุณเพื่อถอดรหัสไฟล์", cs: "Váš stávající heslo pro dešifrování souboru.", hu: "A meglévő jelszavad a fájl de kódolásához.", sv: "Ditt befintliga lösenord för att dekryptera filen.", da: "Din eksisterende adgangskode til at dekryptere filen." })}
+        </div>
+        <div className="h-4" />
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="w-full focus-visible:outline-none"
+            autoComplete="off"
+            type={flipped ? "text" : "password"}
+            value={$pass}
+            onChange={e => setPass(e.target.value)} />
+          <div className="flex items-center gap-2">
+            <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
+              type="button"
+              onClick={() => setFlipped(x => !x)}>
+              <Clicker>
+                {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
+              </Clicker>
+            </button>
+          </div>
+        </div>
+      </label>
       <div className="h-8 grow" />
       <div className="flex items-center flex-wrap-reverse gap-2">
         <WideOppositeButton
           type="submit"
-          inert={loadOrDisplay.running || error != null}
+          disabled={loadOrDisplay.running || error != null}
           onClick={loadOrDisplay}>
           {loadOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
           {error != null ? error : Lang.match({ en: "Open", zh: "打开", hi: "खोलें", es: "Abrir", ar: "فتح", fr: "Ouvrir", de: "Öffnen", ru: "Открыть", pt: "Abrir", ja: "開く", pa: "ਖੋਲ੍ਹੋ", bn: "খুলুন", id: "Buka", ur: "کھولیں", ms: "Buka", it: "Apri", tr: "Aç", ta: "திறக்கவும்", te: "తెరవండి", ko: "열기", vi: "Mở", pl: "Otwórz", ro: "Deschideți", nl: "Openen", el: "Άνοιγμα", th: "เปิด", cs: "Otevřít", hu: "Megnyitás", sv: "Öppna", da: "Åbn" })}
@@ -364,77 +369,82 @@ function UserImportFsfhPage() {
     <h1 className="text-xl font-medium">
       {Lang.match({ en: "Import user", zh: "导入用户", hi: "उपयोगकर्ता आयात करें", es: "Importar usuario", ar: "استيراد مستخدم", fr: "Importer un utilisateur", de: "Benutzer importieren", ru: "Импортировать пользователя", pt: "Importar usuário", ja: "ユーザーをインポート", pa: "ਉਪਭੋਗਤਾ ਆਯਾਤ ਕਰੋ", bn: "ব্যবহারকারী আমদানি করুন", id: "Impor pengguna", ur: "صارف درآمد کریں", ms: "Impor pengguna", it: "Importa utente", tr: "Kullanıcı içe aktar", ta: "பயனரை இறக்குமதி செய்யவும்", te: "వినియోగదారుని దిగుమతి చేయండి", ko: "사용자 가져오기", vi: "Nhập người dùng", pl: "Importuj użytkownika", ro: "Importă utilizator", nl: "Importeer gebruiker", el: "Εισαγωγή χρήστη", th: "นำเข้าผู้ใช้", cs: "Importovat uživatele", hu: "Felhasználó importálása", sv: "Importera användare", da: "Importer bruger" })}
     </h1>
-    <form className="grow flex flex-col"
-      onSubmit={e => e.preventDefault()}>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Will be used locally for display purposes.", zh: "将被本地使用，仅用于显示。", hi: "स्थानीय रूप से प्रदर्शन उद्देश्यों के लिए उपयोग किया जाएगा।", es: "Se usará localmente para fines de visualización.", ar: "سيتم استخدامه محليًا لأغراض العرض.", fr: "Sera utilisé localement à des fins d'affichage.", de: "Wird lokal für Anzeigezwecke verwendet.", ru: "Будет использоваться локально для отображения.", pt: "Será usado localmente para fins de exibição.", ja: "表示目的でローカルに使用されます。", pa: "ਡਿਸਪਲੇਅ ਦੇ ਉਦੇਸ਼ਾਂ ਲਈ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਵਰਤਿਆ ਜਾਵੇਗਾ।", bn: "প্রদর্শন উদ্দেশ্যে স্থানীয়ভাবে ব্যবহৃত হবে।", id: "Akan digunakan secara lokal untuk tujuan tampilan.", ur: "ڈسپلے کے مقاصد کے لیے مقامی طور پر استعمال کیا جائے گا۔", ms: "Akan digunakan secara lokal untuk tujuan tampilan.", it: "Sarà usato localmente per scopi di visualizzazione.", tr: "Görüntüleme amaçları için yerel olarak kullanılacaktır.", ta: "காட்சிப்படுத்தும் நோக்கங்களுக்காக உள்ளூரில் பயன்படுத்தப்படும்.", te: "ప్రదర్శన లక్ష్యాల కోసం స్థానికంగా ఉపయోగించబడుతుంది.", ko: "디스플레이 목적으로 로컬에서 사용됩니다.", vi: "Sẽ được sử dụng cục bộ cho mục đích hiển thị.", pl: "Będzie używany lokalnie do celów wyświetlania.", ro: "Va fi folosit local pentru scopuri de afișare.", nl: "Zal lokaal worden gebruikt voor weergavedoeleinden.", el: "Θα χρησιμοποιείται τοπικά για σκοπούς εμφάνισης.", th: "จะใช้ในพื้นที่สำหรับวัตถุประสงค์ในการแสดงผล", cs: "Bude používán lokálně pro zobrazení.", hu: "Helyileg lesz használva megjelenítési célokra.", sv: "Kommer att användas lokalt för visningsändamål.", da: "Vil blive brugt lokalt til visningsformål." })}
-      </div>
-      <div className="h-4" />
-      <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="w-full focus-visible:outline-none"
-          autoFocus
-          autoComplete="off"
-          placeholder="Satoshi"
-          value={$name}
-          onChange={e => setName(e.target.value)} />
-      </div>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "File", zh: "文件", hi: "फ़ाइल", es: "Archivo", ar: "ملف", fr: "Fichier", de: "Datei", ru: "Файл", pt: "Arquivo", ja: "ファイル", pa: "ਫਾਇਲ", bn: "ফাইল", id: "Berkas", ur: "فائل", ms: "Berkas", it: "File", tr: "Dosya", ta: "கோப்பு", te: "ఫైల్", ko: "파일", vi: "Tệp", pl: "Plik", ro: "Fișier", nl: "Bestand", el: "Αρχείο", th: "ไฟล์", cs: "Soubor", hu: "Fájl", sv: "Fil", da: "Fil" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Your existing KDBX file.", zh: "您现有的 KDBX 文件。", hi: "आपकी मौजूदा KDBX फ़ाइल।", es: "Su archivo KDBX existente.", ar: "ملف KDBX الحالي الخاص بك.", fr: "Votre fichier KDBX existant.", de: "Ihre vorhandene KDBX-Datei.", ru: "Ваш существующий файл KDBX.", pt: "Seu arquivo KDBX existente.", ja: "既存の KDBX ファイル。", pa: "ਤੁਹਾਡੀ ਮੌਜੂਦਾ KDBX ਫਾਇਲ।", bn: "আপনার বিদ্যমান KDBX ফাইল।", id: "File KDBX Anda yang ada.", ur: "آپ کی موجودہ KDBX فائل۔", ms: "File KDBX Anda yang ada.", it: "Il tuo file KDBX esistente.", tr: "Mevcut KDBX dosyanız.", ta: "உங்கள் தற்போதைய KDBX கோப்பு.", te: "మీ ప్రస్తుత KDBX ఫైల్.", ko: "기존 KDBX 파일입니다.", vi: "Tệp KDBX hiện có của bạn.", pl: "Twój istniejący plik KDBX.", ro: "Fișierul KDBX existent.", nl: "Uw bestaande KDBX-bestand.", el: "Το υπάρχον αρχείο KDBX σας.", th: "ไฟล์ KDBX ที่มีอยู่ของคุณ", cs: "Váš stávající soubor KDBX.", hu: "A meglévő KDBX fájlod.", sv: "Din befintliga KDBX-fil.", da: "Din eksisterende KDBX-fil." })}
-      </div>
-      <div className="h-4" />
-      <div className="relative bg-default-contrast rounded-xl has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        {"showOpenFilePicker" in window === true &&
-          <button className="absolute inset-0 opacity-0 cursor-pointer"
-            type="button"
-            onClick={pickOrDisplay}
-            onDragOver={e => e.preventDefault()}
-            onDrop={dropOrDisplay} />}
-        {fsfh != null &&
-          <div className="po-2">
-            {fsfh.name}
-          </div>}
-        {fsfh == null &&
-          <div className="po-2">
-            {Lang.match({ en: "Pick or drop file here", zh: "在此处选择或拖放文件", hi: "यहां फ़ाइल चुनें या ड्रॉप करें", es: "Seleccione o suelte el archivo aquí", ar: "اختر أو اسقط الملف هنا", fr: "Choisissez ou déposez le fichier ici", de: "Datei hier auswählen oder ablegen", ru: "Выберите или перетащите файл сюда", pt: "Escolha ou solte o arquivo aqui", ja: "ここでファイルを選択またはドロップ", pa: "ਇੱਥੇ ਫਾਇਲ ਚੁਣੋ ਜਾਂ ਡਰੌਪ ਕਰੋ", bn: "এখানে ফাইল নির্বাচন করুন বা ড্রপ করুন", id: "Pilih atau jatuhkan file di sini", ur: "فائل یہاں منتخب کریں یا ڈراپ کریں", ms: "Pilih atau jatuhkan file di sini", it: "Scegli o trascina il file qui", tr: "Dosyayı buraya seçin veya bırakın", ta: "கோப்பை இங்கே தேர்ந்தெடுக்கவும் அல்லது விடவும்", te: "ఫైల్‌ను ఇక్కడ ఎంచుకోండి లేదా డ్రాప్ చేయండి", ko: "여기에 파일을 선택하거나 드롭하세요", vi: "Chọn hoặc thả tệp ở đây", pl: "Wybierz lub upuść plik tutaj", ro: "Alegeți sau aruncați fișierul aici", nl: "Kies of drop het bestand hier", el: "Επιλέξτε ή ρίξτε το αρχείο εδώ", th: "เลือกหรือวางไฟล์ที่นี่", cs: "Vyberte nebo přetáhněte soubor sem", hu: "Válassza ki vagy dobja ide a fájlt", sv: "Välj eller släpp filen här", da: "Vælg eller slip filen her" })}
-          </div>}
-      </div>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Your existing password to decrypt the file.", zh: "您现有的密码用于解密文件。", hi: "फ़ाइल को डिक्रिप्ट करने के लिए आपका मौजूदा पासवर्ड।", es: "Su contraseña existente para descifrar el archivo.", ar: "كلمة المرور الحالية الخاصة بك لفك تشفير الملف.", fr: "Votre mot de passe existant pour déchiffrer le fichier.", de: "Ihr vorhandenes Passwort zum Entschlüsseln der Datei.", ru: "Ваш существующий пароль для расшифровки файла.", pt: "Sua senha existente para descriptografar o arquivo.", ja: "ファイルを復号化するための既存のパスワード。", pa: "ਫਾਇਲ ਨੂੰ ਡੀਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਪਾਸਵਰਡ।", bn: "ফাইল ডিক্রিপ্ট করার জন্য আপনার বিদ্যমান পাসওয়ার্ড।", id: "Kata sandi Anda yang ada untuk mendekripsi file.", ur: "فائل کو ڈی کرپٹ کرنے کے لیے آپ کا موجودہ پاس ورڈ۔", ms: "Kata sandi Anda yang ada untuk mendekripsi file.", it: "La tua password esistente per decriptare il file.", tr: "Dosyayı şifre çözmek için mevcut parolanız.", ta: "கோப்பை குறியாக்கம்解除 செய்ய உங்கள் தற்போதைய கடவுச்சொல்.", te: "ఫైల్‌ను డీక్రిప్ట్ చేయడానికి మీ ప్రస్తుత పాస్వర్డ్.", ko: "파일을 복호화하기 위한 기존 비밀번호입니다.", vi: "Mật khẩu hiện có của bạn để giải mã tệp.", pl: "Twoje istniejące hasło do odszyfrowania pliku.", ro: "Parola existentă pentru decriptarea fișierului.", nl: "Uw bestaande wachtwoord om het bestand te ontsleutelen.", el: "Ο υπάρχων κωδικός πρόσβασής σας για την αποκρυπτογράφηση του αρχείου.", th: "รหัสผ่านที่มีอยู่ของคุณเพื่อถอดรหัสไฟล์", cs: "Váš stávající heslo pro dešifrování souboru.", hu: "A meglévő jelszavad a fájl de kódolásához.", sv: "Ditt befintliga lösenord för att dekryptera filen.", da: "Din eksisterende adgangskode til at dekryptere filen." })}
-      </div>
-      <div className="h-4" />
-      <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="w-full focus-visible:outline-none"
-          autoComplete="off"
-          type={flipped ? "text" : "password"}
-          value={$pass}
-          onChange={e => setPass(e.target.value)} />
-        <div className="flex items-center gap-2">
-          <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-            type="button"
-            onClick={() => setFlipped(x => !x)}>
-            <Clicker>
-              {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            </Clicker>
-          </button>
+    <form className="grow flex flex-col" onSubmit={e => e.preventDefault()}>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
         </div>
-      </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Will be used locally for display purposes.", zh: "将被本地使用，仅用于显示。", hi: "स्थानीय रूप से प्रदर्शन उद्देश्यों के लिए उपयोग किया जाएगा।", es: "Se usará localmente para fines de visualización.", ar: "سيتم استخدامه محليًا لأغراض العرض.", fr: "Sera utilisé localement à des fins d'affichage.", de: "Wird lokal für Anzeigezwecke verwendet.", ru: "Будет использоваться локально для отображения.", pt: "Será usado localmente para fins de exibição.", ja: "表示目的でローカルに使用されます。", pa: "ਡਿਸਪਲੇਅ ਦੇ ਉਦੇਸ਼ਾਂ ਲਈ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਵਰਤਿਆ ਜਾਵੇਗਾ।", bn: "প্রদর্শন উদ্দেশ্যে স্থানীয়ভাবে ব্যবহৃত হবে।", id: "Akan digunakan secara lokal untuk tujuan tampilan.", ur: "ڈسپلے کے مقاصد کے لیے مقامی طور پر استعمال کیا جائے گا۔", ms: "Akan digunakan secara lokal untuk tujuan tampilan.", it: "Sarà usato localmente per scopi di visualizzazione.", tr: "Görüntüleme amaçları için yerel olarak kullanılacaktır.", ta: "காட்சிப்படுத்தும் நோக்கங்களுக்காக உள்ளூரில் பயன்படுத்தப்படும்.", te: "ప్రదర్శన లక్ష్యాల కోసం స్థానికంగా ఉపయోగించబడుతుంది.", ko: "디스플레이 목적으로 로컬에서 사용됩니다.", vi: "Sẽ được sử dụng cục bộ cho mục đích hiển thị.", pl: "Będzie używany lokalnie do celów wyświetlania.", ro: "Va fi folosit local pentru scopuri de afișare.", nl: "Zal lokaal worden gebruikt voor weergavedoeleinden.", el: "Θα χρησιμοποιείται τοπικά για σκοπούς εμφάνισης.", th: "จะใช้ในพื้นที่สำหรับวัตถุประสงค์ในการแสดงผล", cs: "Bude používán lokálně pro zobrazení.", hu: "Helyileg lesz használva megjelenítési célokra.", sv: "Kommer att användas lokalt för visningsändamål.", da: "Vil blive brugt lokalt til visningsformål." })}
+        </div>
+        <div className="h-4" />
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="w-full focus-visible:outline-none"
+            autoFocus
+            autoComplete="off"
+            placeholder="Satoshi"
+            value={$name}
+            onChange={e => setName(e.target.value)} />
+        </div>
+      </label>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "File", zh: "文件", hi: "फ़ाइल", es: "Archivo", ar: "ملف", fr: "Fichier", de: "Datei", ru: "Файл", pt: "Arquivo", ja: "ファイル", pa: "ਫਾਇਲ", bn: "ফাইল", id: "Berkas", ur: "فائل", ms: "Berkas", it: "File", tr: "Dosya", ta: "கோப்பு", te: "ఫైల్", ko: "파일", vi: "Tệp", pl: "Plik", ro: "Fișier", nl: "Bestand", el: "Αρχείο", th: "ไฟล์", cs: "Soubor", hu: "Fájl", sv: "Fil", da: "Fil" })}
+        </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Your existing KDBX file.", zh: "您现有的 KDBX 文件。", hi: "आपकी मौजूदा KDBX फ़ाइल।", es: "Su archivo KDBX existente.", ar: "ملف KDBX الحالي الخاص بك.", fr: "Votre fichier KDBX existant.", de: "Ihre vorhandene KDBX-Datei.", ru: "Ваш существующий файл KDBX.", pt: "Seu arquivo KDBX existente.", ja: "既存の KDBX ファイル。", pa: "ਤੁਹਾਡੀ ਮੌਜੂਦਾ KDBX ਫਾਇਲ।", bn: "আপনার বিদ্যমান KDBX ফাইল।", id: "File KDBX Anda yang ada.", ur: "آپ کی موجودہ KDBX فائل۔", ms: "File KDBX Anda yang ada.", it: "Il tuo file KDBX esistente.", tr: "Mevcut KDBX dosyanız.", ta: "உங்கள் தற்போதைய KDBX கோப்பு.", te: "మీ ప్రస్తుత KDBX ఫైల్.", ko: "기존 KDBX 파일입니다.", vi: "Tệp KDBX hiện có của bạn.", pl: "Twój istniejący plik KDBX.", ro: "Fișierul KDBX existent.", nl: "Uw bestaande KDBX-bestand.", el: "Το υπάρχον αρχείο KDBX σας.", th: "ไฟล์ KDBX ที่มีอยู่ของคุณ", cs: "Váš stávající soubor KDBX.", hu: "A meglévő KDBX fájlod.", sv: "Din befintliga KDBX-fil.", da: "Din eksisterende KDBX-fil." })}
+        </div>
+        <div className="h-4" />
+        <div className="relative bg-default-contrast rounded-xl has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          {"showOpenFilePicker" in window === true &&
+            <button className="absolute inset-0 opacity-0 cursor-pointer"
+              type="button"
+              onClick={pickOrDisplay}
+              onDragOver={e => e.preventDefault()}
+              onDrop={dropOrDisplay} />}
+          {fsfh != null &&
+            <div className="po-2">
+              {fsfh.name}
+            </div>}
+          {fsfh == null &&
+            <div className="po-2">
+              {Lang.match({ en: "Pick or drop file here", zh: "在此处选择或拖放文件", hi: "यहां फ़ाइल चुनें या ड्रॉप करें", es: "Seleccione o suelte el archivo aquí", ar: "اختر أو اسقط الملف هنا", fr: "Choisissez ou déposez le fichier ici", de: "Datei hier auswählen oder ablegen", ru: "Выберите или перетащите файл сюда", pt: "Escolha ou solte o arquivo aqui", ja: "ここでファイルを選択またはドロップ", pa: "ਇੱਥੇ ਫਾਇਲ ਚੁਣੋ ਜਾਂ ਡਰੌਪ ਕਰੋ", bn: "এখানে ফাইল নির্বাচন করুন বা ড্রপ করুন", id: "Pilih atau jatuhkan file di sini", ur: "فائل یہاں منتخب کریں یا ڈراپ کریں", ms: "Pilih atau jatuhkan file di sini", it: "Scegli o trascina il file qui", tr: "Dosyayı buraya seçin veya bırakın", ta: "கோப்பை இங்கே தேர்ந்தெடுக்கவும் அல்லது விடவும்", te: "ఫైల్‌ను ఇక్కడ ఎంచుకోండి లేదా డ్రాప్ చేయండి", ko: "여기에 파일을 선택하거나 드롭하세요", vi: "Chọn hoặc thả tệp ở đây", pl: "Wybierz lub upuść plik tutaj", ro: "Alegeți sau aruncați fișierul aici", nl: "Kies of drop het bestand hier", el: "Επιλέξτε ή ρίξτε το αρχείο εδώ", th: "เลือกหรือวางไฟล์ที่นี่", cs: "Vyberte nebo přetáhněte soubor sem", hu: "Válassza ki vagy dobja ide a fájlt", sv: "Välj eller släpp filen här", da: "Vælg eller slip filen her" })}
+            </div>}
+        </div>
+      </label>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
+        </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Your existing password to decrypt the file.", zh: "您现有的密码用于解密文件。", hi: "फ़ाइल को डिक्रिप्ट करने के लिए आपका मौजूदा पासवर्ड।", es: "Su contraseña existente para descifrar el archivo.", ar: "كلمة المرور الحالية الخاصة بك لفك تشفير الملف.", fr: "Votre mot de passe existant pour déchiffrer le fichier.", de: "Ihr vorhandenes Passwort zum Entschlüsseln der Datei.", ru: "Ваш существующий пароль для расшифровки файла.", pt: "Sua senha existente para descriptografar o arquivo.", ja: "ファイルを復号化するための既存のパスワード。", pa: "ਫਾਇਲ ਨੂੰ ਡੀਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਪਾਸਵਰਡ।", bn: "ফাইল ডিক্রিপ্ট করার জন্য আপনার বিদ্যমান পাসওয়ার্ড।", id: "Kata sandi Anda yang ada untuk mendekripsi file.", ur: "فائل کو ڈی کرپٹ کرنے کے لیے آپ کا موجودہ پاس ورڈ۔", ms: "Kata sandi Anda yang ada untuk mendekripsi file.", it: "La tua password esistente per decriptare il file.", tr: "Dosyayı şifre çözmek için mevcut parolanız.", ta: "கோப்பை குறியாக்கம்解除 செய்ய உங்கள் தற்போதைய கடவுச்சொல்.", te: "ఫైల్‌ను డీక్రిప్ట్ చేయడానికి మీ ప్రస్తుత పాస్వర్డ్.", ko: "파일을 복호화하기 위한 기존 비밀번호입니다.", vi: "Mật khẩu hiện có của bạn để giải mã tệp.", pl: "Twoje istniejące hasło do odszyfrowania pliku.", ro: "Parola existentă pentru decriptarea fișierului.", nl: "Uw bestaande wachtwoord om het bestand te ontsleutelen.", el: "Ο υπάρχων κωδικός πρόσβασής σας για την αποκρυπτογράφηση του αρχείου.", th: "รหัสผ่านที่มีอยู่ของคุณเพื่อถอดรหัสไฟล์", cs: "Váš stávající heslo pro dešifrování souboru.", hu: "A meglévő jelszavad a fájl de kódolásához.", sv: "Ditt befintliga lösenord för att dekryptera filen.", da: "Din eksisterende adgangskode til at dekryptere filen." })}
+        </div>
+        <div className="h-4" />
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="w-full focus-visible:outline-none"
+            autoComplete="off"
+            type={flipped ? "text" : "password"}
+            value={$pass}
+            onChange={e => setPass(e.target.value)} />
+          <div className="flex items-center gap-2">
+            <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
+              type="button"
+              onClick={() => setFlipped(x => !x)}>
+              <Clicker>
+                {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
+              </Clicker>
+            </button>
+          </div>
+        </div>
+      </label>
       <div className="h-8 grow" />
       <div className="flex items-center flex-wrap-reverse gap-2">
         <WideOppositeButton
           type="submit"
-          inert={openOrDisplay.running || error != null}
+          disabled={openOrDisplay.running || error != null}
           onClick={openOrDisplay}>
           {openOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
           {error != null ? error : Lang.match({ en: "Open", zh: "打开", hi: "खोलें", es: "Abrir", ar: "فتح", fr: "Ouvrir", de: "Öffnen", ru: "Открыть", pt: "Abrir", ja: "開く", pa: "ਖੋਲ੍ਹੋ", bn: "খুলুন", id: "Buka", ur: "کھولیں", ms: "Buka", it: "Apri", tr: "Aç", ta: "திறக்கவும்", te: "తెరవండి", ko: "열기", vi: "Mở", pl: "Otwórz", ro: "Deschideți", nl: "Openen", el: "Άνοιγμα", th: "เปิด", cs: "Otevřít", hu: "Megnyitás", sv: "Öppna", da: "Åbn" })}
@@ -599,54 +609,57 @@ function UserCreatePage() {
     <h1 className="text-xl font-medium">
       {Lang.match({ en: "Create user", zh: "创建用户", hi: "उपयोगकर्ता बनाएं", es: "Crear usuario", ar: "إنشاء مستخدم", fr: "Créer un utilisateur", de: "Benutzer erstellen", ru: "Создать пользователя", pt: "Criar usuário", ja: "ユーザーを作成", pa: "ਉਪਭੋਗਤਾ ਬਣਾਓ", bn: "ব্যবহারকারী তৈরি করুন", id: "Buat pengguna", ur: "صارف بنائیں", ms: "Buat pengguna", it: "Crea utente", tr: "Kullanıcı oluştur", ta: "பயனரை உருவாக்கவும்", te: "వినియోగదారుని సృష్టించండి", ko: "사용자 만들기", vi: "Tạo người dùng", pl: "Utwórz użytkownika", ro: "Creează utilizator", nl: "Maak gebruiker", el: "Δημιουργία χρήστη", th: "สร้างผู้ใช้", cs: "Vytvořit uživatele", hu: "Felhasználó létrehozása", sv: "Skapa användare", da: "Opret bruger" })}
     </h1>
-    <form className="grow flex flex-col"
-      onSubmit={e => e.preventDefault()}>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Will be used locally for display purposes.", zh: "将被本地使用，仅用于显示。", hi: "स्थानीय रूप से प्रदर्शन उद्देश्यों के लिए उपयोग किया जाएगा।", es: "Se usará localmente para fines de visualización.", ar: "سيتم استخدامه محليًا لأغراض العرض.", fr: "Sera utilisé localement à des fins d'affichage.", de: "Wird lokal für Anzeigezwecke verwendet.", ru: "Будет использоваться локально для отображения.", pt: "Será usado localmente para fins de exibição.", ja: "表示目的でローカルに使用されます。", pa: "ਡਿਸਪਲੇਅ ਦੇ ਉਦੇਸ਼ਾਂ ਲਈ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਵਰਤਿਆ ਜਾਵੇਗਾ।", bn: "প্রদর্শন উদ্দেশ্যে স্থানীয়ভাবে ব্যবহৃত হবে।", id: "Akan digunakan secara lokal untuk tujuan tampilan.", ur: "ڈسپلے کے مقاصد کے لیے مقامی طور پر استعمال کیا جائے گا۔", ms: "Akan digunakan secara lokal untuk tujuan tampilan.", it: "Sarà usato localmente per scopi di visualizzazione.", tr: "Görüntüleme amaçları için yerel olarak kullanılacaktır.", ta: "காட்சிப்படுத்தும் நோக்கங்களுக்காக உள்ளூரில் பயன்படுத்தப்படும்.", te: "ప్రదర్శన లక్ష్యాల కోసం స్థానికంగా ఉపయోగించబడుతుంది.", ko: "디스플레이 목적으로 로컬에서 사용됩니다.", vi: "Sẽ được sử dụng cục bộ cho mục đích hiển thị.", pl: "Będzie używany lokalnie do celów wyświetlania.", ro: "Va fi folosit local pentru scopuri de afișare.", nl: "Zal lokaal worden gebruikt voor weergavedoeleinden.", el: "Θα χρησιμοποιείται τοπικά για σκοπούς εμφάνισης.", th: "จะใช้ในพื้นที่สำหรับวัตถุประสงค์ในการแสดงผล", cs: "Bude používán lokálně pro zobrazení.", hu: "Helyileg lesz használva megjelenítési célokra.", sv: "Kommer att användas lokalt för visningsändamål.", da: "Vil blive brugt lokalt til visningsformål." })}
-      </div>
-      <div className="h-4" />
-      <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="w-full focus-visible:outline-none"
-          autoFocus
-          autoComplete="off"
-          placeholder="Satoshi"
-          value={$name}
-          onChange={e => setName(e.target.value)} />
-      </div>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "A password to encrypt the created file.", zh: "用于加密创建的文件的密码。", hi: "बनाई गई फ़ाइल को एन्क्रिप्ट करने के लिए एक पासवर्ड।", es: "Una contraseña para cifrar el archivo creado.", ar: "كلمة مرور لتشفير الملف الذي تم إنشاؤه.", fr: "Un mot de passe pour chiffrer le fichier créé.", de: "Ein Passwort zum Verschlüsseln der erstellten Datei.", ru: "Пароль для шифрования созданного файла.", pt: "Uma senha para criptografar o arquivo criado.", ja: "作成されたファイルを暗号化するためのパスワード。", pa: "ਬਣਾਈ ਗਈ ਫਾਇਲ ਨੂੰ ਇੰਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਇੱਕ ਪਾਸਵਰਡ।", bn: "তৈরি করা ফাইলটি এনক্রিপ্ট করার জন্য একটি পাসওয়ার্ড।", id: "Kata sandi untuk mengenkripsi file yang dibuat.", ur: "بنائی گئی فائل کو انکرپٹ کرنے کے لیے ایک پاس ورڈ۔", ms: "Kata sandi untuk mengenkripsi file yang dibuat.", it: "Una password per crittografare il file creato.", tr: "Oluşturulan dosyayı şifrelemek için bir parola.", ta: "உருவாக்கப்பட்ட கோப்பை குறியாக்கம் செய்ய ஒரு கடவுச்சொல்.", te: "సృష్టించబడిన ఫైల్‌ను గుప్తీకరించడానికి ఒక పాస్వర్డ్.", ko: "생성된 파일을 암호화하기 위한 비밀번호입니다.", vi: "Mật khẩu để mã hóa tệp đã tạo.", pl: "Hasło do zaszyfrowania utworzonego pliku.", ro: "O parolă pentru a cripta fișerul creat.", nl: "Een wachtwoord om het gemaakte bestand te versleutelen.", el: "Ένας κωδικός πρόσβασης για την κρυπτογράφηση του δημιουργημένου αρχείου.", th: "รหัสผ่านเพื่อเข้ารหัสไฟล์ที่สร้างขึ้น", cs: "Heslo pro šifrování vytvořeného souboru.", hu: "Egy jelszó a létrehozott fájl titkosításához.", sv: "Ett lösenord för att kryptera den skapade filen.", da: "En adgangskode til at kryptere den oprettede fil." })}
-      </div>
-      <div className="h-4" />
-      <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="w-full focus-visible:outline-none"
-          autoComplete="off"
-          type={flipped ? "text" : "password"}
-          value={$pass}
-          onChange={e => setPass(e.target.value)} />
-        <div className="flex items-center gap-2">
-          <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-            type="button"
-            onClick={() => setFlipped(x => !x)}>
-            <Clicker>
-              {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            </Clicker>
-          </button>
+    <form className="grow flex flex-col" onSubmit={e => e.preventDefault()}>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
         </div>
-      </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Will be used locally for display purposes.", zh: "将被本地使用，仅用于显示。", hi: "स्थानीय रूप से प्रदर्शन उद्देश्यों के लिए उपयोग किया जाएगा।", es: "Se usará localmente para fines de visualización.", ar: "سيتم استخدامه محليًا لأغراض العرض.", fr: "Sera utilisé localement à des fins d'affichage.", de: "Wird lokal für Anzeigezwecke verwendet.", ru: "Будет использоваться локально для отображения.", pt: "Será usado localmente para fins de exibição.", ja: "表示目的でローカルに使用されます。", pa: "ਡਿਸਪਲੇਅ ਦੇ ਉਦੇਸ਼ਾਂ ਲਈ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਵਰਤਿਆ ਜਾਵੇਗਾ।", bn: "প্রদর্শন উদ্দেশ্যে স্থানীয়ভাবে ব্যবহৃত হবে।", id: "Akan digunakan secara lokal untuk tujuan tampilan.", ur: "ڈسپلے کے مقاصد کے لیے مقامی طور پر استعمال کیا جائے گا۔", ms: "Akan digunakan secara lokal untuk tujuan tampilan.", it: "Sarà usato localmente per scopi di visualizzazione.", tr: "Görüntüleme amaçları için yerel olarak kullanılacaktır.", ta: "காட்சிப்படுத்தும் நோக்கங்களுக்காக உள்ளூரில் பயன்படுத்தப்படும்.", te: "ప్రదర్శన లక్ష్యాల కోసం స్థానికంగా ఉపయోగించబడుతుంది.", ko: "디스플레이 목적으로 로컬에서 사용됩니다.", vi: "Sẽ được sử dụng cục bộ cho mục đích hiển thị.", pl: "Będzie używany lokalnie do celów wyświetlania.", ro: "Va fi folosit local pentru scopuri de afișare.", nl: "Zal lokaal worden gebruikt voor weergavedoeleinden.", el: "Θα χρησιμοποιείται τοπικά για σκοπούς εμφάνισης.", th: "จะใช้ในพื้นที่สำหรับวัตถุประสงค์ในการแสดงผล", cs: "Bude používán lokálně pro zobrazení.", hu: "Helyileg lesz használva megjelenítési célokra.", sv: "Kommer att användas lokalt för visningsändamål.", da: "Vil blive brugt lokalt til visningsformål." })}
+        </div>
+        <div className="h-4" />
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="w-full focus-visible:outline-none"
+            autoFocus
+            autoComplete="off"
+            placeholder="Satoshi"
+            value={$name}
+            onChange={e => setName(e.target.value)} />
+        </div>
+      </label>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
+        </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "A password to encrypt the created file.", zh: "用于加密创建的文件的密码。", hi: "बनाई गई फ़ाइल को एन्क्रिप्ट करने के लिए एक पासवर्ड।", es: "Una contraseña para cifrar el archivo creado.", ar: "كلمة مرور لتشفير الملف الذي تم إنشاؤه.", fr: "Un mot de passe pour chiffrer le fichier créé.", de: "Ein Passwort zum Verschlüsseln der erstellten Datei.", ru: "Пароль для шифрования созданного файла.", pt: "Uma senha para criptografar o arquivo criado.", ja: "作成されたファイルを暗号化するためのパスワード。", pa: "ਬਣਾਈ ਗਈ ਫਾਇਲ ਨੂੰ ਇੰਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਇੱਕ ਪਾਸਵਰਡ।", bn: "তৈরি করা ফাইলটি এনক্রিপ্ট করার জন্য একটি পাসওয়ার্ড।", id: "Kata sandi untuk mengenkripsi file yang dibuat.", ur: "بنائی گئی فائل کو انکرپٹ کرنے کے لیے ایک پاس ورڈ۔", ms: "Kata sandi untuk mengenkripsi file yang dibuat.", it: "Una password per crittografare il file creato.", tr: "Oluşturulan dosyayı şifrelemek için bir parola.", ta: "உருவாக்கப்பட்ட கோப்பை குறியாக்கம் செய்ய ஒரு கடவுச்சொல்.", te: "సృష్టించబడిన ఫైల్‌ను గుప్తీకరించడానికి ఒక పాస్వర్డ్.", ko: "생성된 파일을 암호화하기 위한 비밀번호입니다.", vi: "Mật khẩu để mã hóa tệp đã tạo.", pl: "Hasło do zaszyfrowania utworzonego pliku.", ro: "O parolă pentru a cripta fișerul creat.", nl: "Een wachtwoord om het gemaakte bestand te versleutelen.", el: "Ένας κωδικός πρόσβασης για την κρυπτογράφηση του δημιουργημένου αρχείου.", th: "รหัสผ่านเพื่อเข้ารหัสไฟล์ที่สร้างขึ้น", cs: "Heslo pro šifrování vytvořeného souboru.", hu: "Egy jelszó a létrehozott fájl titkosításához.", sv: "Ett lösenord för att kryptera den skapade filen.", da: "En adgangskode til at kryptere den oprettede fil." })}
+        </div>
+        <div className="h-4" />
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="w-full focus-visible:outline-none"
+            autoComplete="off"
+            type={flipped ? "text" : "password"}
+            value={$pass}
+            onChange={e => setPass(e.target.value)} />
+          <div className="flex items-center gap-2">
+            <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
+              type="button"
+              onClick={() => setFlipped(x => !x)}>
+              <Clicker>
+                {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
+              </Clicker>
+            </button>
+          </div>
+        </div>
+      </label>
       <div className="h-8 grow" />
       <div className="flex items-center flex-wrap-reverse gap-2">
         {"showSaveFilePicker" in window === true &&
           <WideOppositeButton
             type="submit"
-            inert={pickOrDisplay.running || error != null}
+            disabled={pickOrDisplay.running || error != null}
             onClick={pickOrDisplay}>
             {pickOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
             {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
@@ -654,7 +667,7 @@ function UserCreatePage() {
         {"showSaveFilePicker" in window === false &&
           <WideOppositeButton
             type="submit"
-            inert={saveOrDisplay.running || error != null}
+            disabled={saveOrDisplay.running || error != null}
             onClick={saveOrDisplay}>
             {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
             {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
@@ -875,8 +888,7 @@ function UserLoginPage(props: { user: UserData }) {
         {user.name}
       </h1>
       <div className="h-8" />
-      <form className="grow flex flex-col"
-        onSubmit={e => e.preventDefault()}>
+      <form className="grow flex flex-col" onSubmit={e => e.preventDefault()}>
         <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
           <input className="w-full focus-visible:outline-none"
             autoFocus
@@ -1035,75 +1047,80 @@ function UserReimportFilePage(props: { user: UserData }) {
     <h1 className="text-xl font-medium">
       {Lang.match({ en: "Reimport user", zh: "重新导入用户", hi: "उपयोगकर्ता को पुनः आयात करें", es: "Reimportar usuario", ar: "إعادة استيراد المستخدم", fr: "Réimporter l'utilisateur", de: "Benutzer erneut importieren", ru: "Повторный импорт пользователя", pt: "Reimportar usuário", ja: "ユーザーを再インポート", pa: "ਉਪਭੋਗਤਾ ਨੂੰ ਦੁਬਾਰਾ ਆਯਾਤ ਕਰੋ", bn: "ব্যবহারকারী পুনরায় আমদানি করুন", id: "Impor ulang pengguna", ur: "صارف کو دوبارہ درآمد کریں", ms: "Impor ulang pengguna", it: "Reimporta utente", tr: "Kullanıcıyı yeniden içe aktar", ta: "பயனரை மீண்டும் இறக்குமதி செய்க", te: "వినియోగదారుని మళ్లీ దిగుమతి చేయండి", ko: "사용자 재수입", vi: "Nhập lại người dùng", pl: "Ponowny import użytkownika", ro: "Reimportă utilizatorul", nl: "Gebruiker opnieuw importeren", el: "Επαναφορά χρήστη", th: "นำเข้าผู้ใช้ใหม่", cs: "Znovu importovat uživatele", hu: "Felhasználó újraimportálása", sv: "Importera om användare", da: "Genimporter bruger" })}
     </h1>
-    <form className="grow flex flex-col"
-      onSubmit={e => e.preventDefault()}>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Will be used locally for display purposes.", zh: "将被本地使用，仅用于显示。", hi: "स्थानीय रूप से प्रदर्शन उद्देश्यों के लिए उपयोग किया जाएगा।", es: "Se usará localmente para fines de visualización.", ar: "سيتم استخدامه محليًا لأغراض العرض.", fr: "Sera utilisé localement à des fins d'affichage.", de: "Wird lokal für Anzeigezwecke verwendet.", ru: "Будет использоваться локально для отображения.", pt: "Será usado localmente para fins de exibição.", ja: "表示目的でローカルに使用されます。", pa: "ਡਿਸਪਲੇਅ ਦੇ ਉਦੇਸ਼ਾਂ ਲਈ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਵਰਤਿਆ ਜਾਵੇਗਾ।", bn: "প্রদর্শন উদ্দেশ্যে স্থানীয়ভাবে ব্যবহৃত হবে।", id: "Akan digunakan secara lokal untuk tujuan tampilan.", ur: "ڈسپلے کے مقاصد کے لیے مقامی طور پر استعمال کیا جائے گا۔", ms: "Akan digunakan secara lokal untuk tujuan tampilan.", it: "Sarà usato localmente per scopi di visualizzazione.", tr: "Görüntüleme amaçları için yerel olarak kullanılacaktır.", ta: "காட்சிப்படுத்தும் நோக்கங்களுக்காக உள்ளூரில் பயன்படுத்தப்படும்.", te: "ప్రదర్శన లక్ష్యాల కోసం స్థానికంగా ఉపయోగించబడుతుంది.", ko: "디스플레이 목적으로 로컬에서 사용됩니다.", vi: "Sẽ được sử dụng cục bộ cho mục đích hiển thị.", pl: "Będzie używany lokalnie do celów wyświetlania.", ro: "Va fi folosit local pentru scopuri de afișare.", nl: "Zal lokaal worden gebruikt voor weergavedoeleinden.", el: "Θα χρησιμοποιείται τοπικά για σκοπούς εμφάνισης.", th: "จะใช้ในพื้นที่สำหรับวัตถุประสงค์ในการแสดงผล", cs: "Bude používán lokálně pro zobrazení.", hu: "Helyileg lesz használva megjelenítési célokra.", sv: "Kommer att användas lokalt för visningsändamål.", da: "Vil blive brugt lokalt til visningsformål." })}
-      </div>
-      <div className="h-4" />
-      <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="w-full focus-visible:outline-none"
-          autoFocus
-          autoComplete="off"
-          placeholder="Satoshi"
-          value={$name}
-          onChange={e => setName(e.target.value)} />
-      </div>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "File", zh: "文件", hi: "फ़ाइल", es: "Archivo", ar: "ملف", fr: "Fichier", de: "Datei", ru: "Файл", pt: "Arquivo", ja: "ファイル", pa: "ਫਾਇਲ", bn: "ফাইল", id: "Berkas", ur: "فائل", ms: "Berkas", it: "File", tr: "Dosya", ta: "கோப்பு", te: "ఫైల్", ko: "파일", vi: "Tệp", pl: "Plik", ro: "Fișier", nl: "Bestand", el: "Αρχείο", th: "ไฟล์", cs: "Soubor", hu: "Fájl", sv: "Fil", da: "Fil" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Your existing KDBX file.", zh: "您现有的 KDBX 文件。", hi: "आपकी मौजूदा KDBX फ़ाइल।", es: "Su archivo KDBX existente.", ar: "ملف KDBX الحالي الخاص بك.", fr: "Votre fichier KDBX existant.", de: "Ihre vorhandene KDBX-Datei.", ru: "Ваш существующий файл KDBX.", pt: "Seu arquivo KDBX existente.", ja: "既存の KDBX ファイル。", pa: "ਤੁਹਾਡੀ ਮੌਜੂਦਾ KDBX ਫਾਇਲ।", bn: "আপনার বিদ্যমান KDBX ফাইল।", id: "File KDBX Anda yang ada.", ur: "آپ کی موجودہ KDBX فائل۔", ms: "File KDBX Anda yang ada.", it: "Il tuo file KDBX esistente.", tr: "Mevcut KDBX dosyanız.", ta: "உங்கள் தற்போதைய KDBX கோப்பு.", te: "మీ ప్రస్తుత KDBX ఫైల్.", ko: "기존 KDBX 파일입니다.", vi: "Tệp KDBX hiện có của bạn.", pl: "Twój istniejący plik KDBX.", ro: "Fișierul KDBX existent.", nl: "Uw bestaande KDBX-bestand.", el: "Το υπάρχον αρχείο KDBX σας.", th: "ไฟล์ KDBX ที่มีอยู่ของคุณ", cs: "Váš stávající soubor KDBX.", hu: "A meglévő KDBX fájlod.", sv: "Din befintliga KDBX-fil.", da: "Din eksisterende KDBX-fil." })}
-      </div>
-      <div className="h-4" />
-      <div className="relative bg-default-contrast rounded-xl has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="absolute inset-0 opacity-0 cursor-pointer"
-          type="file"
-          accept="application/octet-stream,.kdbx"
-          onChange={e => setFile(e.target.files?.item(0))} />
-        {file != null &&
-          <div className="po-2">
-            {file.name}
-          </div>}
-        {file == null &&
-          <div className="po-2">
-            {Lang.match({ en: "Pick or drop file here", zh: "在此处选择或拖放文件", hi: "यहां फ़ाइल चुनें या ड्रॉप करें", es: "Seleccione o suelte el archivo aquí", ar: "اختر أو اسقط الملف هنا", fr: "Choisissez ou déposez le fichier ici", de: "Datei hier auswählen oder ablegen", ru: "Выберите или перетащите файл сюда", pt: "Escolha ou solte o arquivo aqui", ja: "ここでファイルを選択またはドロップ", pa: "ਇੱਥੇ ਫਾਇਲ ਚੁਣੋ ਜਾਂ ਡਰੌਪ ਕਰੋ", bn: "এখানে ফাইল নির্বাচন করুন বা ড্রপ করুন", id: "Pilih atau jatuhkan file di sini", ur: "فائل یہاں منتخب کریں یا ڈراپ کریں", ms: "Pilih atau jatuhkan file di sini", it: "Scegli o trascina il file qui", tr: "Dosyayı buraya seçin veya bırakın", ta: "கோப்பை இங்கே தேர்ந்தெடுக்கவும் அல்லது விடவும்", te: "ఫైల్‌ను ఇక్కడ ఎంచుకోండి లేదా డ్రాప్ చేయండి", ko: "여기에 파일을 선택하거나 드롭하세요", vi: "Chọn hoặc thả tệp ở đây", pl: "Wybierz lub upuść plik tutaj", ro: "Alegeți sau aruncați fișierul aici", nl: "Kies of drop het bestand hier", el: "Επιλέξτε ή ρίξτε το αρχείο εδώ", th: "เลือกหรือวางไฟล์ที่นี่", cs: "Vyberte nebo přetáhněte soubor sem", hu: "Válassza ki vagy dobja ide a fájlt", sv: "Välj eller släpp filen här", da: "Vælg eller slip filen her" })}
-          </div>}
-      </div>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Your existing password to decrypt the file.", zh: "用于解密文件的现有密码。", hi: "फ़ाइल को डिक्रिप्ट करने के लिए आपका मौजूदा पासवर्ड।", es: "Su contraseña existente para descifrar el archivo.", ar: "كلمة المرور الحالية الخاصة بك لفك تشفير الملف.", fr: "Votre mot de passe existant pour déchiffrer le fichier.", de: "Ihr vorhandenes Passwort zum Entschlüsseln der Datei.", ru: "Ваш существующий пароль для расшифровки файла.", pt: "Sua senha existente para descriptografar o arquivo.", ja: "ファイルを復号化するための既存のパスワード。", pa: "ਫਾਇਲ ਨੂੰ ਡਿਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਪਾਸਵਰਡ।", bn: "ফাইল ডিক্রিপ্ট করতে আপনার বিদ্যমান পাসওয়ার্ড।", id: "Kata sandi Anda yang ada untuk mendekripsi file.", ur: "فائل کو ڈی کرپٹ کرنے کے لیے آپ کا موجودہ پاس ورڈ۔", ms: "Kata sandi sedia ada anda untuk menyahsulit fail.", it: "La tua password esistente per decrittografare il file.", tr: "Dosyayı çözmek için mevcut şifreniz.", ta: "கோப்பை டிக்ரிப்ட் செய்ய உங்கள் தற்போதைய கடவுச்சொல்.", te: "ఫైల్‌ను డీక్రిప్ట్ చేయడానికి మీ ప్రస్తుత పాస్వర్డ్.", ko: "파일을 복호화하기 위한 기존 비밀번호입니다.", vi: "Mật khẩu hiện có của bạn để giải mã tệp.", pl: "Twoje istniejące hasło do odszyfrowania pliku.", ro: "Parola dvs. existentă pentru a decripta fișierul.", nl: "Uw bestaande wachtwoord om het bestand te ontsleutelen.", el: "Ο υπάρχων κωδικός πρόσβασής σας για την αποκρυπτογράφηση του αρχείου.", th: "รหัสผ่านที่มีอยู่ของคุณเพื่อถอดรหัสไฟล์", cs: "Vaše stávající heslo pro dešifrování souboru.", hu: "A meglévő jelszavad a fájl dekódolásához.", sv: "Ditt befintliga lösenord för att dekryptera filen.", da: "Din eksisterende adgangskode til at dekryptere filen." })}
-      </div>
-      <div className="h-4" />
-      <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="w-full focus-visible:outline-none"
-          autoComplete="off"
-          type={flipped ? "text" : "password"}
-          value={$pass}
-          onChange={e => setPass(e.target.value)} />
-        <div className="flex items-center gap-2">
-          <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-            type="button"
-            onClick={() => setFlipped(x => !x)}>
-            <Clicker>
-              {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            </Clicker>
-          </button>
+    <form className="grow flex flex-col" onSubmit={e => e.preventDefault()}>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
         </div>
-      </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Will be used locally for display purposes.", zh: "将被本地使用，仅用于显示。", hi: "स्थानीय रूप से प्रदर्शन उद्देश्यों के लिए उपयोग किया जाएगा।", es: "Se usará localmente para fines de visualización.", ar: "سيتم استخدامه محليًا لأغراض العرض.", fr: "Sera utilisé localement à des fins d'affichage.", de: "Wird lokal für Anzeigezwecke verwendet.", ru: "Будет использоваться локально для отображения.", pt: "Será usado localmente para fins de exibição.", ja: "表示目的でローカルに使用されます。", pa: "ਡਿਸਪਲੇਅ ਦੇ ਉਦੇਸ਼ਾਂ ਲਈ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਵਰਤਿਆ ਜਾਵੇਗਾ।", bn: "প্রদর্শন উদ্দেশ্যে স্থানীয়ভাবে ব্যবহৃত হবে।", id: "Akan digunakan secara lokal untuk tujuan tampilan.", ur: "ڈسپلے کے مقاصد کے لیے مقامی طور پر استعمال کیا جائے گا۔", ms: "Akan digunakan secara lokal untuk tujuan tampilan.", it: "Sarà usato localmente per scopi di visualizzazione.", tr: "Görüntüleme amaçları için yerel olarak kullanılacaktır.", ta: "காட்சிப்படுத்தும் நோக்கங்களுக்காக உள்ளூரில் பயன்படுத்தப்படும்.", te: "ప్రదర్శన లక్ష్యాల కోసం స్థానికంగా ఉపయోగించబడుతుంది.", ko: "디스플레이 목적으로 로컬에서 사용됩니다.", vi: "Sẽ được sử dụng cục bộ cho mục đích hiển thị.", pl: "Będzie używany lokalnie do celów wyświetlania.", ro: "Va fi folosit local pentru scopuri de afișare.", nl: "Zal lokaal worden gebruikt voor weergavedoeleinden.", el: "Θα χρησιμοποιείται τοπικά για σκοπούς εμφάνισης.", th: "จะใช้ในพื้นที่สำหรับวัตถุประสงค์ในการแสดงผล", cs: "Bude používán lokálně pro zobrazení.", hu: "Helyileg lesz használva megjelenítési célokra.", sv: "Kommer att användas lokalt för visningsändamål.", da: "Vil blive brugt lokalt til visningsformål." })}
+        </div>
+        <div className="h-4" />
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="w-full focus-visible:outline-none"
+            autoFocus
+            autoComplete="off"
+            placeholder="Satoshi"
+            value={$name}
+            onChange={e => setName(e.target.value)} />
+        </div>
+      </label>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "File", zh: "文件", hi: "फ़ाइल", es: "Archivo", ar: "ملف", fr: "Fichier", de: "Datei", ru: "Файл", pt: "Arquivo", ja: "ファイル", pa: "ਫਾਇਲ", bn: "ফাইল", id: "Berkas", ur: "فائل", ms: "Berkas", it: "File", tr: "Dosya", ta: "கோப்பு", te: "ఫైల్", ko: "파일", vi: "Tệp", pl: "Plik", ro: "Fișier", nl: "Bestand", el: "Αρχείο", th: "ไฟล์", cs: "Soubor", hu: "Fájl", sv: "Fil", da: "Fil" })}
+        </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Your existing KDBX file.", zh: "您现有的 KDBX 文件。", hi: "आपकी मौजूदा KDBX फ़ाइल।", es: "Su archivo KDBX existente.", ar: "ملف KDBX الحالي الخاص بك.", fr: "Votre fichier KDBX existant.", de: "Ihre vorhandene KDBX-Datei.", ru: "Ваш существующий файл KDBX.", pt: "Seu arquivo KDBX existente.", ja: "既存の KDBX ファイル。", pa: "ਤੁਹਾਡੀ ਮੌਜੂਦਾ KDBX ਫਾਇਲ।", bn: "আপনার বিদ্যমান KDBX ফাইল।", id: "File KDBX Anda yang ada.", ur: "آپ کی موجودہ KDBX فائل۔", ms: "File KDBX Anda yang ada.", it: "Il tuo file KDBX esistente.", tr: "Mevcut KDBX dosyanız.", ta: "உங்கள் தற்போதைய KDBX கோப்பு.", te: "మీ ప్రస్తుత KDBX ఫైల్.", ko: "기존 KDBX 파일입니다.", vi: "Tệp KDBX hiện có của bạn.", pl: "Twój istniejący plik KDBX.", ro: "Fișierul KDBX existent.", nl: "Uw bestaande KDBX-bestand.", el: "Το υπάρχον αρχείο KDBX σας.", th: "ไฟล์ KDBX ที่มีอยู่ของคุณ", cs: "Váš stávající soubor KDBX.", hu: "A meglévő KDBX fájlod.", sv: "Din befintliga KDBX-fil.", da: "Din eksisterende KDBX-fil." })}
+        </div>
+        <div className="h-4" />
+        <div className="relative bg-default-contrast rounded-xl has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="absolute inset-0 opacity-0 cursor-pointer"
+            type="file"
+            accept="application/octet-stream,.kdbx"
+            onChange={e => setFile(e.target.files?.item(0))} />
+          {file != null &&
+            <div className="po-2">
+              {file.name}
+            </div>}
+          {file == null &&
+            <div className="po-2">
+              {Lang.match({ en: "Pick or drop file here", zh: "在此处选择或拖放文件", hi: "यहां फ़ाइल चुनें या ड्रॉप करें", es: "Seleccione o suelte el archivo aquí", ar: "اختر أو اسقط الملف هنا", fr: "Choisissez ou déposez le fichier ici", de: "Datei hier auswählen oder ablegen", ru: "Выберите или перетащите файл сюда", pt: "Escolha ou solte o arquivo aqui", ja: "ここでファイルを選択またはドロップ", pa: "ਇੱਥੇ ਫਾਇਲ ਚੁਣੋ ਜਾਂ ਡਰੌਪ ਕਰੋ", bn: "এখানে ফাইল নির্বাচন করুন বা ড্রপ করুন", id: "Pilih atau jatuhkan file di sini", ur: "فائل یہاں منتخب کریں یا ڈراپ کریں", ms: "Pilih atau jatuhkan file di sini", it: "Scegli o trascina il file qui", tr: "Dosyayı buraya seçin veya bırakın", ta: "கோப்பை இங்கே தேர்ந்தெடுக்கவும் அல்லது விடவும்", te: "ఫైల్‌ను ఇక్కడ ఎంచుకోండి లేదా డ్రాప్ చేయండి", ko: "여기에 파일을 선택하거나 드롭하세요", vi: "Chọn hoặc thả tệp ở đây", pl: "Wybierz lub upuść plik tutaj", ro: "Alegeți sau aruncați fișierul aici", nl: "Kies of drop het bestand hier", el: "Επιλέξτε ή ρίξτε το αρχείο εδώ", th: "เลือกหรือวางไฟล์ที่นี่", cs: "Vyberte nebo přetáhněte soubor sem", hu: "Válassza ki vagy dobja ide a fájlt", sv: "Välj eller släpp filen här", da: "Vælg eller slip filen her" })}
+            </div>}
+        </div>
+      </label>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
+        </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Your existing password to decrypt the file.", zh: "用于解密文件的现有密码。", hi: "फ़ाइल को डिक्रिप्ट करने के लिए आपका मौजूदा पासवर्ड।", es: "Su contraseña existente para descifrar el archivo.", ar: "كلمة المرور الحالية الخاصة بك لفك تشفير الملف.", fr: "Votre mot de passe existant pour déchiffrer le fichier.", de: "Ihr vorhandenes Passwort zum Entschlüsseln der Datei.", ru: "Ваш существующий пароль для расшифровки файла.", pt: "Sua senha existente para descriptografar o arquivo.", ja: "ファイルを復号化するための既存のパスワード。", pa: "ਫਾਇਲ ਨੂੰ ਡਿਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਪਾਸਵਰਡ।", bn: "ফাইল ডিক্রিপ্ট করতে আপনার বিদ্যমান পাসওয়ার্ড।", id: "Kata sandi Anda yang ada untuk mendekripsi file.", ur: "فائل کو ڈی کرپٹ کرنے کے لیے آپ کا موجودہ پاس ورڈ۔", ms: "Kata sandi sedia ada anda untuk menyahsulit fail.", it: "La tua password esistente per decrittografare il file.", tr: "Dosyayı çözmek için mevcut şifreniz.", ta: "கோப்பை டிக்ரிப்ட் செய்ய உங்கள் தற்போதைய கடவுச்சொல்.", te: "ఫైల్‌ను డీక్రిప్ట్ చేయడానికి మీ ప్రస్తుత పాస్వర్డ్.", ko: "파일을 복호화하기 위한 기존 비밀번호입니다.", vi: "Mật khẩu hiện có của bạn để giải mã tệp.", pl: "Twoje istniejące hasło do odszyfrowania pliku.", ro: "Parola dvs. existentă pentru a decripta fișierul.", nl: "Uw bestaande wachtwoord om het bestand te ontsleutelen.", el: "Ο υπάρχων κωδικός πρόσβασής σας για την αποκρυπτογράφηση του αρχείου.", th: "รหัสผ่านที่มีอยู่ของคุณเพื่อถอดรหัสไฟล์", cs: "Vaše stávající heslo pro dešifrování souboru.", hu: "A meglévő jelszavad a fájl dekódolásához.", sv: "Ditt befintliga lösenord för att dekryptera filen.", da: "Din eksisterende adgangskode til at dekryptere filen." })}
+        </div>
+        <div className="h-4" />
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="w-full focus-visible:outline-none"
+            autoComplete="off"
+            type={flipped ? "text" : "password"}
+            value={$pass}
+            onChange={e => setPass(e.target.value)} />
+          <div className="flex items-center gap-2">
+            <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
+              type="button"
+              onClick={() => setFlipped(x => !x)}>
+              <Clicker>
+                {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
+              </Clicker>
+            </button>
+          </div>
+        </div>
+      </label>
       <div className="h-8 grow" />
       <div className="flex items-center flex-wrap-reverse gap-2">
         <WideOppositeButton
           type="submit"
-          inert={loadOrDisplay.running || error != null}
+          disabled={loadOrDisplay.running || error != null}
           onClick={loadOrDisplay}>
           {loadOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
           {error != null ? error : Lang.match({ en: "Open", zh: "打开", hi: "खोलें", es: "Abrir", ar: "فتح", fr: "Ouvrir", de: "Öffnen", ru: "Открыть", pt: "Abrir", ja: "開く", pa: "ਖੋਲ੍ਹੋ", bn: "খুলুন", id: "Buka", ur: "کھولیں", ms: "Buka", it: "Apri", tr: "Aç", ta: "திறக்கவும்", te: "తెరవండి", ko: "열기", vi: "Mở", pl: "Otwórz", ro: "Deschideți", nl: "Openen", el: "Άνοιγμα", th: "เปิดไฟล์", cs: "Otevřít", hu: "Megnyitás", sv: "Öppna", da: "Åbn" })}
@@ -1194,77 +1211,82 @@ function UserReimportFsfhPage(props: { user: UserData }) {
     <h1 className="text-xl font-medium">
       {Lang.match({ en: "Reimport user", zh: "重新导入用户", hi: "उपयोगकर्ता को पुनः आयात करें", es: "Reimportar usuario", ar: "إعادة استيراد المستخدم", fr: "Réimporter l'utilisateur", de: "Benutzer erneut importieren", ru: "Повторный импорт пользователя", pt: "Reimportar usuário", ja: "ユーザーを再インポート", pa: "ਉਪਭੋਗਤਾ ਨੂੰ ਦੁਬਾਰਾ ਆਯਾਤ ਕਰੋ", bn: "ব্যবহারকারী পুনরায় আমদানি করুন", id: "Impor ulang pengguna", ur: "صارف کو دوبارہ درآمد کریں", ms: "Impor ulang pengguna", it: "Reimporta utente", tr: "Kullanıcıyı yeniden içe aktar", ta: "பயனரை மீண்டும் இறக்குமதி செய்க", te: "వినియోగదారుని మళ్లీ దిగుమతి చేయండి", ko: "사용자 재가져오기", vi: "Nhập lại người dùng", pl: "Ponownie zaimportuj użytkownika", ro: "Reimportați utilizatorul", nl: "Gebruiker opnieuw importeren", el: "Επαναφορά χρήστη", th: "นำเข้าผู้ใช้ใหม่อีกครั้ง", cs: "Znovu importovat uživatele", hu: "Felhasználó újraimportálása", sv: "Importera om användare", da: "Genimporter bruger" })}
     </h1>
-    <form className="grow flex flex-col"
-      onSubmit={e => e.preventDefault()}>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Will be used locally for display purposes.", zh: "将被本地使用，仅用于显示。", hi: "स्थानीय रूप से प्रदर्शन उद्देश्यों के लिए उपयोग किया जाएगा।", es: "Se usará localmente para fines de visualización.", ar: "سيتم استخدامه محليًا لأغراض العرض.", fr: "Sera utilisé localement à des fins d'affichage.", de: "Wird lokal für Anzeigezwecke verwendet.", ru: "Будет использоваться локально для отображения.", pt: "Será usado localmente para fins de exibição.", ja: "表示目的でローカルに使用されます。", pa: "ਡਿਸਪਲੇਅ ਦੇ ਉਦੇਸ਼ਾਂ ਲਈ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਵਰਤਿਆ ਜਾਵੇਗਾ।", bn: "প্রদর্শন উদ্দেশ্যে স্থানীয়ভাবে ব্যবহৃত হবে।", id: "Akan digunakan secara lokal untuk tujuan tampilan.", ur: "ڈسپلے کے مقاصد کے لیے مقامی طور پر استعمال کیا جائے گا۔", ms: "Akan digunakan secara lokal untuk tujuan tampilan.", it: "Sarà usato localmente per scopi di visualizzazione.", tr: "Görüntüleme amaçları için yerel olarak kullanılacaktır.", ta: "காட்சிப்படுத்தும் நோக்கங்களுக்காக உள்ளூரில் பயன்படுத்தப்படும்.", te: "ప్రదర్శన లక్ష్యాల కోసం స్థానికంగా ఉపయోగించబడుతుంది.", ko: "디스플레이 목적으로 로컬에서 사용됩니다.", vi: "Sẽ được sử dụng cục bộ cho mục đích hiển thị.", pl: "Będzie używany lokalnie do celów wyświetlania.", ro: "Va fi folosit local pentru scopuri de afișare.", nl: "Zal lokaal worden gebruikt voor weergavedoeleinden.", el: "Θα χρησιμοποιείται τοπικά για σκοπούς εμφάνισης.", th: "จะใช้ในพื้นที่สำหรับวัตถุประสงค์ในการแสดงผล", cs: "Bude používán lokálně pro zobrazení.", hu: "Helyileg lesz használva megjelenítési célokra.", sv: "Kommer att användas lokalt för visningsändamål.", da: "Vil blive brugt lokalt til visningsformål." })}
-      </div>
-      <div className="h-4" />
-      <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="w-full focus-visible:outline-none"
-          autoFocus
-          autoComplete="off"
-          placeholder="Satoshi"
-          value={$name}
-          onChange={e => setName(e.target.value)} />
-      </div>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "File", zh: "文件", hi: "फ़ाइल", es: "Archivo", ar: "ملف", fr: "Fichier", de: "Datei", ru: "Файл", pt: "Arquivo", ja: "ファイル", pa: "ਫਾਇਲ", bn: "ফাইল", id: "Berkas", ur: "فائل", ms: "Berkas", it: "File", tr: "Dosya", ta: "கோப்பு", te: "ఫైల్", ko: "파일", vi: "Tệp", pl: "Plik", ro: "Fișier", nl: "Bestand", el: "Αρχείο", th: "ไฟล์", cs: "Soubor", hu: "Fájl", sv: "Fil", da: "Fil" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Your existing KDBX file.", zh: "您现有的 KDBX 文件。", hi: "आपकी मौजूदा KDBX फ़ाइल।", es: "Su archivo KDBX existente.", ar: "ملف KDBX الحالي الخاص بك.", fr: "Votre fichier KDBX existant.", de: "Ihre vorhandene KDBX-Datei.", ru: "Ваш существующий файл KDBX.", pt: "Seu arquivo KDBX existente.", ja: "既存の KDBX ファイル。", pa: "ਤੁਹਾਡੀ ਮੌਜੂਦਾ KDBX ਫਾਇਲ।", bn: "আপনার বিদ্যমান KDBX ফাইল।", id: "File KDBX Anda yang ada.", ur: "آپ کی موجودہ KDBX فائل۔", ms: "File KDBX Anda yang ada.", it: "Il tuo file KDBX esistente.", tr: "Mevcut KDBX dosyanız.", ta: "உங்கள் தற்போதைய KDBX கோப்பு.", te: "మీ ప్రస్తుత KDBX ఫైల్.", ko: "기존 KDBX 파일입니다.", vi: "Tệp KDBX hiện có của bạn.", pl: "Twój istniejący plik KDBX.", ro: "Fișierul KDBX existent.", nl: "Uw bestaande KDBX-bestand.", el: "Το υπάρχον αρχείο KDBX σας.", th: "ไฟล์ KDBX ที่มีอยู่ของคุณ", cs: "Váš stávající soubor KDBX.", hu: "A meglévő KDBX fájlod.", sv: "Din befintliga KDBX-fil.", da: "Din eksisterende KDBX-fil." })}
-      </div>
-      <div className="h-4" />
-      <div className="relative bg-default-contrast rounded-xl has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        {"showOpenFilePicker" in window === true &&
-          <button className="absolute inset-0 opacity-0 cursor-pointer"
-            type="button"
-            onClick={pickOrDisplay}
-            onDragOver={e => e.preventDefault()}
-            onDrop={dropOrDisplay} />}
-        {fsfh != null &&
-          <div className="po-2">
-            {fsfh.name}
-          </div>}
-        {fsfh == null &&
-          <div className="po-2">
-            {Lang.match({ en: "Pick or drop file here", zh: "在此处选择或拖放文件", hi: "यहां फ़ाइल चुनें या ड्रॉप करें", es: "Seleccione o suelte el archivo aquí", ar: "اختر أو اسقط الملف هنا", fr: "Choisissez ou déposez le fichier ici", de: "Datei hier auswählen oder ablegen", ru: "Выберите или перетащите файл сюда", pt: "Escolha ou solte o arquivo aqui", ja: "ここでファイルを選択またはドロップ", pa: "ਇੱਥੇ ਫਾਇਲ ਚੁਣੋ ਜਾਂ ਡਰੌਪ ਕਰੋ", bn: "এখানে ফাইল নির্বাচন করুন বা ড্রপ করুন", id: "Pilih atau jatuhkan file di sini", ur: "فائل یہاں منتخب کریں یا ڈراپ کریں", ms: "Pilih atau jatuhkan file di sini", it: "Scegli o trascina il file qui", tr: "Dosyayı buraya seçin veya bırakın", ta: "கோப்பை இங்கே தேர்ந்தெடுக்கவும் அல்லது விடவும்", te: "ఫైల్‌ను ఇక్కడ ఎంచుకోండి లేదా డ్రాప్ చేయండి", ko: "여기에 파일을 선택하거나 드롭하세요", vi: "Chọn hoặc thả tệp ở đây", pl: "Wybierz lub upuść plik tutaj", ro: "Alegeți sau aruncați fișierul aici", nl: "Kies of drop het bestand hier", el: "Επιλέξτε ή ρίξτε το αρχείο εδώ", th: "เลือกหรือวางไฟล์ที่นี่", cs: "Vyberte nebo přetáhněte soubor sem", hu: "Válassza ki vagy dobja ide a fájlt", sv: "Välj eller släpp filen här", da: "Vælg eller slip filen her" })}
-          </div>}
-      </div>
-      <div className="h-6" />
-      <div className="font-medium">
-        {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
-      </div>
-      <div className="text-default-contrast">
-        {Lang.match({ en: "Your existing password to decrypt the file.", zh: "您现有的密码用于解密文件。", hi: "फ़ाइल को डिक्रिप्ट करने के लिए आपका मौजूदा पासवर्ड।", es: "Su contraseña existente para descifrar el archivo.", ar: "كلمة المرور الحالية الخاصة بك لفك تشفير الملف.", fr: "Votre mot de passe existant pour déchiffrer le fichier.", de: "Ihr vorhandenes Passwort zum Entschlüsseln der Datei.", ru: "Ваш существующий пароль для расшифровки файла.", pt: "Sua senha existente para descriptografar o arquivo.", ja: "ファイルを復号化するための既存のパスワード。", pa: "ਫਾਇਲ ਨੂੰ ਡਿਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਪਾਸਵਰਡ।", bn: "ফাইল ডিক্রিপ্ট করতে আপনার বিদ্যমান পাসওয়ার্ড।", id: "Kata sandi Anda yang ada untuk mendekripsi file.", ur: "فائل کو ڈی کرپٹ کرنے کے لیے آپ کا موجودہ پاس ورڈ۔", ms: "Kata laluan sedia ada anda untuk menyahsulit fail.", it: "La tua password esistente per decrittografare il file.", tr: "Dosyayı çözmek için mevcut şifreniz.", ta: "கோப்பை டிக்ரிப்ட் செய்ய உங்கள் தற்போதைய கடவுச்சொல்.", te: "ఫైల్‌ను డీక్రిప్ట్ చేయడానికి మీ ప్రస్తుత పాస్వర్డ్.", ko: "파일을 복호화하기 위한 기존 비밀번호입니다.", vi: "Mật khẩu hiện có của bạn để giải mã tệp.", pl: "Twoje istniejące hasło do odszyfrowania pliku.", ro: "Parola dvs. existentă pentru a decripta fișierul.", nl: "Uw bestaande wachtwoord om het bestand te ontsleutelen.", el: "Ο υπάρχων κωδικός σας για την αποκρυπτογράφηση του αρχείου.", th: "รหัสผ่านที่มีอยู่ของคุณเพื่อถอดรหัสไฟล์", cs: "Váš stávající heslo pro dešifrování souboru.", hu: "A meglévő jelszavad a fájl dekódolásához.", sv: "Ditt befintliga lösenord för att dekryptera filen.", da: "Din eksisterende adgangskode til at dekryptere filen." })}
-      </div>
-      <div className="h-4" />
-      <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-        <input className="w-full focus-visible:outline-none"
-          autoComplete="off"
-          type={flipped ? "text" : "password"}
-          value={$pass}
-          onChange={e => setPass(e.target.value)} />
-        <div className="flex items-center gap-2">
-          <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-            type="button"
-            onClick={() => setFlipped(x => !x)}>
-            <Clicker>
-              {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            </Clicker>
-          </button>
+    <form className="grow flex flex-col" onSubmit={e => e.preventDefault()}>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
         </div>
-      </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Will be used locally for display purposes.", zh: "将被本地使用，仅用于显示。", hi: "स्थानीय रूप से प्रदर्शन उद्देश्यों के लिए उपयोग किया जाएगा।", es: "Se usará localmente para fines de visualización.", ar: "سيتم استخدامه محليًا لأغراض العرض.", fr: "Sera utilisé localement à des fins d'affichage.", de: "Wird lokal für Anzeigezwecke verwendet.", ru: "Будет использоваться локально для отображения.", pt: "Será usado localmente para fins de exibição.", ja: "表示目的でローカルに使用されます。", pa: "ਡਿਸਪਲੇਅ ਦੇ ਉਦੇਸ਼ਾਂ ਲਈ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਵਰਤਿਆ ਜਾਵੇਗਾ।", bn: "প্রদর্শন উদ্দেশ্যে স্থানীয়ভাবে ব্যবহৃত হবে।", id: "Akan digunakan secara lokal untuk tujuan tampilan.", ur: "ڈسپلے کے مقاصد کے لیے مقامی طور پر استعمال کیا جائے گا۔", ms: "Akan digunakan secara lokal untuk tujuan tampilan.", it: "Sarà usato localmente per scopi di visualizzazione.", tr: "Görüntüleme amaçları için yerel olarak kullanılacaktır.", ta: "காட்சிப்படுத்தும் நோக்கங்களுக்காக உள்ளூரில் பயன்படுத்தப்படும்.", te: "ప్రదర్శన లక్ష్యాల కోసం స్థానికంగా ఉపయోగించబడుతుంది.", ko: "디스플레이 목적으로 로컬에서 사용됩니다.", vi: "Sẽ được sử dụng cục bộ cho mục đích hiển thị.", pl: "Będzie używany lokalnie do celów wyświetlania.", ro: "Va fi folosit local pentru scopuri de afișare.", nl: "Zal lokaal worden gebruikt voor weergavedoeleinden.", el: "Θα χρησιμοποιείται τοπικά για σκοπούς εμφάνισης.", th: "จะใช้ในพื้นที่สำหรับวัตถุประสงค์ในการแสดงผล", cs: "Bude používán lokálně pro zobrazení.", hu: "Helyileg lesz használva megjelenítési célokra.", sv: "Kommer att användas lokalt för visningsändamål.", da: "Vil blive brugt lokalt til visningsformål." })}
+        </div>
+        <div className="h-4" />
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="w-full focus-visible:outline-none"
+            autoFocus
+            autoComplete="off"
+            placeholder="Satoshi"
+            value={$name}
+            onChange={e => setName(e.target.value)} />
+        </div>
+      </label>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "File", zh: "文件", hi: "फ़ाइल", es: "Archivo", ar: "ملف", fr: "Fichier", de: "Datei", ru: "Файл", pt: "Arquivo", ja: "ファイル", pa: "ਫਾਇਲ", bn: "ফাইল", id: "Berkas", ur: "فائل", ms: "Berkas", it: "File", tr: "Dosya", ta: "கோப்பு", te: "ఫైల్", ko: "파일", vi: "Tệp", pl: "Plik", ro: "Fișier", nl: "Bestand", el: "Αρχείο", th: "ไฟล์", cs: "Soubor", hu: "Fájl", sv: "Fil", da: "Fil" })}
+        </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Your existing KDBX file.", zh: "您现有的 KDBX 文件。", hi: "आपकी मौजूदा KDBX फ़ाइल।", es: "Su archivo KDBX existente.", ar: "ملف KDBX الحالي الخاص بك.", fr: "Votre fichier KDBX existant.", de: "Ihre vorhandene KDBX-Datei.", ru: "Ваш существующий файл KDBX.", pt: "Seu arquivo KDBX existente.", ja: "既存の KDBX ファイル。", pa: "ਤੁਹਾਡੀ ਮੌਜੂਦਾ KDBX ਫਾਇਲ।", bn: "আপনার বিদ্যমান KDBX ফাইল।", id: "File KDBX Anda yang ada.", ur: "آپ کی موجودہ KDBX فائل۔", ms: "File KDBX Anda yang ada.", it: "Il tuo file KDBX esistente.", tr: "Mevcut KDBX dosyanız.", ta: "உங்கள் தற்போதைய KDBX கோப்பு.", te: "మీ ప్రస్తుత KDBX ఫైల్.", ko: "기존 KDBX 파일입니다.", vi: "Tệp KDBX hiện có của bạn.", pl: "Twój istniejący plik KDBX.", ro: "Fișierul KDBX existent.", nl: "Uw bestaande KDBX-bestand.", el: "Το υπάρχον αρχείο KDBX σας.", th: "ไฟล์ KDBX ที่มีอยู่ของคุณ", cs: "Váš stávající soubor KDBX.", hu: "A meglévő KDBX fájlod.", sv: "Din befintliga KDBX-fil.", da: "Din eksisterende KDBX-fil." })}
+        </div>
+        <div className="h-4" />
+        <div className="relative bg-default-contrast rounded-xl has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          {"showOpenFilePicker" in window === true &&
+            <button className="absolute inset-0 opacity-0 cursor-pointer"
+              type="button"
+              onClick={pickOrDisplay}
+              onDragOver={e => e.preventDefault()}
+              onDrop={dropOrDisplay} />}
+          {fsfh != null &&
+            <div className="po-2">
+              {fsfh.name}
+            </div>}
+          {fsfh == null &&
+            <div className="po-2">
+              {Lang.match({ en: "Pick or drop file here", zh: "在此处选择或拖放文件", hi: "यहां फ़ाइल चुनें या ड्रॉप करें", es: "Seleccione o suelte el archivo aquí", ar: "اختر أو اسقط الملف هنا", fr: "Choisissez ou déposez le fichier ici", de: "Datei hier auswählen oder ablegen", ru: "Выберите или перетащите файл сюда", pt: "Escolha ou solte o arquivo aqui", ja: "ここでファイルを選択またはドロップ", pa: "ਇੱਥੇ ਫਾਇਲ ਚੁਣੋ ਜਾਂ ਡਰੌਪ ਕਰੋ", bn: "এখানে ফাইল নির্বাচন করুন বা ড্রপ করুন", id: "Pilih atau jatuhkan file di sini", ur: "فائل یہاں منتخب کریں یا ڈراپ کریں", ms: "Pilih atau jatuhkan file di sini", it: "Scegli o trascina il file qui", tr: "Dosyayı buraya seçin veya bırakın", ta: "கோப்பை இங்கே தேர்ந்தெடுக்கவும் அல்லது விடவும்", te: "ఫైల్‌ను ఇక్కడ ఎంచుకోండి లేదా డ్రాప్ చేయండి", ko: "여기에 파일을 선택하거나 드롭하세요", vi: "Chọn hoặc thả tệp ở đây", pl: "Wybierz lub upuść plik tutaj", ro: "Alegeți sau aruncați fișierul aici", nl: "Kies of drop het bestand hier", el: "Επιλέξτε ή ρίξτε το αρχείο εδώ", th: "เลือกหรือวางไฟล์ที่นี่", cs: "Vyberte nebo přetáhněte soubor sem", hu: "Válassza ki vagy dobja ide a fájlt", sv: "Välj eller släpp filen här", da: "Vælg eller slip filen her" })}
+            </div>}
+        </div>
+      </label>
+      <label className="flex flex-col">
+        <div className="h-6" />
+        <div className="font-medium">
+          {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
+        </div>
+        <div className="text-default-contrast">
+          {Lang.match({ en: "Your existing password to decrypt the file.", zh: "您现有的密码用于解密文件。", hi: "फ़ाइल को डिक्रिप्ट करने के लिए आपका मौजूदा पासवर्ड।", es: "Su contraseña existente para descifrar el archivo.", ar: "كلمة المرور الحالية الخاصة بك لفك تشفير الملف.", fr: "Votre mot de passe existant pour déchiffrer le fichier.", de: "Ihr vorhandenes Passwort zum Entschlüsseln der Datei.", ru: "Ваш существующий пароль для расшифровки файла.", pt: "Sua senha existente para descriptografar o arquivo.", ja: "ファイルを復号化するための既存のパスワード。", pa: "ਫਾਇਲ ਨੂੰ ਡਿਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਪਾਸਵਰਡ।", bn: "ফাইল ডিক্রিপ্ট করতে আপনার বিদ্যমান পাসওয়ার্ড।", id: "Kata sandi Anda yang ada untuk mendekripsi file.", ur: "فائل کو ڈی کرپٹ کرنے کے لیے آپ کا موجودہ پاس ورڈ۔", ms: "Kata laluan sedia ada anda untuk menyahsulit fail.", it: "La tua password esistente per decrittografare il file.", tr: "Dosyayı çözmek için mevcut şifreniz.", ta: "கோப்பை டிக்ரிப்ட் செய்ய உங்கள் தற்போதைய கடவுச்சொல்.", te: "ఫైల్‌ను డీక్రిప్ట్ చేయడానికి మీ ప్రస్తుత పాస్వర్డ్.", ko: "파일을 복호화하기 위한 기존 비밀번호입니다.", vi: "Mật khẩu hiện có của bạn để giải mã tệp.", pl: "Twoje istniejące hasło do odszyfrowania pliku.", ro: "Parola dvs. existentă pentru a decripta fișierul.", nl: "Uw bestaande wachtwoord om het bestand te ontsleutelen.", el: "Ο υπάρχων κωδικός σας για την αποκρυπτογράφηση του αρχείου.", th: "รหัสผ่านที่มีอยู่ของคุณเพื่อถอดรหัสไฟล์", cs: "Váš stávající heslo pro dešifrování souboru.", hu: "A meglévő jelszavad a fájl dekódolásához.", sv: "Ditt befintliga lösenord för att dekryptera filen.", da: "Din eksisterende adgangskode til at dekryptere filen." })}
+        </div>
+        <div className="h-4" />
+        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+          <input className="w-full focus-visible:outline-none"
+            autoComplete="off"
+            type={flipped ? "text" : "password"}
+            value={$pass}
+            onChange={e => setPass(e.target.value)} />
+          <div className="flex items-center gap-2">
+            <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
+              type="button"
+              onClick={() => setFlipped(x => !x)}>
+              <Clicker>
+                {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
+              </Clicker>
+            </button>
+          </div>
+        </div>
+      </label>
       <div className="h-8 grow" />
       <div className="flex items-center flex-wrap-reverse gap-2">
         <WideOppositeButton
           type="submit"
-          inert={openOrDisplay.running || error != null}
+          disabled={openOrDisplay.running || error != null}
           onClick={openOrDisplay}>
           {openOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
           {error != null ? error : Lang.match({ en: "Open", zh: "打开", hi: "खोलें", es: "Abrir", ar: "فتح", fr: "Ouvrir", de: "Öffnen", ru: "Открыть", pt: "Abrir", ja: "開く", pa: "ਖੋਲ੍ਹੋ", bn: "খুলুন", id: "Buka", ur: "کھولیں", ms: "Buka", it: "Apri", tr: "Aç", ta: "திறக்கவும்", te: "తెరవండి", ko: "열기", vi: "Mở", pl: "Otwórz", ro: "Deschideți", nl: "Openen", el: "Άνοιγμα", th: "เปิดไฟล์", cs: "Otevřít", hu: "Megnyitás", sv: "Öppna", da: "Åbn" })}
@@ -1297,7 +1319,7 @@ function UserRemoveButton(props: { user: UserData }) {
 
   return <MenuButton
     type="button"
-    inert={removeOrDisplay.running}
+    disabled={removeOrDisplay.running}
     onClick={removeOrDisplay}>
     {removeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.TrashIcon className="size-5" />}
     {Lang.match({ en: "Remove", zh: "删除", hi: "हटाएं", es: "Eliminar", ar: "إزالة", fr: "Supprimer", de: "Entfernen", ru: "Удалить", pt: "Remover", ja: "削除", pa: "ਹਟਾਓ", bn: "অপসারণ করুন", id: "Hapus", ur: "ہٹائیں", ms: "Hapus", it: "Rimuovi", tr: "Kaldır", ta: "அகற்று", te: "తొలగించు", ko: "제거하다", vi: "Xóa bỏ", pl: "Usuń", ro: "Eliminați", nl: "Verwijderen", el: "Αφαίρεση", th: "ลบออก", cs: "Odstranit", hu: "Eltávolítás", sv: "Ta bort", da: "Fjern" })}

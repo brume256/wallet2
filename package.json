@@ -30,7 +30,7 @@
     "@hazae41/jsonrpc": "1.2.1",
     "@hazae41/kdbx": "^0.2.22",
     "@hazae41/keccak256": "^2.0.4",
-    "@hazae41/labase": "^1.1.4",
+    "@hazae41/labase": "^1.1.5",
     "@hazae41/latrine": "^2.1.8",
     "@hazae41/modal": "^1.0.3",
     "@hazae41/pendule": "^1.0.4",

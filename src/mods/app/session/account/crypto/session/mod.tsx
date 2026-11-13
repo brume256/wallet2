@@ -194,71 +194,76 @@ export function CryptoSessionAddPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
           flip={flipped}
           onFlipChange={setFlipped} />
       </div>
-      <form className="grow flex flex-col"
-        onSubmit={e => e.preventDefault()}>
-        <div className="h-6" />
-        <div className="font-medium">
-          {Lang.match({ en: "Title", zh: "标题", hi: "शीर्षक", es: "Título", ar: "العنوان", fr: "Titre", de: "Titel", ru: "Название", pt: "Título", ja: "タイトル", pa: "ਸਿਰਲੇਖ", bn: "শিরোনাম", id: "Judul", ur: "عنوان", ms: "Judul", it: "Titolo", tr: "Başlık", ta: "தலைப்பு", te: "శీర్షిక", ko: "제목", vi: "Tiêu đề", pl: "Tytuł", ro: "Titlu", nl: "Titel", el: "Τίτλος", th: "หัวข้อเรื่อง", cs: "Název", hu: "Cím", sv: "Titel", da: "Titel" })}
-        </div>
-        <div className="text-default-contrast">
-          {Lang.match({ en: "A name to identify this session.", zh: "用于识别此会话的名称。", hi: "इस सत्र की पहचान करने के लिए एक नाम।", es: "Un nombre para identificar esta sesión.", ar: "اسم لتحديد هذه الجلسة.", fr: "Un nom pour identifier cette session.", de: "Ein Name zur Identifizierung dieser Sitzung.", ru: "Имя для идентификации этой сессии.", pt: "Um nome para identificar esta sessão.", ja: "このセッションを識別するための名前。", pa: "ਇਸ ਸੈਸ਼ਨ ਦੀ ਪਛਾਣ ਕਰਨ ਲਈ ਇੱਕ ਨਾਮ।", bn: "এই সেশনটি সনাক্ত করার জন্য একটি নাম।", id: "Nama untuk mengidentifikasi sesi ini.", ur: "اس سیشن کی شناخت کے لیے ایک نام۔", ms: "Nama untuk mengenal pasti sesi ini.", it: "Un nome per identificare questa sessione.", tr: "Bu oturumu tanımlamak için bir ad.", ta: "இந்த அமர்வை அடையாளம் காண ஒரு பெயர்.", te: "ఈ సెషన్‌ను గుర్తించడానికి ఒక పేరు.", ko: "이 세션을 식별하기 위한 이름.", vi: "Một tên để xác định phiên này.", pl: "Nazwa do identyfikacji tej sesji.", ro: "Un nume pentru a identifica această sesiune.", nl: "Een naam om deze sessie te identificeren.", el: "Ένα όνομα για να αναγνωρίσετε αυτήν τη συνεδρία.", th: "ชื่อเพื่อระบุเซสชันนี้", cs: "Název pro identifikaci této relace.", hu: "Egy név ennek a munkamenetnek az azonosításához.", sv: "Ett namn för att identifiera denna session.", da: "Et navn til at identificere denne session." })}
-        </div>
-        <div className="h-4" />
-        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-          <input className="w-full focus-visible:outline-none"
-            autoFocus
-            autoComplete="off"
-            placeholder={Lang.match({ en: "Untitled", zh: "未命名", hi: "बिना शीर्षक के", es: "Sin título", ar: "بدون عنوان", fr: "Sans titre", de: "Unbenannt", ru: "Без названия", pt: "Sem título", ja: "タイトルなし", pa: "ਬਿਨਾਂ ਸਿਰਲੇਖ ਦੇ", bn: "শিরোনামহীন", id: "Tanpa judul", ur: "بغیر عنوان کے", ms: "Tanpa judul", it: "Senza titolo", tr: "Başlıksız", ta: "தலைப்பு இல்லாமல்", te: "శీర్షికలేని", ko: "제목 없음", vi: "Không tiêu đề", pl: "Bez tytułu", ro: "Fără titlu", nl: "Naamloos", el: "Χωρίς τίτλο ", th: "ไม่มีชื่อเรื่อง ", cs: "Nezvaný ", hu: "Névtelen ", sv: "Namnlös ", da: "Navnløs" })}
-            onChange={e => setTitle(e.target.value)}
-            value={$title} />
-        </div>
-        <div className="h-6" />
-        <div className="font-medium">
-          {Lang.match({ en: "WalletConnect code", zh: "WalletConnect 代码", hi: "WalletConnect कोड", es: "Código WalletConnect", ar: "رمز WalletConnect", fr: "Code WalletConnect", de: "WalletConnect-Code", ru: "Код WalletConnect", pt: "Código WalletConnect", ja: "WalletConnectコード", pa: "WalletConnect ਕੋਡ", bn: "WalletConnect কোড", id: "Kode WalletConnect", ur: "والٹ کنیکٹ کوڈ", ms: "Kode WalletConnect", it: "Codice WalletConnect", tr: "WalletConnect kodu", ta: "WalletConnect குறியீடு", te: "WalletConnect కోడ్", ko: "WalletConnect 코드", vi: "Mã WalletConnect", pl: "Kod WalletConnect", ro: "Codul WalletConnect", nl: "WalletConnect-code", el: "Κωδικός WalletConnect ", th: "รหัส WalletConnect ", cs: "Kód WalletConnect ", hu: "WalletConnect kód ", sv: "WalletConnect-kod ", da: "WalletConnect-kode" })}
-        </div>
-        <div className="text-default-contrast">
-          {Lang.match({ en: "Your WalletConnect pairing code.", zh: "您的 WalletConnect 配对代码。", hi: "आपका WalletConnect पेयरिंग कोड।", es: "Tu código de emparejamiento de WalletConnect.", ar: "رمز الاقتران الخاص بك في WalletConnect.", fr: "Votre code de jumelage WalletConnect.", de: "Ihr WalletConnect-Kopplungscode.", ru: "Ваш код сопряжения WalletConnect.", pt: "Seu código de pareamento do WalletConnect.", ja: "あなたのWalletConnectペアリングコード。", pa: "ਤੁਹਾਡਾ WalletConnect ਜੋੜਨ ਕੋਡ।", bn: "আপনার WalletConnect পেয়ারিং কোড।", id: "Kode pasangan WalletConnect Anda.", ur: "آپ کا WalletConnect جوڑنے کا کوڈ۔", ms: "Kode pasangan WalletConnect Anda.", it: "Il tuo codice di accoppiamento di WalletConnect.", tr: "WalletConnect eşleştirme kodunuz.", ta: "உங்கள் WalletConnect ஜோடிப்புக் குறியீடு.", te: "మీ WalletConnect జతకరణ కోడ్.", ko: "귀하의 WalletConnect 페어링 코드입니다.", vi: "Mã ghép nối WalletConnect của bạn.", pl: "Twój kod parowania WalletConnect.", ro: "Codul de împerechere al WalletConnect.", nl: "Uw WalletConnect-koppelingscode.", el: "Ο κωδικός ζευγαρώματος του WalletConnect σας. ", th: "รหัสจับคู่ของคุณบน WalletConnect. ", cs: "Váš kód pro párování s WalletConnect. ", hu: "A WalletConnect párosító kódja. ", sv: "Din WalletConnect-parningskod. ", da: "Din WalletConnect-parringskode." })}
-        </div>
-        <div className="h-4" />
-        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-          <input className="w-full focus-visible:outline-none"
-            autoComplete="off"
-            type={flipped ? "text" : "password"}
-            placeholder="wc:..."
-            onChange={e => setUrl(e.target.value)}
-            value={$url} />
-          <div className="flex items-center gap-2">
-            <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-              type="button"
-              onClick={() => setFlipped(x => !x)}>
-              <Clicker>
-                {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-              </Clicker>
-            </button>
-            <UrlInputAnchor />
+      <form className="grow flex flex-col" onSubmit={e => e.preventDefault()}>
+        <label className="flex flex-col">
+          <div className="h-6" />
+          <div className="font-medium">
+            {Lang.match({ en: "Title", zh: "标题", hi: "शीर्षक", es: "Título", ar: "العنوان", fr: "Titre", de: "Titel", ru: "Название", pt: "Título", ja: "タイトル", pa: "ਸਿਰਲੇਖ", bn: "শিরোনাম", id: "Judul", ur: "عنوان", ms: "Judul", it: "Titolo", tr: "Başlık", ta: "தலைப்பு", te: "శీర్షిక", ko: "제목", vi: "Tiêu đề", pl: "Tytuł", ro: "Titlu", nl: "Titel", el: "Τίτλος", th: "หัวข้อเรื่อง", cs: "Název", hu: "Cím", sv: "Titel", da: "Titel" })}
           </div>
-        </div>
-        <div className="h-6" />
-        <div className="font-medium">
-          {Lang.match({ en: "Notes", zh: "备注", hi: "नोट्स", es: "Notas", ar: "ملاحظات", fr: "Remarques", de: "Notizen", ru: "Заметки", pt: "Notas", ja: "ノート", pa: "ਨੋਟਸ", bn: "নোটস", id: "Catatan", ur: "نوٹس", ms: "Catatan", it: "Note", tr: "Notlar", ta: "குறிப்புகள்", te: "గమనికలు", ko: "노트", vi: "Ghi chú", pl: "Notatki", ro: "Note", nl: "Notities", el: "Σημειώσεις", th: "บันทึกย่อ", cs: "Poznámky", hu: "Jegyzetek", sv: "Anteckningar", da: "Noter" })}
-        </div>
-        <div className="text-default-contrast">
-          {Lang.match({ en: "Any additional information.", zh: "任何附加信息。", hi: "कोई अतिरिक्त जानकारी।", es: "Cualquier información adicional.", ar: "أي معلومات إضافية.", fr: "Toute information supplémentaire.", de: "Alle zusätzlichen Informationen.", ru: "Любая дополнительная информация.", pt: "Qualquer informação adicional.", ja: "追加情報。", pa: "ਕੋਈ ਵੀ ਵਾਧੂ ਜਾਣਕਾਰੀ।", bn: "যেকোনও অতিরিক্ত তথ্য।", id: "Informasi tambahan apa pun.", ur: "کوئی اضافی معلومات۔", ms: "Sebarang maklumat tambahan.", it: "Qualsiasi informazione aggiuntiva.", tr: "Herhangi bir ek bilgi.", ta: "எந்தவொரு கூடுதல் தகவலும்.", te: "ఏదైనా అదనపు సమాచారం.", ko: "추가 정보.", vi: "Bất kỳ thông tin bổ sung nào.", pl: "Wszelkie dodatkowe informacje.", ro: "Orice informație suplimentară.", nl: "Eventuele aanvullende informatie.", el: "Οποιαδήποτε επιπλέον πληροφορία.", th: "ข้อมูลเพิ่มเติมใด ๆ.", cs: "Jakékoli další informace.", hu: "Bármilyen további információ.", sv: "Eventuell ytterligare information.", da: "Eventuelle yderligere oplysninger." })}
-        </div>
-        <div className="h-4" />
-        <div className="bg-default-contrast p-1 rounded-xl flex flex-col gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-          <textarea className="po-2 w-full resize-none focus-visible:outline-none"
-            rows={6}
-            placeholder={Lang.match({ en: "I use this session for...", zh: "我使用此会话来...", hi: "मैं इस सत्र का उपयोग करता हूं...", es: "Uso esta sesión para...", ar: "أستخدم هذا الجلسة ل...", fr: "J'utilise cette session pour...", de: "Ich verwende diese Sitzung für...", ru: "Я использую эту сессию для...", pt: "Eu uso esta sessão para...", ja: "このセッションは...のために使用します", pa: "ਮੈਂ ਇਸ ਸੈਸ਼ਨ ਨੂੰ... ਲਈ ਵਰਤਦਾ ਹਾਂ", bn: "আমি এই সেশনটি... জন্য ব্যবহার করি", id: "Saya menggunakan sesi ini untuk...", ur: "میں اس سیشن کو... کے لیے استعمال کرتا ہوں", ms: "Saya menggunakan sesi ini untuk...", it: "Uso questa sessione per...", tr: "Bu oturumu... için kullanıyorum", ta: "நான் இந்த அமர்வை... க்காக பயன்படுத்துகிறேன்", te: "నేను ఈ సెషన్‌ను... కోసం ఉపయోగిస్తున్నాను", ko: "이 세션은...에 사용합니다", vi: "Tôi sử dụng phiên này cho...", pl: "Używam tej sesji do...", ro: "Eu uso esta sessão para...", nl: "Ik gebruik deze sessie voor...", el: "Χρησιμοποιώ αυτήν τη συνεδρία για...", th: "ฉันใช้เซสชันนี้สำหรับ...", cs: "Používám tuto relaci pro...", hu: "Ezt a munkamenetet arra használom, hogy...", sv: "Jag använder denna session för...", da: "Jeg bruger denne session til..." })}
-            onChange={e => setNotes(e.target.value)}
-            value={$notes} />
-        </div>
+          <div className="text-default-contrast">
+            {Lang.match({ en: "A name to identify this session.", zh: "用于识别此会话的名称。", hi: "इस सत्र की पहचान करने के लिए एक नाम।", es: "Un nombre para identificar esta sesión.", ar: "اسم لتحديد هذه الجلسة.", fr: "Un nom pour identifier cette session.", de: "Ein Name zur Identifizierung dieser Sitzung.", ru: "Имя для идентификации этой сессии.", pt: "Um nome para identificar esta sessão.", ja: "このセッションを識別するための名前。", pa: "ਇਸ ਸੈਸ਼ਨ ਦੀ ਪਛਾਣ ਕਰਨ ਲਈ ਇੱਕ ਨਾਮ।", bn: "এই সেশনটি সনাক্ত করার জন্য একটি নাম।", id: "Nama untuk mengidentifikasi sesi ini.", ur: "اس سیشن کی شناخت کے لیے ایک نام۔", ms: "Nama untuk mengenal pasti sesi ini.", it: "Un nome per identificare questa sessione.", tr: "Bu oturumu tanımlamak için bir ad.", ta: "இந்த அமர்வை அடையாளம் காண ஒரு பெயர்.", te: "ఈ సెషన్‌ను గుర్తించడానికి ఒక పేరు.", ko: "이 세션을 식별하기 위한 이름.", vi: "Một tên để xác định phiên này.", pl: "Nazwa do identyfikacji tej sesji.", ro: "Un nume pentru a identifica această sesiune.", nl: "Een naam om deze sessie te identificeren.", el: "Ένα όνομα για να αναγνωρίσετε αυτήν τη συνεδρία.", th: "ชื่อเพื่อระบุเซสชันนี้", cs: "Název pro identifikaci této relace.", hu: "Egy név ennek a munkamenetnek az azonosításához.", sv: "Ett namn för att identifiera denna session.", da: "Et navn til at identificere denne session." })}
+          </div>
+          <div className="h-4" />
+          <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+            <input className="w-full focus-visible:outline-none"
+              autoFocus
+              autoComplete="off"
+              placeholder={Lang.match({ en: "Untitled", zh: "未命名", hi: "बिना शीर्षक के", es: "Sin título", ar: "بدون عنوان", fr: "Sans titre", de: "Unbenannt", ru: "Без названия", pt: "Sem título", ja: "タイトルなし", pa: "ਬਿਨਾਂ ਸਿਰਲੇਖ ਦੇ", bn: "শিরোনামহীন", id: "Tanpa judul", ur: "بغیر عنوان کے", ms: "Tanpa judul", it: "Senza titolo", tr: "Başlıksız", ta: "தலைப்பு இல்லாமல்", te: "శీర్షికలేని", ko: "제목 없음", vi: "Không tiêu đề", pl: "Bez tytułu", ro: "Fără titlu", nl: "Naamloos", el: "Χωρίς τίτλο ", th: "ไม่มีชื่อเรื่อง ", cs: "Nezvaný ", hu: "Névtelen ", sv: "Namnlös ", da: "Navnløs" })}
+              onChange={e => setTitle(e.target.value)}
+              value={$title} />
+          </div>
+        </label>
+        <label className="flex flex-col">
+          <div className="h-6" />
+          <div className="font-medium">
+            {Lang.match({ en: "WalletConnect code", zh: "WalletConnect 代码", hi: "WalletConnect कोड", es: "Código WalletConnect", ar: "رمز WalletConnect", fr: "Code WalletConnect", de: "WalletConnect-Code", ru: "Код WalletConnect", pt: "Código WalletConnect", ja: "WalletConnectコード", pa: "WalletConnect ਕੋਡ", bn: "WalletConnect কোড", id: "Kode WalletConnect", ur: "والٹ کنیکٹ کوڈ", ms: "Kode WalletConnect", it: "Codice WalletConnect", tr: "WalletConnect kodu", ta: "WalletConnect குறியீடு", te: "WalletConnect కోడ్", ko: "WalletConnect 코드", vi: "Mã WalletConnect", pl: "Kod WalletConnect", ro: "Codul WalletConnect", nl: "WalletConnect-code", el: "Κωδικός WalletConnect ", th: "รหัส WalletConnect ", cs: "Kód WalletConnect ", hu: "WalletConnect kód ", sv: "WalletConnect-kod ", da: "WalletConnect-kode" })}
+          </div>
+          <div className="text-default-contrast">
+            {Lang.match({ en: "Your WalletConnect pairing code.", zh: "您的 WalletConnect 配对代码。", hi: "आपका WalletConnect पेयरिंग कोड।", es: "Tu código de emparejamiento de WalletConnect.", ar: "رمز الاقتران الخاص بك في WalletConnect.", fr: "Votre code de jumelage WalletConnect.", de: "Ihr WalletConnect-Kopplungscode.", ru: "Ваш код сопряжения WalletConnect.", pt: "Seu código de pareamento do WalletConnect.", ja: "あなたのWalletConnectペアリングコード。", pa: "ਤੁਹਾਡਾ WalletConnect ਜੋੜਨ ਕੋਡ।", bn: "আপনার WalletConnect পেয়ারিং কোড।", id: "Kode pasangan WalletConnect Anda.", ur: "آپ کا WalletConnect جوڑنے کا کوڈ۔", ms: "Kode pasangan WalletConnect Anda.", it: "Il tuo codice di accoppiamento di WalletConnect.", tr: "WalletConnect eşleştirme kodunuz.", ta: "உங்கள் WalletConnect ஜோடிப்புக் குறியீடு.", te: "మీ WalletConnect జతకరణ కోడ్.", ko: "귀하의 WalletConnect 페어링 코드입니다.", vi: "Mã ghép nối WalletConnect của bạn.", pl: "Twój kod parowania WalletConnect.", ro: "Codul de împerechere al WalletConnect.", nl: "Uw WalletConnect-koppelingscode.", el: "Ο κωδικός ζευγαρώματος του WalletConnect σας. ", th: "รหัสจับคู่ของคุณบน WalletConnect. ", cs: "Váš kód pro párování s WalletConnect. ", hu: "A WalletConnect párosító kódja. ", sv: "Din WalletConnect-parningskod. ", da: "Din WalletConnect-parringskode." })}
+          </div>
+          <div className="h-4" />
+          <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+            <input className="w-full focus-visible:outline-none"
+              autoComplete="off"
+              type={flipped ? "text" : "password"}
+              placeholder="wc:..."
+              onChange={e => setUrl(e.target.value)}
+              value={$url} />
+            <div className="flex items-center gap-2">
+              <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
+                type="button"
+                onClick={() => setFlipped(x => !x)}>
+                <Clicker>
+                  {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
+                </Clicker>
+              </button>
+              <UrlInputAnchor />
+            </div>
+          </div>
+        </label>
+        <label className="flex flex-col">
+          <div className="h-6" />
+          <div className="font-medium">
+            {Lang.match({ en: "Notes", zh: "备注", hi: "नोट्स", es: "Notas", ar: "ملاحظات", fr: "Remarques", de: "Notizen", ru: "Заметки", pt: "Notas", ja: "ノート", pa: "ਨੋਟਸ", bn: "নোটস", id: "Catatan", ur: "نوٹس", ms: "Catatan", it: "Note", tr: "Notlar", ta: "குறிப்புகள்", te: "గమనికలు", ko: "노트", vi: "Ghi chú", pl: "Notatki", ro: "Note", nl: "Notities", el: "Σημειώσεις", th: "บันทึกย่อ", cs: "Poznámky", hu: "Jegyzetek", sv: "Anteckningar", da: "Noter" })}
+          </div>
+          <div className="text-default-contrast">
+            {Lang.match({ en: "Any additional information.", zh: "任何附加信息。", hi: "कोई अतिरिक्त जानकारी।", es: "Cualquier información adicional.", ar: "أي معلومات إضافية.", fr: "Toute information supplémentaire.", de: "Alle zusätzlichen Informationen.", ru: "Любая дополнительная информация.", pt: "Qualquer informação adicional.", ja: "追加情報。", pa: "ਕੋਈ ਵੀ ਵਾਧੂ ਜਾਣਕਾਰੀ।", bn: "যেকোনও অতিরিক্ত তথ্য।", id: "Informasi tambahan apa pun.", ur: "کوئی اضافی معلومات۔", ms: "Sebarang maklumat tambahan.", it: "Qualsiasi informazione aggiuntiva.", tr: "Herhangi bir ek bilgi.", ta: "எந்தவொரு கூடுதல் தகவலும்.", te: "ఏదైనా అదనపు సమాచారం.", ko: "추가 정보.", vi: "Bất kỳ thông tin bổ sung nào.", pl: "Wszelkie dodatkowe informacje.", ro: "Orice informație suplimentară.", nl: "Eventuele aanvullende informatie.", el: "Οποιαδήποτε επιπλέον πληροφορία.", th: "ข้อมูลเพิ่มเติมใด ๆ.", cs: "Jakékoli další informace.", hu: "Bármilyen további információ.", sv: "Eventuell ytterligare information.", da: "Eventuelle yderligere oplysninger." })}
+          </div>
+          <div className="h-4" />
+          <div className="bg-default-contrast p-1 rounded-xl flex flex-col gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+            <textarea className="po-2 w-full resize-none focus-visible:outline-none"
+              rows={6}
+              placeholder={Lang.match({ en: "I use this session for...", zh: "我使用此会话来...", hi: "मैं इस सत्र का उपयोग करता हूं...", es: "Uso esta sesión para...", ar: "أستخدم هذا الجلسة ل...", fr: "J'utilise cette session pour...", de: "Ich verwende diese Sitzung für...", ru: "Я использую эту сессию для...", pt: "Eu uso esta sessão para...", ja: "このセッションは...のために使用します", pa: "ਮੈਂ ਇਸ ਸੈਸ਼ਨ ਨੂੰ... ਲਈ ਵਰਤਦਾ ਹਾਂ", bn: "আমি এই সেশনটি... জন্য ব্যবহার করি", id: "Saya menggunakan sesi ini untuk...", ur: "میں اس سیشن کو... کے لیے استعمال کرتا ہوں", ms: "Saya menggunakan sesi ini untuk...", it: "Uso questa sessione per...", tr: "Bu oturumu... için kullanıyorum", ta: "நான் இந்த அமர்வை... க்காக பயன்படுத்துகிறேன்", te: "నేను ఈ సెషన్‌ను... కోసం ఉపయోగిస్తున్నాను", ko: "이 세션은...에 사용합니다", vi: "Tôi sử dụng phiên này cho...", pl: "Używam tej sesji do...", ro: "Eu uso esta sessão para...", nl: "Ik gebruik deze sessie voor...", el: "Χρησιμοποιώ αυτήν τη συνεδρία για...", th: "ฉันใช้เซสชันนี้สำหรับ...", cs: "Používám tuto relaci pro...", hu: "Ezt a munkamenetet arra használom, hogy...", sv: "Jag använder denna session för...", da: "Jeg bruger denne session til..." })}
+              onChange={e => setNotes(e.target.value)}
+              value={$notes} />
+          </div>
+        </label>
         <div className="h-8 grow" />
         <div className="flex items-center flex-wrap-reverse gap-2">
           {session.value.user.fsfh != null &&
             <WideOppositeButton
               type="submit"
-              inert={writeOrDisplay.running || error != null}
+              disabled={writeOrDisplay.running || error != null}
               onClick={writeOrDisplay}>
               {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση ", th: "บันทึก ", cs: "Uložit ", hu: "Mentés ", sv: "Spara ", da: "Gem" })}
@@ -266,7 +271,7 @@ export function CryptoSessionAddPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
           {session.value.user.fsfh == null &&
             <WideOppositeButton
               type="submit"
-              inert={saveOrDisplay.running || error != null}
+              disabled={saveOrDisplay.running || error != null}
               onClick={saveOrDisplay}>
               {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση ", th: "บันทึก ", cs: "Uložit ", hu: "Mentés ", sv: "Spara ", da: "Gem" })}
@@ -520,9 +525,8 @@ export function CryptoSessionPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
           flip={flipped}
           onFlipChange={setFlipped} />
       </div>
-      <form className="grow flex flex-col"
-        onSubmit={e => e.preventDefault()}>
-        <Fragment>
+      <div className="grow flex flex-col">
+        <div className="flex flex-col">
           <div className="h-6" />
           <div className="flex items-center gap-2">
             {(online === true && session != null) &&
@@ -556,8 +560,8 @@ export function CryptoSessionPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
               </div>
             </div>
           </div>
-        </Fragment>
-        {notes && <Fragment>
+        </div>
+        {notes && <label className="flex flex-col">
           <div className="h-6" />
           <div className="font-medium">
             {Lang.match({ en: "Notes", zh: "备注", hi: "नोट्स", es: "Notas", ar: "ملاحظات", fr: "Notes", de: "Notizen", ru: "Заметки", pt: "Notas", ja: "ノート", pa: "ਨੋਟਸ", bn: "নোটস", id: "Catatan", ur: "نوٹس", ms: "Nota", it: "Note", tr: "Notlar", ta: "குறிப்புகள்", te: "గమనికలు", ko: "노트", vi: "Ghi chú", pl: "Notatki", ro: "Note", nl: "Notities", el: "Σημειώσεις", th: "บันทึก", cs: "Poznámky", hu: "Jegyzetek", sv: "Anteckningar", da: "Noter" })}
@@ -572,8 +576,8 @@ export function CryptoSessionPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
               rows={6}
               value={notes} />
           </div>
-        </Fragment>}
-      </form>
+        </label>}
+      </div>
     </div>
   </Fragment>
 }
@@ -651,7 +655,7 @@ export function CryptoSessionMenu(props: { $entry: KDBX.Inner.KeePassFile.Entry 
       {session.value.user.fsfh != null &&
         <MenuButton
           type="button"
-          inert={writeOrDisplay.running}
+          disabled={writeOrDisplay.running}
           onClick={writeOrDisplay}>
           {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.LinkSlashIcon className="size-5" />}
           {Lang.match({ en: "Destroy", zh: "销毁", hi: "नष्ट करें", es: "Destruir", ar: "تدمير", fr: "Détruire", de: "Zerstören", ru: "Уничтожить", pt: "Destruir", ja: "破棄", pa: "ਨਸ਼ਟ ਕਰੋ", bn: "ধ্বংস করুন", id: "Hancurkan", ur: "تباہ کریں", ms: "Hancurkan", it: "Distruggi", tr: "Yık", ta: "நசுக்கவும்", te: "నాశనం చేయండి", ko: "파괴하다", vi: "Hủy bỏ", pl: "Zniszczyć", ro: "Distrugeți", nl: "Vernietigen", el: "Καταστρέψτε ", th: "ทำลาย ", cs: "Zničit ", hu: "Megsemmisít ", sv: "Förstöra ", da: "Ødelæg" })}
@@ -659,7 +663,7 @@ export function CryptoSessionMenu(props: { $entry: KDBX.Inner.KeePassFile.Entry 
       {session.value.user.fsfh == null &&
         <MenuButton
           type="button"
-          inert={saveOrDisplay.running}
+          disabled={saveOrDisplay.running}
           onClick={saveOrDisplay}>
           {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.LinkSlashIcon className="size-5" />}
           {Lang.match({ en: "Destroy", zh: "销毁", hi: "नष्ट करें", es: "Destruir", ar: "تدمير", fr: "Détruire", de: "Zerstören", ru: "Уничтожить", pt: "Destruir", ja: "破棄", pa: "ਨਸ਼ਟ ਕਰੋ", bn: "ধ্বংস করুন", id: "Hancurkan", ur: "تباہ کریں", ms: "Hancurkan", it: "Distruggi", tr: "Yık", ta: "நசுக்கவும்", te: "నాశనం చేయండి", ko: "파괴하다", vi: "Hủy bỏ", pl: "Zniszczyć", ro: "Distrugeți", nl: "Vernietigen", el: "Καταστρέψτε ", th: "ทำลาย ", cs: "Zničit ", hu: "Megsemmisít ", sv: "Förstöra ", da: "Ødelæg" })}

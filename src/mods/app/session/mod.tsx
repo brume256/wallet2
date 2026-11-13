@@ -360,39 +360,40 @@ export function SessionExportPage() {
       <h1 className="text-xl font-medium">
         {Lang.match({ en: "Export user", zh: "导出用户", hi: "उपयोगकर्ता निर्यात करें", es: "Exportar usuario", ar: "تصدير المستخدم", fr: "Exporter l'utilisateur", de: "Benutzer exportieren", ru: "Экспорт пользователя", pt: "Exportar usuário", ja: "ユーザーをエクスポート", pa: "ਉਪਭੋਗਤਾ ਨਿਰਯਾਤ ਕਰੋ", bn: "ব্যবহারকারী রপ্তানি করুন", id: "Ekspor pengguna", ur: "صارف برآمد کریں", ms: "Ekspor pengguna", it: "Esporta utente", tr: "Kullanıcıyı dışa aktar", ta: "பயனரை ஏற்றுமதி செய்யவும்", te: "వినియోగదారుని ఎగుమతి చేయండి", ko: "사용자 내보내기", vi: "Xuất người dùng", pl: "Eksportuj użytkownika", ro: "Exportă utilizatorul", nl: "Gebruiker exporteren", el: "Εξαγωγή χρήστη", th: "ส่งออกผู้ใช้", cs: "Exportovat uživatele", hu: "Felhasználó exportálása", sv: "Exportera användare", da: "Eksporter bruger" })}
       </h1>
-      <form className="grow flex flex-col"
-        onSubmit={e => e.preventDefault()}>
-        <div className="h-6" />
-        <div className="font-medium">
-          {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
-        </div>
-        <div className="text-default-contrast">
-          {Lang.match({ en: "A password to encrypt the exported file.", zh: "用于加密导出文件的密码。", hi: "निर्यात की गई फ़ाइल को एन्क्रिप्ट करने के लिए एक पासवर्ड।", es: "Una contraseña para encriptar el archivo exportado.", ar: "كلمة مرور لتشفير الملف المصدر.", fr: "Un mot de passe pour chiffrer le fichier exporté.", de: "Ein Passwort zum Verschlüsseln der exportierten Datei.", ru: "Пароль для шифрования экспортируемого файла.", pt: "Uma senha para criptografar o arquivo exportado.", ja: "エクスポートされたファイルを暗号化するためのパスワード。", pa: "ਨਿਰਯਾਤ ਕੀਤੀ ਫਾਈਲ ਨੂੰ ਇੰਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਇੱਕ ਪਾਸਵਰਡ।", bn: "রপ্তানি করা ফাইলটি এনক্রিপ্ট করার জন্য একটি পাসওয়ার্ড।", id: "Kata sandi untuk mengenkripsi file yang diekspor.", ur: "برآمد شدہ فائل کو خفیہ کرنے کے لیے ایک پاس ورڈ۔", ms: "Kata sandi untuk menyulitkan fail yang dieksport.", it: "Una password per crittografare il file esportato.", tr: "Dışa aktarılan dosyayı şifrelemek için bir parola.", ta: "ஏற்றுமதி செய்யப்பட்ட கோப்பை குறியாக்கம் செய்ய ஒரு கடவுச்சொல்.", te: "ఎగుమతి చేసిన ఫైల్‌ను గుప్తీకరించడానికి ఒక పాస్వర్డ్.", ko: "내보낸 파일을 암호화하기 위한 비밀번호.", vi: "Mật khẩu để mã hóa tệp xuất.", pl: "Hasło do zaszyfrowania eksportowanego pliku.", ro: "O parolă pentru a cripta fișierul exportat.", nl: "Een wachtwoord om het geëxporteerde bestand te versleutelen.", el: "Ένας κωδικός πρόσβασης για την κρυπτογράφηση του εξαγόμενου αρχείου.", th: "รหัสผ่านเพื่อเข้ารหัสไฟล์ที่ส่งออก.", cs: "Heslo pro šifrování exportovaného souboru.", hu: "Egy jelszó az exportált fájl titkosításához.", sv: "Ett lösenord för att kryptera den exporterade filen.", da: "En adgangskode til at kryptere den eksporterede fil." })}
-        </div>
-        <div className="h-4" />
-        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-          <input className="w-full focus-visible:outline-none"
-            autoFocus
-            autoComplete="off"
-            type={flipped ? "text" : "password"}
-            value={$pass}
-            onChange={e => setPass(e.target.value)} />
-          <div className="flex items-center gap-2">
-            <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
-              type="button"
-              onClick={() => setFlipped(x => !x)}>
-              <Clicker>
-                {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-              </Clicker>
-            </button>
+      <form className="grow flex flex-col" onSubmit={e => e.preventDefault()}>
+        <label className="flex flex-col">
+          <div className="h-6" />
+          <div className="font-medium">
+            {Lang.match({ en: "Password", zh: "密码", hi: "पासवर्ड", es: "Contraseña", ar: "كلمة المرور", fr: "Mot de passe", de: "Passwort", ru: "Пароль", pt: "Senha", ja: "パスワード", pa: "ਪਾਸਵਰਡ", bn: "পাসওয়ার্ড", id: "Kata sandi", ur: "پاس ورڈ", ms: "Kata sandi", it: "Password", tr: "Parola", ta: "கடவுச்சொல்", te: "పాస్వర్డ్", ko: "비밀번호", vi: "Mật khẩu", pl: "Hasło", ro: "Parolă", nl: "Wachtwoord", el: "Κωδικός πρόσβασης", th: "รหัสผ่าน", cs: "Heslo", hu: "Jelszó", sv: "Lösenord", da: "Adgangskode" })}
           </div>
-        </div>
+          <div className="text-default-contrast">
+            {Lang.match({ en: "A password to encrypt the exported file.", zh: "用于加密导出文件的密码。", hi: "निर्यात की गई फ़ाइल को एन्क्रिप्ट करने के लिए एक पासवर्ड।", es: "Una contraseña para encriptar el archivo exportado.", ar: "كلمة مرور لتشفير الملف المصدر.", fr: "Un mot de passe pour chiffrer le fichier exporté.", de: "Ein Passwort zum Verschlüsseln der exportierten Datei.", ru: "Пароль для шифрования экспортируемого файла.", pt: "Uma senha para criptografar o arquivo exportado.", ja: "エクスポートされたファイルを暗号化するためのパスワード。", pa: "ਨਿਰਯਾਤ ਕੀਤੀ ਫਾਈਲ ਨੂੰ ਇੰਕ੍ਰਿਪਟ ਕਰਨ ਲਈ ਇੱਕ ਪਾਸਵਰਡ।", bn: "রপ্তানি করা ফাইলটি এনক্রিপ্ট করার জন্য একটি পাসওয়ার্ড।", id: "Kata sandi untuk mengenkripsi file yang diekspor.", ur: "برآمد شدہ فائل کو خفیہ کرنے کے لیے ایک پاس ورڈ۔", ms: "Kata sandi untuk menyulitkan fail yang dieksport.", it: "Una password per crittografare il file esportato.", tr: "Dışa aktarılan dosyayı şifrelemek için bir parola.", ta: "ஏற்றுமதி செய்யப்பட்ட கோப்பை குறியாக்கம் செய்ய ஒரு கடவுச்சொல்.", te: "ఎగుమతి చేసిన ఫైల్‌ను గుప్తీకరించడానికి ఒక పాస్వర్డ్.", ko: "내보낸 파일을 암호화하기 위한 비밀번호.", vi: "Mật khẩu để mã hóa tệp xuất.", pl: "Hasło do zaszyfrowania eksportowanego pliku.", ro: "O parolă pentru a cripta fișierul exportat.", nl: "Een wachtwoord om het geëxporteerde bestand te versleutelen.", el: "Ένας κωδικός πρόσβασης για την κρυπτογράφηση του εξαγόμενου αρχείου.", th: "รหัสผ่านเพื่อเข้ารหัสไฟล์ที่ส่งออก.", cs: "Heslo pro šifrování exportovaného souboru.", hu: "Egy jelszó az exportált fájl titkosításához.", sv: "Ett lösenord för att kryptera den exporterade filen.", da: "En adgangskode til at kryptere den eksporterede fil." })}
+          </div>
+          <div className="h-4" />
+          <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+            <input className="w-full focus-visible:outline-none"
+              autoFocus
+              autoComplete="off"
+              type={flipped ? "text" : "password"}
+              value={$pass}
+              onChange={e => setPass(e.target.value)} />
+            <div className="flex items-center gap-2">
+              <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
+                type="button"
+                onClick={() => setFlipped(x => !x)}>
+                <Clicker>
+                  {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
+                </Clicker>
+              </button>
+            </div>
+          </div>
+        </label>
         <div className="h-8 grow" />
         <div className="flex items-center flex-wrap-reverse gap-2">
           {"showSaveFilePicker" in window === true &&
             <WideOppositeButton
               type="submit"
-              inert={pickOrDisplay.running || error != null}
+              disabled={pickOrDisplay.running || error != null}
               onClick={pickOrDisplay}>
               {pickOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}
@@ -400,7 +401,7 @@ export function SessionExportPage() {
           {"showSaveFilePicker" in window === false &&
             <WideOppositeButton
               type="submit"
-              inert={saveOrDisplay.running || error != null}
+              disabled={saveOrDisplay.running || error != null}
               onClick={saveOrDisplay}>
               {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση", th: "บันทึก", cs: "Uložit", hu: "Mentés", sv: "Spara", da: "Gem" })}

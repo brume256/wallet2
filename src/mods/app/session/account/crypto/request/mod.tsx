@@ -256,6 +256,7 @@ export function CryptoRequestPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
   const signOrThrow = useCallback(async (params: WcSessionRequestParams) => {
     const { chainId, request } = params
 
+    // TODO: fix
     if (request.method === "personal_sign") {
       const [message, account] = request.params as [string, string]
 
@@ -463,9 +464,8 @@ export function CryptoRequestPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
             flip={flipped}
             onFlipChange={setFlipped} />}
       </div>
-      <form className="grow flex flex-col"
-        onSubmit={e => e.preventDefault()}>
-        {message != null && <Fragment>
+      <div className="grow flex flex-col" >
+        {message != null && <label className="flex flex-col">
           <div className="h-6" />
           <div className="font-medium">
             {Lang.match({ en: "Message", zh: "消息", hi: "संदेश", es: "Mensaje", ar: "رسالة", fr: "Message", de: "Nachricht", ru: "Сообщение", pt: "Mensagem", ja: "メッセージ", pa: "ਸੰਦੇਸ਼", bn: "বার্তা", id: "Pesan", ur: "پیغام", ms: "Mesej", it: "Messaggio", tr: "Mesaj", ta: "செய்தி", te: "సందేశం", ko: "메시지", vi: "Tin nhắn", pl: "Wiadomość", ro: "Mesaj", nl: "Bericht", el: "Μήνυμα ", th: "ข้อความ ", cs: "Zpráva ", hu: "Üzenet ", sv: "Meddelande ", da: "Besked" })}
@@ -474,13 +474,15 @@ export function CryptoRequestPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
             {Lang.match({ en: "The request message.", zh: "请求消息。", hi: "अनुरोध संदेश।", es: "El mensaje de la solicitud.", ar: "رسالة الطلب.", fr: "Le message de la requête.", de: "Die Nachricht der Anfrage.", ru: "Сообщение запроса.", pt: "A mensagem da solicitação.", ja: "リクエストメッセージ。", pa: "ਬੇਨਤੀ ਸੁਨੇਹਾ।", bn: "অনুরোধের বার্তা।", id: "Pesan permintaan.", ur: "درخواست کا پیغام۔", ms: "Mesej permintaan.", it: "Il messaggio della richiesta.", tr: "İstek mesajı.", ta: "கோரிக்கை செய்தி.", te: "అభ్యర్థన సందేశం.", ko: "요청 메시지입니다.", vi: "Tin nhắn yêu cầu.", pl: "Wiadomość żądania.", ro: "Mesajul cererii.", nl: "Het bericht van het verzoek.", el: "Το μήνυμα του αιτήματος ", th: "ข้อความของคำขอ ", cs: "Zpráva požadavku ", hu: "A kérés üzenete ", sv: "Förfrågningsmeddelande ", da: "Anmodningsbesked" })}
           </div>
           <div className="h-4" />
-          <div className="flex flex-col items-center border border-default-contrast rounded-xl p-6">
-            <pre className="whitespace-pre-wrap text-wrap wrap-anywhere">
-              {message}
-            </pre>
+          <div className="bg-default-contrast p-1 rounded-xl flex flex-col gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+            <textarea className="po-2 w-full resize-none focus-visible:outline-none"
+              readOnly
+              rows={9}
+              dir="ltr"
+              value={message} />
           </div>
-        </Fragment>}
-        <Fragment>
+        </label>}
+        <label className="flex flex-col">
           <div className="h-6" />
           <div className="font-medium">
             {Lang.match({ en: "Details", zh: "详情", hi: "विवरण", es: "Detalles", ar: "تفاصيل", fr: "Détails", de: "Einzelheiten", ru: "Подробности", pt: "Detalhes", ja: "詳細", pa: "ਵੇਰਵੇ", bn: "বিস্তারিত", id: "Detail", ur: "تفصیلات", ms: "Detail", it: "Dettagli", tr: "Detaylar", ta: "விவரங்கள்", te: "వివరాలు", ko: "세부 정보", vi: "Chi tiết", pl: "Szczegóły", ro: "Detalii", nl: "Details", el: "Λεπτομέρειες ", th: "รายละเอียด ", cs: "Podrobnosti ", hu: "Részletek ", sv: "Detaljer ", da: "Detaljer" })}
@@ -504,25 +506,25 @@ export function CryptoRequestPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
               {copyTheDetails.copying ? Lang.match({ en: "Copied", zh: "已复制", hi: "कॉपी किया गया", es: "Copiado", ar: "تم النسخ", fr: "Copié", de: "Kopiert", ru: "Скопировано", pt: "Copiado", ja: "コピーしました", pa: "ਨਕਲ ਕੀਤਾ", bn: "কপি করা হয়েছে", id: "Disalin", ur: "کاپی کیا گیا", ms: "Disalin", it: "Copiato", tr: "Kopyalandı", ta: "நகலெடுக்கப்பட்டது", te: "నకలించబడింది", ko: "복사됨", vi: "Đã sao chép", pl: "Skopiowano", ro: "Copiat", nl: "Gekopieerd", el: "Αντιγράφηκε ", th: "คัดลอกแล้ว ", cs: "Zkopírováno ", hu: "Másolva ", sv: "Kopierat ", da: "Kopieret" }) : Lang.match({ en: "Copy", zh: "复制", hi: "कॉपी करें", es: "Copiar", ar: "نسخ", fr: "Copier", de: "Kopieren", ru: "Копировать", pt: "Copiar", ja: "コピー", pa: "ਨਕਲ ਕਰੋ", bn: "কপি করুন", id: "Salin", ur: "کاپی کریں", ms: "Salin", it: "Copia", tr: "Kopyala", ta: "நகலெடுக்கவும்", te: "నకలించు", ko: "복사", vi: "Sao chép", pl: "Kopiuj", ro: "Copiați", nl: "Kopiëren", el: "Αντιγραφή ", th: "คัดลอก ", cs: "Kopírovat ", hu: "Másolás ", sv: "Kopiera ", da: "Kopier" })}
             </WideContrastButton>
           </div>
-        </Fragment>
+        </label>
         <div className="h-8 grow" />
         <div className="flex items-center flex-wrap-reverse gap-2">
           <WideContrastButton
-            type="submit"
-            inert={decline.running}
+            type="button"
+            disabled={decline.running}
             onClick={decline}>
             {decline.running ? <Spinner className="size-5 animate-spin" /> : <Outline.NoSymbolIcon className="size-5" />}
             {Lang.match({ en: "Decline", zh: "拒绝", hi: "अस्वीकृत करें", es: "Rechazar", ar: "رفض", fr: "Refuser", de: "Ablehnen", ru: "Отклонить", pt: "Recusar", ja: "拒否", pa: "ਅਸਵੀਕਾਰ ਕਰੋ", bn: "প্রত্যাখ্যান করুন", id: "Tolak", ur: "رد کریں", ms: "Tolak", it: "Rifiuta", tr: "Reddet", ta: "நிராகரிக்கவும்", te: "తిరస్కరించండి", ko: "거부", vi: "Từ chối", pl: "Odrzuć", ro: "Respinge", nl: "Afwijzen", el: "Απορρίπτω ", th: "ปฏิเสธ ", cs: "Odmítnout ", hu: "Elutasítás ", sv: "Avvisa ", da: "Afvis" })}
           </WideContrastButton>
           <WideOppositeButton
-            type="submit"
-            inert={approve.running}
+            type="button"
+            disabled={approve.running}
             onClick={approve}>
             {approve.running ? <Spinner className="size-5 animate-spin" /> : <Outline.CheckCircleIcon className="size-5" />}
             {Lang.match({ en: "Approve", zh: "批准", hi: "स्वीकृत करें", es: "Aprobar", ar: "وافق", fr: "Approuver", de: "Genehmigen", ru: "Одобрить", pt: "Aprovar", ja: "承認", pa: "ਮਨਜ਼ੂਰ ਕਰੋ", bn: "অনুমোদন করুন", id: "Setujui", ur: "منظور کریں", ms: "Setujui", it: "Approva", tr: "Onayla", ta: "அனுமதிக்கவும்", te: "అనుమతించండి", ko: "승인", vi: "Phê duyệt", pl: "Zatwierdź", ro: "Aprobați", nl: "Goedkeuren", el: "Εγκρίνω ", th: "อนุมัติ ", cs: "Schválit ", hu: "Jóváhagyás ", sv: "Godkänn ", da: "Godkend" })}
           </WideOppositeButton>
         </div>
-      </form>
+      </div>
     </div>
   </Fragment>
 }

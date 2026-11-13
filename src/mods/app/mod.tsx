@@ -352,8 +352,7 @@ export function SettingsPage() {
     <h1 className="text-xl font-medium">
       {Lang.match({ en: "Settings", zh: "设置", hi: "सेटिंग्स", es: "Configuración", ar: "الإعدادات", fr: "Paramètres", de: "Einstellungen", ru: "Настройки", pt: "Configurações", ja: "設定", pa: "ਸੈਟਿੰਗਾਂ", bn: "সেটিংস", id: "Pengaturan", ur: "ترتیبات", ms: "Pengaturan", it: "Impostazioni", tr: "Ayarlar", ta: "அமைப்புகள்", te: "సెట్టింగ్స్", ko: "설정", vi: "Cài đặt", pl: "Ustawienia", ro: "Setări", nl: "Instellingen", el: "Ρυθμίσεις", th: "การตั้งค่า", cs: "Nastavení", hu: "Beállítások", sv: "Inställningar", da: "Indstillinger" })}
     </h1>
-    <form className="grow flex flex-col"
-      onSubmit={e => e.preventDefault()}>
+    <div className="grow flex flex-col">
       <div className="h-6" />
       <div className="font-medium">
         {Lang.match({ en: "App display", zh: "应用显示", hi: "ऐप प्रदर्शन", es: "Pantalla de la aplicación", ar: "عرض التطبيق", fr: "Affichage de l'application", de: "App-Anzeige", ru: "Отображение приложения", pt: "Exibição do aplicativo", ja: "アプリの表示", pa: "ਐਪ ਡਿਸਪਲੇਅ", bn: "অ্যাপ প্রদর্শন", id: "Tampilan aplikasi", ur: "ایپ ڈسپلے", ms: "Tampilan aplikasi", it: "Visualizzazione dell'app", tr: "Uygulama görüntüsü", ta: "அப் காட்சி", te: "యాప్ ప్రదర్శన", ko: "앱 디스플레이", vi: "Hiển thị ứng dụng", pl: "Wyświetlanie aplikacji", ro: "Afișajul aplicației", nl: "App-weergave", el: "Εμφάνιση εφαρμογής", th: "การแสดงผลแอป", cs: "Zobrazení aplikace", hu: "Alkalmazás megjelenítése", sv: "Appvisning", da: "App-visning" })}
@@ -386,7 +385,7 @@ export function SettingsPage() {
             onChange={onNameChange} />
         </div>
       </div>
-    </form>
+    </div>
   </div>
 }
 

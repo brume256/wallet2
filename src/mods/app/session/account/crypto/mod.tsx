@@ -175,78 +175,83 @@ export function CryptoAccountAddPage() {
           flip={flipped}
           onFlipChange={setFlipped} />
       </div>
-      <form className="grow flex flex-col"
-        onSubmit={e => e.preventDefault()}>
-        <div className="h-6" />
-        <div className="font-medium">
-          {Lang.match({ en: "Title", zh: "标题", hi: "शीर्षक", es: "Título", ar: "العنوان", fr: "Titre", de: "Titel", ru: "Название", pt: "Título", ja: "タイトル", pa: "ਸਿਰਲੇਖ", bn: "শিরোনাম", id: "Judul", ur: "عنوان", ms: "Judul", it: "Titolo", tr: "Başlık", ta: "தலைப்பு", te: "శీర్షిక", ko: "제목", vi: "Tiêu đề", pl: "Tytuł", ro: "Titlu", nl: "Titel", el: "Τίτλος", th: "หัวข้อเรื่อง", cs: "Název", hu: "Cím", sv: "Titel", da: "Titel" })}
-        </div>
-        <div className="text-default-contrast">
-          {Lang.match({ en: "A name to identify this account.", zh: "用于识别此账户的名称。", hi: "इस खाते की पहचान करने के लिए एक नाम।", es: "Un nombre para identificar esta cuenta.", ar: "اسم لتحديد هذا الحساب.", fr: "Un nom pour identifier ce compte.", de: "Ein Name zur Identifizierung dieses Kontos.", ru: "Имя для идентификации этого аккаунта.", pt: "Um nome para identificar esta conta.", ja: "このアカウントを識別するための名前。", pa: "ਇਸ ਖਾਤੇ ਦੀ ਪਛਾਣ ਕਰਨ ਲਈ ਇੱਕ ਨਾਮ।", bn: "এই অ্যাকাউন্টটি সনাক্ত করার জন্য একটি নাম।", id: "Nama untuk mengidentifikasi akun ini.", ur: "اس اکاؤنٹ کی شناخت کے لیے ایک نام۔", ms: "Nama untuk mengenal pasti akaun ini.", it: "Un nome per identificare questo account.", tr: "Bu hesabı tanımlamak için bir ad.", ta: "இந்த கணக்கை அடையாளம் காண ஒரு பெயர்.", te: "ఈ ఖాతాను గుర్తించడానికి ఒక పేరు.", ko: "이 계정을 식별하기 위한 이름.", vi: "Một tên để xác định tài khoản này.", pl: "Nazwa do identyfikacji tego konta.", ro: "Un nume pentru a identifica acest cont.", nl: "Een naam om dit account te identificeren.", el: "Ένα όνομα για να αναγνωρίσετε αυτόν τον λογαριασμό.", th: "ชื่อเพื่อระบุบัญชีนี้", cs: "Název pro identifikaci tohoto účtu.", hu: "Egy név ennek a fióknak az azonosításához.", sv: "Ett namn för att identifiera detta konto.", da: "Et navn til at identificere denne konto." })}
-        </div>
-        <div className="h-4" />
-        <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-          <input className="w-full focus-visible:outline-none"
-            autoFocus
-            autoComplete="off"
-            placeholder={Lang.match({ en: "Untitled", zh: "未命名", hi: "बिना शीर्षक के", es: "Sin título", ar: "بدون عنوان", fr: "Sans titre", de: "Unbenannt", ru: "Без названия", pt: "Sem título", ja: "タイトルなし", pa: "ਬਿਨਾਂ ਸਿਰਲੇਖ ਦੇ", bn: "শিরোনামহীন", id: "Tanpa judul", ur: "بغیر عنوان کے", ms: "Tanpa judul", it: "Senza titolo", tr: "Başlıksız", ta: "தலைப்பு இல்லாமல்", te: "శీర్షికలేని", ko: "제목 없음", vi: "Không tiêu đề", pl: "Bez tytułu", ro: "Fără titlu", nl: "Naamloos", el: "Χωρίς τίτλο ", th: "ไม่มีชื่อเรื่อง ", cs: "Nezvaný ", hu: "Névtelen ", sv: "Namnlös ", da: "Navnløs" })}
-            onChange={e => setTitle(e.target.value)}
-            value={$title} />
-          <div className="flex items-center gap-2">
-            <ColorAnchor color={color} />
+      <form className="grow flex flex-col" onSubmit={e => e.preventDefault()}>
+        <label className="flex flex-col">
+          <div className="h-6" />
+          <div className="font-medium">
+            {Lang.match({ en: "Title", zh: "标题", hi: "शीर्षक", es: "Título", ar: "العنوان", fr: "Titre", de: "Titel", ru: "Название", pt: "Título", ja: "タイトル", pa: "ਸਿਰਲੇਖ", bn: "শিরোনাম", id: "Judul", ur: "عنوان", ms: "Judul", it: "Titolo", tr: "Başlık", ta: "தலைப்பு", te: "శీర్షిక", ko: "제목", vi: "Tiêu đề", pl: "Tytuł", ro: "Titlu", nl: "Titel", el: "Τίτλος", th: "หัวข้อเรื่อง", cs: "Název", hu: "Cím", sv: "Titel", da: "Titel" })}
           </div>
-        </div>
-        <div className="h-6" />
-        <div className="font-medium">
-          {Lang.match({ en: "Seed phrase", zh: "助记词", hi: "सीड वाक्य", es: "Frase semilla", ar: "عبارة البذور", fr: "Phrase de récupération", de: "Seed-Phrase", ru: "Сид-фраза", pt: "Frase semente", ja: "シードフレーズ", pa: "ਸੀਡ ਫਰੇਜ਼", bn: "সিড বাক্য", id: "Frasa seed", ur: "سیڈ فریز", ms: "Frasa seed", it: "Frase seed", tr: "Seed cümlesi", ta: "சீட் வாக்கியம்", te: "సీడ్ వాక్యం", ko: "시드 구문", vi: "Cụm từ seed", pl: "Fraza seed", ro: "Fraza seed", nl: "Seed-phrase", el: "Φράση σπόρου", th: "วลีเมล็ดพันธุ์", cs: "Seed phrase", hu: "Seed kifejezés", sv: "Seed phrase", da: "Seed phrase" })}
-        </div>
-        <div className="text-default-contrast">
-          {Lang.match({ en: "Your BIP-39 seed phrase.", zh: "您的 BIP-39 助记词。", hi: "आपका BIP-39 सीड वाक्य।", es: "Su frase semilla BIP-39.", ar: "عبارة البذور BIP-39 الخاصة بك.", fr: "Votre phrase de récupération BIP-39.", de: "Ihre BIP-39 Seed-Phrase.", ru: "Ваша BIP-39 сид-фраза.", pt: "Sua frase semente BIP-39.", ja: "あなたの BIP-39 シードフレーズ。", pa: "ਤੁਹਾਡਾ BIP-39 ਸੀਡ ਫਰੇਜ਼।", bn: "আপনার BIP-39 সিড বাক্য।", id: "Frasa seed BIP-39 Anda.", ur: "آپ کا BIP-39 سیڈ فریز۔", ms: "Frasa seed BIP-39 anda.", it: "La tua frase seed BIP-39.", tr: "BIP-39 seed cümleniz.", ta: "உங்கள் BIP-39 சீட் வாக்கியம்.", te: "మీ BIP-39 సీడ్ వాక్యం.", ko: "귀하의 BIP-39 시드 구문.", vi: "Cụm từ seed BIP-39 của bạn.", pl: "Twoja fraza seed BIP-39.", ro: "Fraza seed BIP-39 a dvs.", nl: "Uw BIP-39 seed phrase.", el: "Η φράση σπόρου BIP-39 σας.", th: "วลีเมล็ดพันธุ์ BIP-39 ของคุณ.", cs: "Vaše BIP-39 seed phrase.", hu: "Az Ön BIP-39 seed kifejezése.", sv: "Din BIP-39 seed phrase.", da: "Din BIP-39 seed phrase." })}
-        </div>
-        <div className="h-4" />
-        <div className="bg-default-contrast p-1 rounded-xl flex flex-col gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-          <textarea className="po-2 w-full data-[redacted=true]:blur-xs focus-visible:outline-none"
-            rows={3}
-            autoComplete="off"
-            onChange={e => setSeedPhrase(e.target.value)}
-            value={$seedphrase}
-            data-redacted={!flipped} />
-        </div>
-        <div className="h-2" />
-        <div className="flex items-center flex-wrap-reverse gap-2">
-          <WideContrastButton
-            onClick={() => setFlipped(x => !x)}>
-            {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
-            {flipped ? Lang.match({ en: "Hide", zh: "隐藏", hi: "छिपाएं", es: "Ocultar", ar: "إخفاء", fr: "Cacher", de: "Verbergen", ru: "Скрыть", pt: "Esconder", ja: "隠す", pa: "ਛੁਪਾਓ", bn: "লুকান", id: "Sembunyikan", ur: "چھپائیں", ms: "Sembunyikan", it: "Nascondi", tr: "Gizle", ta: "மறை", te: "దాచు", ko: "숨기기", vi: "Ẩn", pl: "Ukryj", ro: "Ascundeți", nl: "Verbergen", el: "Κρύβω", th: "ซ่อน", cs: "Skrýt", hu: "Elrejtés", sv: "Dölj", da: "Skjul" }) : Lang.match({ en: "Show", zh: "显示", hi: "दिखाएं", es: "Mostrar", ar: "إظهار", fr: "Afficher", de: "Anzeigen", ru: "Показать", pt: "Mostrar", ja: "表示する", pa: "ਦਿਖਾਓ", bn: "দেখান", id: "Tampilkan", ur: "دکھائیں", ms: "Tampilkan", it: "Mostra", tr: "Göster", ta: "காட்டு", te: "తెరచు", ko: "보이기", vi: "Hiển thị", pl: "Pokaż", ro: "Afișați", nl: "Tonen", el: "Εμφάνιση ", th: "แสดง ", cs: "Zobrazit ", hu: "Megjelenítés ", sv: "Visa ", da: "Vis" })}
-          </WideContrastButton>
-          <WideContrastButton
-            onClick={onGenerateClick}>
-            <Outline.SparklesIcon className="size-5" />
-            {Lang.match({ en: "Generate", zh: "生成", hi: "उत्पन्न करें", es: "Generar", ar: "توليد", fr: "Générer", de: "Generieren", ru: "Создать", pt: "Gerar", ja: "生成", pa: "ਤਿਆਰ ਕਰੋ", bn: "উত্পন্ন করুন", id: "Hasilkan", ur: "تخلیق کریں", ms: "Hasilkan", it: "Genera", tr: "Oluştur", ta: "உருவாக்கு", te: "సృష్టించు", ko: "생성", vi: "Tạo", pl: "Generuj", ro: "Generează", nl: "Genereren", el: "Δημιουργία", th: "สร้าง", cs: "Generovat", hu: "Generálás", sv: "Generera", da: "Generer" })}
-          </WideContrastButton>
-        </div>
-        <div className="h-6" />
-        <div className="font-medium">
-          {Lang.match({ en: "Notes", zh: "备注", hi: "नोट्स", es: "Notas", ar: "ملاحظات", fr: "Notes", de: "Notizen", ru: "Заметки", pt: "Notas", ja: "ノート", pa: "ਨੋਟਸ", bn: "নোটস", id: "Catatan", ur: "نوٹس", ms: "Nota", it: "Note", tr: "Notlar", ta: "குறிப்புகள்", te: "గమనికలు", ko: "노트", vi: "Ghi chú", pl: "Notatki", ro: "Note", nl: "Notities", el: "Σημειώσεις", th: "บันทึก", cs: "Poznámky", hu: "Jegyzetek", sv: "Anteckningar", da: "Noter" })}
-        </div>
-        <div className="text-default-contrast">
-          {Lang.match({ en: "Any additional information.", zh: "任何附加信息。", hi: "कोई अतिरिक्त जानकारी।", es: "Cualquier información adicional.", ar: "أي معلومات إضافية.", fr: "Toute information supplémentaire.", de: "Alle zusätzlichen Informationen.", ru: "Любая дополнительная информация.", pt: "Qualquer informação adicional.", ja: "追加情報。", pa: "ਕੋਈ ਵੀ ਵਾਧੂ ਜਾਣਕਾਰੀ।", bn: "যেকোনও অতিরিক্ত তথ্য।", id: "Informasi tambahan apa pun.", ur: "کوئی اضافی معلومات۔", ms: "Sebarang maklumat tambahan.", it: "Qualsiasi informazione aggiuntiva.", tr: "Herhangi bir ek bilgi.", ta: "எந்தவொரு கூடுதல் தகவலும்.", te: "ఏదైనా అదనపు సమాచారం.", ko: "추가 정보.", vi: "Bất kỳ thông tin bổ sung nào.", pl: "Wszelkie dodatkowe informacje.", ro: "Orice informație suplimentară.", nl: "Eventuele aanvullende informatie.", el: "Οποιαδήποτε επιπλέον πληροφορία.", th: "ข้อมูลเพิ่มเติมใด ๆ.", cs: "Jakékoli další informace.", hu: "Bármilyen további információ.", sv: "Eventuell ytterligare information.", da: "Eventuelle yderligere oplysninger." })}
-        </div>
-        <div className="h-4" />
-        <div className="bg-default-contrast p-1 rounded-xl flex flex-col  gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
-          <textarea className="po-2 w-full resize-none focus-visible:outline-none"
-            rows={6}
-            autoComplete="off"
-            placeholder={Lang.match({ en: "I use this account for...", zh: "我使用这个账户来...", hi: "मैं इस खाते का उपयोग करता हूं...", es: "Uso esta cuenta para...", ar: "أستخدم هذا الحساب لـ...", fr: "J'utilise ce compte pour...", de: "Ich benutze dieses Konto für...", ru: "Я использую этот аккаунт для...", pt: "Eu uso esta conta para...", ja: "このアカウントは...のために使用します", pa: "ਮੈਂ ਇਸ ਖਾਤੇ ਨੂੰ... ਲਈ ਵਰਤਦਾ ਹਾਂ", bn: "আমি এই অ্যাকাউন্টটি... জন্য ব্যবহার করি", id: "Saya menggunakan akun ini untuk...", ur: "میں اس اکاؤنٹ کو... کے لیے استعمال کرتا ہوں", ms: "Saya menggunakan akun ini untuk...", it: "Uso questo account per...", tr: "Bu hesabı... için kullanıyorum", ta: "நான் இந்த கணக்கை... க்காக பயன்படுத்துகிறேன்", te: "నేను ఈ ఖాతాను... కోసం ఉపయోగిస్తున్నాను", ko: "이 계정을...에 사용합니다", vi: "Tôi sử dụng tài khoản này cho...", pl: "Używam tego konta do...", ro: "Folosesc acest cont pentru...", nl: "Ik gebruik dit account voor...", el: "Χρησιμοποιώ αυτόν τον λογαριασμό για...", th: "ฉันใช้บัญชีนี้สำหรับ...", cs: "Používám tento účet pro...", hu: "Ezt a fiókot arra használom, hogy...", sv: "Jag använder det här kontot för...", da: "Jeg bruger denne konto til..." })}
-            onChange={e => setNotes(e.target.value)}
-            value={$notes} />
-        </div>
+          <div className="text-default-contrast">
+            {Lang.match({ en: "A name to identify this account.", zh: "用于识别此账户的名称。", hi: "इस खाते की पहचान करने के लिए एक नाम।", es: "Un nombre para identificar esta cuenta.", ar: "اسم لتحديد هذا الحساب.", fr: "Un nom pour identifier ce compte.", de: "Ein Name zur Identifizierung dieses Kontos.", ru: "Имя для идентификации этого аккаунта.", pt: "Um nome para identificar esta conta.", ja: "このアカウントを識別するための名前。", pa: "ਇਸ ਖਾਤੇ ਦੀ ਪਛਾਣ ਕਰਨ ਲਈ ਇੱਕ ਨਾਮ।", bn: "এই অ্যাকাউন্টটি সনাক্ত করার জন্য একটি নাম।", id: "Nama untuk mengidentifikasi akun ini.", ur: "اس اکاؤنٹ کی شناخت کے لیے ایک نام۔", ms: "Nama untuk mengenal pasti akaun ini.", it: "Un nome per identificare questo account.", tr: "Bu hesabı tanımlamak için bir ad.", ta: "இந்த கணக்கை அடையாளம் காண ஒரு பெயர்.", te: "ఈ ఖాతాను గుర్తించడానికి ఒక పేరు.", ko: "이 계정을 식별하기 위한 이름.", vi: "Một tên để xác định tài khoản này.", pl: "Nazwa do identyfikacji tego konta.", ro: "Un nume pentru a identifica acest cont.", nl: "Een naam om dit account te identificeren.", el: "Ένα όνομα για να αναγνωρίσετε αυτόν τον λογαριασμό.", th: "ชื่อเพื่อระบุบัญชีนี้", cs: "Název pro identifikaci tohoto účtu.", hu: "Egy név ennek a fióknak az azonosításához.", sv: "Ett namn för att identifiera detta konto.", da: "Et navn til at identificere denne konto." })}
+          </div>
+          <div className="h-4" />
+          <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+            <input className="w-full focus-visible:outline-none"
+              autoFocus
+              autoComplete="off"
+              placeholder={Lang.match({ en: "Untitled", zh: "未命名", hi: "बिना शीर्षक के", es: "Sin título", ar: "بدون عنوان", fr: "Sans titre", de: "Unbenannt", ru: "Без названия", pt: "Sem título", ja: "タイトルなし", pa: "ਬਿਨਾਂ ਸਿਰਲੇਖ ਦੇ", bn: "শিরোনামহীন", id: "Tanpa judul", ur: "بغیر عنوان کے", ms: "Tanpa judul", it: "Senza titolo", tr: "Başlıksız", ta: "தலைப்பு இல்லாமல்", te: "శీర్షికలేని", ko: "제목 없음", vi: "Không tiêu đề", pl: "Bez tytułu", ro: "Fără titlu", nl: "Naamloos", el: "Χωρίς τίτλο ", th: "ไม่มีชื่อเรื่อง ", cs: "Nezvaný ", hu: "Névtelen ", sv: "Namnlös ", da: "Navnløs" })}
+              onChange={e => setTitle(e.target.value)}
+              value={$title} />
+            <div className="flex items-center gap-2">
+              <ColorAnchor color={color} />
+            </div>
+          </div>
+        </label>
+        <label className="flex flex-col">
+          <div className="h-6" />
+          <div className="font-medium">
+            {Lang.match({ en: "Seed phrase", zh: "助记词", hi: "सीड वाक्य", es: "Frase semilla", ar: "عبارة البذور", fr: "Phrase de récupération", de: "Seed-Phrase", ru: "Сид-фраза", pt: "Frase semente", ja: "シードフレーズ", pa: "ਸੀਡ ਫਰੇਜ਼", bn: "সিড বাক্য", id: "Frasa seed", ur: "سیڈ فریز", ms: "Frasa seed", it: "Frase seed", tr: "Seed cümlesi", ta: "சீட் வாக்கியம்", te: "సీడ్ వాక్యం", ko: "시드 구문", vi: "Cụm từ seed", pl: "Fraza seed", ro: "Fraza seed", nl: "Seed-phrase", el: "Φράση σπόρου", th: "วลีเมล็ดพันธุ์", cs: "Seed phrase", hu: "Seed kifejezés", sv: "Seed phrase", da: "Seed phrase" })}
+          </div>
+          <div className="text-default-contrast">
+            {Lang.match({ en: "Your BIP-39 seed phrase.", zh: "您的 BIP-39 助记词。", hi: "आपका BIP-39 सीड वाक्य।", es: "Su frase semilla BIP-39.", ar: "عبارة البذور BIP-39 الخاصة بك.", fr: "Votre phrase de récupération BIP-39.", de: "Ihre BIP-39 Seed-Phrase.", ru: "Ваша BIP-39 сид-фраза.", pt: "Sua frase semente BIP-39.", ja: "あなたの BIP-39 シードフレーズ。", pa: "ਤੁਹਾਡਾ BIP-39 ਸੀਡ ਫਰੇਜ਼।", bn: "আপনার BIP-39 সিড বাক্য।", id: "Frasa seed BIP-39 Anda.", ur: "آپ کا BIP-39 سیڈ فریز۔", ms: "Frasa seed BIP-39 anda.", it: "La tua frase seed BIP-39.", tr: "BIP-39 seed cümleniz.", ta: "உங்கள் BIP-39 சீட் வாக்கியம்.", te: "మీ BIP-39 సీడ్ వాక్యం.", ko: "귀하의 BIP-39 시드 구문.", vi: "Cụm từ seed BIP-39 của bạn.", pl: "Twoja fraza seed BIP-39.", ro: "Fraza seed BIP-39 a dvs.", nl: "Uw BIP-39 seed phrase.", el: "Η φράση σπόρου BIP-39 σας.", th: "วลีเมล็ดพันธุ์ BIP-39 ของคุณ.", cs: "Vaše BIP-39 seed phrase.", hu: "Az Ön BIP-39 seed kifejezése.", sv: "Din BIP-39 seed phrase.", da: "Din BIP-39 seed phrase." })}
+          </div>
+          <div className="h-4" />
+          <div className="bg-default-contrast p-1 rounded-xl flex flex-col gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+            <textarea className="po-2 w-full data-[redacted=true]:blur-xs focus-visible:outline-none"
+              rows={3}
+              autoComplete="off"
+              onChange={e => setSeedPhrase(e.target.value)}
+              value={$seedphrase}
+              data-redacted={!flipped} />
+          </div>
+          <div className="h-2" />
+          <div className="flex items-center flex-wrap-reverse gap-2">
+            <WideContrastButton
+              onClick={() => setFlipped(x => !x)}>
+              {flipped ? <Outline.EyeSlashIcon className="size-5" /> : <Outline.EyeIcon className="size-5" />}
+              {flipped ? Lang.match({ en: "Hide", zh: "隐藏", hi: "छिपाएं", es: "Ocultar", ar: "إخفاء", fr: "Cacher", de: "Verbergen", ru: "Скрыть", pt: "Esconder", ja: "隠す", pa: "ਛੁਪਾਓ", bn: "লুকান", id: "Sembunyikan", ur: "چھپائیں", ms: "Sembunyikan", it: "Nascondi", tr: "Gizle", ta: "மறை", te: "దాచు", ko: "숨기기", vi: "Ẩn", pl: "Ukryj", ro: "Ascundeți", nl: "Verbergen", el: "Κρύβω", th: "ซ่อน", cs: "Skrýt", hu: "Elrejtés", sv: "Dölj", da: "Skjul" }) : Lang.match({ en: "Show", zh: "显示", hi: "दिखाएं", es: "Mostrar", ar: "إظهار", fr: "Afficher", de: "Anzeigen", ru: "Показать", pt: "Mostrar", ja: "表示する", pa: "ਦਿਖਾਓ", bn: "দেখান", id: "Tampilkan", ur: "دکھائیں", ms: "Tampilkan", it: "Mostra", tr: "Göster", ta: "காட்டு", te: "తెరచు", ko: "보이기", vi: "Hiển thị", pl: "Pokaż", ro: "Afișați", nl: "Tonen", el: "Εμφάνιση ", th: "แสดง ", cs: "Zobrazit ", hu: "Megjelenítés ", sv: "Visa ", da: "Vis" })}
+            </WideContrastButton>
+            <WideContrastButton
+              onClick={onGenerateClick}>
+              <Outline.SparklesIcon className="size-5" />
+              {Lang.match({ en: "Generate", zh: "生成", hi: "उत्पन्न करें", es: "Generar", ar: "توليد", fr: "Générer", de: "Generieren", ru: "Создать", pt: "Gerar", ja: "生成", pa: "ਤਿਆਰ ਕਰੋ", bn: "উত্পন্ন করুন", id: "Hasilkan", ur: "تخلیق کریں", ms: "Hasilkan", it: "Genera", tr: "Oluştur", ta: "உருவாக்கு", te: "సృష్టించు", ko: "생성", vi: "Tạo", pl: "Generuj", ro: "Generează", nl: "Genereren", el: "Δημιουργία", th: "สร้าง", cs: "Generovat", hu: "Generálás", sv: "Generera", da: "Generer" })}
+            </WideContrastButton>
+          </div>
+        </label>
+        <label className="flex flex-col">
+          <div className="h-6" />
+          <div className="font-medium">
+            {Lang.match({ en: "Notes", zh: "备注", hi: "नोट्स", es: "Notas", ar: "ملاحظات", fr: "Notes", de: "Notizen", ru: "Заметки", pt: "Notas", ja: "ノート", pa: "ਨੋਟਸ", bn: "নোটস", id: "Catatan", ur: "نوٹس", ms: "Nota", it: "Note", tr: "Notlar", ta: "குறிப்புகள்", te: "గమనికలు", ko: "노트", vi: "Ghi chú", pl: "Notatki", ro: "Note", nl: "Notities", el: "Σημειώσεις", th: "บันทึก", cs: "Poznámky", hu: "Jegyzetek", sv: "Anteckningar", da: "Noter" })}
+          </div>
+          <div className="text-default-contrast">
+            {Lang.match({ en: "Any additional information.", zh: "任何附加信息。", hi: "कोई अतिरिक्त जानकारी।", es: "Cualquier información adicional.", ar: "أي معلومات إضافية.", fr: "Toute information supplémentaire.", de: "Alle zusätzlichen Informationen.", ru: "Любая дополнительная информация.", pt: "Qualquer informação adicional.", ja: "追加情報。", pa: "ਕੋਈ ਵੀ ਵਾਧੂ ਜਾਣਕਾਰੀ।", bn: "যেকোনও অতিরিক্ত তথ্য।", id: "Informasi tambahan apa pun.", ur: "کوئی اضافی معلومات۔", ms: "Sebarang maklumat tambahan.", it: "Qualsiasi informazione aggiuntiva.", tr: "Herhangi bir ek bilgi.", ta: "எந்தவொரு கூடுதல் தகவலும்.", te: "ఏదైనా అదనపు సమాచారం.", ko: "추가 정보.", vi: "Bất kỳ thông tin bổ sung nào.", pl: "Wszelkie dodatkowe informacje.", ro: "Orice informație suplimentară.", nl: "Eventuele aanvullende informatie.", el: "Οποιαδήποτε επιπλέον πληροφορία.", th: "ข้อมูลเพิ่มเติมใด ๆ.", cs: "Jakékoli další informace.", hu: "Bármilyen további információ.", sv: "Eventuell ytterligare information.", da: "Eventuelle yderligere oplysninger." })}
+          </div>
+          <div className="h-4" />
+          <div className="bg-default-contrast p-1 rounded-xl flex flex-col  gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
+            <textarea className="po-2 w-full resize-none focus-visible:outline-none"
+              rows={6}
+              autoComplete="off"
+              placeholder={Lang.match({ en: "I use this account for...", zh: "我使用这个账户来...", hi: "मैं इस खाते का उपयोग करता हूं...", es: "Uso esta cuenta para...", ar: "أستخدم هذا الحساب لـ...", fr: "J'utilise ce compte pour...", de: "Ich benutze dieses Konto für...", ru: "Я использую этот аккаунт для...", pt: "Eu uso esta conta para...", ja: "このアカウントは...のために使用します", pa: "ਮੈਂ ਇਸ ਖਾਤੇ ਨੂੰ... ਲਈ ਵਰਤਦਾ ਹਾਂ", bn: "আমি এই অ্যাকাউন্টটি... জন্য ব্যবহার করি", id: "Saya menggunakan akun ini untuk...", ur: "میں اس اکاؤنٹ کو... کے لیے استعمال کرتا ہوں", ms: "Saya menggunakan akun ini untuk...", it: "Uso questo account per...", tr: "Bu hesabı... için kullanıyorum", ta: "நான் இந்த கணக்கை... க்காக பயன்படுத்துகிறேன்", te: "నేను ఈ ఖాతాను... కోసం ఉపయోగిస్తున్నాను", ko: "이 계정을...에 사용합니다", vi: "Tôi sử dụng tài khoản này cho...", pl: "Używam tego konta do...", ro: "Folosesc acest cont pentru...", nl: "Ik gebruik dit account voor...", el: "Χρησιμοποιώ αυτόν τον λογαριασμό για...", th: "ฉันใช้บัญชีนี้สำหรับ...", cs: "Používám tento účet pro...", hu: "Ezt a fiókot arra használom, hogy...", sv: "Jag använder det här kontot för...", da: "Jeg bruger denne konto til..." })}
+              onChange={e => setNotes(e.target.value)}
+              value={$notes} />
+          </div>
+        </label>
         <div className="h-8 grow" />
         <div className="flex items-center flex-wrap-reverse gap-2">
           {session.value.user.fsfh != null &&
             <WideOppositeButton
               type="submit"
-              inert={writeOrDisplay.running || error != null}
+              disabled={writeOrDisplay.running || error != null}
               onClick={writeOrDisplay}>
               {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση ", th: "บันทึก ", cs: "Uložit ", hu: "Mentés ", sv: "Spara ", da: "Gem" })}
@@ -254,7 +259,7 @@ export function CryptoAccountAddPage() {
           {session.value.user.fsfh == null &&
             <WideOppositeButton
               type="submit"
-              inert={saveOrDisplay.running || error != null}
+              disabled={saveOrDisplay.running || error != null}
               onClick={saveOrDisplay}>
               {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
               {error != null ? error : Lang.match({ en: "Save", zh: "保存", hi: "सहेजें", es: "Guardar", ar: "حفظ", fr: "Enregistrer", de: "Speichern", ru: "Сохранить", pt: "Salvar", ja: "保存", pa: "ਸੰਭਾਲੋ", bn: "সংরক্ষণ করুন", id: "Simpan", ur: "محفوظ کریں", ms: "Simpan", it: "Salva", tr: "Kaydet", ta: "சேமிக்கவும்", te: "సేవ్ చేయండి", ko: "저장", vi: "Lưu", pl: "Zapisz", ro: "Salvează", nl: "Opslaan", el: "Αποθήκευση ", th: "บันทึก ", cs: "Uložit ", hu: "Mentés ", sv: "Spara ", da: "Gem" })}
@@ -315,9 +320,8 @@ export function CryptoAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
           flip={flipped}
           onFlipChange={setFlipped} />
       </div>
-      <form className="grow flex flex-col"
-        onSubmit={e => e.preventDefault()}>
-        <Fragment>
+      <div className="grow flex flex-col" >
+        <div className="flex flex-col">
           <div className="h-6" />
           <div className="font-medium">
             {Lang.match({ en: "Subaccounts", zh: "子账户", hi: "उप खाते", es: "Subcuentas", ar: "الحسابات الفرعية", fr: "Sous-comptes", de: "Unterkonten", ru: "Субаккаунты", pt: "Subcontas", ja: "サブアカウント", pa: "ਸਬਅਕਾਊਂਟ", bn: "সাবঅ্যাকাউন্ট", id: "Subakun", ur: "ذیلی اکاؤنٹس", ms: "Subakun", it: "Sottoaccount", tr: "Alt hesaplar", ta: "உப கணக்குகள்", te: "ఉప ఖాతాలు", ko: "하위 계정", vi: "Tài khoản phụ", pl: "Subkonta", ro: "Subconturi", nl: "Subaccounts", el: "Υπολογαριασμοί", th: "บัญชีย่อย", cs: "Subúčty", hu: "Alszámlák", sv: "Subkonton", da: "Subkonti" })}
@@ -329,7 +333,7 @@ export function CryptoAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
           <div className="flex not-sm:flex-col sm:flex-row items-center justify-between gap-4 border border-default-contrast rounded-xl p-6">
             <button className="group rounded-full p-2 flex items-center justify-center rtl:-scale-x-100 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none inert:opacity-50"
               onClick={() => setIndex(i => i - 1)}
-              inert={index === 0}
+              disabled={index === 0}
               type="button">
               <Clicker>
                 <Outline.ChevronLeftIcon className="not-sm:hidden sm:size-5" />
@@ -346,8 +350,8 @@ export function CryptoAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
               </Clicker>
             </button>
           </div>
-        </Fragment>
-        {notes && <Fragment>
+        </div>
+        {notes && <label className="flex flex-col">
           <div className="h-6" />
           <div className="font-medium">
             {Lang.match({ en: "Notes", zh: "备注", hi: "नोट्स", es: "Notas", ar: "ملاحظات", fr: "Notes", de: "Notizen", ru: "Заметки", pt: "Notas", ja: "ノート", pa: "ਨੋਟਸ", bn: "নোটস", id: "Catatan", ur: "نوٹس", ms: "Nota", it: "Note", tr: "Notlar", ta: "குறிப்புகள்", te: "గమనికలు", ko: "노트", vi: "Ghi chú", pl: "Notatki", ro: "Note", nl: "Notities", el: "Σημειώσεις", th: "บันทึก", cs: "Poznámky", hu: "Jegyzetek", sv: "Anteckningar", da: "Noter" })}
@@ -362,10 +366,10 @@ export function CryptoAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
               rows={6}
               value={notes} />
           </div>
-        </Fragment>}
-      </form>
+        </label>}
+      </div>
     </div>
-  </Fragment>
+  </Fragment >
 }
 
 export function CryptoAccountMenu(props: { $entry: KDBX.Inner.KeePassFile.Entry } & { close(force?: boolean): void }) {
@@ -456,9 +460,8 @@ export function CryptoAccountExportPage(props: { $entry: KDBX.Inner.KeePassFile.
         flip={flipped}
         onFlipChange={setFlipped} />
     </div>
-    <form className="grow flex flex-col"
-      onSubmit={e => e.preventDefault()}>
-      <Fragment>
+    <div className="grow flex flex-col">
+      <label className="flex flex-col">
         <div className="h-6" />
         <div className="font-medium">
           {Lang.match({ en: "Seed phrase", zh: "助记词", hi: "सीड वाक्य", es: "Frase semilla", ar: "عبارة البذور", fr: "Phrase de récupération", de: "Seed-Phrase", ru: "Сид-фраза", pt: "Frase semente", ja: "シードフレーズ", pa: "ਸੀਡ ਫਰੇਜ਼", bn: "সিড বাক্য", id: "Frasa seed", ur: "سیڈ فریز", ms: "Frasa seed", it: "Frase seed", tr: "Seed cümlesi", ta: "சீட் வாக்கியம்", te: "సీడ్ వాక్యం", ko: "시드 구문", vi: "Cụm từ seed", pl: "Fraza seed", ro: "Fraza seed", nl: "Seed-phrase", el: "Φράση σπόρου ", th: "วลีเมล็ดพันธุ์ ", cs: "Seed phrase ", hu: "Seed kifejezés ", sv: "Seed phrase ", da: "Seed phrase" })}
@@ -488,7 +491,7 @@ export function CryptoAccountExportPage(props: { $entry: KDBX.Inner.KeePassFile.
             {copyTheSeedPhrase.copying ? Lang.match({ en: "Copied", zh: "已复制", hi: "कॉपी किया गया", es: "Copiado", ar: "تم النسخ", fr: "Copié", de: "Kopiert", ru: "Скопировано", pt: "Copiado", ja: "コピーしました", pa: "ਨਕਲ ਕੀਤਾ", bn: "কপি করা হয়েছে", id: "Disalin", ur: "کاپی کیا گیا", ms: "Disalin", it: "Copiato", tr: "Kopyalandı", ta: "நகலெடுக்கப்பட்டது", te: "నకలించబడింది", ko: "복사됨", vi: "Đã sao chép", pl: "Skopiowano", ro: "Copiat", nl: "Gekopieerd", el: "Αντιγράφηκε ", th: "คัดลอกแล้ว ", cs: "Zkopírováno ", hu: "Másolva ", sv: "Kopierat ", da: "Kopieret" }) : Lang.match({ en: "Copy", zh: "复制", hi: "कॉपी करें", es: "Copiar", ar: "نسخ", fr: "Copier", de: "Kopieren", ru: "Копировать", pt: "Copiar", ja: "コピー", pa: "ਨਕਲ ਕਰੋ", bn: "কপি করুন", id: "Salin", ur: "کاپی کریں", ms: "Salin", it: "Copia", tr: "Kopyala", ta: "நகலெடுக்கவும்", te: "నకలించు", ko: "복사", vi: "Sao chép", pl: "Kopiuj", ro: "Copiați", nl: "Kopiëren", el: "Αντιγραφή ", th: "คัดลอก ", cs: "Kopírovat ", hu: "Másolás ", sv: "Kopiera ", da: "Kopier" })}
           </WideContrastButton>
         </div>
-      </Fragment>
-    </form>
+      </label>
+    </div>
   </div>
 }
