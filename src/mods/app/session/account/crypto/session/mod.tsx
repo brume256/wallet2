@@ -547,7 +547,7 @@ export function CryptoSessionPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
           </div>
           <div className="h-4" />
           <div className="grow flex flex-col overflow-y-auto border border-default-contrast rounded-xl p-1">
-            <div className="grow flex flex-col overflow-y-scroll overscroll-y-none p-6">
+            <div className="grow flex flex-col overflow-y-scroll p-6">
               <div className="grow grid grid-cols-[repeat(auto-fit,min(20rem,100%))] justify-center content-center gap-4">
                 {requests.map((data, index) =>
                   <Fragment key={index}>

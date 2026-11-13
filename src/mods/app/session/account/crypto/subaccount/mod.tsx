@@ -227,8 +227,8 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
         events: ["chainChanged", "accountsChanged"],
       },
       solana: {
-        chains: [`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`],
-        accounts: [`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp:${solana}`],
+        chains: [`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`, `solana:4uhcVJyU9pJkvQyS88uRDiswHXSCkY3z`],
+        accounts: [`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp:${solana}`, `solana:4uhcVJyU9pJkvQyS88uRDiswHXSCkY3z:${solana}`],
         methods: ["solana_signMessage", "solana_signTransaction"],
         events: [],
       }
@@ -292,7 +292,7 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
           </div>
           <div className="h-4" />
           <div className="grow flex flex-col overflow-y-auto border border-default-contrast rounded-xl p-1">
-            <div className="grow flex flex-col overflow-y-scroll overscroll-y-none p-6">
+            <div className="grow flex flex-col overflow-y-scroll p-6">
               <div className="grow grid grid-cols-[repeat(auto-fit,min(20rem,100%))] justify-center content-center gap-4">
                 {subentries.map($subentry =>
                   <Fragment key={$subentry.getUuidOrThrow().getOrThrow()}>
