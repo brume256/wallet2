@@ -295,9 +295,6 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
       </div>
       <form className="grow flex flex-col"
         onSubmit={e => e.preventDefault()}>
-        <input className="hidden"
-          autoComplete="off"
-          name="username" />
         <Fragment>
           <div className="h-6" />
           <div className="font-medium">
@@ -432,9 +429,6 @@ export function CryptoSubaccountAddressPage(props: { $entry: KDBX.Inner.KeePassF
     </div>
     <form className="grow flex flex-col"
       onSubmit={e => e.preventDefault()}>
-      <input className="hidden"
-        autoComplete="off"
-        name="username" />
       <Fragment>
         <div className="h-6" />
         <div className="font-medium">
@@ -575,9 +569,6 @@ export function CryptoSubaccountExportPage(props: { $entry: KDBX.Inner.KeePassFi
     </div>
     <form className="grow flex flex-col"
       onSubmit={e => e.preventDefault()}>
-      <input className="hidden"
-        autoComplete="off"
-        name="username" />
       <Fragment>
         <div className="h-6" />
         <div className="font-medium">

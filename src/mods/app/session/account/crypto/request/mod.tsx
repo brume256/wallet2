@@ -465,9 +465,6 @@ export function CryptoRequestPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
       </div>
       <form className="grow flex flex-col"
         onSubmit={e => e.preventDefault()}>
-        <input className="hidden"
-          autoComplete="off"
-          name="username" />
         {message != null && <Fragment>
           <div className="h-6" />
           <div className="font-medium">

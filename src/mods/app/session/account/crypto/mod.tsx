@@ -177,9 +177,6 @@ export function CryptoAccountAddPage() {
       </div>
       <form className="grow flex flex-col"
         onSubmit={e => e.preventDefault()}>
-        <input className="hidden"
-          autoComplete="off"
-          name="username" />
         <div className="h-6" />
         <div className="font-medium">
           {Lang.match({ en: "Title", zh: "标题", hi: "शीर्षक", es: "Título", ar: "العنوان", fr: "Titre", de: "Titel", ru: "Название", pt: "Título", ja: "タイトル", pa: "ਸਿਰਲੇਖ", bn: "শিরোনাম", id: "Judul", ur: "عنوان", ms: "Judul", it: "Titolo", tr: "Başlık", ta: "தலைப்பு", te: "శీర్షిక", ko: "제목", vi: "Tiêu đề", pl: "Tytuł", ro: "Titlu", nl: "Titel", el: "Τίτλος", th: "หัวข้อเรื่อง", cs: "Název", hu: "Cím", sv: "Titel", da: "Titel" })}
@@ -319,9 +316,6 @@ export function CryptoAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
       </div>
       <form className="grow flex flex-col"
         onSubmit={e => e.preventDefault()}>
-        <input className="hidden"
-          autoComplete="off"
-          name="username" />
         <Fragment>
           <div className="h-6" />
           <div className="font-medium">
@@ -463,9 +457,6 @@ export function CryptoAccountExportPage(props: { $entry: KDBX.Inner.KeePassFile.
     </div>
     <form className="grow flex flex-col"
       onSubmit={e => e.preventDefault()}>
-      <input className="hidden"
-        autoComplete="off"
-        name="username" />
       <Fragment>
         <div className="h-6" />
         <div className="font-medium">

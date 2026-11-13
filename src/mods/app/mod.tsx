@@ -354,9 +354,6 @@ export function SettingsPage() {
     </h1>
     <form className="grow flex flex-col"
       onSubmit={e => e.preventDefault()}>
-      <input className="hidden"
-        autoComplete="off"
-        name="username" />
       <div className="h-6" />
       <div className="font-medium">
         {Lang.match({ en: "App display", zh: "应用显示", hi: "ऐप प्रदर्शन", es: "Pantalla de la aplicación", ar: "عرض التطبيق", fr: "Affichage de l'application", de: "App-Anzeige", ru: "Отображение приложения", pt: "Exibição do aplicativo", ja: "アプリの表示", pa: "ਐਪ ਡਿਸਪਲੇਅ", bn: "অ্যাপ প্রদর্শন", id: "Tampilan aplikasi", ur: "ایپ ڈسپلے", ms: "Tampilan aplikasi", it: "Visualizzazione dell'app", tr: "Uygulama görüntüsü", ta: "அப் காட்சி", te: "యాప్ ప్రదర్శన", ko: "앱 디스플레이", vi: "Hiển thị ứng dụng", pl: "Wyświetlanie aplikacji", ro: "Afișajul aplicației", nl: "App-weergave", el: "Εμφάνιση εφαρμογής", th: "การแสดงผลแอป", cs: "Zobrazení aplikace", hu: "Alkalmazás megjelenítése", sv: "Appvisning", da: "App-visning" })}

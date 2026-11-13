@@ -209,9 +209,6 @@ function UserImportFilePage() {
     </h1>
     <form className="grow flex flex-col"
       onSubmit={e => e.preventDefault()}>
-      <input className="hidden"
-        autoComplete="off"
-        name="username" />
       <div className="h-6" />
       <div className="font-medium">
         {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
@@ -368,9 +365,6 @@ function UserImportFsfhPage() {
     </h1>
     <form className="grow flex flex-col"
       onSubmit={e => e.preventDefault()}>
-      <input className="hidden"
-        autoComplete="off"
-        name="username" />
       <div className="h-6" />
       <div className="font-medium">
         {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
@@ -605,9 +599,6 @@ function UserCreatePage() {
     </h1>
     <form className="grow flex flex-col"
       onSubmit={e => e.preventDefault()}>
-      <input className="hidden"
-        autoComplete="off"
-        name="username" />
       <div className="h-6" />
       <div className="font-medium">
         {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
@@ -883,9 +874,6 @@ function UserLoginPage(props: { user: UserData }) {
       <div className="h-8" />
       <form className="grow flex flex-col"
         onSubmit={e => e.preventDefault()}>
-        <input className="hidden"
-          autoComplete="off"
-          name="username" />
         <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
           <input className="w-full focus-visible:outline-none"
             autoFocus
@@ -1046,9 +1034,6 @@ function UserReimportFilePage(props: { user: UserData }) {
     </h1>
     <form className="grow flex flex-col"
       onSubmit={e => e.preventDefault()}>
-      <input className="hidden"
-        autoComplete="off"
-        name="username" />
       <div className="h-6" />
       <div className="font-medium">
         {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
@@ -1207,9 +1192,6 @@ function UserReimportFsfhPage(props: { user: UserData }) {
     </h1>
     <form className="grow flex flex-col"
       onSubmit={e => e.preventDefault()}>
-      <input className="hidden"
-        autoComplete="off"
-        name="username" />
       <div className="h-6" />
       <div className="font-medium">
         {Lang.match({ en: "Name", zh: "名称", hi: "नाम", es: "Nombre", ar: "اسم", fr: "Nom", de: "Name", ru: "Имя", pt: "Nome", ja: "名前", pa: "ਨਾਮ", bn: "নাম", id: "Nama", ur: "نام", ms: "Nama", it: "Nome", tr: "İsim", ta: "பெயர்", te: "పేరు", ko: "이름", vi: "Tên", pl: "Nazwa", ro: "Nume", nl: "Naam", el: "Όνομα", th: "ชื่อ", cs: "Jméno", hu: "Név", sv: "Namn", da: "Navn" })}
