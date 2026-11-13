@@ -273,8 +273,8 @@ export function PasswordAccountAddPage() {
         <div className="h-2" />
         <input className="po-2 rounded-xl bg-default-contrast text-center focus-visible:outline-none text-[min(4rem,10dvw)] font-mono tracking-widest"
           readOnly
-          onClick={copyTheTotpcode.copyOrDisplay}
-          value={totpcode ? (copyTheTotpcode.copied ? "COPIED" : totpcode) : "------"} />
+          onClick={copyTheTotpcode}
+          value={totpcode ? (copyTheTotpcode.copying ? "OK" : totpcode) : "------"} />
         <div className="h-6" />
         <div className="font-medium">
           {Lang.match({ en: "Notes", zh: "备注", hi: "नोट्स", es: "Notas", ar: "ملاحظات", fr: "Remarques", de: "Notizen", ru: "Заметки", pt: "Notas", ja: "ノート", pa: "ਨੋਟਸ", bn: "নোটস", id: "Catatan", ur: "نوٹس", ms: "Catatan", it: "Note", tr: "Notlar", ta: "குறிப்புகள்", te: "గమనికలు", ko: "노트", vi: "Ghi chú", pl: "Notatki", ro: "Note", nl: "Notities", el: "Σημειώσεις", th: "บันทึกย่อ", cs: "Poznámky", hu: "Jegyzetek", sv: "Anteckningar", da: "Noter" })}
@@ -426,9 +426,9 @@ export function PasswordAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entr
             <div className="flex items-center gap-2">
               <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
                 type="button"
-                onClick={copyTheUsername.copyOrDisplay}>
+                onClick={copyTheUsername}>
                 <Clicker>
-                  {copyTheUsername.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
+                  {copyTheUsername.copying ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
                 </Clicker>
               </button>
             </div>
@@ -460,9 +460,9 @@ export function PasswordAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entr
               </button>
               <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
                 type="button"
-                onClick={copyThePassword.copyOrDisplay}>
+                onClick={copyThePassword}>
                 <Clicker>
-                  {copyThePassword.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
+                  {copyThePassword.copying ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
                 </Clicker>
               </button>
             </div>
@@ -480,8 +480,8 @@ export function PasswordAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entr
           <input className="po-2 rounded-xl bg-default-contrast text-center focus-visible:outline-none text-[min(4rem,10dvw)] font-mono tracking-widest"
             readOnly
             autoComplete="off"
-            onClick={copyTheTotpcode.copyOrDisplay}
-            value={totpcode ? (copyTheTotpcode.copied ? "COPIED" : totpcode) : "------"} />
+            onClick={copyTheTotpcode}
+            value={totpcode ? (copyTheTotpcode.copying ? "OK" : totpcode) : "------"} />
         </Fragment>}
         {notes && <Fragment>
           <div className="h-6" />

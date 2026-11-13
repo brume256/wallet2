@@ -322,8 +322,8 @@ export function KeypairAccountAddPage() {
         <div className="h-2" />
         <input className="po-2 rounded-xl bg-default-contrast text-center focus-visible:outline-none text-[min(4rem,10dvw)] font-mono tracking-widest"
           readOnly
-          onClick={copyTheTotpcode.copyOrDisplay}
-          value={totpcode ? (copyTheTotpcode.copied ? "COPIED" : totpcode) : "------"} />
+          onClick={copyTheTotpcode}
+          value={totpcode ? (copyTheTotpcode.copying ? "OK" : totpcode) : "------"} />
         <div className="h-6" />
         <div className="font-medium">
           {Lang.match({ en: "Notes", zh: "备注", hi: "नोट्स", es: "Notas", ar: "ملاحظات", fr: "Notes", de: "Notizen", ru: "Заметки", pt: "Notas", ja: "ノート", pa: "ਨੋਟਸ", bn: "নোটস", id: "Catatan", ur: "نوٹس", ms: "Catatan", it: "Note", tr: "Notlar", ta: "குறிப்புகள்", te: "గమనికలు", ko: "노트", vi: "Ghi chú", pl: "Notatki", ro: "Note", nl: "Notities", el: "Σημειώσεις", th: "บันทึกย่อ", cs: "Poznámky", hu: "Jegyzetek", sv: "Anteckningar", da: "Noter" })}
@@ -533,9 +533,9 @@ export function KeypairAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry
             <div className="flex items-center gap-2">
               <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
                 type="button"
-                onClick={copyTheUsername.copyOrDisplay}>
+                onClick={copyTheUsername}>
                 <Clicker>
-                  {copyTheUsername.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
+                  {copyTheUsername.copying ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
                 </Clicker>
               </button>
             </div>
@@ -560,9 +560,9 @@ export function KeypairAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry
           <div className="h-2" />
           <div className="flex items-center flex-wrap-reverse gap-2">
             <WideContrastButton
-              onClick={copyThePubKey.copyOrDisplay}>
-              {copyThePubKey.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
-              {copyThePubKey.copied ? Lang.match({ en: "Copied", zh: "已复制", hi: "कॉपी किया गया", es: "Copiado", ar: "تم النسخ", fr: "Copié", de: "Kopiert", ru: "Скопировано", pt: "Copiado", ja: "コピーしました", pa: "ਨਕਲ ਕੀਤਾ", bn: "কপি করা হয়েছে", id: "Disalin", ur: "نقل کیا گیا", ms: "Disalin", it: "Copiato", tr: "Kopyalandı", ta: "நகலெடுக்கப்பட்டது", te: "నకలు చేయబడింది", ko: "복사됨", vi: "Đã sao chép", pl: "Skopiowano", ro: "Copiat", nl: "Gekopieerd", el: "Αντιγράφηκε", th: "คัดลอกแล้ว", cs: "Zkopírováno", hu: "Másolva", sv: "Kopierad", da: "Kopieret" }) : Lang.match({ en: "Copy", zh: "复制", hi: "कॉपी", es: "Copiar", ar: "نسخ", fr: "Copier", de: "Kopieren", ru: "Копировать", pt: "Copiar", ja: "コピー", pa: "ਨਕਲ ਕਰੋ", bn: "কপি করুন", id: "Salin", ur: "نقل کریں", ms: "Salin", it: "Copia", tr: "Kopyala", ta: "நகலெடுக்கவும்", te: "నకలు చేయండి", ko: "복사", vi: "Sao chép", pl: "Kopiuj", ro: "Copiați", nl: "Kopiëren", el: "Αντιγραφή", th: "คัดลอก", cs: "Kopírovat", hu: "Másolás", sv: "Kopiera", da: "Kopier" })}
+              onClick={copyThePubKey}>
+              {copyThePubKey.copying ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
+              {copyThePubKey.copying ? Lang.match({ en: "Copied", zh: "已复制", hi: "कॉपी किया गया", es: "Copiado", ar: "تم النسخ", fr: "Copié", de: "Kopiert", ru: "Скопировано", pt: "Copiado", ja: "コピーしました", pa: "ਨਕਲ ਕੀਤਾ", bn: "কপি করা হয়েছে", id: "Disalin", ur: "نقل کیا گیا", ms: "Disalin", it: "Copiato", tr: "Kopyalandı", ta: "நகலெடுக்கப்பட்டது", te: "నకలు చేయబడింది", ko: "복사됨", vi: "Đã sao chép", pl: "Skopiowano", ro: "Copiat", nl: "Gekopieerd", el: "Αντιγράφηκε", th: "คัดลอกแล้ว", cs: "Zkopírováno", hu: "Másolva", sv: "Kopierad", da: "Kopieret" }) : Lang.match({ en: "Copy", zh: "复制", hi: "कॉपी", es: "Copiar", ar: "نسخ", fr: "Copier", de: "Kopieren", ru: "Копировать", pt: "Copiar", ja: "コピー", pa: "ਨਕਲ ਕਰੋ", bn: "কপি করুন", id: "Salin", ur: "نقل کریں", ms: "Salin", it: "Copia", tr: "Kopyala", ta: "நகலெடுக்கவும்", te: "నకలు చేయండి", ko: "복사", vi: "Sao chép", pl: "Kopiuj", ro: "Copiați", nl: "Kopiëren", el: "Αντιγραφή", th: "คัดลอก", cs: "Kopírovat", hu: "Másolás", sv: "Kopiera", da: "Kopier" })}
             </WideContrastButton>
             <WideContrastButton
               inert={savePubKeyOrDisplay.running}
@@ -597,9 +597,9 @@ export function KeypairAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry
               {flipped ? Lang.match({ en: "Hide", zh: "隐藏", hi: "छिपाएं", es: "Ocultar", ar: "إخفاء", fr: "Masquer", de: "Verstecken", ru: "Скрыть", pt: "Ocultar", ja: "非表示", pa: "ਛੁਪਾਓ", bn: "লুকান", id: "Sembunyikan", ur: "چھپائیں", ms: "Sembunyikan", it: "Nascondi", tr: "Gizle", ta: "மறை", te: "దాచు", ko: "숨기기", vi: "Ẩn", pl: "Ukryj", ro: "Ascunde", nl: "Verbergen", el: "Απόκρυψη", th: "ซ่อน", cs: "Skrýt", hu: "Elrejt", sv: "Dölj", da: "Skjul" }) : Lang.match({ en: "Show", zh: "显示", hi: "दिखाएँ", es: "Mostrar", ar: "إظهار", fr: "Afficher", de: "Anzeigen", ru: "Показать", pt: "Mostrar", ja: "表示", pa: "ਦਿਖਾਓ", bn: "দেখান", id: "Tampilkan", ur: "دکھائیں", ms: "Tunjukkan", it: "Mostra", tr: "Göster", ta: "காட்டு", te: "చూపించు", ko: "보이기", vi: "Hiển thị", pl: "Pokaż", ro: "Afișa", nl: "Tonen", el: "Εμφάνιση", th: "แสดง", cs: "Zobrazit", hu: "Mutasd", sv: "Visa", da: "Vis" })}
             </WideContrastButton>
             <WideContrastButton
-              onClick={copyTheSigKey.copyOrDisplay}>
-              {copyTheSigKey.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
-              {copyTheSigKey.copied ? Lang.match({ en: "Copied", zh: "已复制", hi: "कॉपी किया गया", es: "Copiado", ar: "تم النسخ", fr: "Copié", de: "Kopiert", ru: "Скопировано", pt: "Copiado", ja: "コピーしました", pa: "ਨਕਲ ਕੀਤਾ", bn: "কপি করা হয়েছে", id: "Disalin", ur: "نقل کیا گیا", ms: "Disalin", it: "Copiato", tr: "Kopyalandı", ta: "நகலெடுக்கப்பட்டது", te: "నకలు చేయబడింది", ko: "복사됨", vi: "Đã sao chép", pl: "Skopiowano", ro: "Copiat", nl: "Gekopieerd", el: "Αντιγράφηκε", th: "คัดลอกแล้ว", cs: "Zkopírováno", hu: "Másolva", sv: "Kopierad", da: "Kopieret" }) : Lang.match({ en: "Copy", zh: "复制", hi: "कॉपी", es: "Copiar", ar: "نسخ", fr: "Copier", de: "Kopieren", ru: "Копировать", pt: "Copiar", ja: "コピー", pa: "ਨਕਲ ਕਰੋ", bn: "কপি করুন", id: "Salin", ur: "نقل کریں", ms: "Salin", it: "Copia", tr: "Kopyala", ta: "நகலெடுக்கவும்", te: "నకలు చేయండి", ko: "복사", vi: "Sao chép", pl: "Kopiuj", ro: "Copiați", nl: "Kopiëren", el: "Αντιγραφή", th: "คัดลอก", cs: "Kopírovat", hu: "Másolás", sv: "Kopiera", da: "Kopier" })}
+              onClick={copyTheSigKey}>
+              {copyTheSigKey.copying ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
+              {copyTheSigKey.copying ? Lang.match({ en: "Copied", zh: "已复制", hi: "कॉपी किया गया", es: "Copiado", ar: "تم النسخ", fr: "Copié", de: "Kopiert", ru: "Скопировано", pt: "Copiado", ja: "コピーしました", pa: "ਨਕਲ ਕੀਤਾ", bn: "কপি করা হয়েছে", id: "Disalin", ur: "نقل کیا گیا", ms: "Disalin", it: "Copiato", tr: "Kopyalandı", ta: "நகலெடுக்கப்பட்டது", te: "నకలు చేయబడింది", ko: "복사됨", vi: "Đã sao chép", pl: "Skopiowano", ro: "Copiat", nl: "Gekopieerd", el: "Αντιγράφηκε", th: "คัดลอกแล้ว", cs: "Zkopírováno", hu: "Másolva", sv: "Kopierad", da: "Kopieret" }) : Lang.match({ en: "Copy", zh: "复制", hi: "कॉपी", es: "Copiar", ar: "نسخ", fr: "Copier", de: "Kopieren", ru: "Копировать", pt: "Copiar", ja: "コピー", pa: "ਨਕਲ ਕਰੋ", bn: "কপি করুন", id: "Salin", ur: "نقل کریں", ms: "Salin", it: "Copia", tr: "Kopyala", ta: "நகலெடுக்கவும்", te: "నకలు చేయండి", ko: "복사", vi: "Sao chép", pl: "Kopiuj", ro: "Copiați", nl: "Kopiëren", el: "Αντιγραφή", th: "คัดลอก", cs: "Kopírovat", hu: "Másolás", sv: "Kopiera", da: "Kopier" })}
             </WideContrastButton>
             <WideContrastButton
               inert={saveSigKeyOrDisplay.running}
@@ -635,9 +635,9 @@ export function KeypairAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry
               </button>
               <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
                 type="button"
-                onClick={copyThePassword.copyOrDisplay}>
+                onClick={copyThePassword}>
                 <Clicker>
-                  {copyThePassword.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
+                  {copyThePassword.copying ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
                 </Clicker>
               </button>
             </div>
@@ -655,8 +655,8 @@ export function KeypairAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry
           <input className="po-2 rounded-xl bg-default-contrast text-center focus-visible:outline-none text-[min(4rem,10dvw)] font-mono tracking-widest"
             readOnly
             autoComplete="off"
-            onClick={copyTheTotpcode.copyOrDisplay}
-            value={totpcode ? (copyTheTotpcode.copied ? "COPIED" : totpcode) : "------"} />
+            onClick={copyTheTotpcode}
+            value={totpcode ? (copyTheTotpcode.copying ? "OK" : totpcode) : "------"} />
         </Fragment>}
         {notes && <Fragment>
           <div className="h-6" />

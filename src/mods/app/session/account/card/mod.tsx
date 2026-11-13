@@ -454,9 +454,9 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
           <div className="flex items-center gap-2">
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
-              onClick={copyTheNum.copyOrDisplay}>
+              onClick={copyTheNum}>
               <Clicker>
-                {copyTheNum.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
+                {copyTheNum.copying ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
               </Clicker>
             </button>
           </div>
@@ -480,9 +480,9 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
           <div className="flex items-center gap-2">
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
-              onClick={copyTheHol.copyOrDisplay}>
+              onClick={copyTheHol}>
               <Clicker>
-                {copyTheHol.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
+                {copyTheHol.copying ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
               </Clicker>
             </button>
           </div>
@@ -506,9 +506,9 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
           <div className="flex items-center gap-2">
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
-              onClick={copyTheExp.copyOrDisplay}>
+              onClick={copyTheExp}>
               <Clicker>
-                {copyTheExp.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
+                {copyTheExp.copying ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
               </Clicker>
             </button>
           </div>
@@ -540,9 +540,9 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
             </button>
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
-              onClick={copyTheCvv.copyOrDisplay}>
+              onClick={copyTheCvv}>
               <Clicker>
-                {copyTheCvv.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
+                {copyTheCvv.copying ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
               </Clicker>
             </button>
           </div>
@@ -574,9 +574,9 @@ export function CardAccountPage(props: { $entry: KDBX.Inner.KeePassFile.Entry })
             </button>
             <button className="group rounded-full p-1 hover:bg-default-double-contrast focus-visible:bg-default-double-contrast focus-visible:outline-none"
               type="button"
-              onClick={copyThePin.copyOrDisplay}>
+              onClick={copyThePin}>
               <Clicker>
-                {copyThePin.copied ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
+                {copyThePin.copying ? <Outline.CheckIcon className="size-5" /> : <Outline.DocumentDuplicateIcon className="size-5" />}
               </Clicker>
             </button>
           </div>
