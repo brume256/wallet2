@@ -264,7 +264,7 @@ export function CryptoRequestPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
       if (account.toLowerCase() !== current.toLowerCase())
         throw new WcUnsupportedAccountsError()
 
-      const msgraw = Uint8Array.fromHex(message.slice(2))
+      const msgraw = message.startsWith("0x") ? Uint8Array.fromHex(message.slice(2)) : new TextEncoder().encode(message)
       const prefix = new TextEncoder().encode(`\x19Ethereum Signed Message:\n${msgraw.length}`)
 
       const payload = new Cursor(new Uint8Array(prefix.length + msgraw.length))
@@ -400,6 +400,9 @@ export function CryptoRequestPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
 
     if (request.method === "personal_sign") {
       const [message] = request.params as [string]
+
+      if (!message.startsWith("0x"))
+        return message
 
       const msgraw = Uint8Array.fromHex(message.slice(2))
       const msgtxt = new TextDecoder().decode(msgraw)
