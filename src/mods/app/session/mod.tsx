@@ -13,7 +13,7 @@ import { Writable } from "@hazae41/binary";
 import { SubpathProvider, useHashSubpath, useLinkWithCoords, usePathContext, useSearchState } from "@hazae41/chemin";
 import * as KDBX from "@hazae41/kdbx";
 import { Clicker, Menu, MenuAnchor, MenuButton, Spinner, WideOppositeButton } from "@hazae41/labase";
-import { PathBubble, PathWindow } from "@hazae41/modal";
+import { PathBubble, PathPrompt, PathWindow } from "@hazae41/modal";
 import { useCloseContext } from "@hazae41/react-close-context";
 import { Option } from "@hazae41/result-and-option";
 import React, { createContext, Fragment, ReactNode, useCallback, useContext, useDeferredValue, useMemo, useState } from "react";
@@ -215,11 +215,11 @@ export function SessionPage() {
         <div className="grow bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
           <Outline.MagnifyingGlassIcon className="size-5" />
           <input className="w-full focus-visible:outline-none"
+            autoFocus
             autoComplete="off"
             placeholder={Lang.match({ en: "Search", zh: "搜索", hi: "खोज", es: "Buscar", ar: "بحث", fr: "Rechercher", de: "Suche", ru: "Поиск", pt: "Pesquisar", ja: "検索", pa: "ਖੋਜ", bn: "অনুসন্ধান", id: "Cari", ur: "تلاش کریں", ms: "Cari", it: "Cerca", tr: "Ara", ta: "தேடு", te: "శోధించండి", ko: "검색", vi: "Tìm kiếm", pl: "Szukaj", ro: "Caută", nl: "Zoeken", el: "Αναζήτηση", th: "ค้นหา", cs: "Hledat", hu: "Keresés", sv: "Sökning", da: "Søg" })}
             onChange={e => setSearch(e.target.value)}
-            value={search || ""}
-            autoFocus />
+            value={search || ""} />
         </div>
       </div>
     </div>
@@ -256,9 +256,9 @@ function SessionMenu(props: { logout(): void }) {
             <AccountAddMenu />
           </PathBubble>}
         {hash.url.pathname === "/export" &&
-          <PathWindow>
+          <PathPrompt>
             <SessionExportPage />
-          </PathWindow>}
+          </PathPrompt>}
       </SubpathProvider>
     </After>
     <Menu>
@@ -375,6 +375,7 @@ export function SessionExportPage() {
         <div className="h-4" />
         <div className="bg-default-contrast po-2 rounded-xl flex items-center gap-4 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-default-contrast">
           <input className="w-full focus-visible:outline-none"
+            autoFocus
             autoComplete="off"
             type={flipped ? "text" : "password"}
             value={$pass}
