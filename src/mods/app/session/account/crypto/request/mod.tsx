@@ -256,7 +256,6 @@ export function CryptoRequestPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
   const signOrThrow = useCallback(async (params: WcSessionRequestParams) => {
     const { chainId, request } = params
 
-    // TODO: fix
     if (request.method === "personal_sign") {
       const [message, account] = request.params as [string, string]
 
