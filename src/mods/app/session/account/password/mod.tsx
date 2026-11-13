@@ -292,7 +292,7 @@ export function PasswordAccountAddPage() {
         <div className="flex items-center flex-wrap-reverse gap-2">
           {session.value.user.fsfh != null &&
             <WideOppositeButton
-              type="button"
+              type="submit"
               inert={writeOrDisplay.running || error != null}
               onClick={writeOrDisplay}>
               {writeOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
@@ -300,7 +300,7 @@ export function PasswordAccountAddPage() {
             </WideOppositeButton>}
           {session.value.user.fsfh == null &&
             <WideOppositeButton
-              type="button"
+              type="submit"
               inert={saveOrDisplay.running || error != null}
               onClick={saveOrDisplay}>
               {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}

@@ -274,7 +274,7 @@ function UserImportFilePage() {
       <div className="h-8 grow" />
       <div className="flex items-center flex-wrap-reverse gap-2">
         <WideOppositeButton
-          type="button"
+          type="submit"
           inert={loadOrDisplay.running || error != null}
           onClick={loadOrDisplay}>
           {loadOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
@@ -433,7 +433,7 @@ function UserImportFsfhPage() {
       <div className="h-8 grow" />
       <div className="flex items-center flex-wrap-reverse gap-2">
         <WideOppositeButton
-          type="button"
+          type="submit"
           inert={openOrDisplay.running || error != null}
           onClick={openOrDisplay}>
           {openOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
@@ -645,7 +645,7 @@ function UserCreatePage() {
       <div className="flex items-center flex-wrap-reverse gap-2">
         {"showSaveFilePicker" in window === true &&
           <WideOppositeButton
-            type="button"
+            type="submit"
             inert={pickOrDisplay.running || error != null}
             onClick={pickOrDisplay}>
             {pickOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
@@ -653,7 +653,7 @@ function UserCreatePage() {
           </WideOppositeButton>}
         {"showSaveFilePicker" in window === false &&
           <WideOppositeButton
-            type="button"
+            type="submit"
             inert={saveOrDisplay.running || error != null}
             onClick={saveOrDisplay}>
             {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
@@ -1102,7 +1102,7 @@ function UserReimportFilePage(props: { user: UserData }) {
       <div className="h-8 grow" />
       <div className="flex items-center flex-wrap-reverse gap-2">
         <WideOppositeButton
-          type="button"
+          type="submit"
           inert={loadOrDisplay.running || error != null}
           onClick={loadOrDisplay}>
           {loadOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}
@@ -1263,7 +1263,7 @@ function UserReimportFsfhPage(props: { user: UserData }) {
       <div className="h-8 grow" />
       <div className="flex items-center flex-wrap-reverse gap-2">
         <WideOppositeButton
-          type="button"
+          type="submit"
           inert={openOrDisplay.running || error != null}
           onClick={openOrDisplay}>
           {openOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowUpTrayIcon className="size-5" />}

@@ -391,7 +391,7 @@ export function SessionExportPage() {
         <div className="flex items-center flex-wrap-reverse gap-2">
           {"showSaveFilePicker" in window === true &&
             <WideOppositeButton
-              type="button"
+              type="submit"
               inert={pickOrDisplay.running || error != null}
               onClick={pickOrDisplay}>
               {pickOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
@@ -399,7 +399,7 @@ export function SessionExportPage() {
             </WideOppositeButton>}
           {"showSaveFilePicker" in window === false &&
             <WideOppositeButton
-              type="button"
+              type="submit"
               inert={saveOrDisplay.running || error != null}
               onClick={saveOrDisplay}>
               {saveOrDisplay.running ? <Spinner className="size-5 animate-spin" /> : <Outline.ArrowDownTrayIcon className="size-5" />}
