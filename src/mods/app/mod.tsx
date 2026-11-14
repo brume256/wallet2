@@ -80,6 +80,22 @@ export function App() {
     maskOrThrow().catch(console.error)
   }, [maskOrThrow])
 
+  const resumeOrThrow = useCallback(async () => {
+    if (store.value.isErr())
+      return
+
+    const current = await store.value.get().getOrThrow("current")
+
+    if (current == null)
+      return
+
+    location.replace(path.go(`#/login#/${current}`))
+  }, [store.value])
+
+  useEffect(() => {
+    resumeOrThrow().catch(console.error)
+  }, [resumeOrThrow])
+
   return <Fragment>
     <After delay={300}>
       <SubpathProvider value={hash}>

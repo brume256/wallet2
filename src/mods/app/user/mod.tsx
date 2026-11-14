@@ -720,6 +720,8 @@ function UserItem(props: { user: UserData }) {
 function UserLoginPage(props: { user: UserData }) {
   const { user } = props
 
+  const store = useStoreContext().getOrThrow()
+
   const path = usePathContext().getOrThrow()
   const hash = useHashSubpath(path)
 
@@ -761,8 +763,10 @@ function UserLoginPage(props: { user: UserData }) {
 
     login({ user, comp: composite, kdbx: decrypted })
 
+    store.value.getOrThrow().setOrThrow("current", user.uuid)
+
     setPass("")
-  }).catch(Errors.display), [user, login, file1, pass])
+  }).catch(Errors.display), [store, user, login, file1, pass])
 
   const loadOrDisplay2 = useCallback(() => Promise.try(async () => {
     if (file2 == null)
@@ -778,8 +782,10 @@ function UserLoginPage(props: { user: UserData }) {
 
     login({ user, comp: composite, kdbx: decrypted })
 
+    store.value.getOrThrow().setOrThrow("current", user.uuid)
+
     setPass("")
-  }).catch(Errors.display), [user, login, file2, auth])
+  }).catch(Errors.display), [store, user, login, file2, auth])
 
   useEffect(() => {
     if (file1 == null)
@@ -814,8 +820,10 @@ function UserLoginPage(props: { user: UserData }) {
 
     login({ user, comp: composite, kdbx: decrypted })
 
+    store.value.getOrThrow().setOrThrow("current", user.uuid)
+
     setPass("")
-  }).catch(Errors.display), [user, login, pass])
+  }).catch(Errors.display), [store, user, login, pass])
 
   const openOrDisplay2 = useCallback((stored: Uint8Array<ArrayBuffer>) => Promise.try(async () => {
     if (user.auth == null)
@@ -836,8 +844,10 @@ function UserLoginPage(props: { user: UserData }) {
 
     login({ user, comp: composite, kdbx: decrypted })
 
+    store.value.getOrThrow().setOrThrow("current", user.uuid)
+
     setPass("")
-  }).catch(Errors.display), [user, login, auth])
+  }).catch(Errors.display), [store, user, login, auth])
 
   const onKeyDown = useCallback(async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== "Enter")

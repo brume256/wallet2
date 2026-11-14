@@ -124,15 +124,6 @@ export namespace Lang {
     if (served != null)
       return record[served]
 
-    for (const language of navigator.languages) {
-      const browsed = langs[language.split("-")[0]]
-
-      if (browsed != null)
-        return record[browsed]
-
-      continue
-    }
-
     return record["en"]
   }
 
