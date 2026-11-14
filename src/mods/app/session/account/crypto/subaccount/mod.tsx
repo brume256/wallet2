@@ -219,12 +219,10 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
 
     const { requiredNamespaces, optionalNamespaces } = proposal
 
-    const chains = chainlist.map(chain => chain.chainId)
-
     const namespaces = {
       eip155: {
-        chains: chains.map(chainId => `eip155:${chainId}`),
-        accounts: chains.map(chainId => `eip155:${chainId}:${ethereum}`),
+        chains: chainlist.map(chain => `eip155:${chain.chainId}`),
+        accounts: chainlist.map(chain => `eip155:${chain.chainId}:${ethereum}`),
         methods: ["personal_sign", "eth_signTypedData_v4", "eth_sendTransaction"],
         events: ["chainChanged", "accountsChanged"],
       },
