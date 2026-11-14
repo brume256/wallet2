@@ -203,6 +203,8 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
 
     await pairing.open()
 
+    stack.defer(async () => await pairing.delete())
+
     const proposal = await proposed.promise
 
     responded.resolve(await pairing.respond(proposal))
@@ -244,8 +246,6 @@ export function CryptoSubaccountPage(props: { $entry: KDBX.Inner.KeePassFile.Ent
     const jwk = sticky.toBase64()
     const tpc = session.channel.topic
     const key = session.channel.key.toBase64()
-
-    client.close()
 
     return { jwk, tpc, key }
   }, [seedphrase, subaccount])

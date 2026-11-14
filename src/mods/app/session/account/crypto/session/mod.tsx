@@ -433,12 +433,10 @@ export function CryptoSessionPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
 
     await using stack = new AsyncDisposableStack()
 
-    let success = false
-
     const sticky = Uint8Array.fromBase64(jwk)
     const client = await IrnClient.open(WalletConnect.RELAY, sticky, "c6c9bacd35afa3eb9e6cccf6d8464395")
 
-    stack.defer(() => success ? undefined : client.close())
+    stack.defer(() => client.close())
 
     const channel = new WcChannel(client, tpc, Uint8Array.fromBase64(key))
     const session = new WcSession(channel)
@@ -480,7 +478,7 @@ export function CryptoSessionPage(props: { $entry: KDBX.Inner.KeePassFile.Entry 
 
     setSession(session)
 
-    success = true
+    stack.move()
 
     return
   }, [jwk, tpc, key])
